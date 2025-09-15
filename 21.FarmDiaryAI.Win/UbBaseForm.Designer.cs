@@ -35,7 +35,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(298, 287);
+            ClientSize = new Size(415, 365);
             IconOptions.Image = (Image)resources.GetObject("UbBaseForm.IconOptions.Image");
             Name = "UbBaseForm";
             Text = "Farming Diary Automation System";

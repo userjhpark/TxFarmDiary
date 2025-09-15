@@ -35,12 +35,10 @@
             peImage = new DevExpress.XtraEditors.PictureEdit();
             peLogo = new DevExpress.XtraEditors.PictureEdit();
             pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
-            pictureEdit2 = new DevExpress.XtraEditors.PictureEdit();
             ((System.ComponentModel.ISupportInitialize)progressBarControl.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)peImage.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)peLogo.Properties).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureEdit1.Properties).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureEdit2.Properties).BeginInit();
             SuspendLayout();
             // 
             // progressBarControl
@@ -123,29 +121,11 @@
             pictureEdit1.Size = new Size(523, 348);
             pictureEdit1.TabIndex = 11;
             // 
-            // pictureEdit2
-            // 
-            pictureEdit2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            pictureEdit2.EditValue = resources.GetObject("pictureEdit2.EditValue");
-            pictureEdit2.Location = new Point(319, 421);
-            pictureEdit2.Margin = new Padding(4, 3, 4, 3);
-            pictureEdit2.Name = "pictureEdit2";
-            pictureEdit2.Properties.AllowFocused = false;
-            pictureEdit2.Properties.Appearance.BackColor = Color.Transparent;
-            pictureEdit2.Properties.Appearance.Options.UseBackColor = true;
-            pictureEdit2.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            pictureEdit2.Properties.ShowMenu = false;
-            pictureEdit2.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
-            pictureEdit2.Size = new Size(184, 45);
-            pictureEdit2.TabIndex = 12;
-            pictureEdit2.Visible = false;
-            // 
             // UbSplashScreenStartup
             // 
             AutoScaleDimensions = new SizeF(7F, 14F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(525, 477);
-            Controls.Add(pictureEdit2);
             Controls.Add(pictureEdit1);
             Controls.Add(peImage);
             Controls.Add(peLogo);
@@ -160,7 +140,6 @@
             ((System.ComponentModel.ISupportInitialize)peImage.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)peLogo.Properties).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureEdit1.Properties).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureEdit2.Properties).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -173,6 +152,5 @@
         private DevExpress.XtraEditors.PictureEdit peLogo;
         private DevExpress.XtraEditors.PictureEdit peImage;
         private DevExpress.XtraEditors.PictureEdit pictureEdit1;
-        private DevExpress.XtraEditors.PictureEdit pictureEdit2;
     }
 }

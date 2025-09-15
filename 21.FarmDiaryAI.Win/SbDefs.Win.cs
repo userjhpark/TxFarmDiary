@@ -9,5 +9,6 @@ namespace FarmDiaryAI.Win
 {
     internal class SbDefs : Core.TDefs
     {
+        internal const string _TAG_RESOURCE_TPL_PATTERN_ = @"(\{{\#)(\w+)(\}})";
     }
 }

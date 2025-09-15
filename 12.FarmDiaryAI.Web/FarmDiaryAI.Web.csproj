@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <Title>Farming Diary Automation System Implementation with AI-OCR</Title>
+    <AssemblyName>$(MSBuildProjectName).N9</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
