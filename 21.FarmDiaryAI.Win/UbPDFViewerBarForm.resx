@@ -117,11 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="barManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="UbBaseChildForm.IconOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="UbPDFViewer.IconOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vgAADr4B6kKxwAAAAi5JREFUOE+Nk+1LU2EYh/fP+DEI+tArUtByiZnzPW1uM1eSL2vHpltO20yPJyU3
+        wAAADsABataJCQAAAi5JREFUOE+Nk+1LU2EYh/fP+DEI+tArUtByiZnzPW1uM1eSL2vHpltO20yPJyU3
         EraDSs0ih6sxNUmcbI2JTRsjJKWREI3oQ6Dfiz784rnPdnaWEh244DzwnOv87vt+HpUq92iH2mEUbLBN
         Cf9FnziG/LeqSlcrmsQWTC6I2MluIrEd/ScfvybxbjdaEJzqqkXVRBMJTM4RXOnsw/GamzimbcN5oxn1
         PQ6oTRwqOnpxe1iAzu7EViYmCa7xd6AeqsNpaxUmwyJaBx9g3D8Nm8cD0/0RdI+OkZRRclmPwOor2iML
@@ -133,4 +136,7 @@
         K6l3diHzfYvei8ZIKXLXmTVMeW1Zx/PvjU6LvM5f5z+0z3Qj27rVwQAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="pdfBarController1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>142, 17</value>
+  </metadata>
 </root>

@@ -113,7 +113,7 @@ namespace TxFarmDiaryAI.Win
                 //lblUserIP.Text += " / " + SysEnv._IP_MAC_ADDR_;
 
 
-                SysUtils.DoSplashScreenManager_CloseForm();
+                SbUtils.DoSplashScreenManager_CloseForm();
 
             }
             this.IsStartUp = true;
@@ -147,12 +147,12 @@ namespace TxFarmDiaryAI.Win
         {
             //DevExpress.XtraSplashScreen.SplashScreenManager.ShowForm(this, typeof(UbSplashScreenStarup), )
             //DevExpress.XtraSplashScreen.SplashScreenManager.ShowForm(null, typeof(UbSplashScreenStartup), false, true, false, 0);
-            SysUtils.DoSplashScreenManager_ShowForm_Startup(this);
+            SbUtils.DoSplashScreenManager_ShowForm_Startup(this);
         }
 
         private void btnTestClose_Click(object sender, EventArgs e)
         {
-            SysUtils.DoSplashScreenManager_CloseForm();
+            SbUtils.DoSplashScreenManager_CloseForm();
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)

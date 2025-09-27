@@ -31,13 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UbBaseChildForm));
             SuspendLayout();
             // 
-            // UbBaseForm
+            // UbBaseChildForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(415, 365);
-            IconOptions.Image = (Image)resources.GetObject("UbBaseForm.IconOptions.Image");
-            Name = "UbBaseForm";
+            IconOptions.Image = (Image)resources.GetObject("UbBaseChildForm.IconOptions.Image");
+            Name = "UbBaseChildForm";
             Text = "Farming Diary Automation System";
             ResumeLayout(false);
         }

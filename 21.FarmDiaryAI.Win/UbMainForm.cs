@@ -1,5 +1,7 @@
-﻿using DevExpress.XtraBars;
+﻿using DevExpress.DocumentView;
+using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
+using HxCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -170,6 +172,52 @@ namespace TxFarmDiaryAI.Win
                     {
                         rcMainMenu.SelectedPage = rcMainMenu.MergedPages.GetPageByName(page.Name) ?? rcMainMenu.Pages[0];
                     }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex);
+                }
+            }
+            else
+            {
+                this.SetSelectRibbonMenuPageHome();
+            }
+        }
+        internal void SetSelectRibbonMenuPageByName(string pageName, bool IsExactMatch = true)
+        {
+            if (pageName.IsNullOrWhiteSpaceEx() != true)
+            {
+                try
+                {
+                    var childPage = rcMainMenu.MergedPages.GetPageByName(pageName);
+                    if(IsExactMatch != true && childPage == null)
+                    {
+                        childPage = rcMainMenu.MergedPages.GetPageByText(pageName);
+                    }
+                    rcMainMenu.SelectedPage = childPage ?? rcMainMenu.Pages[0];
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine(ex);
+                }
+            }
+            else
+            {
+                this.SetSelectRibbonMenuPageHome();
+            }
+        }
+        internal void SetSelectRibbonMenuPageByText(string pageText, bool IsExactMatch = true)
+        {
+            if (pageText.IsNullOrWhiteSpaceEx() != true)
+            {
+                try
+                {
+                    var childPage = rcMainMenu.MergedPages.GetPageByText(pageText);
+                    if (IsExactMatch != true && childPage == null)
+                    {
+                        childPage = rcMainMenu.MergedPages.GetPageByName(pageText);
+                    }
+                    rcMainMenu.SelectedPage = childPage ?? rcMainMenu.Pages[0];
                 }
                 catch (Exception ex)
                 {

@@ -9,13 +9,14 @@ using System.Threading.Tasks;
 
 namespace TxFarmDiaryAI.Win
 {
-    internal class SysUtils : HxWin
+    partial class SbUtils
     {
         public static void DoSplashScreenManager_ShowForm(Form parentForm, Type splashFormType, bool useFadeIn = false, bool useFadeOut = true, bool throwExceptionIfAlreadyOpened = false, int pendingTime = 0)
         {
             try
             {
                 DevExpress.XtraSplashScreen.SplashScreenManager.ShowForm(parentForm, splashFormType, useFadeIn, useFadeOut, throwExceptionIfAlreadyOpened, pendingTime);
+                Application.DoEvents();
             }
             catch (Exception ex)
             {
@@ -29,6 +30,7 @@ namespace TxFarmDiaryAI.Win
             try
             {
                 DevExpress.XtraSplashScreen.SplashScreenManager.ShowForm(parentForm, typeof(UbSplashScreenStartup), useFadeIn, useFadeOut, throwExceptionIfAlreadyOpened, pendingTime);
+                Application.DoEvents();
             }
             catch (Exception ex)
             {
@@ -42,6 +44,7 @@ namespace TxFarmDiaryAI.Win
             try
             {
                 DevExpress.XtraSplashScreen.SplashScreenManager.CloseForm(throwExceptionIfAlreadyClosed, closingDelay, parent);
+                Application.DoEvents();
             }
             catch (Exception ex)
             {
@@ -55,6 +58,7 @@ namespace TxFarmDiaryAI.Win
             try
             {
                 DevExpress.XtraSplashScreen.SplashScreenManager.CloseForm(throwExceptionIfAlreadyClosed);
+                Application.DoEvents();
             }
             catch (Exception ex)
             {
@@ -65,6 +69,45 @@ namespace TxFarmDiaryAI.Win
                 }
             }
             
+        }
+
+        internal static void ShowWaitLoadingForm(System.Windows.Forms.Form? sender = null, bool useFadeIn = false, bool useFadeOut = false, bool throwExceptionIfAlreadyOpened = false)
+        {
+            try
+            {
+                DevExpress.XtraSplashScreen.SplashScreenManager.ShowForm(sender, typeof(UbWaitForm), useFadeIn, useFadeOut, throwExceptionIfAlreadyOpened);
+                Application.DoEvents();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                //throw;
+            }
+        }
+        internal static void CloseWaitLoadingForm(bool throwExceptionIfAlreadyClosed = false)
+        {
+            DoSplashScreenManager_CloseForm(throwExceptionIfAlreadyClosed);
+            /*
+            try
+            {
+                DevExpress.XtraSplashScreen.SplashScreenManager.CloseForm(throwExceptionIfAlreadyClosed);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                //throw;
+            }
+            */
+
+        }
+        internal static DialogResult ShowMessageBox(string? text, string? caption, MessageBoxButtons buttons, MessageBoxIcon icon, MessageBoxDefaultButton? messageBoxDefaultButton = null)
+        {
+            CloseWaitLoadingForm();
+            if (messageBoxDefaultButton != null)
+            {
+                return MessageBox.Show(text, caption, buttons, icon, messageBoxDefaultButton.Value);
+            }
+            return MessageBox.Show(text, caption, buttons, icon);
         }
     }
 }

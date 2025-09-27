@@ -1,4 +1,5 @@
 ﻿using DevExpress.CodeParser;
+using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
 using HxCore;
 using HxCore.Win;
@@ -157,11 +158,11 @@ namespace TxFarmDiaryAI.Win
         #region Splash Screen / Wait
         public static void DoSplashScreenManager_ShowForm_Startup(Form parentForm, bool useFadeIn = false, bool useFadeOut = true, bool throwExceptionIfAlreadyOpened = false, int pendingTime = 0)
         {
-            SysUtils.DoSplashScreenManager_ShowForm_Startup(parentForm, useFadeIn, useFadeOut, throwExceptionIfAlreadyOpened, pendingTime);
+            SbUtils.DoSplashScreenManager_ShowForm_Startup(parentForm, useFadeIn, useFadeOut, throwExceptionIfAlreadyOpened, pendingTime);
         }
         public static void DoSplashScreenManager_CloseForm(bool throwExceptionIfAlreadyClosed = false)
         {
-            SysUtils.DoSplashScreenManager_CloseForm(throwExceptionIfAlreadyClosed);
+            SbUtils.DoSplashScreenManager_CloseForm(throwExceptionIfAlreadyClosed);
         }
 
         // 새 메서드 추가 (명명 규칙에 맞게)
@@ -454,5 +455,20 @@ namespace TxFarmDiaryAI.Win
                 }
             }
         }
+
+        internal static void ShowSelectRibbonMenuPage(RibbonPage? page) => SysEnv.MainForm?.SetSelectRibbonMenuPage(page);
+        internal static void ShowSelectRibbonMenuPageByName(string pageName, bool IsExactMatch = true) => SysEnv.MainForm?.SetSelectRibbonMenuPageByName(pageName, IsExactMatch);
+        internal static void ShowSelectRibbonMenuPageByText(string pageText, bool IsExactMatch = true) => SysEnv.MainForm?.SetSelectRibbonMenuPageByText(pageText, IsExactMatch);
+
+
+        internal static void ShowWaitLoadingForm(System.Windows.Forms.Form? sender = null, bool useFadeIn = false, bool useFadeOut = false, bool throwExceptionIfAlreadyOpened = false)
+        {
+            if(sender == null)
+            {
+                sender = SysEnv.MainForm;
+            }
+            SbUtils.ShowWaitLoadingForm(sender, useFadeIn, useFadeOut, throwExceptionIfAlreadyOpened);
+        }
+        internal static void CloseWaitLoadingForm(bool throwExceptionIfAlreadyClosed = false) => SbUtils.CloseWaitLoadingForm(throwExceptionIfAlreadyClosed);
     }
 }

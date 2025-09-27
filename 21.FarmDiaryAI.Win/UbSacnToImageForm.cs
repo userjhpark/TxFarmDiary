@@ -1,5 +1,7 @@
 ﻿using DevExpress.Drawing.Printing;
+using DevExpress.Pdf;
 using DevExpress.XtraEditors;
+using DevExpress.XtraPdfViewer.Bars;
 using DevExpress.XtraPrinting;
 using HxCore;
 using System;
@@ -29,7 +31,7 @@ namespace TxFarmDiaryAI.Win
             {
                 if (this.IsStartUp == true)
                 {
-
+                    //SysEnv.ShowSelectRibbonMenuPage(rpChildImageToPDF);
                 }
             };
             Shown += (s, e) =>
@@ -43,17 +45,18 @@ namespace TxFarmDiaryAI.Win
 
                     this.LoadScannerDevices();
 
-                    //SysEnv.MainForm?.rcMainMenu.SelectedPage = SysEnv.MainForm?.rcMainMenu.MergedPages.GetPageByName(rpChildImageToPDF.Name) ?? SysEnv.MainForm?.rcMainMenu.Pages[0];
-                    SysEnv.MainForm?.SetSelectRibbonMenuPage(rpChildImageToPDF);
-
+                    //SbUtils.ShowMeesageBoxMainForm?.rcMainMenu.SelectedPage = SbUtils.ShowMeesageBoxMainForm?.rcMainMenu.MergedPages.GetPageByName(rpChildImageToPDF.Name) ?? SbUtils.ShowMeesageBoxMainForm?.rcMainMenu.Pages[0];
+                    this.HidePDFViewer();
+                    SysEnv.ShowSelectRibbonMenuPage(rpChildImageToPDF);
                     this.IsStartUp = true;
                 }
+                
             };
             GotFocus += OnForm_GotFocus;
 
             repcbxScanners.ButtonClick += (s, e) =>
             {
-                if (e.Button.Kind == DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph && e.Button.Tag.ToStringEx().ToUpper() == "{{#REFRESH}}")
+                if (e.Button.Kind == DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph && e.Button.Tag.ToStringEx().Equals("{{#REFRESH}}", StringComparison.CurrentCultureIgnoreCase))
                 {
                     LoadScannerDevices();
                 }
@@ -64,9 +67,10 @@ namespace TxFarmDiaryAI.Win
                 pictureEdit1.Image = null;
                 if (beicbxScanners.EditValue.IsNullOrWhiteSpaceEx() == true)
                 {
-                    MessageBox.Show(SbUtils.GetLanguageResourceString(SbDefs._RESOURCEKEY_SCANNER_SELECT_PLEASE_) ?? "Please select a scanner. (스캐너를 선택해주세요.)", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    SbUtils.ShowMessageBox(SbUtils.GetLanguageResourceString(SbDefs._RESOURCEKEY_SCANNER_SELECT_PLEASE_) ?? "Please select a scanner. (스캐너를 선택해주세요.)", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
+                SbUtils.ShowWaitLoadingForm(this);
                 try
                 {
                     this.StatusBarEventCaption = SbUtils.GetLanguageResourceString(SbDefs._RESOURCEKEY_SCANNER_SELECT_CONN_) ?? "Connecting to scanner... (스캐너와 연결 중입니다...)";
@@ -74,13 +78,13 @@ namespace TxFarmDiaryAI.Win
 
                     if (beicbxScanners.EditValue is not TScannerDevice sel)
                     {
-                        MessageBox.Show(SbUtils.GetLanguageResourceString(SbDefs._RESOURCEKEY_SCANNER_SELECT_PLEASE_) ?? "Please select a scanner. (스캐너를 선택해주세요.)", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        SbUtils.ShowMessageBox(SbUtils.GetLanguageResourceString(SbDefs._RESOURCEKEY_SCANNER_SELECT_PLEASE_) ?? "Please select a scanner. (스캐너를 선택해주세요.)", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
 
                     if (sel is not TScannerDevice selectedScanner)
                     {
-                        MessageBox.Show(SbUtils.GetLanguageResourceString(SbDefs._RESOURCEKEY_SCANNER_SELECT_PLEASE_) ?? "Please select a scanner. (스캐너를 선택해주세요.)", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        SbUtils.ShowMessageBox(SbUtils.GetLanguageResourceString(SbDefs._RESOURCEKEY_SCANNER_SELECT_PLEASE_) ?? "Please select a scanner. (스캐너를 선택해주세요.)", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
 
@@ -88,7 +92,7 @@ namespace TxFarmDiaryAI.Win
                     if (isConnected == false)
                     {
                         this.StatusBarEventCaption = SbUtils.GetLanguageResourceString(SbDefs._RESOURCEKEY_SCANNER_SELECT_ERROR_) ?? "Unable to connect to the selected scanner. (선택된 스캐너에 연결할 수 없습니다.)";
-                        MessageBox.Show(this.StatusBarEventCaption, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        SbUtils.ShowMessageBox(this.StatusBarEventCaption, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 
@@ -96,7 +100,7 @@ namespace TxFarmDiaryAI.Win
                     if (device == null)
                     {
                         this.StatusBarEventCaption = SbUtils.GetLanguageResourceString(SbDefs._RESOURCEKEY_SCANNER_SELECT_ERROR_) ?? "Unable to connect to the selected scanner. (선택된 스캐너에 연결할 수 없습니다.)";
-                        MessageBox.Show(this.StatusBarEventCaption, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        SbUtils.ShowMessageBox(this.StatusBarEventCaption, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 
@@ -107,7 +111,7 @@ namespace TxFarmDiaryAI.Win
                     if (image == null)
                     {
                         this.StatusBarEventCaption = SbUtils.GetLanguageResourceString(SbDefs._RESOURCEKEY_SCANNER_SCAN_NOTFOUND_) ?? "Unable to import scanned image. (스캔된 이미지를 가져올 수 없습니다.)";
-                        MessageBox.Show(this.StatusBarEventCaption, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        SbUtils.ShowMessageBox(this.StatusBarEventCaption, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     else
@@ -122,7 +126,11 @@ namespace TxFarmDiaryAI.Win
                     Debug.WriteLine(strExMessage);
 
                     this.StatusBarEventCaption = strExMessage;
-                    MessageBox.Show(strExMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    SbUtils.ShowMessageBox(strExMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    SbUtils.CloseWaitLoadingForm();
                 }
             };
             bbibtnLoadToPicture.ItemClick += (s, e) =>
@@ -138,9 +146,11 @@ namespace TxFarmDiaryAI.Win
 
                 if (HxFile.IsFileExists(strFileName) == false)
                 {
-                    MessageBox.Show(SbUtils.GetLanguageResourceString(SbDefs._RESOURCEKEY_FILE_NOTEXIST_) ?? "The specified file does not exist. (지정된 파일이 존재하지 않습니다.)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    SbUtils.ShowMessageBox(SbUtils.GetLanguageResourceString(SbDefs._RESOURCEKEY_FILE_NOTEXIST_) ?? "The specified file does not exist. (지정된 파일이 존재하지 않습니다.)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+
+                SbUtils.ShowWaitLoadingForm(this);
                 try
                 {
 
@@ -152,7 +162,11 @@ namespace TxFarmDiaryAI.Win
                     string strExMessage = $"[Load Image Error] {ex.Message}";
                     Debug.WriteLine(strExMessage);
                     this.StatusBarEventCaption = strExMessage;
-                    MessageBox.Show(strExMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    SbUtils.ShowMessageBox(strExMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    SbUtils.CloseWaitLoadingForm();
                 }
             };
             bbibtnEditFromPicture.ItemClick += (s, e) =>
@@ -163,21 +177,21 @@ namespace TxFarmDiaryAI.Win
                 }
                 else
                 {
-                    MessageBox.Show(SbUtils.GetLanguageResourceString(SbDefs._RESOURCEKEY_IMAGE_EDIT_NOIMAGE_) ?? "There are no images to edit. (편집할 이미지가 없습니다.)", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    SbUtils.ShowMessageBox(SbUtils.GetLanguageResourceString(SbDefs._RESOURCEKEY_IMAGE_EDIT_NOIMAGE_) ?? "There are no images to edit. (편집할 이미지가 없습니다.)", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             };
             bbibtnClearFromPicture.ItemClick += (s, e) =>
             {
                 if (pictureEdit1.Image != null)
                 {
-                    if (MessageBox.Show(SbUtils.GetLanguageResourceString(SbDefs._RESOURCEKEY_IMAGE_EDIT_QUESTION_) ?? "Are you sure you want to delete the image? (이미지를 삭제하시겠습니까?)", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (SbUtils.ShowMessageBox(SbUtils.GetLanguageResourceString(SbDefs._RESOURCEKEY_IMAGE_EDIT_QUESTION_) ?? "Are you sure you want to delete the image? (이미지를 삭제하시겠습니까?)", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         pictureEdit1.Image = null;
                     }
                 }
                 else
                 {
-                    MessageBox.Show(SbUtils.GetLanguageResourceString(SbDefs._RESOURCEKEY_IMAGE_DELETE_NOIMAGE_) ?? "There are no images to delete. (삭제할 이미지가 없습니다.)", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    SbUtils.ShowMessageBox(SbUtils.GetLanguageResourceString(SbDefs._RESOURCEKEY_IMAGE_DELETE_NOIMAGE_) ?? "There are no images to delete. (삭제할 이미지가 없습니다.)", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             };
             bbibtnCopyFromPicture.ItemClick += (s, e) =>
@@ -189,14 +203,14 @@ namespace TxFarmDiaryAI.Win
                 }
                 else
                 {
-                    MessageBox.Show(SbUtils.GetLanguageResourceString(SbDefs._RESOURCEKEY_IMAGE_COPY_NOIMAGE_) ?? "There are no images to copy. (복사할 이미지가 없습니다.)", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    SbUtils.ShowMessageBox(SbUtils.GetLanguageResourceString(SbDefs._RESOURCEKEY_IMAGE_COPY_NOIMAGE_) ?? "There are no images to copy. (복사할 이미지가 없습니다.)", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             };
             bbibtnCutFromPicture.ItemClick += (s, e) =>
             {
                 if (pictureEdit1.Image != null)
                 {
-                    if (MessageBox.Show(SbUtils.GetLanguageResourceString(SbDefs._RESOURCEKEY_IMAGE_CUT_QUESTION_) ?? "Are you sure you want to cut the image? (이미지를 잘라내시겠습니까?)", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (SbUtils.ShowMessageBox(SbUtils.GetLanguageResourceString(SbDefs._RESOURCEKEY_IMAGE_CUT_QUESTION_) ?? "Are you sure you want to cut the image? (이미지를 잘라내시겠습니까?)", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         /*
                         Clipboard.SetImage(pictureEdit1.Image);
@@ -207,7 +221,7 @@ namespace TxFarmDiaryAI.Win
                 }
                 else
                 {
-                    MessageBox.Show(SbUtils.GetLanguageResourceString(SbDefs._RESOURCEKEY_IMAGE_CUT_NOIMAGE_) ?? "There are no images to cut. (잘라낼 이미지가 없습니다.)", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    SbUtils.ShowMessageBox(SbUtils.GetLanguageResourceString(SbDefs._RESOURCEKEY_IMAGE_CUT_NOIMAGE_) ?? "There are no images to cut. (잘라낼 이미지가 없습니다.)", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             };
             bbibtnPasteFromPicture.ItemClick += (s, e) =>
@@ -218,21 +232,21 @@ namespace TxFarmDiaryAI.Win
                 }
                 else
                 {
-                    MessageBox.Show(SbUtils.GetLanguageResourceString(SbDefs._RESOURCEKEY_IMAGE_PASTE_NOIMAGE_) ?? "There are no images to paste. (붙여넣을 이미지가 없습니다.)", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    SbUtils.ShowMessageBox(SbUtils.GetLanguageResourceString(SbDefs._RESOURCEKEY_IMAGE_PASTE_NOIMAGE_) ?? "There are no images to paste. (붙여넣을 이미지가 없습니다.)", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             };
-            bbibtnExportAsPictureToImage.ItemClick += (s, e) =>
+            bbibtnSavePictureToImage.ItemClick += (s, e) =>
             {
                 if (pictureEdit1.Image == null)
                 {
-                    MessageBox.Show(SbUtils.GetLanguageResourceString(SbDefs._RESOURCEKEY_IMAGE_SAVE_NOIMAGE_) ?? "There are no images to save. (저장할 이미지가 없습니다.)", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    SbUtils.ShowMessageBox(SbUtils.GetLanguageResourceString(SbDefs._RESOURCEKEY_IMAGE_SAVE_NOIMAGE_) ?? "There are no images to save. (저장할 이미지가 없습니다.)", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
                     Image? img = pictureEdit1.Image;
                     if (img == null)
                     {
-                        MessageBox.Show(SbUtils.GetLanguageResourceString(SbDefs._RESOURCEKEY_IMAGE_SAVE_NOIMAGE_) ?? "There are no images to save. (저장할 이미지가 없습니다.)", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        SbUtils.ShowMessageBox(SbUtils.GetLanguageResourceString(SbDefs._RESOURCEKEY_IMAGE_SAVE_NOIMAGE_) ?? "There are no images to save. (저장할 이미지가 없습니다.)", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
 
@@ -248,7 +262,7 @@ namespace TxFarmDiaryAI.Win
                     string? strFileExt = HxFile.GetFileExt(strFileName)?.ToLower();
                     if (strFileExt.IsNullOrWhiteSpaceEx() == true)
                     {
-                        MessageBox.Show(SbUtils.GetLanguageResourceString(SbDefs._RESOURCEKEY_IMAGE_SAVE_NOFILEEXT_) ?? "There are no images to save. (저장할 이미지가 없습니다.)", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        SbUtils.ShowMessageBox(SbUtils.GetLanguageResourceString(SbDefs._RESOURCEKEY_IMAGE_SAVE_NOFILEEXT_) ?? "There are no images to save. (저장할 이미지가 없습니다.)", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
                     else if (strFileExt == "bmp")
@@ -269,7 +283,7 @@ namespace TxFarmDiaryAI.Win
                     }
                     else
                     {
-                        MessageBox.Show(SbUtils.GetLanguageResourceString(SbDefs._RESOURCEKEY_SAVE_FILEEXT_NOTSUPPORT_) ?? "Unsupported file extension. (지원되지 않는 파일 확장자 입니다.)", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        SbUtils.ShowMessageBox(SbUtils.GetLanguageResourceString(SbDefs._RESOURCEKEY_SAVE_FILEEXT_NOTSUPPORT_) ?? "Unsupported file extension. (지원되지 않는 파일 확장자 입니다.)", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
                 }
@@ -281,7 +295,7 @@ namespace TxFarmDiaryAI.Win
                 Image? img = pictureEdit1.Image;
                 if (img == null)
                 {
-                    MessageBox.Show(SbUtils.GetLanguageResourceString(SbDefs._RESOURCEKEY_IMAGE_SAVE_NOIMAGE_) ?? "There are no images to save. (저장할 이미지가 없습니다.)", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    SbUtils.ShowMeesageBox(SbUtils.GetLanguageResourceString(SbDefs._RESOURCEKEY_IMAGE_SAVE_NOIMAGE_) ?? "There are no images to save. (저장할 이미지가 없습니다.)", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
@@ -315,15 +329,18 @@ namespace TxFarmDiaryAI.Win
             };
             */
 
-            bbibtnExportPictureToPDF.ItemClick += (s, e) =>
+            bbibtnSavePictureToPDF.ItemClick += (s, e) =>
             {
                 Image? img = pictureEdit1.Image;
                 if (img == null)
                 {
-                    MessageBox.Show(SbUtils.GetLanguageResourceString(SbDefs._RESOURCEKEY_IMAGE_SAVE_NOIMAGE_) ?? "There are no images to save. (저장할 이미지가 없습니다.)", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    SbUtils.ShowMessageBox(SbUtils.GetLanguageResourceString(SbDefs._RESOURCEKEY_IMAGE_SAVE_NOIMAGE_) ?? "There are no images to save. (저장할 이미지가 없습니다.)", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
+                    SbUtils.ShowWaitLoadingForm(this);
+                    try
+                    {
                     /*
                     byte[] imageData;
                     using (var ms = new MemoryStream())
@@ -336,13 +353,13 @@ namespace TxFarmDiaryAI.Win
                     */
 
                     // Create a report
-                    
-                    scBody.Panel2.Controls.Clear();
+
+                    scCtlBody.Panel2.Controls.Clear();
                     //splitContainerControl1.Panel2.Controls.Add(report);
 
                     using DevExpress.XtraReports.UI.XtraReport report = new DevExpress.XtraReports.UI.XtraReport();
                     report.BeginInit();
-                    
+
                     report.Margins = new System.Drawing.Printing.Margins(0, 0, 0, 0);
                     report.Name = "ScanToImage";
                     report.TextAlignment = TextAlignment.TopLeft;
@@ -352,8 +369,8 @@ namespace TxFarmDiaryAI.Win
                     report.ShowPrintStatusDialog = false;
                     report.HorizontalContentSplitting = HorizontalContentSplitting.Exact;
                     report.VerticalContentSplitting = VerticalContentSplitting.Exact;
-                    report.Dpi = 1200F;//report.Dpi = 100F;
-                    report.Padding = new PaddingInfo(0, 0, 0, 0, 1200F); //report.Padding = new PaddingInfo(0, 0, 0, 0, 100F); 
+                    report.Dpi = 600F;//report.Dpi = 100F;
+                    report.Padding = new PaddingInfo(0, 0, 0, 0, report.Dpi); //report.Padding = new PaddingInfo(0, 0, 0, 0, 100F); 
                     //report.TextFormatString = "{0}";
                     report.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
                     report.ForeColor = Color.Black;
@@ -366,7 +383,7 @@ namespace TxFarmDiaryAI.Win
                     report.Landscape = img.Width > img.Height;
                     //report.Width = img.Width;
                     //report.Height = img.Height;
-                    
+
                     report.EndInit();
 
                     // Create picture box and set its properties
@@ -419,21 +436,20 @@ namespace TxFarmDiaryAI.Win
 
                         if (HxFile.IsFileExists(strFileName))
                         {
-                            pdfViewer1.LoadDocument(strFileName);
-                            pdfViewer1.ZoomMode = DevExpress.XtraPdfViewer.PdfZoomMode.FitToVisible;
+                            ShowPDFViewer(strFileName);
                             this.StatusBarEventCaption = "PDF file created successfully. (PDF 파일이 성공적으로 생성되었습니다.)";
                         }
                         else
-                        {
-                            MessageBox.Show("PDF file creation failed. (PDF 파일 생성에 실패했습니다.)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            {
+                                SbUtils.ShowMessageBox("PDF file creation failed. (PDF 파일 생성에 실패했습니다.)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
-                    }
                     catch (Exception ex)
                     {
                         string strExMessage = $"[Export to PDF Error] {ex.Message}";
                         Debug.WriteLine(strExMessage);
                         this.StatusBarEventCaption = strExMessage;
-                        MessageBox.Show(strExMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        SbUtils.ShowMessageBox(strExMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         //throw;
                     }
                     finally
@@ -441,37 +457,58 @@ namespace TxFarmDiaryAI.Win
                         report.StopPageBuilding();
                     }
 
-                    /*
-                    var ps = new DevExpress.XtraPrinting.PrintingSystem();
-                    var link = new DevExpress.XtraPrinting.PrintableComponentLink(ps);
+                        /*
+                        var ps = new DevExpress.XtraPrinting.PrintingSystem();
+                        var link = new DevExpress.XtraPrinting.PrintableComponentLink(ps);
 
-                    // PictureEdit 컨트롤을 생성하여 이미지 할당
-                    var printablePictureEdit = new DevExpress.XtraEditors.PictureEdit();
-                    printablePictureEdit.Image = img;
-                    printablePictureEdit.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
-                    
-                    link.Component = (DevExpress.XtraPrinting.IBasePrintable) printablePictureEdit;
+                        // PictureEdit 컨트롤을 생성하여 이미지 할당
+                        var printablePictureEdit = new DevExpress.XtraEditors.PictureEdit();
+                        printablePictureEdit.Image = img;
+                        printablePictureEdit.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
 
-                    link.Landscape = img.Width > img.Height;
-                    link.Margins = new System.Drawing.Printing.Margins(50, 50, 50, 50);
-                    link.CreateDocument();
+                        link.Component = (DevExpress.XtraPrinting.IBasePrintable) printablePictureEdit;
 
-                    using SaveFileDialog saveDlg = new SaveFileDialog();
-                    saveDlg.Filter = "PDF Files (*.pdf)|*.pdf";
-                    saveDlg.FilterIndex = 1;
-                    saveDlg.RestoreDirectory = true;
-                    saveDlg.ShowDialog();
-                    string strFileName = saveDlg.FileName;
-                    if (strFileName.IsNullOrWhiteSpaceEx() == true) { return; }
-                    link.PrintingSystem.ExportToPdf(strFileName);
-                    */
+                        link.Landscape = img.Width > img.Height;
+                        link.Margins = new System.Drawing.Printing.Margins(50, 50, 50, 50);
+                        link.CreateDocument();
+
+                        using SaveFileDialog saveDlg = new SaveFileDialog();
+                        saveDlg.Filter = "PDF Files (*.pdf)|*.pdf";
+                        saveDlg.FilterIndex = 1;
+                        saveDlg.RestoreDirectory = true;
+                        saveDlg.ShowDialog();
+                        string strFileName = saveDlg.FileName;
+                        if (strFileName.IsNullOrWhiteSpaceEx() == true) { return; }
+                        link.PrintingSystem.ExportToPdf(strFileName);
+                        */
+                    }
+                    catch (Exception exExport)
+                    {
+                        string strExMessage = $"[Export to PDF Error] {exExport.Message}";
+                        Debug.WriteLine(strExMessage);
+                        this.StatusBarEventCaption = strExMessage;
+                        SbUtils.ShowMessageBox(strExMessage, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //throw;
+                    }
+                    finally
+                    {
+                        SbUtils.CloseWaitLoadingForm();
+                    }
                 }
+            };
+
+            pdfFileCloseBarItem1.ItemClick += (s, e) =>
+            {
+                //pdfViewer1.CloseDocument();
+                this.HidePDFViewer();
             };
         }
 
+        
+
         private void OnForm_GotFocus(object? sender, EventArgs e)
         {
-
+            
         }
 
 
@@ -495,10 +532,10 @@ namespace TxFarmDiaryAI.Win
 
         private void OnForm_Load(object? sender, EventArgs evt)
         {
-            scBody.FixedPanel = DevExpress.XtraEditors.SplitFixedPanel.Panel2;
-            scBody.CollapsePanel = DevExpress.XtraEditors.SplitCollapsePanel.Panel2;
+            scCtlBody.FixedPanel = DevExpress.XtraEditors.SplitFixedPanel.Panel2;
+            scCtlBody.CollapsePanel = DevExpress.XtraEditors.SplitCollapsePanel.Panel2;
             //scBody.SplitterPosition = this.Height / 2;
-            scBody.Panel2.Width = this.Height / 4;
+            scCtlBody.Panel2.Width = this.Height / 4;
             bbibtnScanToPicture.Enabled = false;
             //bbibtnScan.Appearance.BackColor = Color.Orange;
             //bbibtnScan.Appearance.Options.UseBackColor = true;
@@ -513,6 +550,21 @@ namespace TxFarmDiaryAI.Win
             grdvFileList.OptionsView.ShowAutoFilterRow = false;
             //grdvFileList.OptionsView.ColumnAutoWidth = false;
             grdvFileList.OptionsView.RowAutoHeight = true;
+            grdvFileList.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never;
+            grdvFileList.OptionsView.ShowFooter = false;
+            grdvFileList.OptionsView.ShowGroupPanel = false;
+            grdvFileList.OptionsPrint.AutoWidth = false;
+            grdvFileList.OptionsPrint.PrintFooter = false;
+            grdvFileList.OptionsPrint.PrintGroupFooter = false;
+            grdvFileList.OptionsPrint.UsePrintStyles = true;
+            grdvFileList.Appearance.HeaderPanel.BackColor = Color.LightGray;
+            grdvFileList.Appearance.HeaderPanel.BackColor2 = Color.LightGray;
+            grdvFileList.Appearance.HeaderPanel.BorderColor = Color.Silver;
+            grdvFileList.Appearance.HeaderPanel.Options.UseBackColor = true;
+            grdvFileList.Appearance.HeaderPanel.Options.UseBorderColor = true;
+            grdvFileList.Appearance.HeaderPanel.ForeColor = Color.Black;
+            grdvFileList.Appearance.HeaderPanel.Options.UseForeColor = true;
+            grdvFileList.Appearance.HeaderPanel.Font = new Font(grdvFileList.Appearance.HeaderPanel.Font, FontStyle.Bold);
             grdvFileList.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             grdvFileList.Appearance.HeaderPanel.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             grdvFileList.Appearance.HeaderPanel.Options.UseTextOptions = true;
@@ -535,8 +587,13 @@ namespace TxFarmDiaryAI.Win
             gcImageGridFilePath.AppearanceCell.Options.UseTextOptions = true;
             #endregion //Grid Control/View/Column Settings
 
+            #region Picture / PDF Viewer Settings
+            bbibtnSavePictureToPDF.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            pdfFileOpenBarItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            #endregion //Picture / PDF Viewer Settings
 #if DEBUG
-            bbibtnExportPictureToPDF.Visibility = DevExpress.XtraBars.BarItemVisibility.OnlyInRuntime;
+            bbibtnSavePictureToPDF.Visibility = DevExpress.XtraBars.BarItemVisibility.OnlyInRuntime;
+            pdfFileOpenBarItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.OnlyInRuntime;
 #endif
 
 
@@ -581,7 +638,7 @@ namespace TxFarmDiaryAI.Win
                 {
                     bbibtnScanToPicture.Enabled = false;
                     this.StatusBarEventCaption = SbUtils.GetLanguageResourceString(SbDefs._RESOURCEKEY_SCANNER_FIND_ERROR_) ?? "No connected scanner found. (연결된 스캐너를 찾을 수 없습니다.)";
-                    MessageBox.Show(this.StatusBarEventCaption, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    SbUtils.ShowMessageBox(this.StatusBarEventCaption, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
                 beicbxScanners.EditValue = null;
@@ -590,7 +647,7 @@ namespace TxFarmDiaryAI.Win
             {
                 bbibtnScanToPicture.Enabled = false;
                 this.StatusBarEventCaption = SbUtils.GetLanguageResourceString(SbDefs._RESOURCEKEY_SCANNER_FIND_ERROR_) ?? "An error occurred while searching for the scanner. (스캐너 검색 중 오류가 발생했습니다.)";
-                MessageBox.Show($"{this.StatusBarEventCaption}\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SbUtils.ShowMessageBox($"{this.StatusBarEventCaption}\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -625,6 +682,60 @@ namespace TxFarmDiaryAI.Win
         private string GetStatusBarFileGridCaption()
         {
             return barsiChildImageListStatus.Caption;
+        }
+
+        private void pdfViewer1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureEdit1_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ShowPDFViewer(string fileName)
+        {
+            if (btsichkOptions_OpenPdfViewerInNewWindow.Checked != true)
+            {
+                rpChildPdfViewer.Visible = true;
+                tpPdfViewer.PageVisible = true;
+                tpPdfViewer.Show();
+                if (fileName.IsNullOrWhiteSpaceEx() == false && HxFile.IsFileExists(fileName) == true)
+                {
+                    pdfViewer1.LoadDocument(fileName);
+                    pdfViewer1.ZoomMode = DevExpress.XtraPdfViewer.PdfZoomMode.FitToVisible;
+                }
+                SysEnv.ShowSelectRibbonMenuPage(rpChildPdfViewer);
+            }
+            else
+            {
+                UbPDFViewerRibbonForm pdfForm = new UbPDFViewerRibbonForm(fileName)
+                {
+                    StartPosition = FormStartPosition.CenterParent,
+                    Owner = SysEnv.MainForm,
+                    MdiParent = SysEnv.MainForm,
+                };
+                //pdfForm.BringToFront();
+                //pdfForm.TopMost = true;
+                pdfForm.SetDisplayTitleFullName(false);
+                pdfForm.Show();
+                pdfForm.Focus();
+                //SysEnv.ShowSelectRibbonMenuPageByName("PDF Viewer", false);
+            }
+        }
+        private void HidePDFViewer()
+        {
+            if(btsichkOptions_OpenPdfViewerInNewWindow.Checked != true)
+            {
+                SysEnv.ShowSelectRibbonMenuPage(rpChildImageToPDF);
+                pdfViewer1.CloseDocument();
+                tpPicture.Show();
+                tpPdfViewer.Hide();
+                tpPdfViewer.PageVisible = false;
+                rpChildPdfViewer.Visible = false;
+            }
+            
         }
     }
 }

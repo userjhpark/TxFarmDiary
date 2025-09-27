@@ -12,7 +12,7 @@ using WIA;
 
 namespace TxFarmDiaryAI.Win
 {
-    internal class SbUtils : HxCore.Win.HxWin
+    internal partial class SbUtils : HxCore.Win.HxWin
     {
         
         public static string? GetLanguageResourceString(string resourceKey, string? cultureName = null)
