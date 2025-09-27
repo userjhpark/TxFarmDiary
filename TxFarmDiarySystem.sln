@@ -1,0 +1,82 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35506.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TxFarmDiaryAI.Core", "01.FarmDiaryAI.Core\TxFarmDiaryAI.Core.csproj", "{EA3BE2AA-0D39-42A6-ACBA-C484C337C649}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TxFarmDiaryAI.Api", "11.FarmDiaryAI.Api\TxFarmDiaryAI.Api.csproj", "{9193EDC6-579D-482F-86B9-95AE24C74C16}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TxFarmDiaryAI.Win", "21.FarmDiaryAI.Win\TxFarmDiaryAI.Win.csproj", "{4D2C747A-BA1C-42CF-B790-BC37A11AC89A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0x.Core", "0x.Core", "{C7ADEA22-F649-4514-9925-F2C807837349}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1x.Web", "1x.Web", "{19EDEAA0-7DB1-4F4D-9DA1-003B4991E43A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2x.Win", "2x.Win", "{CD739FB0-ECCE-4622-9EBE-72C385E66838}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3x.Web", "3x.Web", "{EADF89AB-4B60-40F3-BE31-0DB342BE9861}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HxCore", "..\..\Workspace_2024v1\Projects\LibraryProjects\HxCore\HxCore\HxCore.csproj", "{B3FD4FF5-FE09-4608-B589-10BB9EBCA7EB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_.HxCore", "_.HxCore", "{57D7C1A9-0784-4426-B195-5D4BFFBBDCD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HxCore.Std.Data", "..\..\Workspace_2024v1\Projects\LibraryProjects\HxCore\HxCoreData\HxCore.Std.Data.csproj", "{FA519344-1118-49D2-BB00-CD991AE76F2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TxFarmDiaryAI.Web", "12.FarmDiaryAI.Web\TxFarmDiaryAI.Web.csproj", "{D9648537-1175-47F9-8863-191F9D5F4B01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HxCore.Win", "..\..\Workspace_2024v1\Projects\LibraryProjects\HxCore\HxCoreWin\HxCore.Win.csproj", "{1DB637C7-F484-4009-89F4-097B956EFA17}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C8D5274F-AC00-46C7-1F8D-E88E81087A52}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EA3BE2AA-0D39-42A6-ACBA-C484C337C649}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA3BE2AA-0D39-42A6-ACBA-C484C337C649}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA3BE2AA-0D39-42A6-ACBA-C484C337C649}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA3BE2AA-0D39-42A6-ACBA-C484C337C649}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9193EDC6-579D-482F-86B9-95AE24C74C16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9193EDC6-579D-482F-86B9-95AE24C74C16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9193EDC6-579D-482F-86B9-95AE24C74C16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9193EDC6-579D-482F-86B9-95AE24C74C16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D2C747A-BA1C-42CF-B790-BC37A11AC89A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D2C747A-BA1C-42CF-B790-BC37A11AC89A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D2C747A-BA1C-42CF-B790-BC37A11AC89A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D2C747A-BA1C-42CF-B790-BC37A11AC89A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3FD4FF5-FE09-4608-B589-10BB9EBCA7EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3FD4FF5-FE09-4608-B589-10BB9EBCA7EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3FD4FF5-FE09-4608-B589-10BB9EBCA7EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3FD4FF5-FE09-4608-B589-10BB9EBCA7EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA519344-1118-49D2-BB00-CD991AE76F2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA519344-1118-49D2-BB00-CD991AE76F2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA519344-1118-49D2-BB00-CD991AE76F2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA519344-1118-49D2-BB00-CD991AE76F2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9648537-1175-47F9-8863-191F9D5F4B01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9648537-1175-47F9-8863-191F9D5F4B01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9648537-1175-47F9-8863-191F9D5F4B01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9648537-1175-47F9-8863-191F9D5F4B01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DB637C7-F484-4009-89F4-097B956EFA17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DB637C7-F484-4009-89F4-097B956EFA17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DB637C7-F484-4009-89F4-097B956EFA17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DB637C7-F484-4009-89F4-097B956EFA17}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EA3BE2AA-0D39-42A6-ACBA-C484C337C649} = {C7ADEA22-F649-4514-9925-F2C807837349}
+		{9193EDC6-579D-482F-86B9-95AE24C74C16} = {19EDEAA0-7DB1-4F4D-9DA1-003B4991E43A}
+		{4D2C747A-BA1C-42CF-B790-BC37A11AC89A} = {CD739FB0-ECCE-4622-9EBE-72C385E66838}
+		{B3FD4FF5-FE09-4608-B589-10BB9EBCA7EB} = {57D7C1A9-0784-4426-B195-5D4BFFBBDCD3}
+		{FA519344-1118-49D2-BB00-CD991AE76F2A} = {57D7C1A9-0784-4426-B195-5D4BFFBBDCD3}
+		{D9648537-1175-47F9-8863-191F9D5F4B01} = {19EDEAA0-7DB1-4F4D-9DA1-003B4991E43A}
+		{1DB637C7-F484-4009-89F4-097B956EFA17} = {57D7C1A9-0784-4426-B195-5D4BFFBBDCD3}
+	EndGlobalSection
+EndGlobal

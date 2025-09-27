@@ -2,13 +2,13 @@
 using System.Diagnostics;
 using System.Globalization;
 
-namespace FarmDiaryAI.Win
+namespace TxFarmDiaryAI.Win
 {
     internal static class Program
     {
         
         static bool IsApplicationStartUp = false;
-        static string mutexName = SysEnv._APP_PROCESS_NAME_;
+        static readonly string mutexName = SysEnv._APP_PROCESS_NAME_;
 
         /// <summary>
         ///  The main entry point for the application.
@@ -32,7 +32,10 @@ namespace FarmDiaryAI.Win
 
             
 
-            SysEnv.MainForm = new UbRibbonMainForm();
+            SysEnv.MainForm = new UbMainForm();
+            SysEnv.MainForm.StartPosition = FormStartPosition.CenterParent;
+            SysEnv.MainForm.WindowState = FormWindowState.Maximized;
+            
             Application.Run(SysEnv.MainForm);
         }
 
@@ -57,13 +60,13 @@ namespace FarmDiaryAI.Win
 
             if (IsApplicationStartUp != true)
             {
-                string cultureName = "Ko-KR";
+                string cultureName = "en-US"; // "ko -KR";
                 // 시스템 기본값으로 되돌릴 경우 (일반적으로 사용하지 않음)
                 if (cultureName != CultureInfo.InstalledUICulture.Name)
                 {
                     cultureName = "en-US";
                 }
-                SysEnv.LoadResourceManager(cultureName);
+                SysEnv.LoadCultureResourceManager(cultureName);
                 
                 AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
                 Application.ThreadException += Application_ThreadException;
@@ -78,7 +81,7 @@ namespace FarmDiaryAI.Win
             {
                 MessageBox.Show(
                     ex.ToString(),
-                    "예기치 않은 오류",
+                    "Unexpected error (예기치 않은 오류)",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error
                 );
@@ -86,8 +89,8 @@ namespace FarmDiaryAI.Win
             else
             {
                 MessageBox.Show(
-                    "알 수 없는 예외가 발생했습니다.",
-                    "예기치 않은 오류",
+                    "An unknown exception occurred. (알 수 없는 예외가 발생했습니다.)",
+                    "Unexpected error (예기치 않은 오류)",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error
                 );
@@ -98,8 +101,8 @@ namespace FarmDiaryAI.Win
         {
             Exception ex = e.Exception;
             MessageBox.Show(
-                ex != null ? ex.ToString() : "알 수 없는 예외가 발생했습니다.",
-                "예기치 않은 오류",
+                ex != null ? ex.ToString() : "An unknown exception occurred. (알 수 없는 예외가 발생했습니다.)",
+                "Unexpected error (예기치 않은 오류)",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Error
             );

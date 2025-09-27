@@ -13,7 +13,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FarmDiaryAI.Win
+namespace TxFarmDiaryAI.Win
 {
     internal static class SysEnv
     {
@@ -21,7 +21,9 @@ namespace FarmDiaryAI.Win
         /// <summary>
         /// 로그인 여부?
         /// </summary>
-        public static bool IsLogined { get; private set; } = false;
+        public static bool IsLogined { get; internal set; } = false;
+
+        public static CloseReason ApplicationCloseType { get; internal set; } = CloseReason.None;
 
         #region 응용프로그램 / 실행 정보
         public static char _DIR_PATH_CHAR_ { get => HxUtils.DirSeparatorChar; }
@@ -89,7 +91,7 @@ namespace FarmDiaryAI.Win
                 }
                 else if (!Result.IsNullOrWhiteSpaceEx() && !Result.EndsWith(_DIR_PATH_CHAR_.ToString()))
                 {
-                    Result = Result + _DIR_PATH_CHAR_;
+                    Result += _DIR_PATH_CHAR_;
                 }
             }
             return Result;
@@ -142,7 +144,7 @@ namespace FarmDiaryAI.Win
 
 
 
-        public static UbRibbonMainForm? MainForm { get; internal set; }
+        public static UbMainForm? MainForm { get; internal set; }
 
         //public static Form MainForm { get; internal set; }
         public static UbLoginForm? LoginForm { get; internal set; }
@@ -172,9 +174,9 @@ namespace FarmDiaryAI.Win
         internal static string CultureName { get; private set; } = string.Empty; //= "ko-KR"; //"en-US";
         public static System.Resources.ResourceManager? ResourceManager { get; internal set; } = null;
         //public static SysConfig? AppConfig { get; internal set; } = null;
-        internal static void LoadResourceManager(string cultureName = "ko-KR")
+        internal static void LoadCultureResourceManager(string cultureName = "ko-KR")
         {
-            string namespaceName = typeof(Program).Namespace ?? "FarmDiaryAI.Win";
+            string namespaceName = typeof(Program)?.Namespace!;
             string resourceBaseName = $"{namespaceName}.Properties.Strings";
             ResourceManager = new System.Resources.ResourceManager(resourceBaseName, typeof(Program).Assembly);
 
@@ -185,7 +187,7 @@ namespace FarmDiaryAI.Win
             //string cultureName = "ko-KR"; // "en-US";
             //string cultureName = "en-US";
 
-            SetCultureName(cultureName);
+            SetCultureCurrentThread(cultureName);
 
 
         }
@@ -197,29 +199,35 @@ namespace FarmDiaryAI.Win
         {
             if(ResourceManager == null)
             {
-                LoadResourceManager(cultureName);
+                LoadCultureResourceManager(cultureName);
             }
 
             if (CultureName != cultureName)
             {
-                Thread.CurrentThread.CurrentUICulture = new CultureInfo(cultureName);
-                Thread.CurrentThread.CurrentCulture = new CultureInfo(cultureName);
-                Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern = "yyyy-MM-dd";
-                Thread.CurrentThread.CurrentCulture.DateTimeFormat.LongTimePattern = "HH:mm:ss";
-                Thread.CurrentThread.CurrentCulture.DateTimeFormat.FullDateTimePattern = "yyyy-MM-dd HH:mm:ss";
-                /*
-                Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator = ".";
-                Thread.CurrentThread.CurrentCulture.NumberFormat.NumberGroupSeparator = ",";
-                Thread.CurrentThread.CurrentCulture.NumberFormat.CurrencyDecimalSeparator = ".";
-                Thread.CurrentThread.CurrentCulture.NumberFormat.CurrencyGroupSeparator = ",";
-                Thread.CurrentThread.CurrentCulture.NumberFormat.PercentDecimalSeparator = ".";
-                Thread.CurrentThread.CurrentCulture.NumberFormat.PercentGroupSeparator = ",";
-                */
-                Thread.CurrentThread.CurrentCulture.NumberFormat.CurrencySymbol = "₩";
+                SetCultureCurrentThread(cultureName);
 
                 CultureName = cultureName;
             }
         }
+
+        private static void SetCultureCurrentThread(string cultureName)
+        {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(cultureName);
+            Thread.CurrentThread.CurrentCulture = new CultureInfo(cultureName);
+            Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern = "yyyy-MM-dd";
+            Thread.CurrentThread.CurrentCulture.DateTimeFormat.LongTimePattern = "HH:mm:ss";
+            Thread.CurrentThread.CurrentCulture.DateTimeFormat.FullDateTimePattern = "yyyy-MM-dd HH:mm:ss";
+            /*
+            Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator = ".";
+            Thread.CurrentThread.CurrentCulture.NumberFormat.NumberGroupSeparator = ",";
+            Thread.CurrentThread.CurrentCulture.NumberFormat.CurrencyDecimalSeparator = ".";
+            Thread.CurrentThread.CurrentCulture.NumberFormat.CurrencyGroupSeparator = ",";
+            Thread.CurrentThread.CurrentCulture.NumberFormat.PercentDecimalSeparator = ".";
+            Thread.CurrentThread.CurrentCulture.NumberFormat.PercentGroupSeparator = ",";
+            */
+            Thread.CurrentThread.CurrentCulture.NumberFormat.CurrencySymbol = "₩";
+        }
+
         // 각 컨트롤과 그 컨트롤이 사용할 리소스 키를 매핑하는 사전
         private static readonly Dictionary<Control, string?> _localizedControls = new Dictionary<Control, string?>();
         public static void LocalizedResourceSetEx(this Control control, string? resourceKey = null)
@@ -257,7 +265,7 @@ namespace FarmDiaryAI.Win
             if (control == null || control.IsDisposed) return;
 
             // 리소스 매니저를 통해 현재 Culture에 맞는 문자열 가져오기
-            string? strLocalizedValue = Properties.Strings.ResourceManager.GetString(resourceKey, Thread.CurrentThread.CurrentUICulture);
+            string? strLocalizedValue = SbUtils.GetLanguageResourceString(resourceKey, SysEnv.CultureName);
 
             if (strLocalizedValue.IsNullOrWhiteSpaceEx() != true)
             {
@@ -400,7 +408,11 @@ namespace FarmDiaryAI.Win
             string? strLocalizedValue = ResourceManager?.GetString(strResourceKey);
             return strLocalizedValue;
         }
-
+        internal static void DoLocalizedUpdateFormChildAllConrolTagMatchToText(Form form)
+        {
+            IEnumerable<Control> q = HxWin.GetFindAllControl<Control>(form);
+            SysEnv.DoLocalizedUpdateConrolTagMatchToText(q);
+        }
         internal static void DoLocalizedUpdateConrolTagMatchToText(IEnumerable<Control> controls)
         {
             var q = from c in controls.Cast<Control>()
@@ -429,7 +441,8 @@ namespace FarmDiaryAI.Win
                     if (strTplName.IsNullOrWhiteSpaceEx() == true) continue;
 
                     string strResourceKey = strTplName;
-                    string? strResourceValue = GetLocalizedResourceKeyValue(strResourceKey);
+                    //string? strResourceValue = GetLocalizedResourceKeyValue(strResourceKey);
+                    string? strResourceValue = SbUtils.GetLanguageResourceString(strResourceKey);
                     if (strResourceValue.IsNullOrWhiteSpaceEx() == true) continue;
 
                     strNewText = strNewText.Replace(m.Value, strResourceValue);

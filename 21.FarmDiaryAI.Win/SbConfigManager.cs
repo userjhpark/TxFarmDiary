@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FarmDiaryAI.Win
+namespace TxFarmDiaryAI.Win
 {
     internal class SbConfigManager
     {
@@ -39,7 +39,7 @@ namespace FarmDiaryAI.Win
                     };
                     
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     Debug.WriteLine("Config 파일 생성에 실패했습니다.");
                     //throw;

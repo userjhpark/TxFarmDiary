@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FarmDiaryAI.Win.Properties {
+namespace TxFarmDiaryAI.Win.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace FarmDiaryAI.Win.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FarmDiaryAI.Win.Properties.Strings", typeof(Strings).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TxFarmDiaryAI.Win.Properties.Strings", typeof(Strings).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -88,11 +88,47 @@ namespace FarmDiaryAI.Win.Properties {
         }
         
         /// <summary>
-        ///   로그인/Sign-on과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Login과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         public static string btnLogin {
             get {
                 return ResourceManager.GetString("btnLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Refresh과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string btnRefresh {
+            get {
+                return ResourceManager.GetString("btnRefresh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Reload과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string btnReload {
+            get {
+                return ResourceManager.GetString("btnReload", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Scan과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string btnScan {
+            get {
+                return ResourceManager.GetString("btnScan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   The specified file does not exist.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string FILE_NOTEXIST {
+            get {
+                return ResourceManager.GetString("FILE_NOTEXIST", resourceCulture);
             }
         }
         
@@ -106,6 +142,87 @@ namespace FarmDiaryAI.Win.Properties {
         }
         
         /// <summary>
+        ///   There are no images to copy.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string IMAGE_COPY_NOIMAGE {
+            get {
+                return ResourceManager.GetString("IMAGE_COPY_NOIMAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   There are no images to cut.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string IMAGE_CUT_NOIMAGE {
+            get {
+                return ResourceManager.GetString("IMAGE_CUT_NOIMAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Are you sure you want to cut the image?과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string IMAGE_CUT_QUESTION {
+            get {
+                return ResourceManager.GetString("IMAGE_CUT_QUESTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   There are no images to delete.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string IMAGE_DELETE_NOIMAGE {
+            get {
+                return ResourceManager.GetString("IMAGE_DELETE_NOIMAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   There are no images to edit.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string IMAGE_EDIT_NOIMAGE {
+            get {
+                return ResourceManager.GetString("IMAGE_EDIT_NOIMAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Are you sure you want to delete the image?과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string IMAGE_EDIT_QUESTION {
+            get {
+                return ResourceManager.GetString("IMAGE_EDIT_QUESTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   There are no images to paste.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string IMAGE_PASTE_NOIMAGE {
+            get {
+                return ResourceManager.GetString("IMAGE_PASTE_NOIMAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   The image file to be saved has no extension.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string IMAGE_SAVE_NOFILEEXT {
+            get {
+                return ResourceManager.GetString("IMAGE_SAVE_NOFILEEXT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   There are no images to save.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string IMAGE_SAVE_NOIMAGE {
+            get {
+                return ResourceManager.GetString("IMAGE_SAVE_NOIMAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Password과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         public static string lblPassword {
@@ -115,11 +232,38 @@ namespace FarmDiaryAI.Win.Properties {
         }
         
         /// <summary>
-        ///   User ID :과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   User ID과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         public static string lblUserID {
             get {
                 return ResourceManager.GetString("lblUserID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Filter과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string MENU_FILTER {
+            get {
+                return ResourceManager.GetString("MENU_FILTER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Save folder과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string MENU_SAVE_FOLDER {
+            get {
+                return ResourceManager.GetString("MENU_SAVE_FOLDER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Work Farm과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string MENU_WORK_FARM {
+            get {
+                return ResourceManager.GetString("MENU_WORK_FARM", resourceCulture);
             }
         }
         
@@ -133,6 +277,15 @@ namespace FarmDiaryAI.Win.Properties {
         }
         
         /// <summary>
+        ///   Unsupported file extension.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string SAVE_FILEEXT_NOTSUPPORT {
+            get {
+                return ResourceManager.GetString("SAVE_FILEEXT_NOTSUPPORT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Save ID과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         public static string SaveID {
@@ -142,7 +295,106 @@ namespace FarmDiaryAI.Win.Properties {
         }
         
         /// <summary>
-        ///   프로그램명과(와) 유사한 지역화된 문자열을 찾습니다.
+        ///   Scanner과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string Scanner {
+            get {
+                return ResourceManager.GetString("Scanner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   An error occurred while searching for the scanner.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string SCANNER_FIND_ERROR {
+            get {
+                return ResourceManager.GetString("SCANNER_FIND_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Searching for scanner device...과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string SCANNER_FIND_FINDING {
+            get {
+                return ResourceManager.GetString("SCANNER_FIND_FINDING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   No connected scanner found.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string SCANNER_FIND_NOTFOUND {
+            get {
+                return ResourceManager.GetString("SCANNER_FIND_NOTFOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   scanner found.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string SCANNER_FIND_SUCCESS {
+            get {
+                return ResourceManager.GetString("SCANNER_FIND_SUCCESS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Unable to import scanned image.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string SCANNER_SCAN_NOTFOUND {
+            get {
+                return ResourceManager.GetString("SCANNER_SCAN_NOTFOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Starting the scan...과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string SCANNER_SCAN_START {
+            get {
+                return ResourceManager.GetString("SCANNER_SCAN_START", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Scan is complete.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string SCANNER_SCAN_SUCCESS {
+            get {
+                return ResourceManager.GetString("SCANNER_SCAN_SUCCESS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Connecting to scanner...과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string SCANNER_SELECT_CONN {
+            get {
+                return ResourceManager.GetString("SCANNER_SELECT_CONN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Unable to connect to the selected scanner.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string SCANNER_SELECT_ERROR {
+            get {
+                return ResourceManager.GetString("SCANNER_SELECT_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Please select a scanner.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string SCANNER_SELECT_PLEASE {
+            get {
+                return ResourceManager.GetString("SCANNER_SELECT_PLEASE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Program Name과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         public static string Title_Program_Name {
             get {

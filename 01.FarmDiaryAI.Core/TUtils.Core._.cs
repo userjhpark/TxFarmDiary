@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FarmDiaryAI.Core
+namespace TxFarmDiaryAI.Core
 {
     public partial class TUtils : HxCore.HxUtils
     {

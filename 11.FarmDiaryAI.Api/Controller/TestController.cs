@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FarmDiaryAI.Api.Controller
+namespace TxFarmDiaryAI.Api.Controller
 {
     [Route($"api/{Defs._DEF_WEBAPI_DEPLOY_VERSION_}/[controller]")]
     [ApiController]

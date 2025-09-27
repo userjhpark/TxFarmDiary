@@ -130,7 +130,7 @@ with AI-OCR</comment>
     <value>Cancel</value>
   </data>
   <data name="btnLogin" xml:space="preserve">
-    <value>로그인/Sign-on</value>
+    <value>Login</value>
   </data>
   <data name="SaveID" xml:space="preserve">
     <value>Save ID</value>
@@ -142,16 +142,100 @@ with AI-OCR</comment>
     <value>Password</value>
   </data>
   <data name="lblUserID" xml:space="preserve">
-    <value>User ID :</value>
+    <value>User ID</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
   </data>
   <data name="Title_Program_Name" xml:space="preserve">
-    <value>프로그램명</value>
+    <value>Program Name</value>
     <comment>프로그램 이름</comment>
   </data>
   <data name="UserID" xml:space="preserve">
     <value>User ID</value>
+  </data>
+  <data name="Scanner" xml:space="preserve">
+    <value>Scanner</value>
+  </data>
+  <data name="SCANNER_FIND_ERROR" xml:space="preserve">
+    <value>An error occurred while searching for the scanner.</value>
+  </data>
+  <data name="SCANNER_FIND_SUCCESS" xml:space="preserve">
+    <value>scanner found.</value>
+  </data>
+  <data name="SCANNER_FIND_NOTFOUND" xml:space="preserve">
+    <value>No connected scanner found.</value>
+  </data>
+  <data name="btnScan" xml:space="preserve">
+    <value>Scan</value>
+  </data>
+  <data name="SCANNER_FIND_FINDING" xml:space="preserve">
+    <value>Searching for scanner device...</value>
+  </data>
+  <data name="SCANNER_SELECT_PLEASE" xml:space="preserve">
+    <value>Please select a scanner.</value>
+  </data>
+  <data name="SCANNER_SELECT_CONN" xml:space="preserve">
+    <value>Connecting to scanner...</value>
+  </data>
+  <data name="SCANNER_SELECT_ERROR" xml:space="preserve">
+    <value>Unable to connect to the selected scanner.</value>
+  </data>
+  <data name="SCANNER_SCAN_START" xml:space="preserve">
+    <value>Starting the scan...</value>
+  </data>
+  <data name="SCANNER_SCAN_NOTFOUND" xml:space="preserve">
+    <value>Unable to import scanned image.</value>
+  </data>
+  <data name="SCANNER_SCAN_SUCCESS" xml:space="preserve">
+    <value>Scan is complete.</value>
+  </data>
+  <data name="btnRefresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="btnReload" xml:space="preserve">
+    <value>Reload</value>
+  </data>
+  <data name="IMAGE_EDIT_NOIMAGE" xml:space="preserve">
+    <value>There are no images to edit.</value>
+  </data>
+  <data name="MENU_WORK_FARM" xml:space="preserve">
+    <value>Work Farm</value>
+  </data>
+  <data name="MENU_FILTER" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="MENU_SAVE_FOLDER" xml:space="preserve">
+    <value>Save folder</value>
+  </data>
+  <data name="IMAGE_DELETE_NOIMAGE" xml:space="preserve">
+    <value>There are no images to delete.</value>
+  </data>
+  <data name="IMAGE_EDIT_QUESTION" xml:space="preserve">
+    <value>Are you sure you want to delete the image?</value>
+  </data>
+  <data name="IMAGE_COPY_NOIMAGE" xml:space="preserve">
+    <value>There are no images to copy.</value>
+  </data>
+  <data name="IMAGE_PASTE_NOIMAGE" xml:space="preserve">
+    <value>There are no images to paste.</value>
+  </data>
+  <data name="IMAGE_CUT_QUESTION" xml:space="preserve">
+    <value>Are you sure you want to cut the image?</value>
+  </data>
+  <data name="IMAGE_CUT_NOIMAGE" xml:space="preserve">
+    <value>There are no images to cut.</value>
+  </data>
+  <data name="IMAGE_SAVE_NOIMAGE" xml:space="preserve">
+    <value>There are no images to save.</value>
+  </data>
+  <data name="IMAGE_SAVE_NOFILEEXT" xml:space="preserve">
+    <value>The image file to be saved has no extension.</value>
+  </data>
+  <data name="SAVE_FILEEXT_NOTSUPPORT" xml:space="preserve">
+    <value>Unsupported file extension.</value>
+  </data>
+  <data name="FILE_NOTEXIST" xml:space="preserve">
+    <value>The specified file does not exist.</value>
   </data>
 </root>

@@ -1,4 +1,4 @@
-using FarmDiaryAI.Web.Components;
+using TxFarmDiaryAI.Web.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -4,9 +4,9 @@ using HxCore;
 using HxCore.Win;
 using System.Globalization;
 
-namespace FarmDiaryAI.Win
+namespace TxFarmDiaryAI.Win
 {
-    public partial class UbLoginForm : UbBaseForm
+    public partial class UbLoginForm : UbBaseChildForm
     {
         public UbLoginForm()
         {
@@ -44,8 +44,13 @@ namespace FarmDiaryAI.Win
             this.btnTestLang_enUS.Visible = false;
 
 
-            btnLogin.Click += (s, e) => { MessageBox.Show("·Î±×ÀÎ"); };
-            btnCancel.Click += (s, e) => { Close(); };
+            btnLogin.Click += (s, e) => { SysEnv.IsLogined = true; this.Close(); };
+            btnCancel.Click += (s, e) => 
+            { 
+                //SysEnv.IsLogined = false; 
+                SysEnv.ApplicationCloseType = CloseReason.UserClosing; 
+                Close(); 
+            };
 
             this.btnTestLang_koKR.Click += (s, e) =>
             {
@@ -79,9 +84,9 @@ namespace FarmDiaryAI.Win
 #endif
             }
         }
-        protected override void ApplyResourcesStrings(string cultureName)
+        protected override void ApplyResourcesStrings(string? cultureName)
         {
-            if (cultureName == "ko-KR")
+            if (cultureName.IsNullOrWhiteSpaceEx() == true || cultureName == "ko-KR")
             {
                 btnTestLang_koKR.Enabled = false;
                 btnTestLang_enUS.Enabled = true;
@@ -117,15 +122,24 @@ namespace FarmDiaryAI.Win
         private void OnForm_FormClosed(object? sender, FormClosedEventArgs e)
         {
             //throw new NotImplementedException();
+            
         }
 
         private void OnForm_FormClosing(object? sender, FormClosingEventArgs e)
         {
             //throw new NotImplementedException();
-            DialogResult flag = MessageBox.Show("Application Exit(Close)?", "Exit?", buttons: MessageBoxButtons.YesNo, defaultButton: MessageBoxDefaultButton.Button2, icon: MessageBoxIcon.Question);
-            if (flag != DialogResult.Yes) 
-            { 
-                e.Cancel = true;
+            if (SysEnv.ApplicationCloseType != CloseReason.UserClosing && SysEnv.IsLogined != true)
+            {
+                DialogResult flag = MessageBox.Show("Application Exit(Close)?", "Exit?", buttons: MessageBoxButtons.YesNo, defaultButton: MessageBoxDefaultButton.Button2, icon: MessageBoxIcon.Question);
+                if (flag != DialogResult.Yes)
+                {
+                    e.Cancel = true;
+                }
+                else
+                {
+                    SysEnv.ApplicationCloseType = CloseReason.UserClosing;
+                    //SysEnv.MainForm?.Close();
+                }
             }
         }
 

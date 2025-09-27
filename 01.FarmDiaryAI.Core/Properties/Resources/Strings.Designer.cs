@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FarmDiaryAI.Core.Properties.Resources {
+namespace TxFarmDiaryAI.Core.Properties.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace FarmDiaryAI.Core.Properties.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FarmDiaryAI.Core.Properties.Resources.Strings", typeof(Strings).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TxFarmDiaryAI.Core.Properties.Resources.Strings", typeof(Strings).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

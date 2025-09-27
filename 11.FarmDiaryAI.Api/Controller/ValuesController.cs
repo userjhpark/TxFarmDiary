@@ -2,7 +2,7 @@
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace FarmDiaryAI.Api.Controller
+namespace TxFarmDiaryAI.Api.Controller
 {
     [Route($"api/{Defs._DEF_WEBAPI_DEPLOY_VERSION_}/[controller]")]
     [ApiController]

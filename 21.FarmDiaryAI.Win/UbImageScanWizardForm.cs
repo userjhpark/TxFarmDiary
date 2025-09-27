@@ -9,9 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FarmDiaryAI.Win
+namespace TxFarmDiaryAI.Win
 {
-    public partial class UbImageScanWizardForm : UbBaseForm
+    public partial class UbImageScanWizardForm : UbBaseChildForm
     {
         public UbImageScanWizardForm()
         {

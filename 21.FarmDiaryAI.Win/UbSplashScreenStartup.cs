@@ -7,7 +7,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace FarmDiaryAI.Win
+namespace TxFarmDiaryAI.Win
 {
     public partial class UbSplashScreenStartup : SplashScreen
     {

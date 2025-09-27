@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace FarmDiaryAI.Core
+namespace TxFarmDiaryAI.Core
 {
     internal class TFarmDiary
     {

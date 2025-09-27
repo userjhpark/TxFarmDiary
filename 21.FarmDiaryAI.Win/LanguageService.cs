@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FarmDiaryAI.Win
+namespace TxFarmDiaryAI.Win
 {
     // Static 클래스 또는 싱글톤 서비스로 정의
     public static class LanguageService

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FarmDiaryAI.Win
+namespace TxFarmDiaryAI.Win
 {
     internal class SysUtils : HxWin
     {

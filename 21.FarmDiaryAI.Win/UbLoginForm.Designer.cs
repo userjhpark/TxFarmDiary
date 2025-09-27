@@ -1,4 +1,4 @@
-﻿namespace FarmDiaryAI.Win
+﻿namespace TxFarmDiaryAI.Win
 {
     partial class UbLoginForm
     {
@@ -68,7 +68,7 @@
             // 
             peImage.Dock = DockStyle.Top;
             peImage.EditValue = resources.GetObject("peImage.EditValue");
-            peImage.Location = new Point(0, 508);
+            peImage.Location = new Point(0, 441);
             peImage.Margin = new Padding(4, 3, 4, 3);
             peImage.Name = "peImage";
             peImage.Properties.AllowFocused = false;
@@ -78,13 +78,13 @@
             peImage.Properties.ShowMenu = false;
             peImage.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
             peImage.Properties.SvgImageColorizationMode = DevExpress.Utils.SvgImageColorizationMode.None;
-            peImage.Size = new Size(780, 11);
+            peImage.Size = new Size(785, 10);
             peImage.TabIndex = 10;
             // 
             // btnTestShow
             // 
             btnTestShow.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnTestShow.Location = new Point(693, 8);
+            btnTestShow.Location = new Point(692, 347);
             btnTestShow.Name = "btnTestShow";
             btnTestShow.Size = new Size(75, 25);
             btnTestShow.TabIndex = 11;
@@ -95,7 +95,7 @@
             // btnTestClose
             // 
             btnTestClose.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnTestClose.Location = new Point(693, 39);
+            btnTestClose.Location = new Point(692, 378);
             btnTestClose.Name = "btnTestClose";
             btnTestClose.Size = new Size(75, 25);
             btnTestClose.TabIndex = 12;
@@ -105,6 +105,7 @@
             // 
             // pictureEdit1
             // 
+            pictureEdit1.BackgroundImageLayout = ImageLayout.None;
             pictureEdit1.Dock = DockStyle.Top;
             pictureEdit1.EditValue = resources.GetObject("pictureEdit1.EditValue");
             pictureEdit1.Location = new Point(0, 0);
@@ -115,9 +116,8 @@
             pictureEdit1.Properties.Appearance.Options.UseBackColor = true;
             pictureEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             pictureEdit1.Properties.ShowMenu = false;
-            pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
-            pictureEdit1.Properties.SvgImageColorizationMode = DevExpress.Utils.SvgImageColorizationMode.None;
-            pictureEdit1.Size = new Size(780, 508);
+            pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
+            pictureEdit1.Size = new Size(785, 441);
             pictureEdit1.TabIndex = 13;
             // 
             // btnLogin
@@ -151,21 +151,23 @@
             // panel1
             // 
             panel1.BackColor = Color.White;
+            panel1.Controls.Add(lblServerSource);
             panel1.Controls.Add(labelControl3);
+            panel1.Controls.Add(gluServerSource);
+            panel1.Controls.Add(btnTestLang_enUS);
             panel1.Controls.Add(labelControl2);
             panel1.Controls.Add(chkSaveID);
+            panel1.Controls.Add(btnTestLang_koKR);
             panel1.Controls.Add(grpUserIP);
-            panel1.Controls.Add(lblServerSource);
             panel1.Controls.Add(btnCancel);
             panel1.Controls.Add(edtPassword);
-            panel1.Controls.Add(gluServerSource);
             panel1.Controls.Add(picLogin);
             panel1.Controls.Add(btnLogin);
             panel1.Controls.Add(edtUserID);
             panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 519);
+            panel1.Location = new Point(0, 451);
             panel1.Name = "panel1";
-            panel1.Size = new Size(780, 127);
+            panel1.Size = new Size(785, 120);
             panel1.TabIndex = 17;
             // 
             // labelControl3
@@ -204,7 +206,7 @@
             // grpUserIP
             // 
             grpUserIP.Controls.Add(lblUserIP);
-            grpUserIP.Location = new Point(12, 52);
+            grpUserIP.Location = new Point(12, 39);
             grpUserIP.Name = "grpUserIP";
             grpUserIP.Size = new Size(230, 49);
             grpUserIP.TabIndex = 21;
@@ -223,7 +225,7 @@
             lblServerSource.Appearance.Options.UseTextOptions = true;
             lblServerSource.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             lblServerSource.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            lblServerSource.Location = new Point(12, 3);
+            lblServerSource.Location = new Point(12, 95);
             lblServerSource.Name = "lblServerSource";
             lblServerSource.Size = new Size(52, 20);
             lblServerSource.TabIndex = 20;
@@ -250,12 +252,13 @@
             // 
             // gluServerSource
             // 
-            gluServerSource.Location = new Point(12, 24);
+            gluServerSource.Location = new Point(70, 95);
             gluServerSource.Name = "gluServerSource";
             gluServerSource.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
             gluServerSource.Properties.PopupView = gridLookUpEdit1View;
-            gluServerSource.Size = new Size(230, 22);
+            gluServerSource.Size = new Size(172, 22);
             gluServerSource.TabIndex = 19;
+            gluServerSource.Visible = false;
             // 
             // gridLookUpEdit1View
             // 
@@ -273,8 +276,9 @@
             // 
             // labelCopyright
             // 
+            labelCopyright.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             labelCopyright.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            labelCopyright.Location = new Point(480, 652);
+            labelCopyright.Location = new Point(486, 577);
             labelCopyright.Margin = new Padding(4, 3, 4, 3);
             labelCopyright.Name = "labelCopyright";
             labelCopyright.Size = new Size(287, 15);
@@ -284,21 +288,21 @@
             // btnTestLang_enUS
             // 
             btnTestLang_enUS.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnTestLang_enUS.Location = new Point(4, 39);
+            btnTestLang_enUS.Location = new Point(133, 6);
             btnTestLang_enUS.Name = "btnTestLang_enUS";
-            btnTestLang_enUS.Size = new Size(75, 25);
+            btnTestLang_enUS.Size = new Size(109, 25);
             btnTestLang_enUS.TabIndex = 21;
-            btnTestLang_enUS.Text = "en-US";
+            btnTestLang_enUS.Text = "English (영어)";
             btnTestLang_enUS.UseVisualStyleBackColor = true;
             // 
             // btnTestLang_koKR
             // 
             btnTestLang_koKR.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnTestLang_koKR.Location = new Point(4, 8);
+            btnTestLang_koKR.Location = new Point(12, 6);
             btnTestLang_koKR.Name = "btnTestLang_koKR";
-            btnTestLang_koKR.Size = new Size(75, 25);
+            btnTestLang_koKR.Size = new Size(109, 25);
             btnTestLang_koKR.TabIndex = 20;
-            btnTestLang_koKR.Text = "ko-KR";
+            btnTestLang_koKR.Text = "한국어 (Korean)";
             btnTestLang_koKR.UseVisualStyleBackColor = true;
             // 
             // UbLoginForm
@@ -306,9 +310,7 @@
             Appearance.Options.UseFont = true;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(780, 672);
-            Controls.Add(btnTestLang_enUS);
-            Controls.Add(btnTestLang_koKR);
+            ClientSize = new Size(785, 597);
             Controls.Add(labelCopyright);
             Controls.Add(lblAppDescription);
             Controls.Add(panel1);
@@ -316,8 +318,9 @@
             Controls.Add(btnTestShow);
             Controls.Add(peImage);
             Controls.Add(pictureEdit1);
-            Font = new Font("맑은 고딕", 9F);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             IconOptions.Image = (Image)resources.GetObject("UbLoginForm.IconOptions.Image");
+            MaximizeBox = false;
             Name = "UbLoginForm";
             Text = "Farming Diary Automation System - Login";
             ((System.ComponentModel.ISupportInitialize)peImage.Properties).EndInit();

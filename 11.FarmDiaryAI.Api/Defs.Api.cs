@@ -1,4 +1,4 @@
-﻿namespace FarmDiaryAI.Api
+﻿namespace TxFarmDiaryAI.Api
 {
     public class Defs : Core.TDefs
     {

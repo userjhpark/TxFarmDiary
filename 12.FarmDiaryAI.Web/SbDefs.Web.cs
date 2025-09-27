@@ -1,4 +1,4 @@
-﻿namespace FarmDiaryAI.Web
+﻿namespace TxFarmDiaryAI.Web
 {
     internal class SbDefs : Api.Defs
     {

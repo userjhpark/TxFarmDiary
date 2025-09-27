@@ -5,5 +5,5 @@
 
 using System.Diagnostics.CodeAnalysis;
 
-[assembly: SuppressMessage("Style", "IDE1006:명명 스타일", Justification = "<보류 중>", Scope = "member", Target = "~P:FarmDiaryAI.Win.SysEnv._APP_PROCESS_FILE_NAME_")]
-[assembly: SuppressMessage("Style", "IDE1006:명명 스타일", Justification = "<보류 중>", Scope = "member", Target = "~P:FarmDiaryAI.Win.SysEnv._HWD_VOLUME_ID_")]
+[assembly: SuppressMessage("Style", "IDE1006:명명 스타일", Justification = "<보류 중>", Scope = "member", Target = "~P:TxFarmDiaryAI.Win.SysEnv._APP_PROCESS_FILE_NAME_")]
+[assembly: SuppressMessage("Style", "IDE1006:명명 스타일", Justification = "<보류 중>", Scope = "member", Target = "~P:TxFarmDiaryAI.Win.SysEnv._HWD_VOLUME_ID_")]
