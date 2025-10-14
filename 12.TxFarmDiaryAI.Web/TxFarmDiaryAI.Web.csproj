@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DevExpress.Blazor" Version="25.1.*-*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Workspace_2024v1\Projects\LibraryProjects\HxCore\HxCoreData\HxCore.Std.Data.csproj" />
+    <ProjectReference Include="..\..\..\Workspace_2024v1\Projects\LibraryProjects\HxCore\HxCore\HxCore.csproj" />
+    <ProjectReference Include="..\01.TxFarmDiaryAI.Core\TxFarmDiaryAI.Core.csproj" />
+  </ItemGroup>
+
+</Project>
