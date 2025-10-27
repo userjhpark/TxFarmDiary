@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UbPDFViewerBarForm));
-            pdfViewer1 = new DevExpress.XtraPdfViewer.PdfViewer();
+            pdfViewerCtl = new DevExpress.XtraPdfViewer.PdfViewer();
             barManager1 = new DevExpress.XtraBars.BarManager(components);
             pdfCommandBar1 = new DevExpress.XtraPdfViewer.Bars.PdfCommandBar();
             pdfFileOpenBarItem1 = new DevExpress.XtraPdfViewer.Bars.PdfFileOpenBarItem();
@@ -92,14 +92,14 @@
             ((System.ComponentModel.ISupportInitialize)pdfBarController1).BeginInit();
             SuspendLayout();
             // 
-            // pdfViewer1
+            // pdfViewerCtl
             // 
-            pdfViewer1.Dock = DockStyle.Fill;
-            pdfViewer1.Location = new Point(0, 27);
-            pdfViewer1.MenuManager = barManager1;
-            pdfViewer1.Name = "pdfViewer1";
-            pdfViewer1.Size = new Size(800, 455);
-            pdfViewer1.TabIndex = 0;
+            pdfViewerCtl.Dock = DockStyle.Fill;
+            pdfViewerCtl.Location = new Point(0, 27);
+            pdfViewerCtl.MenuManager = barManager1;
+            pdfViewerCtl.Name = "pdfViewerCtl";
+            pdfViewerCtl.Size = new Size(800, 423);
+            pdfViewerCtl.TabIndex = 0;
             // 
             // barManager1
             // 
@@ -115,7 +115,7 @@
             // 
             // pdfCommandBar1
             // 
-            pdfCommandBar1.Control = pdfViewer1;
+            pdfCommandBar1.Control = pdfViewerCtl;
             pdfCommandBar1.DockCol = 0;
             pdfCommandBar1.DockRow = 0;
             pdfCommandBar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
@@ -172,21 +172,21 @@
             // 
             pdfZoomOutBarItem1.Id = 7;
             pdfZoomOutBarItem1.Name = "pdfZoomOutBarItem1";
-            toolTipTitleItem1.Text = "Zoom Out (Ctrl + Minus)";
-            toolTipItem1.Text = "Zoom out to see more of the page at a reduced size.";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            pdfZoomOutBarItem1.SuperTip = superToolTip1;
+            toolTipTitleItem3.Text = "Zoom Out (Ctrl + Minus)";
+            toolTipItem3.Text = "Zoom out to see more of the page at a reduced size.";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            superToolTip3.Items.Add(toolTipItem3);
+            pdfZoomOutBarItem1.SuperTip = superToolTip3;
             // 
             // pdfZoomInBarItem1
             // 
             pdfZoomInBarItem1.Id = 8;
             pdfZoomInBarItem1.Name = "pdfZoomInBarItem1";
-            toolTipTitleItem2.Text = "Zoom In (Ctrl + Plus)";
-            toolTipItem2.Text = "Zoom in to get a close-up view of the PDF document.";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            pdfZoomInBarItem1.SuperTip = superToolTip2;
+            toolTipTitleItem4.Text = "Zoom In (Ctrl + Plus)";
+            toolTipItem4.Text = "Zoom in to get a close-up view of the PDF document.";
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            superToolTip4.Items.Add(toolTipItem4);
+            pdfZoomInBarItem1.SuperTip = superToolTip4;
             // 
             // pdfExactZoomListBarSubItem1
             // 
@@ -331,7 +331,7 @@
             // 
             // pdfCommentBar1
             // 
-            pdfCommentBar1.Control = pdfViewer1;
+            pdfCommentBar1.Control = pdfViewerCtl;
             pdfCommentBar1.DockCol = 1;
             pdfCommentBar1.DockRow = 0;
             pdfCommentBar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
@@ -385,7 +385,7 @@
             // 
             barDockControlBottom.CausesValidation = false;
             barDockControlBottom.Dock = DockStyle.Bottom;
-            barDockControlBottom.Location = new Point(0, 482);
+            barDockControlBottom.Location = new Point(0, 450);
             barDockControlBottom.Manager = barManager1;
             barDockControlBottom.Size = new Size(800, 0);
             // 
@@ -395,7 +395,7 @@
             barDockControlLeft.Dock = DockStyle.Left;
             barDockControlLeft.Location = new Point(0, 27);
             barDockControlLeft.Manager = barManager1;
-            barDockControlLeft.Size = new Size(0, 455);
+            barDockControlLeft.Size = new Size(0, 423);
             // 
             // barDockControlRight
             // 
@@ -403,7 +403,7 @@
             barDockControlRight.Dock = DockStyle.Right;
             barDockControlRight.Location = new Point(800, 27);
             barDockControlRight.Manager = barManager1;
-            barDockControlRight.Size = new Size(0, 455);
+            barDockControlRight.Size = new Size(0, 423);
             // 
             // pdfBarController1
             // 
@@ -448,20 +448,20 @@
             pdfBarController1.BarItems.Add(pdfCalloutFreeTextBarItem1);
             pdfBarController1.BarItems.Add(pdfExportFormDataBarItem1);
             pdfBarController1.BarItems.Add(pdfImportFormDataBarItem1);
-            pdfBarController1.Control = pdfViewer1;
+            pdfBarController1.Control = pdfViewerCtl;
             // 
-            // UbPDFViewer
+            // UbPDFViewerBarForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(7F, 14F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 482);
-            Controls.Add(pdfViewer1);
+            ClientSize = new Size(800, 450);
+            Controls.Add(pdfViewerCtl);
             Controls.Add(barDockControlLeft);
             Controls.Add(barDockControlRight);
             Controls.Add(barDockControlBottom);
             Controls.Add(barDockControlTop);
-            IconOptions.Image = (Image)resources.GetObject("UbPDFViewer.IconOptions.Image");
-            Name = "UbPDFViewer";
+            IconOptions.Image = (Image)resources.GetObject("UbPDFViewerBarForm.IconOptions.Image");
+            Name = "UbPDFViewerBarForm";
             Text = "PDF Viewer";
             ((System.ComponentModel.ISupportInitialize)barManager1).EndInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemPageNumberEdit1).EndInit();
@@ -472,7 +472,7 @@
 
         #endregion
 
-        private DevExpress.XtraPdfViewer.PdfViewer pdfViewer1;
+        private DevExpress.XtraPdfViewer.PdfViewer pdfViewerCtl;
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraPdfViewer.Bars.PdfCommandBar pdfCommandBar1;
         private DevExpress.XtraPdfViewer.Bars.PdfFileOpenBarItem pdfFileOpenBarItem1;

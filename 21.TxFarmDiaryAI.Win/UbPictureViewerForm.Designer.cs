@@ -1,6 +1,6 @@
 ﻿namespace TxFarmDiaryAI.Win
 {
-    partial class UbPictureForm
+    partial class UbPictureViewerForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UbPictureForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UbPictureViewerForm));
             pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(components);
             ((System.ComponentModel.ISupportInitialize)pictureEdit1.Properties).BeginInit();

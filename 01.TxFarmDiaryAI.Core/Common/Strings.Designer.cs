@@ -133,6 +133,16 @@ namespace TxFarmDiaryAI.Common {
         }
         
         /// <summary>
+        ///   This item could not be added to your cart.
+        ///(File access and format errors)과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string CART_APPEND_MISS {
+            get {
+                return ResourceManager.GetString("CART_APPEND_MISS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   There are no images to add to the cart.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         public static string CART_APPEND_NOIMAGE {
@@ -156,6 +166,15 @@ namespace TxFarmDiaryAI.Common {
         public static string CART_APPEND_WARRING_EXISTS {
             get {
                 return ResourceManager.GetString("CART_APPEND_WARRING_EXISTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Do you want to delete the images in the selected cart?과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string CART_DELETE_QUESTION {
+            get {
+                return ResourceManager.GetString("CART_DELETE_QUESTION", resourceCulture);
             }
         }
         
@@ -277,6 +296,15 @@ namespace TxFarmDiaryAI.Common {
         }
         
         /// <summary>
+        ///   Unsupported image file formats과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string IMAGE_NOTSUPPORT {
+            get {
+                return ResourceManager.GetString("IMAGE_NOTSUPPORT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   There are no images to paste.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         public static string IMAGE_PASTE_NOIMAGE {
@@ -372,6 +400,16 @@ namespace TxFarmDiaryAI.Common {
         public static string Password {
             get {
                 return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   There is an image loaded into the Picture object.
+        ///Would you like to load  new one?과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string PICTURE_LOADED_QUESTION {
+            get {
+                return ResourceManager.GetString("PICTURE_LOADED_QUESTION", resourceCulture);
             }
         }
         
@@ -489,6 +527,15 @@ namespace TxFarmDiaryAI.Common {
         public static string SCANNER_SELECT_PLEASE {
             get {
                 return ResourceManager.GetString("SCANNER_SELECT_PLEASE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   The template file for the recognized document does not exist.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string TEMPLATE_FILE_NOT_EXIST {
+            get {
+                return ResourceManager.GetString("TEMPLATE_FILE_NOT_EXIST", resourceCulture);
             }
         }
         

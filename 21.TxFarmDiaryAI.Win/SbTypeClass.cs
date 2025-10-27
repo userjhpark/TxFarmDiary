@@ -1,10 +1,19 @@
-﻿using HxCore;
+﻿using DevExpress.Map.Native;
+using DevExpress.Utils;
+using HxCore;
 using HxCore.Win;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using WIA;
 
@@ -16,9 +25,11 @@ namespace TxFarmDiaryAI.Win
     /// <summary>
     /// 스캐너 정보를 담기 위한 도우미 클래스
     /// </summary>
-    public class ScannerDevice
+    public class SbScannerDevice
     {
+        [JsonProperty("deviceID"), JsonPropertyName("deviceID")]
         public string DeviceID { get; set; }
+        [JsonProperty("deviceName"), JsonPropertyName("deviceName")]
         public string DeviceName { get; set; }
 
         public override string ToString()
@@ -30,10 +41,13 @@ namespace TxFarmDiaryAI.Win
     /// <summary>
     /// 스캐너 또는 카메라 장치 정보를 담기 위한 도우미 클래스
     /// </summary>
-    public class ImageDevice
+    public class SbImageDevice
     {
+        [JsonPropertyName("deviceID"), JsonProperty("deviceID")]
         public string DeviceID { get; set; }
+        [JsonPropertyName("deviceName"), JsonProperty("deviceName")]
         public string DeviceName { get; set; }
+        [JsonPropertyName("deviceType"), JsonProperty("deviceType")]
         public WiaDeviceType DeviceType { get; set; }
 
         public override string ToString()
@@ -44,34 +58,5 @@ namespace TxFarmDiaryAI.Win
         }
     }
 
-    public class TXFD_IMAGE_ITEM
-    {
-        public int Index { get; set; }
-        
-        public Image ImageData { get; set; }
-        public byte[] ImageBytes => Utils.ImageToByteArray(ImageData); //public byte[] ImageBytes { get; set; }
-        public long FileSize => ImageBytes.LongLength; //public long FileSize { get; set; }
-        public string FileChecksum => Utils.GetMD5Checksum(ImageData); //public string FileChecksum { get; set; } => 
-        //public string FilePath { get; set; }
-        //public string FileName { get; set; }
-        public string FileExt => Utils.GetImageFormatString(ImageData); //public string FileExt { get; set; }
-        public DateTime CreatedTime { get; set; } = DateTime.Now;
-        //public DateTime ModifiedTime { get; set; }
-        
-        
-        public TXFD_IMAGE_ITEM()
-        {
-            
-            Index = -1;
-            ImageData = null!;
-            //ImageBytes = Array.Empty<byte>();
-            //FileSize = 0;
-            //FileChecksum = string.Empty;
-            //FilePath = string.Empty;
-            //FileName = string.Empty;
-            //FileExt = string.Empty;
-            CreatedTime = DateTime.Now;
-            //ModifiedTime = DateTime.MinValue;
-        }
-    }
+    
 }

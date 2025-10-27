@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UbPDFViewerRibbonForm));
-            pdfViewer1 = new DevExpress.XtraPdfViewer.PdfViewer();
+            pdfViewerCtl = new DevExpress.XtraPdfViewer.PdfViewer();
             pdfBarController1 = new DevExpress.XtraPdfViewer.Bars.PdfBarController(components);
             pdfFileOpenBarItem1 = new DevExpress.XtraPdfViewer.Bars.PdfFileOpenBarItem();
             pdfFileSaveAsBarItem1 = new DevExpress.XtraPdfViewer.Bars.PdfFileSaveAsBarItem();
@@ -105,21 +105,21 @@
             rcChildMenu.MaxItemId = 42;
             rcChildMenu.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { pdfRibbonPage_PDFViewer, pdfCommentRibbonPage1, pdfFormDataRibbonPage1 });
             rcChildMenu.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemPageNumberEdit1 });
-            rcChildMenu.Size = new Size(1241, 155);
+            rcChildMenu.Size = new Size(1241, 150);
             // 
             // rsbChildStatusBar
             // 
             rsbChildStatusBar.Location = new Point(0, 496);
             rsbChildStatusBar.Size = new Size(1241, 22);
             // 
-            // pdfViewer1
+            // pdfViewerCtl
             // 
-            pdfViewer1.Dock = DockStyle.Fill;
-            pdfViewer1.Location = new Point(0, 155);
-            pdfViewer1.MenuManager = rcChildMenu;
-            pdfViewer1.Name = "pdfViewer1";
-            pdfViewer1.Size = new Size(1241, 341);
-            pdfViewer1.TabIndex = 2;
+            pdfViewerCtl.Dock = DockStyle.Fill;
+            pdfViewerCtl.Location = new Point(0, 150);
+            pdfViewerCtl.MenuManager = rcChildMenu;
+            pdfViewerCtl.Name = "pdfViewerCtl";
+            pdfViewerCtl.Size = new Size(1241, 346);
+            pdfViewerCtl.TabIndex = 2;
             // 
             // pdfBarController1
             // 
@@ -164,7 +164,7 @@
             pdfBarController1.BarItems.Add(pdfCalloutFreeTextBarItem1);
             pdfBarController1.BarItems.Add(pdfExportFormDataBarItem1);
             pdfBarController1.BarItems.Add(pdfImportFormDataBarItem1);
-            pdfBarController1.Control = pdfViewer1;
+            pdfBarController1.Control = pdfViewerCtl;
             // 
             // pdfFileOpenBarItem1
             // 
@@ -216,21 +216,21 @@
             // 
             pdfZoomOutBarItem1.Id = 8;
             pdfZoomOutBarItem1.Name = "pdfZoomOutBarItem1";
-            toolTipTitleItem1.Text = "Zoom Out (Ctrl + Minus)";
-            toolTipItem1.Text = "Zoom out to see more of the page at a reduced size.";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            pdfZoomOutBarItem1.SuperTip = superToolTip1;
+            toolTipTitleItem3.Text = "Zoom Out (Ctrl + Minus)";
+            toolTipItem3.Text = "Zoom out to see more of the page at a reduced size.";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            superToolTip3.Items.Add(toolTipItem3);
+            pdfZoomOutBarItem1.SuperTip = superToolTip3;
             // 
             // pdfZoomInBarItem1
             // 
             pdfZoomInBarItem1.Id = 9;
             pdfZoomInBarItem1.Name = "pdfZoomInBarItem1";
-            toolTipTitleItem2.Text = "Zoom In (Ctrl + Plus)";
-            toolTipItem2.Text = "Zoom in to get a close-up view of the PDF document.";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            pdfZoomInBarItem1.SuperTip = superToolTip2;
+            toolTipTitleItem4.Text = "Zoom In (Ctrl + Plus)";
+            toolTipItem4.Text = "Zoom in to get a close-up view of the PDF document.";
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            superToolTip4.Items.Add(toolTipItem4);
+            pdfZoomInBarItem1.SuperTip = superToolTip4;
             // 
             // pdfZoom10CheckItem1
             // 
@@ -514,14 +514,14 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1241, 518);
-            Controls.Add(pdfViewer1);
+            Controls.Add(pdfViewerCtl);
             Font = new Font("맑은 고딕", 9F);
             IconOptions.Image = (Image)resources.GetObject("UbPDFViewerRibbonForm.IconOptions.Image");
             Name = "UbPDFViewerRibbonForm";
             Text = "PDF Viewer";
             Controls.SetChildIndex(rcChildMenu, 0);
             Controls.SetChildIndex(rsbChildStatusBar, 0);
-            Controls.SetChildIndex(pdfViewer1, 0);
+            Controls.SetChildIndex(pdfViewerCtl, 0);
             ((System.ComponentModel.ISupportInitialize)rcChildMenu).EndInit();
             ((System.ComponentModel.ISupportInitialize)pdfBarController1).EndInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemPageNumberEdit1).EndInit();
@@ -585,7 +585,7 @@
         private DevExpress.XtraPdfViewer.Bars.PdfFreeTextCommentPageGroup pdfFreeTextCommentPageGroup1;
         private DevExpress.XtraPdfViewer.Bars.PdfFormDataRibbonPage pdfFormDataRibbonPage1;
         private DevExpress.XtraPdfViewer.Bars.PdfFormDataBarPageGroup pdfFormDataBarPageGroup1;
-        private DevExpress.XtraPdfViewer.PdfViewer pdfViewer1;
+        private DevExpress.XtraPdfViewer.PdfViewer pdfViewerCtl;
         private DevExpress.XtraPdfViewer.Bars.PdfBarController pdfBarController1;
     }
 }

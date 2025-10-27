@@ -1,13 +1,16 @@
 ﻿using DevExpress.DocumentView;
+using DevExpress.Pdf;
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
 using HxCore;
+using Org.BouncyCastle.Bcpg.OpenPgp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -107,8 +110,8 @@ namespace TxFarmDiaryAI.Win
             #endregion
 
             #region WorkspaceSelect
-            InitWorkspaceSelect();
-            repslueWorkspaceSelect.ButtonClick += (s, e) =>
+            
+            repsluMainWorkspaceSelect.ButtonClick += (s, e) =>
             {
                 this.OnButtonClick_WorkspaceSelect(s, e);
             };
@@ -121,9 +124,9 @@ namespace TxFarmDiaryAI.Win
             {
                 this.DoShowFarmManagementForm();
             };
-            barbtnScanner.ItemClick += (s, e) =>
+            barbtnMainImageToOCR.ItemClick += (s, e) =>
             {
-                var frmChild = new UbChildSacnToImageCartForm
+                var frmChild = new UbImageCartForm
                 {
                     Owner = this,
                     MdiParent = this,
@@ -131,6 +134,30 @@ namespace TxFarmDiaryAI.Win
                 };
 
                 frmChild.Show();
+            };
+
+            barbtnMainAppend_FarmingDiary.ItemClick += (s, e) =>
+            {
+                var frmChild = new UbFarmDiaryInputForm
+                {
+                    Owner = this,
+                    //MdiParent = this,
+                    WindowState = FormWindowState.Normal,
+                    StartPosition = FormStartPosition.CenterParent
+                };
+                frmChild.BringToFront();
+                frmChild.Show();
+                frmChild.Focus();
+            };
+
+
+#if DEBUG
+            barbtnDiarySampleFolder.Visibility = BarItemVisibility.OnlyInRuntime;
+#endif
+            barbtnDiarySampleFolder.ItemClick += (s, e) =>
+            {
+                string strDirPath = Path.Combine(SysEnv.GetAppBaseDir(), "Sample");
+                SbUtils.ExecuteProcessRun(strDirPath);
             };
         }
 
@@ -172,120 +199,10 @@ namespace TxFarmDiaryAI.Win
             replueWorkspaceSelect.EndInit();
             replueWorkspaceSelect.PopupWidthMode = DevExpress.XtraEditors.PopupWidthMode.ContentWidth;
             */
-
-            repgrdvWorkspaceSelect.BeginInit();
-            repgrdvWorkspaceSelect.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            repgrdvWorkspaceSelect.Appearance.HeaderPanel.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            repgrdvWorkspaceSelect.Columns.Clear();
-            DevExpress.XtraGrid.Columns.GridColumn gcWorkspaceSelect_SNO = new()
-            {
-                FieldName = SQL_TXFD_SITE_SET_Table._CDF_SNO_,
-                Caption = "SNO",
-                Width = 30,
-                Visible = true
-            }; gcWorkspaceSelect_SNO.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            DevExpress.XtraGrid.Columns.GridColumn gcWorkspaceSelect_SITE_NAME = new()
-            {
-                FieldName = SQL_TXFD_SITE_SET_Table._CDF_SITE_NAME_,
-                Caption = "Farming Name",
-                Width = 100,
-                Visible = true
-            }; gcWorkspaceSelect_SITE_NAME.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Default;
-            DevExpress.XtraGrid.Columns.GridColumn gcWorkspaceSelect_LOC_ADDR = new()
-            {
-                FieldName = SQL_TXFD_SITE_SET_Table._CDF_LOC_ADDR_,
-                Caption = "Location / Adreess",
-                Width = 100,
-                Visible = true
-            }; gcWorkspaceSelect_LOC_ADDR.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
-            DevExpress.XtraGrid.Columns.GridColumn gcWorkspaceSelect_LOC_ROAD = new()
-            {
-                FieldName = SQL_TXFD_SITE_SET_Table._CDF_LOC_ROAD_,
-                Caption = "Location / Road",
-                Width = 100,
-                Visible = false
-            }; gcWorkspaceSelect_LOC_ROAD.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
-            DevExpress.XtraGrid.Columns.GridColumn gcWorkspaceSelect_LOC_LATITUDE = new()
-            {
-                FieldName = SQL_TXFD_SITE_SET_Table._CDF_LOC_LATITUDE_,
-                Caption = "Latitude",
-                Width = 100,
-                Visible = false
-            }; gcWorkspaceSelect_LOC_LATITUDE.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            DevExpress.XtraGrid.Columns.GridColumn gcWorkspaceSelect_LOC_LONGITUDE = new()
-            {
-                FieldName = SQL_TXFD_SITE_SET_Table._CDF_LOC_LONGITUDE_,
-                Caption = "Longitude",
-                Width = 100,
-                Visible = false
-            }; gcWorkspaceSelect_LOC_LONGITUDE.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            DevExpress.XtraGrid.Columns.GridColumn gcWorkspaceSelect_STN_CODE = new()
-            {
-                FieldName = SQL_TXFD_SITE_SET_Table._CDF_STN_CODE_,
-                Caption = "STN Code",
-                Width = 30,
-                Visible = true
-            }; gcWorkspaceSelect_STN_CODE.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            DevExpress.XtraGrid.Columns.GridColumn gcWorkspaceSelect_STN_NAME = new()
-            {
-                FieldName = SQL_TXFD_SITE_SET_Table._CDF_STN_NAME_,
-                Caption = "STN Name",
-                Width = 80,
-                Visible = true
-            }; gcWorkspaceSelect_STN_NAME.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Default;
-            DevExpress.XtraGrid.Columns.GridColumn gcWorkspaceSelect_SITE_MEMO = new()
-            {
-                FieldName = SQL_TXFD_SITE_SET_Table._CDF_SITE_MEMO_,
-                Caption = "STN Name",
-                Width = 100,
-                Visible = false
-            }; gcWorkspaceSelect_SITE_MEMO.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Default;
-            DevExpress.XtraGrid.Columns.GridColumn gcWorkspaceSelect_REG_DATE = new()
-            {
-                FieldName = SQL_TXFD_SITE_SET_Table._CDF_REG_DATE_,
-                Caption = "Created Date",
-                Width = 80,
-                Visible = false
-            }; gcWorkspaceSelect_REG_DATE.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
-            DevExpress.XtraGrid.Columns.GridColumn gcWorkspaceSelect_MOD_DATE = new()
-            {
-                FieldName = SQL_TXFD_SITE_SET_Table._CDF_MOD_DATE_,
-                Caption = "Modifed Date",
-                Width = 80,
-                Visible = false
-            }; gcWorkspaceSelect_MOD_DATE.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
-            DevExpress.XtraGrid.Columns.GridColumn gcWorkspaceSelect_IS_USE = new()
-            {
-                FieldName = SQL_TXFD_SITE_SET_Table._CDF_IS_USE_,
-                Caption = "Use?",
-                Width = 30,
-                Visible = false
-            }; gcWorkspaceSelect_IS_USE.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            //gc.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            repgrdvWorkspaceSelect.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-                gcWorkspaceSelect_SNO,
-                gcWorkspaceSelect_SITE_NAME,
-                gcWorkspaceSelect_LOC_ADDR,
-                gcWorkspaceSelect_LOC_ROAD,
-                gcWorkspaceSelect_LOC_LATITUDE,
-                gcWorkspaceSelect_LOC_LONGITUDE,
-                gcWorkspaceSelect_STN_CODE,
-                gcWorkspaceSelect_STN_NAME,
-                gcWorkspaceSelect_SITE_MEMO,
-                gcWorkspaceSelect_REG_DATE,
-                gcWorkspaceSelect_MOD_DATE,
-                gcWorkspaceSelect_IS_USE
-            });
-            repgrdvWorkspaceSelect.EndInit();
-
-            repslueWorkspaceSelect.BeginInit();
-            repslueWorkspaceSelect.PopupWidthMode = DevExpress.XtraEditors.PopupWidthMode.ContentWidth;
-            repslueWorkspaceSelect.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
-            repslueWorkspaceSelect.KeyMember = SQL_TXFD_SITE_SET_Table._CDF_SNO_;
-            repslueWorkspaceSelect.ValueMember = SQL_TXFD_SITE_SET_Table._CDF_SNO_;
-            repslueWorkspaceSelect.DisplayMember = SQL_TXFD_SITE_SET_Table._CDF_SITE_NAME_;
-            repslueWorkspaceSelect.EndInit();
+            SysEnv.InitWorkspaceSelectFromSearchLookupEdit(repsluMainWorkspaceSelect, SysEnv.WorkspaceDataTable);
         }
+
+        
 
         private void OnForm_Shown(object? sender, EventArgs evt)
         {
@@ -299,8 +216,10 @@ namespace TxFarmDiaryAI.Win
                 if (SysEnv.IsLogined == true)
                 {
                     SysEnv.ReloadCodeAll();
+
+                    InitWorkspaceSelect();
                 }
-                repslueWorkspaceSelect.DataSource = SysEnv.WorkspaceDataTable;
+                
             }
         }
 
@@ -353,18 +272,19 @@ namespace TxFarmDiaryAI.Win
                 this.SetSelectRibbonMenuPageHome();
             }
         }
-        internal void SetSelectRibbonMenuPageByName(string pageName, bool IsExactMatch = true)
+        internal void SetSelectRibbonMenuPageByName(string pageName, bool IsExactMatch = true, DevExpress.XtraBars.Ribbon.RibbonControl? ribbonControl = null)
         {
+            DevExpress.XtraBars.Ribbon.RibbonControl menu = ribbonControl ?? rcMainMenu;
             if (pageName.IsNullOrWhiteSpaceEx() != true)
             {
                 try
                 {
-                    var childPage = rcMainMenu.MergedPages.GetPageByName(pageName);
-                    if (IsExactMatch != true && childPage == null)
+                    var findPage = menu.MergedPages.GetPageByName(pageName);
+                    if (IsExactMatch == true && findPage == null)
                     {
-                        childPage = rcMainMenu.MergedPages.GetPageByText(pageName);
+                        findPage = menu.MergedPages.GetPageByText(pageName);
                     }
-                    rcMainMenu.SelectedPage = childPage ?? rcMainMenu.Pages[0];
+                    menu.SelectedPage = findPage ?? menu.MergedPages[0] ?? menu.Pages[0];
                 }
                 catch (Exception ex)
                 {
@@ -376,27 +296,32 @@ namespace TxFarmDiaryAI.Win
                 this.SetSelectRibbonMenuPageHome();
             }
         }
-        internal void SetSelectRibbonMenuPageByText(string pageText, bool IsExactMatch = true)
+        internal void SetSelectRibbonMenuPageByText(string pageText, bool IsExactMatch = true, DevExpress.XtraBars.Ribbon.RibbonControl? ribbonControl = null)
         {
+            DevExpress.XtraBars.Ribbon.RibbonControl menu = ribbonControl ?? rcMainMenu;
             if (pageText.IsNullOrWhiteSpaceEx() != true)
             {
                 try
                 {
-                    var childPage = rcMainMenu.MergedPages.GetPageByText(pageText);
-                    if (IsExactMatch != true && childPage == null)
+                    var findPage = menu.Pages.GetPageByText(pageText);
+                    if (findPage == null && IsExactMatch == true)
                     {
-                        childPage = rcMainMenu.Pages.GetPageByText(pageText);
+                        findPage = menu.Pages.GetPageByName(pageText);
                     }
-                    if (IsExactMatch != true && childPage == null)
+                    if (findPage == null && IsExactMatch == true)
                     {
-                        //childPage = rcMainMenu.Page.GetPageByText(pageText);
+                        findPage = menu.MergedPages.GetPageByText(pageText);
+                    }
+                    if (findPage == null && IsExactMatch == true)
+                    {
+                        findPage = menu.MergedPages.GetPageByName(pageText);
                     }
 
-                    if (childPage != null && childPage.Visible != true)
+                    if (findPage != null && findPage.Visible != true)
                     {
-                        childPage.Visible = true;
+                        findPage.Visible = true;
                     }
-                    rcMainMenu.SelectedPage = childPage ?? rcMainMenu.Pages[0];
+                    menu.SelectedPage = findPage ?? menu.Pages[0] ?? menu.MergedPages[0];
                 }
                 catch (Exception ex)
                 {
@@ -421,13 +346,13 @@ namespace TxFarmDiaryAI.Win
             this.rcMainMenu.SelectedPage = rpMainView;
         }
 
-        private DataTable _formWorkspaceDataTable
+        private DataTable workspaceDataTable
         {
             get
             {
-                if (repslueWorkspaceSelect.DataSource != null)
+                if (repsluMainWorkspaceSelect.DataSource != null)
                 {
-                    if (repslueWorkspaceSelect.DataSource is DataTable dt && dt.Rows.Count > 0)
+                    if (repsluMainWorkspaceSelect.DataSource is DataTable dt && dt.Rows.Count > 0)
                     {
                         return dt;
                     }
@@ -438,11 +363,23 @@ namespace TxFarmDiaryAI.Win
 
         internal decimal? GetSelectedWorkspaceSNO()
         {
-            if (_formWorkspaceDataTable != null && baredtWorkspaceSelect.EditValue.IsNullOrWhiteSpaceEx() != true)
+            if (workspaceDataTable != null && baredtMainWorkspaceSelect.EditValue.IsNullOrWhiteSpaceEx() != true)
             {
-                return baredtWorkspaceSelect.EditValue.ToDecimalEx();
+                return baredtMainWorkspaceSelect.EditValue.ToDecimalEx();
             }
             return null;
+        }
+        internal string GetSelectedWorkspaceName()
+        {
+            if (workspaceDataTable != null && baredtMainWorkspaceSelect.EditValue.IsNullOrWhiteSpaceEx() != true)
+            {
+                DataRow[] findRows = workspaceDataTable.Select($"{SQL_TXFD_SITE_SET_Table._CDF_SNO_} = {baredtMainWorkspaceSelect.EditValue.ToDecimalEx()}");
+                if (findRows.Length > 0)
+                {
+                    return findRows[0][SQL_TXFD_SITE_SET_Table._CDF_SITE_NAME_].ToStringEx();
+                }
+            }
+            return string.Empty;
         }
 
         private void barbtnScanner_ItemClick(object sender, ItemClickEventArgs e)

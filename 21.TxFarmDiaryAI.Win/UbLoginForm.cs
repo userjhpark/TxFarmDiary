@@ -81,8 +81,6 @@ namespace TxFarmDiaryAI.Win
                 this.btnTestClose.Visible = true;
                 this.btnTestLang_koKR.Visible = true;
                 this.btnTestLang_enUS.Visible = true;
-
-                
 #endif
             }
         }

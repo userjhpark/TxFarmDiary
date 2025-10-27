@@ -1,4 +1,8 @@
-﻿using System;
+﻿using DevExpress.Pdf;
+using DevExpress.XtraRichEdit.API.Native;
+using HxCore;
+using iTextSharp.text.pdf;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -151,6 +155,42 @@ namespace TxFarmDiaryAI.Win
                 image.Dispose();
                 image = null!;
             }
+        }
+
+        public static bool SetPdfAccroTextFormValue(DevExpress.XtraPdfViewer.PdfViewer pdfCtl, string feildName, string textValue)
+        {
+            bool Result = false;
+            if (pdfCtl == null || pdfCtl.IsDocumentOpened != true || feildName.IsNullOrWhiteSpaceEx() == true) { return Result;  }
+            if (pdfCtl.IsDocumentOpened)
+            {
+                PdfDocumentFacade documentFacade = pdfCtl.GetDocumentFacade();
+                if (documentFacade == null) { return Result; }
+
+                PdfAcroFormFacade acroForm = documentFacade.AcroForm;
+                if(acroForm == null) { return Result; }
+
+                PdfTextFormFieldFacade formText = acroForm.GetTextFormField(feildName);
+                if (formText == null || formText.FullName.IsNullOrWhiteSpaceEx() == true) { return Result; }
+
+                formText.Value = textValue;
+                if(formText.Value == textValue) { Result = true; }
+
+                /*
+                IEnumerable<PdfFormFieldFacade> collisions = acroForm.GetFields();
+                if (collisions == null || collisions.Any() != true) { return Result; }
+
+                IEnumerable<PdfFormFieldFacade> formFields = collisions.Where(r => r.FullName.Equals(feildName, StringComparison.OrdinalIgnoreCase));
+                if (formFields != null && formFields.Any() == true) 
+                {
+                    foreach (PdfFormFieldFacade formField in formFields)
+                    {
+                        
+                    }
+                }
+                */
+            }
+            return Result;
+
         }
     }
 }

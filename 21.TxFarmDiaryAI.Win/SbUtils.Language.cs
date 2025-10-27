@@ -19,7 +19,7 @@ namespace TxFarmDiaryAI.Win
             ResourceLanguageStrings.LoadCultureResourceManager(cultureName);
         }
 
-        public static string? GetLanguageResourceString(string resourceKey, string? cultureName = null)
+        public static string? GetLanguageResourceString(string resourceKey, string? cultureName = null, string? defaultText = null)
         {
             string? Result = null;
             if (resourceKey.IsNullOrWhiteSpaceEx() == true) return null;
@@ -40,6 +40,10 @@ namespace TxFarmDiaryAI.Win
             if (Result.IsNullOrWhiteSpaceEx() == true)
             {
                 Result = null;
+            }
+            if(Result.IsNullOrWhiteSpaceEx() == true && defaultText.IsNullOrWhiteSpaceEx() != true)
+            {
+                Result = defaultText;
             }
             return Result;
             //return Properties.Strings.ResourceManager.GetString(resourceKey, Thread.CurrentThread.CurrentUICulture);
@@ -235,7 +239,7 @@ namespace TxFarmDiaryAI.Win
                 string strControlTag = control.Tag.ToStringEx();
                 if (strControlTag.IsNullOrWhiteSpaceEx() == true) continue;
 
-                System.Text.RegularExpressions.MatchCollection match = strControlTag.RegexMatchesEx(Defs._TAG_RESOURCE_TPL_PATTERN_, System.Text.RegularExpressions.RegexOptions.Multiline);
+                System.Text.RegularExpressions.MatchCollection match = strControlTag.RegexMatchesEx(Defs._TPL_RESOURCE_TAG_PATTERN_, System.Text.RegularExpressions.RegexOptions.Multiline);
                 if (match == null || match.Count <= 0) continue;
 
                 string strNewText = strControlTag;

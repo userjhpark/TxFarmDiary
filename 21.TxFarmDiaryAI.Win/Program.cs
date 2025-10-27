@@ -30,7 +30,10 @@ namespace TxFarmDiaryAI.Win
 
             ApplicationConfiguration.Initialize();
 
-            
+            _ = SysEnv.GetAppLogDir(false, true);
+            _ = SysEnv.GetAppTempDir(false, true);
+            _ = SysEnv.GetAppOutputDir(false, true);
+            _ = SysEnv.GetAppDownloadDir(false, true);
 
             SysEnv.MainForm = new UbMainForm();
             SysEnv.MainForm.StartPosition = FormStartPosition.CenterParent;

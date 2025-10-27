@@ -267,4 +267,21 @@
   <data name="CART_APPEND_WARRING_EXISTS" xml:space="preserve">
     <value>이미 장바구니에 있는 이미지입니다.</value>
   </data>
+  <data name="CART_APPEND_MISS" xml:space="preserve">
+    <value>장바구니에 추가하지 못한 목록입니다.
+(파일 접근 및 형식 오류)</value>
+  </data>
+  <data name="IMAGE_NOTSUPPORT" xml:space="preserve">
+    <value>미지원 이미지 파일 포멧</value>
+  </data>
+  <data name="PICTURE_LOADED_QUESTION" xml:space="preserve">
+    <value>Picture 객체에 로드된 이미지가 있습니다.
+새로 로드하시겠습니까?</value>
+  </data>
+  <data name="CART_DELETE_QUESTION" xml:space="preserve">
+    <value>선택된 장바구니의 이미지를 삭제하시겠습니까?</value>
+  </data>
+  <data name="TEMPLATE_FILE_NOT_EXIST" xml:space="preserve">
+    <value>인식된 문서의 템플릿 파일이 존재하지 않습니다.</value>
+  </data>
 </root>

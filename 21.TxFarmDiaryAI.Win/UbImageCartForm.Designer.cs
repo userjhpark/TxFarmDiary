@@ -1,6 +1,6 @@
 ﻿namespace TxFarmDiaryAI.Win
 {
-    partial class UbChildSacnToImageCartForm
+    partial class UbImageCartForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,22 +29,22 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UbChildSacnToImageCartForm));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UbImageCartForm));
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
             scCtlBody = new DevExpress.XtraEditors.SplitContainerControl();
             tabCtlBody = new DevExpress.XtraTab.XtraTabControl();
             tpPicture = new DevExpress.XtraTab.XtraTabPage();
-            pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
+            picViewer = new DevExpress.XtraEditors.PictureEdit();
             tpPdfViewer = new DevExpress.XtraTab.XtraTabPage();
             pdfViewer1 = new DevExpress.XtraPdfViewer.PdfViewer();
             groupControl2 = new DevExpress.XtraEditors.GroupControl();
@@ -60,14 +60,14 @@
             panelControl1 = new DevExpress.XtraEditors.PanelControl();
             panelControl2 = new DevExpress.XtraEditors.PanelControl();
             barsiChildEventStatus = new DevExpress.XtraBars.BarStaticItem();
-            rpChildImageToPDF = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            rpChildImageToOCR = new DevExpress.XtraBars.Ribbon.RibbonPage();
             ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             beicbxScanners = new DevExpress.XtraBars.BarEditItem();
             repcbxScanners = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             bbibtnScanToPicture = new DevExpress.XtraBars.BarButtonItem();
             bbibtnCameraToPicture = new DevExpress.XtraBars.BarButtonItem();
-            bbibtnLoadToPicture = new DevExpress.XtraBars.BarButtonItem();
             ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            bbibtnLoadToPicture = new DevExpress.XtraBars.BarButtonItem();
             bbibtnEditFromPicture = new DevExpress.XtraBars.BarButtonItem();
             bbibtnClearFromPicture = new DevExpress.XtraBars.BarButtonItem();
             bbibtnCopyFromPicture = new DevExpress.XtraBars.BarButtonItem();
@@ -78,15 +78,16 @@
             bbibtnSavePictureToPDF = new DevExpress.XtraBars.BarButtonItem();
             btsichkOptions_OpenPdfViewerInNewWindow = new DevExpress.XtraBars.BarToggleSwitchItem();
             ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            bbibtnLoadToGrid = new DevExpress.XtraBars.BarButtonItem();
-            bbibtnRemoveFromGrid = new DevExpress.XtraBars.BarButtonItem();
-            barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
-            barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
-            btsichkOptions_ExportToPDFAndMerge = new DevExpress.XtraBars.BarToggleSwitchItem();
+            bbibtnPreview_FromCart = new DevExpress.XtraBars.BarButtonItem();
+            bbibtnRemove_FromCart = new DevExpress.XtraBars.BarButtonItem();
+            bbibtnAppend_DiaryFromCart = new DevExpress.XtraBars.BarButtonItem();
             ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             bbibtnAppendPictureToCart = new DevExpress.XtraBars.BarButtonItem();
             ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            btsichkOptions_ExportToPDFAndMerge = new DevExpress.XtraBars.BarToggleSwitchItem();
             repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             repositoryItemPictureEdit11 = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
             barsiChildImageListStatus = new DevExpress.XtraBars.BarStaticItem();
@@ -143,7 +144,7 @@
             ((System.ComponentModel.ISupportInitialize)tabCtlBody).BeginInit();
             tabCtlBody.SuspendLayout();
             tpPicture.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureEdit1.Properties).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picViewer.Properties).BeginInit();
             tpPdfViewer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)groupControl2).BeginInit();
             groupControl2.SuspendLayout();
@@ -162,11 +163,11 @@
             // 
             rcChildMenu.EmptyAreaImageOptions.ImagePadding = new Padding(30, 26, 30, 26);
             rcChildMenu.ExpandCollapseItem.Id = 0;
-            rcChildMenu.Items.AddRange(new DevExpress.XtraBars.BarItem[] { barsiChildEventStatus, beicbxScanners, bbibtnScanToPicture, bbibtnCameraToPicture, bbibtnLoadToPicture, bbibtnEditFromPicture, bbibtnClearFromPicture, bbibtnCopyFromPicture, bbibtnPasteFromPicture, bbibtnSavePictureToImage, bbibtnSavePictureToPDF, bbibtnCutFromPicture, barsiChildImageListStatus, bbibtnLoadToGrid, bbibtnRemoveFromGrid, barButtonItem1, barButtonItem2, btsichkOptions_ExportToPDFAndMerge, pdfFileOpenBarItem1, pdfFileSaveAsBarItem1, pdfFilePrintBarItem1, pdfFindTextBarItem1, pdfPreviousPageBarItem1, pdfNextPageBarItem1, pdfSetPageNumberBarItem1, pdfZoomOutBarItem1, pdfZoomInBarItem1, pdfExactZoomListBarSubItem1, pdfZoom10CheckItem1, pdfZoom25CheckItem1, pdfZoom50CheckItem1, pdfZoom75CheckItem1, pdfZoom100CheckItem1, pdfZoom125CheckItem1, pdfZoom150CheckItem1, pdfZoom200CheckItem1, pdfZoom400CheckItem1, pdfZoom500CheckItem1, pdfSetActualSizeZoomModeCheckItem1, pdfSetPageLevelZoomModeCheckItem1, pdfSetFitWidthZoomModeCheckItem1, pdfSetFitVisibleZoomModeCheckItem1, hotkeyFocusNextBarItem1, hotkeyFocusPreviousBarItem1, hotkeyFocusThumbnailTabBarItem1, hotkeyFocusBookmarksTabBarItem1, hotkeyFocusAttachmentsTabBarItem1, hotkeyFocusCommentsTabBarItem1, hotkeyFocusLayersTabBarItem1, hotkeyFocusSignaturesTabBarItem1, hotkeyFocusDocumentViewerBarItem1, pdfFileCloseBarItem1, btsichkOptions_OpenPdfViewerInNewWindow, bbibtnAppendPictureToCart, barButtonItem4 });
-            rcChildMenu.MaxItemId = 61;
-            rcChildMenu.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { rpChildImageToPDF, rpChildPdfViewer });
+            rcChildMenu.Items.AddRange(new DevExpress.XtraBars.BarItem[] { barsiChildEventStatus, beicbxScanners, bbibtnScanToPicture, bbibtnCameraToPicture, bbibtnLoadToPicture, bbibtnEditFromPicture, bbibtnClearFromPicture, bbibtnCopyFromPicture, bbibtnPasteFromPicture, bbibtnSavePictureToImage, bbibtnSavePictureToPDF, bbibtnCutFromPicture, barsiChildImageListStatus, bbibtnPreview_FromCart, bbibtnRemove_FromCart, barButtonItem1, barButtonItem2, btsichkOptions_ExportToPDFAndMerge, pdfFileOpenBarItem1, pdfFileSaveAsBarItem1, pdfFilePrintBarItem1, pdfFindTextBarItem1, pdfPreviousPageBarItem1, pdfNextPageBarItem1, pdfSetPageNumberBarItem1, pdfZoomOutBarItem1, pdfZoomInBarItem1, pdfExactZoomListBarSubItem1, pdfZoom10CheckItem1, pdfZoom25CheckItem1, pdfZoom50CheckItem1, pdfZoom75CheckItem1, pdfZoom100CheckItem1, pdfZoom125CheckItem1, pdfZoom150CheckItem1, pdfZoom200CheckItem1, pdfZoom400CheckItem1, pdfZoom500CheckItem1, pdfSetActualSizeZoomModeCheckItem1, pdfSetPageLevelZoomModeCheckItem1, pdfSetFitWidthZoomModeCheckItem1, pdfSetFitVisibleZoomModeCheckItem1, hotkeyFocusNextBarItem1, hotkeyFocusPreviousBarItem1, hotkeyFocusThumbnailTabBarItem1, hotkeyFocusBookmarksTabBarItem1, hotkeyFocusAttachmentsTabBarItem1, hotkeyFocusCommentsTabBarItem1, hotkeyFocusLayersTabBarItem1, hotkeyFocusSignaturesTabBarItem1, hotkeyFocusDocumentViewerBarItem1, pdfFileCloseBarItem1, btsichkOptions_OpenPdfViewerInNewWindow, bbibtnAppendPictureToCart, bbibtnAppend_DiaryFromCart });
+            rcChildMenu.MaxItemId = 63;
+            rcChildMenu.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { rpChildImageToOCR, rpChildPdfViewer });
             rcChildMenu.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repcbxScanners, repositoryItemButtonEdit1, repositoryItemPageNumberEdit1 });
-            rcChildMenu.Size = new Size(1693, 150);
+            rcChildMenu.Size = new Size(1519, 150);
             rcChildMenu.Click += rcChildMenu_Click;
             // 
             // rsbChildStatusBar
@@ -174,7 +175,7 @@
             rsbChildStatusBar.ItemLinks.Add(barsiChildEventStatus);
             rsbChildStatusBar.ItemLinks.Add(barsiChildImageListStatus);
             rsbChildStatusBar.Location = new Point(0, 560);
-            rsbChildStatusBar.Size = new Size(1693, 22);
+            rsbChildStatusBar.Size = new Size(1519, 22);
             // 
             // scCtlBody
             // 
@@ -193,7 +194,7 @@
             // 
             scCtlBody.Panel2.Controls.Add(groupControl2);
             scCtlBody.Panel2.Text = "Panel2";
-            scCtlBody.Size = new Size(1693, 392);
+            scCtlBody.Size = new Size(1519, 392);
             scCtlBody.SplitterPosition = 525;
             scCtlBody.TabIndex = 0;
             // 
@@ -203,31 +204,31 @@
             tabCtlBody.Location = new Point(0, 0);
             tabCtlBody.Name = "tabCtlBody";
             tabCtlBody.SelectedTabPage = tpPicture;
-            tabCtlBody.Size = new Size(1158, 392);
+            tabCtlBody.Size = new Size(984, 392);
             tabCtlBody.TabIndex = 2;
             tabCtlBody.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] { tpPicture, tpPdfViewer });
             // 
             // tpPicture
             // 
-            tpPicture.Controls.Add(pictureEdit1);
+            tpPicture.Controls.Add(picViewer);
             tpPicture.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("tpPicture.ImageOptions.SvgImage");
             tpPicture.ImageOptions.SvgImageSize = new Size(12, 12);
             tpPicture.Name = "tpPicture";
-            tpPicture.Size = new Size(1156, 368);
+            tpPicture.Size = new Size(982, 368);
             tpPicture.TabPageWidth = 300;
             tpPicture.Text = "Picture";
             // 
-            // pictureEdit1
+            // picViewer
             // 
-            pictureEdit1.Dock = DockStyle.Fill;
-            pictureEdit1.Location = new Point(0, 0);
-            pictureEdit1.MenuManager = rcChildMenu;
-            pictureEdit1.Name = "pictureEdit1";
-            pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
-            pictureEdit1.Size = new Size(1156, 368);
-            pictureEdit1.TabIndex = 2;
-            pictureEdit1.EditValueChanged += pictureEdit1_EditValueChanged;
+            picViewer.Dock = DockStyle.Fill;
+            picViewer.Location = new Point(0, 0);
+            picViewer.MenuManager = rcChildMenu;
+            picViewer.Name = "picViewer";
+            picViewer.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            picViewer.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
+            picViewer.Size = new Size(982, 368);
+            picViewer.TabIndex = 2;
+            picViewer.EditValueChanged += pictureEdit1_EditValueChanged;
             // 
             // tpPdfViewer
             // 
@@ -236,7 +237,7 @@
             tpPdfViewer.ImageOptions.SvgImageSize = new Size(12, 12);
             tpPdfViewer.Name = "tpPdfViewer";
             tpPdfViewer.ShowCloseButton = DevExpress.Utils.DefaultBoolean.True;
-            tpPdfViewer.Size = new Size(1156, 368);
+            tpPdfViewer.Size = new Size(822, 368);
             tpPdfViewer.Text = "PDF Viewer";
             // 
             // pdfViewer1
@@ -245,7 +246,7 @@
             pdfViewer1.Location = new Point(0, 0);
             pdfViewer1.MenuManager = rcChildMenu;
             pdfViewer1.Name = "pdfViewer1";
-            pdfViewer1.Size = new Size(1156, 368);
+            pdfViewer1.Size = new Size(822, 368);
             pdfViewer1.TabIndex = 1;
             pdfViewer1.Load += pdfViewer1_Load;
             // 
@@ -290,7 +291,6 @@
             grdvImageCart.GridControl = grdcImageCart;
             grdvImageCart.Name = "grdvImageCart";
             grdvImageCart.OptionsSelection.CheckBoxSelectorColumnWidth = 30;
-            grdvImageCart.OptionsSelection.MultiSelect = true;
             grdvImageCart.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
             // 
             // gcImageGridNo
@@ -303,7 +303,7 @@
             gcImageGridNo.MaxWidth = 45;
             gcImageGridNo.Name = "gcImageGridNo";
             gcImageGridNo.Visible = true;
-            gcImageGridNo.VisibleIndex = 1;
+            gcImageGridNo.VisibleIndex = 0;
             gcImageGridNo.Width = 30;
             // 
             // gcImageGridLoadDateTime
@@ -312,7 +312,7 @@
             gcImageGridLoadDateTime.FieldName = "CreatedTime";
             gcImageGridLoadDateTime.Name = "gcImageGridLoadDateTime";
             gcImageGridLoadDateTime.Visible = true;
-            gcImageGridLoadDateTime.VisibleIndex = 2;
+            gcImageGridLoadDateTime.VisibleIndex = 1;
             gcImageGridLoadDateTime.Width = 144;
             // 
             // gcImageGridSource
@@ -330,7 +330,7 @@
             gcImageGridFileSize.FieldName = "FileSize";
             gcImageGridFileSize.Name = "gcImageGridFileSize";
             gcImageGridFileSize.Visible = true;
-            gcImageGridFileSize.VisibleIndex = 3;
+            gcImageGridFileSize.VisibleIndex = 2;
             gcImageGridFileSize.Width = 150;
             // 
             // gcImageGridFilePath
@@ -344,7 +344,7 @@
             gcImageGridFileExt.FieldName = "FileExt";
             gcImageGridFileExt.Name = "gcImageGridFileExt";
             gcImageGridFileExt.Visible = true;
-            gcImageGridFileExt.VisibleIndex = 4;
+            gcImageGridFileExt.VisibleIndex = 3;
             // 
             // gridColumn1
             // 
@@ -352,14 +352,14 @@
             gridColumn1.FieldName = "FileChecksum";
             gridColumn1.Name = "gridColumn1";
             gridColumn1.Visible = true;
-            gridColumn1.VisibleIndex = 5;
+            gridColumn1.VisibleIndex = 4;
             // 
             // panelControl1
             // 
             panelControl1.Dock = DockStyle.Top;
             panelControl1.Location = new Point(0, 150);
             panelControl1.Name = "panelControl1";
-            panelControl1.Size = new Size(1693, 9);
+            panelControl1.Size = new Size(1519, 9);
             panelControl1.TabIndex = 1;
             // 
             // panelControl2
@@ -367,7 +367,7 @@
             panelControl2.Dock = DockStyle.Bottom;
             panelControl2.Location = new Point(0, 551);
             panelControl2.Name = "panelControl2";
-            panelControl2.Size = new Size(1693, 9);
+            panelControl2.Size = new Size(1519, 9);
             panelControl2.TabIndex = 4;
             // 
             // barsiChildEventStatus
@@ -376,35 +376,35 @@
             barsiChildEventStatus.Id = 2;
             barsiChildEventStatus.Name = "barsiChildEventStatus";
             // 
-            // rpChildImageToPDF
+            // rpChildImageToOCR
             // 
-            rpChildImageToPDF.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroup1, ribbonPageGroup3, ribbonPageGroup2, ribbonPageGroup4, ribbonPageGroup7, ribbonPageGroup6 });
-            rpChildImageToPDF.Name = "rpChildImageToPDF";
-            rpChildImageToPDF.Text = "Home";
+            rpChildImageToOCR.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroup1, ribbonPageGroup3, ribbonPageGroup2, ribbonPageGroup4, ribbonPageGroup7, ribbonPageGroup6, ribbonPageGroup8 });
+            rpChildImageToOCR.Name = "rpChildImageToOCR";
+            rpChildImageToOCR.Text = "Image To OCR";
             // 
             // ribbonPageGroup1
             // 
             ribbonPageGroup1.ItemLinks.Add(beicbxScanners);
             ribbonPageGroup1.ItemLinks.Add(bbibtnScanToPicture);
             ribbonPageGroup1.ItemLinks.Add(bbibtnCameraToPicture, true);
-            ribbonPageGroup1.ItemLinks.Add(bbibtnLoadToPicture);
             ribbonPageGroup1.Name = "ribbonPageGroup1";
-            ribbonPageGroup1.Text = "[Source] Scan / Camera / Picture";
+            ribbonPageGroup1.Text = "Scan / Camera";
             // 
             // beicbxScanners
             // 
             beicbxScanners.Caption = "Sacnner : ";
             beicbxScanners.Edit = repcbxScanners;
-            beicbxScanners.EditWidth = 150;
+            beicbxScanners.EditWidth = 200;
             beicbxScanners.Id = 3;
+            beicbxScanners.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("beicbxScanners.ImageOptions.SvgImage");
             beicbxScanners.Name = "beicbxScanners";
             // 
             // repcbxScanners
             // 
             repcbxScanners.AutoHeight = false;
-            editorButtonImageOptions2.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("editorButtonImageOptions2.SvgImage");
-            editorButtonImageOptions2.SvgImageSize = new Size(12, 12);
-            repcbxScanners.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Refresh", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", "{{#REFRESH}}", null, DevExpress.Utils.ToolTipAnchor.Default) });
+            editorButtonImageOptions1.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("editorButtonImageOptions1.SvgImage");
+            editorButtonImageOptions1.SvgImageSize = new Size(12, 12);
+            repcbxScanners.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Refresh", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", "{{#REFRESH}}", null, DevExpress.Utils.ToolTipAnchor.Default) });
             repcbxScanners.Name = "repcbxScanners";
             // 
             // bbibtnScanToPicture
@@ -421,23 +421,26 @@
             bbibtnCameraToPicture.Id = 6;
             bbibtnCameraToPicture.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("bbibtnCameraToPicture.ImageOptions.SvgImage");
             bbibtnCameraToPicture.Name = "bbibtnCameraToPicture";
-            // 
-            // bbibtnLoadToPicture
-            // 
-            bbibtnLoadToPicture.Caption = "Picture Load";
-            bbibtnLoadToPicture.Id = 7;
-            bbibtnLoadToPicture.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("bbibtnLoadToPicture.ImageOptions.SvgImage");
-            bbibtnLoadToPicture.Name = "bbibtnLoadToPicture";
+            bbibtnCameraToPicture.ItemClick += bbibtnCameraToPicture_ItemClick;
             // 
             // ribbonPageGroup3
             // 
-            ribbonPageGroup3.ItemLinks.Add(bbibtnEditFromPicture, true);
+            ribbonPageGroup3.ItemLinks.Add(bbibtnLoadToPicture, true);
+            ribbonPageGroup3.ItemLinks.Add(bbibtnEditFromPicture);
             ribbonPageGroup3.ItemLinks.Add(bbibtnClearFromPicture);
             ribbonPageGroup3.ItemLinks.Add(bbibtnCopyFromPicture);
             ribbonPageGroup3.ItemLinks.Add(bbibtnCutFromPicture);
             ribbonPageGroup3.ItemLinks.Add(bbibtnPasteFromPicture);
             ribbonPageGroup3.Name = "ribbonPageGroup3";
-            ribbonPageGroup3.Text = "Picture Function";
+            ribbonPageGroup3.Text = "Picture";
+            // 
+            // bbibtnLoadToPicture
+            // 
+            bbibtnLoadToPicture.Caption = "Load";
+            bbibtnLoadToPicture.Id = 7;
+            bbibtnLoadToPicture.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("bbibtnLoadToPicture.ImageOptions.SvgImage");
+            bbibtnLoadToPicture.Name = "bbibtnLoadToPicture";
+            bbibtnLoadToPicture.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
             // 
             // bbibtnEditFromPicture
             // 
@@ -445,7 +448,7 @@
             bbibtnEditFromPicture.Id = 8;
             bbibtnEditFromPicture.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("bbibtnEditFromPicture.ImageOptions.SvgImage");
             bbibtnEditFromPicture.Name = "bbibtnEditFromPicture";
-            bbibtnEditFromPicture.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
+            bbibtnEditFromPicture.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
             // 
             // bbibtnClearFromPicture
             // 
@@ -453,6 +456,7 @@
             bbibtnClearFromPicture.Id = 9;
             bbibtnClearFromPicture.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("bbibtnClearFromPicture.ImageOptions.SvgImage");
             bbibtnClearFromPicture.Name = "bbibtnClearFromPicture";
+            bbibtnClearFromPicture.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
             // 
             // bbibtnCopyFromPicture
             // 
@@ -513,58 +517,32 @@
             // 
             ribbonPageGroup4.Alignment = DevExpress.XtraBars.Ribbon.RibbonPageGroupAlignment.Far;
             ribbonPageGroup4.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("ribbonPageGroup4.ImageOptions.SvgImage");
-            ribbonPageGroup4.ItemLinks.Add(bbibtnLoadToGrid);
-            ribbonPageGroup4.ItemLinks.Add(bbibtnRemoveFromGrid);
-            ribbonPageGroup4.ItemLinks.Add(barButtonItem4);
-            ribbonPageGroup4.ItemLinks.Add(barButtonItem1, true);
-            ribbonPageGroup4.ItemLinks.Add(barButtonItem2);
-            ribbonPageGroup4.ItemLinks.Add(btsichkOptions_ExportToPDFAndMerge);
+            ribbonPageGroup4.ItemLinks.Add(bbibtnPreview_FromCart);
+            ribbonPageGroup4.ItemLinks.Add(bbibtnRemove_FromCart);
+            ribbonPageGroup4.ItemLinks.Add(bbibtnAppend_DiaryFromCart);
             ribbonPageGroup4.Name = "ribbonPageGroup4";
             ribbonPageGroup4.Text = "Image Cart";
             // 
-            // bbibtnLoadToGrid
+            // bbibtnPreview_FromCart
             // 
-            bbibtnLoadToGrid.Caption = "Load";
-            bbibtnLoadToGrid.Id = 16;
-            bbibtnLoadToGrid.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("bbibtnLoadToGrid.ImageOptions.SvgImage");
-            bbibtnLoadToGrid.Name = "bbibtnLoadToGrid";
+            bbibtnPreview_FromCart.Caption = "Preview";
+            bbibtnPreview_FromCart.Id = 16;
+            bbibtnPreview_FromCart.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("bbibtnPreview_FromCart.ImageOptions.SvgImage");
+            bbibtnPreview_FromCart.Name = "bbibtnPreview_FromCart";
             // 
-            // bbibtnRemoveFromGrid
+            // bbibtnRemove_FromCart
             // 
-            bbibtnRemoveFromGrid.Caption = "Remove";
-            bbibtnRemoveFromGrid.Id = 17;
-            bbibtnRemoveFromGrid.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("bbibtnRemoveFromGrid.ImageOptions.SvgImage");
-            bbibtnRemoveFromGrid.Name = "bbibtnRemoveFromGrid";
+            bbibtnRemove_FromCart.Caption = "Remove";
+            bbibtnRemove_FromCart.Id = 17;
+            bbibtnRemove_FromCart.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("bbibtnRemove_FromCart.ImageOptions.SvgImage");
+            bbibtnRemove_FromCart.Name = "bbibtnRemove_FromCart";
             // 
-            // barButtonItem4
+            // bbibtnAppend_DiaryFromCart
             // 
-            barButtonItem4.Caption = "Save";
-            barButtonItem4.Id = 60;
-            barButtonItem4.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItem4.ImageOptions.SvgImage");
-            barButtonItem4.Name = "barButtonItem4";
-            barButtonItem4.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-            // 
-            // barButtonItem1
-            // 
-            barButtonItem1.Caption = "Export To Folder";
-            barButtonItem1.Id = 18;
-            barButtonItem1.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItem1.ImageOptions.SvgImage");
-            barButtonItem1.Name = "barButtonItem1";
-            barButtonItem1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
-            // 
-            // barButtonItem2
-            // 
-            barButtonItem2.Caption = "Export To PDF";
-            barButtonItem2.Id = 19;
-            barButtonItem2.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItem2.ImageOptions.SvgImage");
-            barButtonItem2.Name = "barButtonItem2";
-            barButtonItem2.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
-            // 
-            // btsichkOptions_ExportToPDFAndMerge
-            // 
-            btsichkOptions_ExportToPDFAndMerge.Caption = "Export To PDF && Merge";
-            btsichkOptions_ExportToPDFAndMerge.Id = 21;
-            btsichkOptions_ExportToPDFAndMerge.Name = "btsichkOptions_ExportToPDFAndMerge";
+            bbibtnAppend_DiaryFromCart.Caption = "Registration\r\nwith AI-OCR";
+            bbibtnAppend_DiaryFromCart.Id = 60;
+            bbibtnAppend_DiaryFromCart.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("bbibtnAppend_DiaryFromCart.ImageOptions.SvgImage");
+            bbibtnAppend_DiaryFromCart.Name = "bbibtnAppend_DiaryFromCart";
             // 
             // ribbonPageGroup7
             // 
@@ -584,6 +562,41 @@
             ribbonPageGroup6.Name = "ribbonPageGroup6";
             ribbonPageGroup6.Text = "Options";
             ribbonPageGroup6.Visible = false;
+            // 
+            // ribbonPageGroup8
+            // 
+            ribbonPageGroup8.Alignment = DevExpress.XtraBars.Ribbon.RibbonPageGroupAlignment.Far;
+            ribbonPageGroup8.ItemLinks.Add(barButtonItem1);
+            ribbonPageGroup8.ItemLinks.Add(barButtonItem2);
+            ribbonPageGroup8.ItemLinks.Add(btsichkOptions_ExportToPDFAndMerge);
+            ribbonPageGroup8.Name = "ribbonPageGroup8";
+            ribbonPageGroup8.Text = "Image Cart - Export";
+            ribbonPageGroup8.Visible = false;
+            // 
+            // barButtonItem1
+            // 
+            barButtonItem1.Caption = "Export To Folder";
+            barButtonItem1.Id = 18;
+            barButtonItem1.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItem1.ImageOptions.SvgImage");
+            barButtonItem1.Name = "barButtonItem1";
+            barButtonItem1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
+            barButtonItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            // 
+            // barButtonItem2
+            // 
+            barButtonItem2.Caption = "Export To PDF";
+            barButtonItem2.Id = 19;
+            barButtonItem2.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItem2.ImageOptions.SvgImage");
+            barButtonItem2.Name = "barButtonItem2";
+            barButtonItem2.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
+            barButtonItem2.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            // 
+            // btsichkOptions_ExportToPDFAndMerge
+            // 
+            btsichkOptions_ExportToPDFAndMerge.Caption = "Export To PDF && Merge";
+            btsichkOptions_ExportToPDFAndMerge.Id = 21;
+            btsichkOptions_ExportToPDFAndMerge.Name = "btsichkOptions_ExportToPDFAndMerge";
+            btsichkOptions_ExportToPDFAndMerge.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
             // repositoryItemButtonEdit1
             // 
@@ -693,21 +706,21 @@
             // 
             pdfZoomOutBarItem1.Id = 30;
             pdfZoomOutBarItem1.Name = "pdfZoomOutBarItem1";
-            toolTipTitleItem3.Text = "Zoom Out (Ctrl + Minus)";
-            toolTipItem3.Text = "Zoom out to see more of the page at a reduced size.";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            superToolTip3.Items.Add(toolTipItem3);
-            pdfZoomOutBarItem1.SuperTip = superToolTip3;
+            toolTipTitleItem1.Text = "Zoom Out (Ctrl + Minus)";
+            toolTipItem1.Text = "Zoom out to see more of the page at a reduced size.";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            pdfZoomOutBarItem1.SuperTip = superToolTip1;
             // 
             // pdfZoomInBarItem1
             // 
             pdfZoomInBarItem1.Id = 31;
             pdfZoomInBarItem1.Name = "pdfZoomInBarItem1";
-            toolTipTitleItem4.Text = "Zoom In (Ctrl + Plus)";
-            toolTipItem4.Text = "Zoom in to get a close-up view of the PDF document.";
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            superToolTip4.Items.Add(toolTipItem4);
-            pdfZoomInBarItem1.SuperTip = superToolTip4;
+            toolTipTitleItem2.Text = "Zoom In (Ctrl + Plus)";
+            toolTipItem2.Text = "Zoom in to get a close-up view of the PDF document.";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem2);
+            pdfZoomInBarItem1.SuperTip = superToolTip2;
             // 
             // pdfZoom10CheckItem1
             // 
@@ -908,18 +921,18 @@
             pdfFileCloseBarItem1.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("pdfFileCloseBarItem1.ImageOptions.SvgImage");
             pdfFileCloseBarItem1.Name = "pdfFileCloseBarItem1";
             // 
-            // UbChildSacnToImageCartForm
+            // UbImageCartForm
             // 
             Appearance.Options.UseFont = true;
             AutoScaleDimensions = new SizeF(7F, 14F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1693, 582);
+            ClientSize = new Size(1519, 582);
             Controls.Add(scCtlBody);
             Controls.Add(panelControl2);
             Controls.Add(panelControl1);
-            IconOptions.Image = (Image)resources.GetObject("UbChildSacnToImageCartForm.IconOptions.Image");
-            Name = "UbChildSacnToImageCartForm";
-            Text = "Scanner/Camera To Image";
+            IconOptions.Image = (Image)resources.GetObject("UbImageCartForm.IconOptions.Image");
+            Name = "UbImageCartForm";
+            Text = "Image(Scanner/Camera) To OCR Cart";
             Controls.SetChildIndex(rcChildMenu, 0);
             Controls.SetChildIndex(rsbChildStatusBar, 0);
             Controls.SetChildIndex(panelControl1, 0);
@@ -935,7 +948,7 @@
             ((System.ComponentModel.ISupportInitialize)tabCtlBody).EndInit();
             tabCtlBody.ResumeLayout(false);
             tpPicture.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureEdit1.Properties).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picViewer.Properties).EndInit();
             tpPdfViewer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)groupControl2).EndInit();
             groupControl2.ResumeLayout(false);
@@ -958,7 +971,7 @@
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.PanelControl panelControl2;
         protected internal DevExpress.XtraBars.BarStaticItem barsiChildEventStatus;
-        private DevExpress.XtraBars.Ribbon.RibbonPage rpChildImageToPDF;
+        private DevExpress.XtraBars.Ribbon.RibbonPage rpChildImageToOCR;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraBars.BarEditItem beicbxScanners;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repcbxScanners;
@@ -975,9 +988,9 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit repositoryItemPictureEdit11;
         private DevExpress.XtraBars.BarButtonItem bbibtnCutFromPicture;
         private DevExpress.XtraBars.BarStaticItem barsiChildImageListStatus;
-        private DevExpress.XtraBars.BarButtonItem bbibtnLoadToGrid;
+        private DevExpress.XtraBars.BarButtonItem bbibtnPreview_FromCart;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
-        private DevExpress.XtraBars.BarButtonItem bbibtnRemoveFromGrid;
+        private DevExpress.XtraBars.BarButtonItem bbibtnRemove_FromCart;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
@@ -1033,7 +1046,7 @@
         private DevExpress.XtraPdfViewer.Native.GlobalHotkeysPageGroup globalHotkeysPageGroup1;
         private DevExpress.XtraTab.XtraTabControl tabCtlBody;
         private DevExpress.XtraTab.XtraTabPage tpPicture;
-        private DevExpress.XtraEditors.PictureEdit pictureEdit1;
+        private DevExpress.XtraEditors.PictureEdit picViewer;
         private DevExpress.XtraTab.XtraTabPage tpPdfViewer;
         private DevExpress.XtraPdfViewer.PdfViewer pdfViewer1;
         private DevExpress.XtraPdfViewer.Bars.PdfBarController pdfBarController1;
@@ -1043,8 +1056,9 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup6;
         private DevExpress.XtraBars.BarButtonItem bbibtnAppendPictureToCart;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup7;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
+        private DevExpress.XtraBars.BarButtonItem bbibtnAppend_DiaryFromCart;
         private DevExpress.XtraGrid.Columns.GridColumn gcImageGridFileExt;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup8;
     }
 }

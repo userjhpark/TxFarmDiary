@@ -2,6 +2,7 @@
 //using Google.Protobuf.WellKnownTypes;
 using HxCore;
 using HxCore.Data;
+
 //using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using MySqlX.XDevAPI.Common;
@@ -20,6 +21,10 @@ namespace TxFarmDiaryAI.Web.Controllers.v1
     [ApiController]
     public class FarmSiteController : BaseController
     {
+        public FarmSiteController(IWebHostEnvironment webEnv) : base(webEnv)
+        {
+        }
+
         // GET: api/<FarmSiteController>
         [HttpGet]
         public IEnumerable<string> Get()
@@ -62,6 +67,7 @@ namespace TxFarmDiaryAI.Web.Controllers.v1
             try
             {
                 //string SQL = "SELECT sno, site_name, site_memo, status, stn_code, stn_name, loc_addr, loc_latitude, loc_longitude, loc_road, etc, is_use, raw_guid, reg_date, reg_agent, reg_user, reg_uno, mod_date, mod_agent, mod_user, mod_uno FROM TXFD_SITE_SET";
+                //SQL_TXFD_SITE_SET_Table.
                 Result = SQL_TXFD_SITE_SET_Table.ToDataTable(db);
             }
             catch (Exception ex)
@@ -79,7 +85,7 @@ namespace TxFarmDiaryAI.Web.Controllers.v1
         [HttpGet("All")]
         [HttpGet("All/List")]
         //[Produces("application/json")]
-        public IActionResult? GetAllValue2List(string name_case = null)
+        public IActionResult? GetAllValue2List(string? name_case = null)
         {
             try
             {
@@ -161,7 +167,7 @@ namespace TxFarmDiaryAI.Web.Controllers.v1
 
         [HttpGet("All/String")]
         //[Produces("text/plain")]
-        public IActionResult? GetAllValue2String(string name_case = null)
+        public IActionResult? GetAllValue2String(string? name_case = null)
         {
             try
             {
@@ -228,7 +234,7 @@ namespace TxFarmDiaryAI.Web.Controllers.v1
         }
 
         [HttpGet("All/DataTable")]
-        public IActionResult? GetAllValue2DataTable(string name_case = null)
+        public IActionResult? GetAllValue2DataTable(string? name_case = null)
         {
             try
             {

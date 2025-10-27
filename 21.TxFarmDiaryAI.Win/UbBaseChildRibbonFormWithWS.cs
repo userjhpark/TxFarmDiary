@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace TxFarmDiaryAI.Win
 {
-    public partial class UbPictureForm : UbBaseChildForm
+    public partial class UbBaseChildRibbonFormWithWS : UbBaseChildRibbonForm
     {
-        public UbPictureForm()
+        public UbBaseChildRibbonFormWithWS()
         {
             InitializeComponent();
         }

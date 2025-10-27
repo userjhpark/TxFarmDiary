@@ -30,39 +30,39 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UbMainForm));
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions5 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject17 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject18 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject19 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject20 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.Animation.PushTransition pushTransition2 = new DevExpress.Utils.Animation.PushTransition();
-            DevExpress.XtraBars.Ribbon.ReduceOperation reduceOperation7 = new DevExpress.XtraBars.Ribbon.ReduceOperation();
-            DevExpress.XtraBars.Ribbon.ReduceOperation reduceOperation8 = new DevExpress.XtraBars.Ribbon.ReduceOperation();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions4 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject13 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject14 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject15 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject16 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
+            DevExpress.XtraBars.Ribbon.ReduceOperation reduceOperation1 = new DevExpress.XtraBars.Ribbon.ReduceOperation();
+            DevExpress.XtraBars.Ribbon.ReduceOperation reduceOperation2 = new DevExpress.XtraBars.Ribbon.ReduceOperation();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             rcMainMenu = new DevExpress.XtraBars.Ribbon.RibbonControl();
             applicationMenu1 = new DevExpress.XtraBars.Ribbon.ApplicationMenu(components);
             barbtnFarmManagement = new DevExpress.XtraBars.BarButtonItem();
-            barbtnScanner = new DevExpress.XtraBars.BarButtonItem();
-            barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
-            barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
-            barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
-            barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
+            barbtnMainImageToOCR = new DevExpress.XtraBars.BarButtonItem();
+            barbtnMainList_FarmingDiary = new DevExpress.XtraBars.BarButtonItem();
+            barbtnMainAppend_FarmingDiary = new DevExpress.XtraBars.BarButtonItem();
+            barbtnMainReport_FarmingDiary = new DevExpress.XtraBars.BarButtonItem();
+            barbtnMainExport_FarmingDiary = new DevExpress.XtraBars.BarButtonItem();
             barbtnSettings = new DevExpress.XtraBars.BarButtonItem();
             barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
-            baredtWorkspaceSelect = new DevExpress.XtraBars.BarEditItem();
-            repslueWorkspaceSelect = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
+            baredtMainWorkspaceSelect = new DevExpress.XtraBars.BarEditItem();
+            repsluMainWorkspaceSelect = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
             repgrdvWorkspaceSelect = new DevExpress.XtraGrid.Views.Grid.GridView();
-            baredtWorkspaceFolder = new DevExpress.XtraBars.BarEditItem();
+            baredtMainWorkspaceFolder = new DevExpress.XtraBars.BarEditItem();
             repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
-            baredtWorkspaceFillter = new DevExpress.XtraBars.BarEditItem();
-            repositoryItemRadioGroup1 = new DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup();
-            barchkWorkspaceCurrentOnly = new DevExpress.XtraBars.BarCheckItem();
+            baredtMainWorkspaceFillter = new DevExpress.XtraBars.BarEditItem();
+            repradMainWorkspaceFillter = new DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup();
+            barchkMainWorkspaceCurrentOnly = new DevExpress.XtraBars.BarCheckItem();
             barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
             barStaticItem2 = new DevExpress.XtraBars.BarStaticItem();
             barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
@@ -72,28 +72,31 @@
             workspaceManager1 = new DevExpress.Utils.WorkspaceManager(components);
             barMdiChildrenListItem1 = new DevExpress.XtraBars.BarMdiChildrenListItem();
             bbiTestForm = new DevExpress.XtraBars.BarButtonItem();
+            bbiMainCart = new DevExpress.XtraBars.BarButtonItem();
+            barbtnDiarySampleFolder = new DevExpress.XtraBars.BarButtonItem();
             rpMainHome = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            rpgMainWorkspace = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             rpgMainDiary = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            rpgMainCart = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             rpMainApplication = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             rpMainView = new DevExpress.XtraBars.Ribbon.RibbonPage();
             ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            rpMainImageToOCR = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            rpgMainImageToOCR = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             replueWorkspaceSelect = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             popupMenu1 = new DevExpress.XtraBars.PopupMenu(components);
             mdimngMain = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(components);
-            bbiMainCart = new DevExpress.XtraBars.BarButtonItem();
-            rpgMainCart = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ((System.ComponentModel.ISupportInitialize)rcMainMenu).BeginInit();
             ((System.ComponentModel.ISupportInitialize)applicationMenu1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)repslueWorkspaceSelect).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)repsluMainWorkspaceSelect).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repgrdvWorkspaceSelect).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemButtonEdit1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)repositoryItemRadioGroup1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)repradMainWorkspaceFillter).BeginInit();
             ((System.ComponentModel.ISupportInitialize)replueWorkspaceSelect).BeginInit();
             ((System.ComponentModel.ISupportInitialize)popupMenu1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)mdimngMain).BeginInit();
@@ -105,29 +108,29 @@
             rcMainMenu.CaptionBarItemLinks.Add(barbtnSettings);
             rcMainMenu.EmptyAreaImageOptions.ImagePadding = new Padding(30, 28, 30, 28);
             rcMainMenu.ExpandCollapseItem.Id = 0;
-            rcMainMenu.Items.AddRange(new DevExpress.XtraBars.BarItem[] { barbtnSettings, rcMainMenu.ExpandCollapseItem, baredtWorkspaceSelect, baredtWorkspaceFolder, baredtWorkspaceFillter, barchkWorkspaceCurrentOnly, barbtnFarmManagement, barStaticItem1, barStaticItem2, barbtnScanner, barButtonItem3, barButtonItem4, barButtonItem5, barButtonItem6, barButtonItem7, barButtonItem8, barButtonItem9, barButtonItem10, skinRibbonGalleryBarItem1, skinPaletteRibbonGalleryBarItem1, barWorkspaceMenuItem1, barMdiChildrenListItem1, bbiTestForm, bbiMainCart });
+            rcMainMenu.Items.AddRange(new DevExpress.XtraBars.BarItem[] { barbtnSettings, rcMainMenu.ExpandCollapseItem, baredtMainWorkspaceSelect, baredtMainWorkspaceFolder, baredtMainWorkspaceFillter, barchkMainWorkspaceCurrentOnly, barbtnFarmManagement, barStaticItem1, barStaticItem2, barbtnMainImageToOCR, barbtnMainAppend_FarmingDiary, barbtnMainReport_FarmingDiary, barbtnMainList_FarmingDiary, barbtnMainExport_FarmingDiary, barButtonItem7, barButtonItem8, barButtonItem9, barButtonItem10, skinRibbonGalleryBarItem1, skinPaletteRibbonGalleryBarItem1, barWorkspaceMenuItem1, barMdiChildrenListItem1, bbiTestForm, bbiMainCart, barbtnDiarySampleFolder });
             rcMainMenu.Location = new Point(0, 0);
-            rcMainMenu.MaxItemId = 30;
+            rcMainMenu.MaxItemId = 31;
             rcMainMenu.Name = "rcMainMenu";
-            rcMainMenu.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { rpMainHome, rpMainApplication, rpMainView });
-            rcMainMenu.QuickToolbarItemLinks.Add(barbtnScanner);
-            rcMainMenu.QuickToolbarItemLinks.Add(barButtonItem3);
-            rcMainMenu.QuickToolbarItemLinks.Add(barButtonItem5);
-            rcMainMenu.QuickToolbarItemLinks.Add(baredtWorkspaceSelect);
-            rcMainMenu.QuickToolbarItemLinks.Add(barchkWorkspaceCurrentOnly);
-            rcMainMenu.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { replueWorkspaceSelect, repositoryItemButtonEdit1, repositoryItemRadioGroup1, repslueWorkspaceSelect });
-            rcMainMenu.Size = new Size(1341, 162);
+            rcMainMenu.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { rpMainHome, rpMainApplication, rpMainView, rpMainImageToOCR });
+            rcMainMenu.QuickToolbarItemLinks.Add(barbtnMainImageToOCR);
+            rcMainMenu.QuickToolbarItemLinks.Add(barbtnMainAppend_FarmingDiary);
+            rcMainMenu.QuickToolbarItemLinks.Add(barbtnMainList_FarmingDiary);
+            rcMainMenu.QuickToolbarItemLinks.Add(baredtMainWorkspaceSelect);
+            rcMainMenu.QuickToolbarItemLinks.Add(barchkMainWorkspaceCurrentOnly);
+            rcMainMenu.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { replueWorkspaceSelect, repositoryItemButtonEdit1, repradMainWorkspaceFillter, repsluMainWorkspaceSelect });
+            rcMainMenu.Size = new Size(1252, 162);
             rcMainMenu.StatusBar = ribbonStatusBar;
             rcMainMenu.Click += rcMainMenu_Click;
             // 
             // applicationMenu1
             // 
             applicationMenu1.ItemLinks.Add(barbtnFarmManagement);
-            applicationMenu1.ItemLinks.Add(barbtnScanner);
-            applicationMenu1.ItemLinks.Add(barButtonItem5);
-            applicationMenu1.ItemLinks.Add(barButtonItem3);
-            applicationMenu1.ItemLinks.Add(barButtonItem4);
-            applicationMenu1.ItemLinks.Add(barButtonItem6);
+            applicationMenu1.ItemLinks.Add(barbtnMainImageToOCR);
+            applicationMenu1.ItemLinks.Add(barbtnMainList_FarmingDiary);
+            applicationMenu1.ItemLinks.Add(barbtnMainAppend_FarmingDiary);
+            applicationMenu1.ItemLinks.Add(barbtnMainReport_FarmingDiary);
+            applicationMenu1.ItemLinks.Add(barbtnMainExport_FarmingDiary);
             applicationMenu1.ItemLinks.Add(barbtnSettings);
             applicationMenu1.ItemLinks.Add(barButtonItem9);
             applicationMenu1.ItemLinks.Add(barButtonItem7);
@@ -142,41 +145,43 @@
             barbtnFarmManagement.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barbtnFarmManagement.ImageOptions.SvgImage");
             barbtnFarmManagement.Name = "barbtnFarmManagement";
             // 
-            // barbtnScanner
+            // barbtnMainImageToOCR
             // 
-            barbtnScanner.Caption = "Scan To Image";
-            barbtnScanner.Id = 10;
-            barbtnScanner.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barbtnScanner.ImageOptions.SvgImage");
-            barbtnScanner.Name = "barbtnScanner";
-            barbtnScanner.ItemClick += barbtnScanner_ItemClick;
+            barbtnMainImageToOCR.Caption = "Image To OCR";
+            barbtnMainImageToOCR.Id = 10;
+            barbtnMainImageToOCR.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barbtnMainImageToOCR.ImageOptions.SvgImage");
+            barbtnMainImageToOCR.Name = "barbtnMainImageToOCR";
+            barbtnMainImageToOCR.ItemClick += barbtnScanner_ItemClick;
             // 
-            // barButtonItem5
+            // barbtnMainList_FarmingDiary
             // 
-            barButtonItem5.Caption = "Search\r\n(View)";
-            barButtonItem5.Id = 13;
-            barButtonItem5.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItem5.ImageOptions.SvgImage");
-            barButtonItem5.Name = "barButtonItem5";
+            barbtnMainList_FarmingDiary.Caption = "Search\r\n(List)";
+            barbtnMainList_FarmingDiary.Id = 13;
+            barbtnMainList_FarmingDiary.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barbtnMainList_FarmingDiary.ImageOptions.SvgImage");
+            barbtnMainList_FarmingDiary.Name = "barbtnMainList_FarmingDiary";
             // 
-            // barButtonItem3
+            // barbtnMainAppend_FarmingDiary
             // 
-            barButtonItem3.Caption = "Registration\r\n(Append)";
-            barButtonItem3.Id = 11;
-            barButtonItem3.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItem3.ImageOptions.SvgImage");
-            barButtonItem3.Name = "barButtonItem3";
+            barbtnMainAppend_FarmingDiary.Caption = "Registration\r\n(Append)";
+            barbtnMainAppend_FarmingDiary.Id = 11;
+            barbtnMainAppend_FarmingDiary.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barbtnMainAppend_FarmingDiary.ImageOptions.SvgImage");
+            barbtnMainAppend_FarmingDiary.Name = "barbtnMainAppend_FarmingDiary";
             // 
-            // barButtonItem4
+            // barbtnMainReport_FarmingDiary
             // 
-            barButtonItem4.Caption = "Report";
-            barButtonItem4.Id = 12;
-            barButtonItem4.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItem4.ImageOptions.SvgImage");
-            barButtonItem4.Name = "barButtonItem4";
+            barbtnMainReport_FarmingDiary.Caption = "Report";
+            barbtnMainReport_FarmingDiary.Id = 12;
+            barbtnMainReport_FarmingDiary.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barbtnMainReport_FarmingDiary.ImageOptions.SvgImage");
+            barbtnMainReport_FarmingDiary.Name = "barbtnMainReport_FarmingDiary";
+            barbtnMainReport_FarmingDiary.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
-            // barButtonItem6
+            // barbtnMainExport_FarmingDiary
             // 
-            barButtonItem6.Caption = "Export";
-            barButtonItem6.Id = 14;
-            barButtonItem6.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItem6.ImageOptions.SvgImage");
-            barButtonItem6.Name = "barButtonItem6";
+            barbtnMainExport_FarmingDiary.Caption = "Export";
+            barbtnMainExport_FarmingDiary.Id = 14;
+            barbtnMainExport_FarmingDiary.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barbtnMainExport_FarmingDiary.ImageOptions.SvgImage");
+            barbtnMainExport_FarmingDiary.Name = "barbtnMainExport_FarmingDiary";
+            barbtnMainExport_FarmingDiary.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
             // barbtnSettings
             // 
@@ -206,24 +211,24 @@
             barButtonItem10.ImageOptions.SvgImage = Properties.Resources.SignOut;
             barButtonItem10.Name = "barButtonItem10";
             // 
-            // baredtWorkspaceSelect
+            // baredtMainWorkspaceSelect
             // 
-            baredtWorkspaceSelect.Caption = "Selecte Farm : ";
-            baredtWorkspaceSelect.Edit = repslueWorkspaceSelect;
-            baredtWorkspaceSelect.EditWidth = 248;
-            baredtWorkspaceSelect.Id = 1;
-            baredtWorkspaceSelect.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("baredtWorkspaceSelect.ImageOptions.SvgImage");
-            baredtWorkspaceSelect.Name = "baredtWorkspaceSelect";
-            baredtWorkspaceSelect.Tag = "{{#WORK_FARM}}";
+            baredtMainWorkspaceSelect.Caption = "Select : ";
+            baredtMainWorkspaceSelect.Edit = repsluMainWorkspaceSelect;
+            baredtMainWorkspaceSelect.EditWidth = 255;
+            baredtMainWorkspaceSelect.Id = 1;
+            baredtMainWorkspaceSelect.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("baredtMainWorkspaceSelect.ImageOptions.SvgImage");
+            baredtMainWorkspaceSelect.Name = "baredtMainWorkspaceSelect";
+            baredtMainWorkspaceSelect.Tag = "{{#WORK_FARM}}";
             // 
-            // repslueWorkspaceSelect
+            // repsluMainWorkspaceSelect
             // 
-            repslueWorkspaceSelect.AutoHeight = false;
-            editorButtonImageOptions5.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("editorButtonImageOptions5.SvgImage");
-            editorButtonImageOptions5.SvgImageSize = new Size(12, 12);
-            repslueWorkspaceSelect.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions5, new DevExpress.Utils.KeyShortcut(Keys.None), serializableAppearanceObject17, serializableAppearanceObject18, serializableAppearanceObject19, serializableAppearanceObject20, "", null, null, DevExpress.Utils.ToolTipAnchor.Default) });
-            repslueWorkspaceSelect.Name = "repslueWorkspaceSelect";
-            repslueWorkspaceSelect.PopupView = repgrdvWorkspaceSelect;
+            repsluMainWorkspaceSelect.AutoHeight = false;
+            editorButtonImageOptions1.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("editorButtonImageOptions1.SvgImage");
+            editorButtonImageOptions1.SvgImageSize = new Size(12, 12);
+            repsluMainWorkspaceSelect.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default) });
+            repsluMainWorkspaceSelect.Name = "repsluMainWorkspaceSelect";
+            repsluMainWorkspaceSelect.PopupView = repgrdvWorkspaceSelect;
             // 
             // repgrdvWorkspaceSelect
             // 
@@ -232,14 +237,15 @@
             repgrdvWorkspaceSelect.OptionsSelection.EnableAppearanceFocusedCell = false;
             repgrdvWorkspaceSelect.OptionsView.ShowGroupPanel = false;
             // 
-            // baredtWorkspaceFolder
+            // baredtMainWorkspaceFolder
             // 
-            baredtWorkspaceFolder.Caption = "Save folder : ";
-            baredtWorkspaceFolder.Edit = repositoryItemButtonEdit1;
-            baredtWorkspaceFolder.EditWidth = 255;
-            baredtWorkspaceFolder.Id = 3;
-            baredtWorkspaceFolder.ImageOptions.SvgImage = Properties.Resources.FolderFill;
-            baredtWorkspaceFolder.Name = "baredtWorkspaceFolder";
+            baredtMainWorkspaceFolder.Caption = "Save folder : ";
+            baredtMainWorkspaceFolder.Edit = repositoryItemButtonEdit1;
+            baredtMainWorkspaceFolder.EditWidth = 228;
+            baredtMainWorkspaceFolder.Id = 3;
+            baredtMainWorkspaceFolder.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("baredtMainWorkspaceFolder.ImageOptions.SvgImage");
+            baredtMainWorkspaceFolder.Name = "baredtMainWorkspaceFolder";
+            baredtMainWorkspaceFolder.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
             // repositoryItemButtonEdit1
             // 
@@ -247,28 +253,30 @@
             repositoryItemButtonEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(), new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search) });
             repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
             // 
-            // baredtWorkspaceFillter
+            // baredtMainWorkspaceFillter
             // 
-            baredtWorkspaceFillter.Caption = "   Farm Filter : ";
-            baredtWorkspaceFillter.Edit = repositoryItemRadioGroup1;
-            baredtWorkspaceFillter.EditWidth = 248;
-            baredtWorkspaceFillter.Id = 4;
-            baredtWorkspaceFillter.ImageOptions.SvgImage = Properties.Resources.Filter;
-            baredtWorkspaceFillter.Name = "baredtWorkspaceFillter";
-            baredtWorkspaceFillter.Tag = "       {{#MENU_FILTER}} : ";
+            baredtMainWorkspaceFillter.Caption = "Filter ";
+            baredtMainWorkspaceFillter.Edit = repradMainWorkspaceFillter;
+            baredtMainWorkspaceFillter.EditWidth = 270;
+            baredtMainWorkspaceFillter.Id = 4;
+            baredtMainWorkspaceFillter.ImageOptions.SvgImage = Properties.Resources.Filter;
+            baredtMainWorkspaceFillter.Name = "baredtMainWorkspaceFillter";
+            baredtMainWorkspaceFillter.Tag = "       {{#MENU_FILTER}} : ";
+            baredtMainWorkspaceFillter.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
-            // repositoryItemRadioGroup1
+            // repradMainWorkspaceFillter
             // 
-            repositoryItemRadioGroup1.Columns = 3;
-            repositoryItemRadioGroup1.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] { new DevExpress.XtraEditors.Controls.RadioGroupItem("ALL", "All"), new DevExpress.XtraEditors.Controls.RadioGroupItem("Y", "Operating"), new DevExpress.XtraEditors.Controls.RadioGroupItem("S", "Completed") });
-            repositoryItemRadioGroup1.Name = "repositoryItemRadioGroup1";
+            repradMainWorkspaceFillter.Columns = 3;
+            repradMainWorkspaceFillter.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] { new DevExpress.XtraEditors.Controls.RadioGroupItem("ALL", "All"), new DevExpress.XtraEditors.Controls.RadioGroupItem("Y", "Operating"), new DevExpress.XtraEditors.Controls.RadioGroupItem("S", "Completed") });
+            repradMainWorkspaceFillter.Name = "repradMainWorkspaceFillter";
             // 
-            // barchkWorkspaceCurrentOnly
+            // barchkMainWorkspaceCurrentOnly
             // 
-            barchkWorkspaceCurrentOnly.Caption = "Selected Farms Only";
-            barchkWorkspaceCurrentOnly.Id = 6;
-            barchkWorkspaceCurrentOnly.ImageOptions.SvgImage = Properties.Resources.PresenceChicklet;
-            barchkWorkspaceCurrentOnly.Name = "barchkWorkspaceCurrentOnly";
+            barchkMainWorkspaceCurrentOnly.Caption = "Selected Farms Only";
+            barchkMainWorkspaceCurrentOnly.Id = 6;
+            barchkMainWorkspaceCurrentOnly.ImageOptions.SvgImage = Properties.Resources.PresenceChicklet;
+            barchkMainWorkspaceCurrentOnly.Name = "barchkMainWorkspaceCurrentOnly";
+            barchkMainWorkspaceCurrentOnly.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
             // barStaticItem1
             // 
@@ -318,7 +326,7 @@
             // workspaceManager1
             // 
             workspaceManager1.TargetControl = this;
-            workspaceManager1.TransitionType = pushTransition2;
+            workspaceManager1.TransitionType = pushTransition1;
             // 
             // barMdiChildrenListItem1
             // 
@@ -333,36 +341,59 @@
             bbiTestForm.Name = "bbiTestForm";
             bbiTestForm.ItemClick += bbiTestForm_ItemClick;
             // 
+            // bbiMainCart
+            // 
+            bbiMainCart.Caption = "Cart";
+            bbiMainCart.Id = 29;
+            bbiMainCart.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("bbiMainCart.ImageOptions.SvgImage");
+            bbiMainCart.Name = "bbiMainCart";
+            bbiMainCart.ItemClick += bbiMainCart_ItemClick;
+            // 
+            // barbtnDiarySampleFolder
+            // 
+            barbtnDiarySampleFolder.Caption = "Farming Diary\r\n(Sample Folder)";
+            barbtnDiarySampleFolder.Id = 30;
+            barbtnDiarySampleFolder.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barbtnDiarySampleFolder.ImageOptions.SvgImage");
+            barbtnDiarySampleFolder.Name = "barbtnDiarySampleFolder";
+            barbtnDiarySampleFolder.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            // 
             // rpMainHome
             // 
-            rpMainHome.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { rpgMainDiary, rpgMainCart });
+            rpMainHome.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { rpgMainWorkspace, rpgMainDiary, rpgMainCart });
             rpMainHome.Name = "rpMainHome";
             rpMainHome.Text = "Home";
             // 
+            // rpgMainWorkspace
+            // 
+            rpgMainWorkspace.ItemLinks.Add(baredtMainWorkspaceSelect);
+            rpgMainWorkspace.ItemLinks.Add(baredtMainWorkspaceFillter);
+            rpgMainWorkspace.ItemLinks.Add(baredtMainWorkspaceFolder);
+            rpgMainWorkspace.Name = "rpgMainWorkspace";
+            rpgMainWorkspace.Text = "Workspace (Farm)";
+            // 
             // rpgMainDiary
             // 
-            rpgMainDiary.ItemLinks.Add(barbtnScanner);
-            rpgMainDiary.ItemLinks.Add(barButtonItem3, true);
-            rpgMainDiary.ItemLinks.Add(barButtonItem5);
-            rpgMainDiary.ItemLinks.Add(barButtonItem4);
-            rpgMainDiary.ItemLinks.Add(barButtonItem6);
+            rpgMainDiary.ItemLinks.Add(barbtnMainImageToOCR);
+            rpgMainDiary.ItemLinks.Add(barbtnMainAppend_FarmingDiary, true);
+            rpgMainDiary.ItemLinks.Add(barbtnMainList_FarmingDiary);
+            rpgMainDiary.ItemLinks.Add(barbtnMainReport_FarmingDiary);
+            rpgMainDiary.ItemLinks.Add(barbtnMainExport_FarmingDiary);
             rpgMainDiary.Name = "rpgMainDiary";
             rpgMainDiary.Text = "Farming Diary(Journal)";
             // 
+            // rpgMainCart
+            // 
+            rpgMainCart.ItemLinks.Add(barchkMainWorkspaceCurrentOnly);
+            rpgMainCart.ItemLinks.Add(bbiMainCart);
+            rpgMainCart.Name = "rpgMainCart";
+            rpgMainCart.Text = "Cart / Images";
+            rpgMainCart.Visible = false;
+            // 
             // rpMainApplication
             // 
-            rpMainApplication.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroup1, ribbonPageGroup2, ribbonPageGroup7, ribbonPageGroup4 });
+            rpMainApplication.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroup2, ribbonPageGroup7, ribbonPageGroup4 });
             rpMainApplication.Name = "rpMainApplication";
             rpMainApplication.Text = "Application";
-            // 
-            // ribbonPageGroup1
-            // 
-            ribbonPageGroup1.ItemLinks.Add(baredtWorkspaceSelect);
-            ribbonPageGroup1.ItemLinks.Add(baredtWorkspaceFillter);
-            ribbonPageGroup1.ItemLinks.Add(baredtWorkspaceFolder);
-            ribbonPageGroup1.ItemLinks.Add(barchkWorkspaceCurrentOnly);
-            ribbonPageGroup1.Name = "ribbonPageGroup1";
-            ribbonPageGroup1.Text = "Workspace (Farm)";
             // 
             // ribbonPageGroup2
             // 
@@ -384,25 +415,26 @@
             // ribbonPageGroup4
             // 
             ribbonPageGroup4.ItemLinks.Add(bbiTestForm);
+            ribbonPageGroup4.ItemLinks.Add(barbtnDiarySampleFolder);
             ribbonPageGroup4.Name = "ribbonPageGroup4";
-            ribbonPageGroup4.Text = "Debug / Test";
+            ribbonPageGroup4.Text = "Test & Folders";
             // 
             // rpMainView
             // 
             rpMainView.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroup5, ribbonPageGroup6 });
             rpMainView.Name = "rpMainView";
-            reduceOperation7.Behavior = DevExpress.XtraBars.Ribbon.ReduceOperationBehavior.Single;
-            reduceOperation7.GroupName = null;
-            reduceOperation7.ItemLinkIndex = 0;
-            reduceOperation7.ItemLinksCount = 0;
-            reduceOperation7.Operation = DevExpress.XtraBars.Ribbon.ReduceOperationType.Gallery;
-            reduceOperation8.Behavior = DevExpress.XtraBars.Ribbon.ReduceOperationBehavior.Single;
-            reduceOperation8.GroupName = null;
-            reduceOperation8.ItemLinkIndex = 0;
-            reduceOperation8.ItemLinksCount = 0;
-            reduceOperation8.Operation = DevExpress.XtraBars.Ribbon.ReduceOperationType.ButtonGroups;
-            rpMainView.ReduceOperations.Add(reduceOperation7);
-            rpMainView.ReduceOperations.Add(reduceOperation8);
+            reduceOperation1.Behavior = DevExpress.XtraBars.Ribbon.ReduceOperationBehavior.Single;
+            reduceOperation1.GroupName = null;
+            reduceOperation1.ItemLinkIndex = 0;
+            reduceOperation1.ItemLinksCount = 0;
+            reduceOperation1.Operation = DevExpress.XtraBars.Ribbon.ReduceOperationType.Gallery;
+            reduceOperation2.Behavior = DevExpress.XtraBars.Ribbon.ReduceOperationBehavior.Single;
+            reduceOperation2.GroupName = null;
+            reduceOperation2.ItemLinkIndex = 0;
+            reduceOperation2.ItemLinksCount = 0;
+            reduceOperation2.Operation = DevExpress.XtraBars.Ribbon.ReduceOperationType.ButtonGroups;
+            rpMainView.ReduceOperations.Add(reduceOperation1);
+            rpMainView.ReduceOperations.Add(reduceOperation2);
             rpMainView.Text = "View";
             // 
             // ribbonPageGroup5
@@ -419,27 +451,41 @@
             ribbonPageGroup6.Name = "ribbonPageGroup6";
             ribbonPageGroup6.Text = "Skin / Thema";
             // 
+            // rpMainImageToOCR
+            // 
+            rpMainImageToOCR.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { rpgMainImageToOCR });
+            rpMainImageToOCR.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("rpMainImageToOCR.ImageOptions.SvgImage");
+            rpMainImageToOCR.ImageOptions.SvgImageSize = new Size(12, 12);
+            rpMainImageToOCR.Name = "rpMainImageToOCR";
+            rpMainImageToOCR.Text = "Image To OCR";
+            // 
+            // rpgMainImageToOCR
+            // 
+            rpgMainImageToOCR.ItemLinks.Add(barbtnMainImageToOCR);
+            rpgMainImageToOCR.Name = "rpgMainImageToOCR";
+            rpgMainImageToOCR.Text = "Image to OCR";
+            // 
             // replueWorkspaceSelect
             // 
             replueWorkspaceSelect.AutoHeight = false;
-            editorButtonImageOptions4.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("editorButtonImageOptions4.SvgImage");
-            editorButtonImageOptions4.SvgImageSize = new Size(12, 12);
-            replueWorkspaceSelect.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", null, null, DevExpress.Utils.ToolTipAnchor.Default) });
+            editorButtonImageOptions2.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("editorButtonImageOptions2.SvgImage");
+            editorButtonImageOptions2.SvgImageSize = new Size(12, 12);
+            replueWorkspaceSelect.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default) });
             replueWorkspaceSelect.Name = "replueWorkspaceSelect";
             // 
             // ribbonStatusBar
             // 
             ribbonStatusBar.ItemLinks.Add(barStaticItem2);
             ribbonStatusBar.ItemLinks.Add(barStaticItem1);
-            ribbonStatusBar.Location = new Point(0, 560);
+            ribbonStatusBar.Location = new Point(0, 694);
             ribbonStatusBar.Name = "ribbonStatusBar";
             ribbonStatusBar.Ribbon = rcMainMenu;
-            ribbonStatusBar.Size = new Size(1341, 22);
+            ribbonStatusBar.Size = new Size(1252, 22);
             // 
             // popupMenu1
             // 
-            popupMenu1.ItemLinks.Add(barButtonItem3);
-            popupMenu1.ItemLinks.Add(barButtonItem5);
+            popupMenu1.ItemLinks.Add(barbtnMainAppend_FarmingDiary);
+            popupMenu1.ItemLinks.Add(barbtnMainList_FarmingDiary);
             popupMenu1.Name = "popupMenu1";
             popupMenu1.Ribbon = rcMainMenu;
             // 
@@ -447,27 +493,12 @@
             // 
             mdimngMain.MdiParent = this;
             // 
-            // bbiMainCart
-            // 
-            bbiMainCart.Caption = "Cart";
-            bbiMainCart.Id = 29;
-            bbiMainCart.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItem1.ImageOptions.SvgImage");
-            bbiMainCart.Name = "bbiMainCart";
-            bbiMainCart.ItemClick += bbiMainCart_ItemClick;
-            // 
-            // rpgMainCart
-            // 
-            rpgMainCart.ItemLinks.Add(bbiMainCart);
-            rpgMainCart.Name = "rpgMainCart";
-            rpgMainCart.Text = "Cart / Images";
-            rpgMainCart.Visible = false;
-            // 
             // UbMainForm
             // 
             Appearance.Options.UseFont = true;
             AutoScaleDimensions = new SizeF(7F, 14F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1341, 582);
+            ClientSize = new Size(1252, 716);
             Controls.Add(ribbonStatusBar);
             Controls.Add(rcMainMenu);
             IconOptions.Image = (Image)resources.GetObject("UbMainForm.IconOptions.Image");
@@ -479,10 +510,10 @@
             Load += UbMainForm_Load;
             ((System.ComponentModel.ISupportInitialize)rcMainMenu).EndInit();
             ((System.ComponentModel.ISupportInitialize)applicationMenu1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)repslueWorkspaceSelect).EndInit();
+            ((System.ComponentModel.ISupportInitialize)repsluMainWorkspaceSelect).EndInit();
             ((System.ComponentModel.ISupportInitialize)repgrdvWorkspaceSelect).EndInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemButtonEdit1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)repositoryItemRadioGroup1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)repradMainWorkspaceFillter).EndInit();
             ((System.ComponentModel.ISupportInitialize)replueWorkspaceSelect).EndInit();
             ((System.ComponentModel.ISupportInitialize)popupMenu1).EndInit();
             ((System.ComponentModel.ISupportInitialize)mdimngMain).EndInit();
@@ -492,26 +523,26 @@
 
         #endregion
         private DevExpress.XtraBars.Ribbon.RibbonPage rpMainHome;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgMainWorkspace;
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
-        private DevExpress.XtraBars.BarEditItem baredtWorkspaceSelect;
+        private DevExpress.XtraBars.BarEditItem baredtMainWorkspaceSelect;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit replueWorkspaceSelect;
         private DevExpress.XtraBars.BarButtonItem barbtnSettings;
-        private DevExpress.XtraBars.BarEditItem baredtWorkspaceFolder;
+        private DevExpress.XtraBars.BarEditItem baredtMainWorkspaceFolder;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
-        private DevExpress.XtraBars.BarEditItem baredtWorkspaceFillter;
-        private DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup repositoryItemRadioGroup1;
-        private DevExpress.XtraBars.BarCheckItem barchkWorkspaceCurrentOnly;
+        private DevExpress.XtraBars.BarEditItem baredtMainWorkspaceFillter;
+        private DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup repradMainWorkspaceFillter;
+        private DevExpress.XtraBars.BarCheckItem barchkMainWorkspaceCurrentOnly;
         private DevExpress.XtraBars.BarButtonItem barbtnFarmManagement;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraBars.BarStaticItem barStaticItem1;
         private DevExpress.XtraBars.BarStaticItem barStaticItem2;
-        private DevExpress.XtraBars.BarButtonItem barbtnScanner;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
+        private DevExpress.XtraBars.BarButtonItem barbtnMainImageToOCR;
+        private DevExpress.XtraBars.BarButtonItem barbtnMainAppend_FarmingDiary;
+        private DevExpress.XtraBars.BarButtonItem barbtnMainReport_FarmingDiary;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgMainDiary;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
+        private DevExpress.XtraBars.BarButtonItem barbtnMainList_FarmingDiary;
+        private DevExpress.XtraBars.BarButtonItem barbtnMainExport_FarmingDiary;
         private DevExpress.XtraBars.PopupMenu popupMenu1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem7;
         private DevExpress.XtraBars.BarButtonItem barButtonItem8;
@@ -532,9 +563,12 @@
         private DevExpress.XtraBars.Ribbon.ApplicationMenu applicationMenu1;
         private DevExpress.XtraBars.BarButtonItem bbiTestForm;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
-        private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repslueWorkspaceSelect;
+        private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repsluMainWorkspaceSelect;
         private DevExpress.XtraGrid.Views.Grid.GridView repgrdvWorkspaceSelect;
         private DevExpress.XtraBars.BarButtonItem bbiMainCart;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgMainCart;
+        private DevExpress.XtraBars.Ribbon.RibbonPage rpMainImageToOCR;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgMainImageToOCR;
+        private DevExpress.XtraBars.BarButtonItem barbtnDiarySampleFolder;
     }
 }

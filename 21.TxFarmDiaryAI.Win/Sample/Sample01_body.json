@@ -1,0 +1,15 @@
+{
+  "images": [
+    {
+      "format": "png",
+      "name": "sample01",
+      "data": null,
+      "url": "http://fd.typesw.com/sample/sample01.png"
+    }
+  ],
+  "lang": "ko",
+  "requestId": "string",
+  "resultType": "string",
+  "timestamp": "{{$timestamp}}", //"timestamp": {{$timestamp}}
+  "version": "V1"
+}

@@ -1,30 +1,44 @@
-﻿using DevExpress.CodeParser;
+﻿using Amazon.Runtime.Internal.Transform;
+using DevExpress.CodeParser;
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
+using DevExpress.XtraSpellChecker;
 using HxCore;
 using HxCore.Win;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
+using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace TxFarmDiaryAI.Win
 {
     internal static class SysEnv
     {
+#if DEBUG
+        internal static readonly string _HOME_URL_FarmDiary_ = @"http://localhost:5000";
+#else
+        internal static readonly string _HOME_URL_FarmDiary_ = @"http://jhpark0406:5000";
+#endif
+        internal static readonly string _API_URL_FarmDiary_ = _HOME_URL_FarmDiary_ + "/api";
+        internal static readonly string _API_URL_NaverOCR_Custom_ = @"https://cugmmfu019.apigw.ntruss.com/custom/v1/46311/28645cc31f95289c0bc759520d489043a6ab9ebe045360e6b66c84f1e0165503/infer";
+
         internal static bool IsLoadEnvironment { get; private set; } = false;
         /// <summary>
         /// 로그인 여부?
         /// </summary>
         public static bool IsLogined { get; internal set; } = false;
+        public static decimal? LoginUserSNO { get; internal set; } = null;
 
         public static CloseReason ApplicationCloseType { get; internal set; } = CloseReason.None;
 
@@ -90,8 +104,130 @@ namespace TxFarmDiaryAI.Win
         }
         internal static string GetAppBaseDir(bool bEndDirSeparatorChar = true)
         {
-            string Result = GetAppFullName(); //HxUtils.AppBaseDir;
+            string Result = HxUtils.GetAppBaseDir(); //HxUtils.AppBaseDir;
             if (bEndDirSeparatorChar == true)
+            {
+                if (Result.IsNullOrWhiteSpaceEx())
+                {
+                    Result = @"." + _DIR_PATH_CHAR_;
+                    Result = Path.GetFullPath(Result);
+                }
+                else if (!Result.IsNullOrWhiteSpaceEx() && !Result.EndsWith(_DIR_PATH_CHAR_.ToString()))
+                {
+                    Result += _DIR_PATH_CHAR_;
+                }
+            }
+            return Result;
+        }
+        internal static string GetAppWorkDir(bool isEndDirSeparatorChar = true, bool isNotExistToCreate = true)
+        {
+            string Result = Path.Combine("C:", "TypeSW", "Programs", "FarmDiary");
+            if (isEndDirSeparatorChar == true)
+            {
+                if (Result.IsNullOrWhiteSpaceEx())
+                {
+                    Result = @"." + _DIR_PATH_CHAR_;
+                    Result = Path.GetFullPath(Result);
+                }
+                else if (!Result.IsNullOrWhiteSpaceEx() && !Result.EndsWith(_DIR_PATH_CHAR_.ToString()))
+                {
+                    Result += _DIR_PATH_CHAR_;
+                }
+            }
+            if(Result.IsNullOrWhiteSpaceEx() != true && isNotExistToCreate == true && HxFile.IsDirectoryExists(Result) != true)
+            {
+                HxFile.DirectoryCreate(Result);
+            }
+            return Result;
+        }
+        internal static string GetAppTempDir(bool isEndDirSeparatorChar = true, bool isNotExistToCreate = true)
+        {
+            string Result = Path.Combine(GetAppWorkDir(false), Defs._TEMP_DIR_NAME_);
+            if (isEndDirSeparatorChar == true)
+            {
+                if (Result.IsNullOrWhiteSpaceEx())
+                {
+                    Result = @"." + _DIR_PATH_CHAR_;
+                    Result = Path.GetFullPath(Result);
+                }
+                else if (!Result.IsNullOrWhiteSpaceEx() && !Result.EndsWith(_DIR_PATH_CHAR_.ToString()))
+                {
+                    Result += _DIR_PATH_CHAR_;
+                }
+            }
+            if (Result.IsNullOrWhiteSpaceEx() != true && isNotExistToCreate == true && HxFile.IsDirectoryExists(Result) != true)
+            {
+                HxFile.DirectoryCreate(Result);
+            }
+            return Result;
+        }
+        internal static string GetAppOutputDir(bool isEndDirSeparatorChar = true, bool isNotExistToCreate = true)
+        {
+            string Result = Path.Combine(GetAppWorkDir(false), Defs._OUTPUT_DIR_NAME_);
+            if (isEndDirSeparatorChar == true)
+            {
+                if (Result.IsNullOrWhiteSpaceEx())
+                {
+                    Result = @"." + _DIR_PATH_CHAR_;
+                    Result = Path.GetFullPath(Result);
+                }
+                else if (!Result.IsNullOrWhiteSpaceEx() && !Result.EndsWith(_DIR_PATH_CHAR_.ToString()))
+                {
+                    Result += _DIR_PATH_CHAR_;
+                }
+            }
+            if (Result.IsNullOrWhiteSpaceEx() != true && isNotExistToCreate == true && HxFile.IsDirectoryExists(Result) != true)
+            {
+                HxFile.DirectoryCreate(Result);
+            }
+            return Result;
+        }
+        internal static string GetAppDownloadDir(bool isEndDirSeparatorChar = true, bool isNotExistToCreate = true)
+        {
+            string Result = Path.Combine(GetAppWorkDir(false), Defs._DOWNLOAD_DIR_NAME_);
+            if (isEndDirSeparatorChar == true)
+            {
+                if (Result.IsNullOrWhiteSpaceEx())
+                {
+                    Result = @"." + _DIR_PATH_CHAR_;
+                    Result = Path.GetFullPath(Result);
+                }
+                else if (!Result.IsNullOrWhiteSpaceEx() && !Result.EndsWith(_DIR_PATH_CHAR_.ToString()))
+                {
+                    Result += _DIR_PATH_CHAR_;
+                }
+            }
+            if (Result.IsNullOrWhiteSpaceEx() != true && isNotExistToCreate == true && HxFile.IsDirectoryExists(Result) != true)
+            {
+                HxFile.DirectoryCreate(Result);
+            }
+            return Result;
+        }
+        internal static string GetAppLogDir(bool isEndDirSeparatorChar = true, bool isNotExistToCreate = true)
+        {
+            string Result = Path.Combine(GetAppWorkDir(false), Defs._LOG_DIR_NAME_);
+            if (isEndDirSeparatorChar == true)
+            {
+                if (Result.IsNullOrWhiteSpaceEx())
+                {
+                    Result = @"." + _DIR_PATH_CHAR_;
+                    Result = Path.GetFullPath(Result);
+                }
+                else if (!Result.IsNullOrWhiteSpaceEx() && !Result.EndsWith(_DIR_PATH_CHAR_.ToString()))
+                {
+                    Result += _DIR_PATH_CHAR_;
+                }
+            }
+            if (Result.IsNullOrWhiteSpaceEx() != true && isNotExistToCreate == true && HxFile.IsDirectoryExists(Result) != true)
+            {
+                HxFile.DirectoryCreate(Result);
+            }
+            return Result;
+        }
+        internal static string GetAppSampleDir(bool isEndDirSeparatorChar = true)
+        {
+            string Result = Path.Combine(GetAppBaseDir(false), Defs._SAMPLE_DIR_NAME_);
+            if (isEndDirSeparatorChar == true)
             {
                 if (Result.IsNullOrWhiteSpaceEx())
                 {
@@ -132,7 +268,7 @@ namespace TxFarmDiaryAI.Win
 
         private static readonly string _APP_CREATOR_ = "Ju-hyun, Park";
         public const int _APP_COPYRIGHT_START_YEAR_ = 2025;
-        private const string _TAG_RESOURCE_TPL_PATTERN_ = SbDefs._TAG_RESOURCE_TPL_PATTERN_;
+        private const string _TAG_RESOURCE_TPL_PATTERN_ = SbDefs._TPL_RESOURCE_TAG_PATTERN_;
         public static string _APP_COPYRIGHT_CAPTION_ = AppCopyrightCaption;
 
         public static string AppCopyrightCaption
@@ -184,8 +320,8 @@ namespace TxFarmDiaryAI.Win
         
 
         internal static void ShowSelectRibbonMenuPage(RibbonPage? page) => SysEnv.MainForm?.SetSelectRibbonMenuPage(page);
-        internal static void ShowSelectRibbonMenuPageByName(string pageName, bool IsExactMatch = true) => SysEnv.MainForm?.SetSelectRibbonMenuPageByName(pageName, IsExactMatch);
-        internal static void ShowSelectRibbonMenuPageByText(string pageText, bool IsExactMatch = true) => SysEnv.MainForm?.SetSelectRibbonMenuPageByText(pageText, IsExactMatch);
+        internal static void ShowSelectRibbonMenuPageByName(string pageName, bool IsExactMatch = true, DevExpress.XtraBars.Ribbon.RibbonControl? ribbonControl = null) => SysEnv.MainForm?.SetSelectRibbonMenuPageByName(pageName, IsExactMatch, ribbonControl);
+        internal static void ShowSelectRibbonMenuPageByText(string pageText, bool IsExactMatch = true, DevExpress.XtraBars.Ribbon.RibbonControl? ribbonControl = null) => SysEnv.MainForm?.SetSelectRibbonMenuPageByText(pageText, IsExactMatch, ribbonControl);
 
         /*
         internal static void ShowWaitLoadingForm(System.Windows.Forms.Form? sender = null, bool useFadeIn = false, bool useFadeOut = false, bool throwExceptionIfAlreadyOpened = false)
@@ -202,19 +338,16 @@ namespace TxFarmDiaryAI.Win
         internal static void ReloadCodeAll()
         {
             LoadWorkspace();
+            LoadFarmingDiaryTemplate();
         }
+
         #region Workspace
-#if DEBUG
-        internal static readonly string _API_URL_FarmSite_Workspace_ = @"http://localhost:5000/api/FarmSite/all/DataTable";
-#else
-        internal static readonly string _API_URL_FarmSite_Workspace_ = @"http://jhpark0406:5000/api/FarmSite/all";
-#endif
+        internal static readonly string _API_URL_FarmSite_Workspace_ = @$"{_API_URL_FarmDiary_}/FarmSite/all/DataTable";
+        
 
         public static DataTable? WorkspaceDataTable { get; private set; } = null;
-
-        public static SQL_TXFD_SITE_SET_Table[]? WorkspaceRecordSet => WorkspaceDataTable?.ToRecordSetEx<SQL_TXFD_SITE_SET_Table>();
-
-        public static decimal? CurrWorkspaceSNO => MainForm?.GetSelectedWorkspaceSNO();
+        public static SQL_TXFD_SITE_SET_Table[]? WorkspaceRecordSet => WorkspaceDataTable?.ToRecordSetEx<SQL_TXFD_SITE_SET_Table>() ?? GetWorkspaceRecordSet();
+        
         public static SQL_TXFD_SITE_SET_Table? CurrWorksapceRecord 
         {
             get
@@ -230,7 +363,8 @@ namespace TxFarmDiaryAI.Win
                 return null;
             }
         }
-
+        public static decimal? CurrWorkspaceSNO => MainForm?.GetSelectedWorkspaceSNO();
+        public static string? CurrWorkspaceName => MainForm?.GetSelectedWorkspaceName();
         public static void LoadWorkspace(bool bInit = false)
         {
             if(WorkspaceDataTable == null || WorkspaceDataTable.Rows.Count < 1 || bInit == true)
@@ -259,6 +393,425 @@ namespace TxFarmDiaryAI.Win
                     }
                 }
             }
+        }
+        public static SQL_TXFD_SITE_SET_Table[]? GetWorkspaceRecordSet()
+        {
+            if (WorkspaceDataTable == null) return null;
+            var list = new List<SQL_TXFD_SITE_SET_Table>();
+            foreach (DataRow row in WorkspaceDataTable.Rows)
+            {
+                // 필수 멤버를 모두 채워서 객체 생성
+                var record = new SQL_TXFD_SITE_SET_Table
+                {
+                    SNO = row.Field<decimal>(SQL_TXFD_SITE_SET_Table._CDF_SNO_),
+                    SITE_NAME = row.Field<string>(SQL_TXFD_SITE_SET_Table._CDF_SITE_NAME_) ?? string.Empty,
+                    STN_CODE = row.Field<string>(SQL_TXFD_SITE_SET_Table._CDF_STN_CODE_) ?? string.Empty,
+                    // 선택적 필드
+                    STN_NAME = row.Field<string>(SQL_TXFD_SITE_SET_Table._CDF_STN_NAME_),
+                    LOC_ADDR = row.Field<string>(SQL_TXFD_SITE_SET_Table._CDF_LOC_ADDR_),
+                    LOC_LATITUDE = row.Field<decimal?>(SQL_TXFD_SITE_SET_Table._CDF_LOC_LATITUDE_),
+                    LOC_LONGITUDE = row.Field<decimal?>(SQL_TXFD_SITE_SET_Table._CDF_LOC_LONGITUDE_),
+                    LOC_ROAD = row.Field<string>(SQL_TXFD_SITE_SET_Table._CDF_LOC_ROAD_)
+                };
+                list.Add(record);
+            }
+            return list.ToArray();
+        }
+        internal static BindingList<SQL_TXFD_SITE_SET_Table> WorkspaceBindingList
+        {
+            get
+            {
+                return WorkspaceRecordSet != null ? new BindingList<SQL_TXFD_SITE_SET_Table>(WorkspaceRecordSet.ToList()) : new BindingList<SQL_TXFD_SITE_SET_Table>();
+                /*
+                var list = new BindingList<SQL_TXFD_SITE_SET_Table>();
+                var records = WorkspaceRecordSet;
+                if (records != null && records.Length > 0)
+                {
+                    foreach (var rec in records)
+                    {
+                        list.Add(rec);
+                    }
+                }
+                return list;
+                */
+            }
+        }
+        internal static void InitWorkspaceSelectFromSearchLookupEdit(DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit sender, DataTable? dataTable)
+        {
+            DevExpress.XtraGrid.Views.Grid.GridView view = sender.View;
+            InitWorkspaceSelectFromGridView(view);
+
+            sender.BeginInit();
+            sender.PopupWidthMode = DevExpress.XtraEditors.PopupWidthMode.ContentWidth;
+            sender.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
+            sender.KeyMember = SQL_TXFD_SITE_SET_Table._CDF_SNO_;
+            sender.ValueMember = SQL_TXFD_SITE_SET_Table._CDF_SNO_;
+            sender.DisplayMember = SQL_TXFD_SITE_SET_Table._CDF_SITE_NAME_;
+            sender.EndInit();
+            
+            sender.DataSource = dataTable;
+        }
+
+
+        internal static void InitWorkspaceSelectFromGridView(DevExpress.XtraGrid.Views.Grid.GridView view)
+        {
+            
+            view.BeginUpdate();
+            view.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            view.Appearance.HeaderPanel.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            view.Columns.Clear();
+            DevExpress.XtraGrid.Columns.GridColumn gcWorkspaceSelect_SNO = new()
+            {
+                FieldName = SQL_TXFD_SITE_SET_Table._CDF_SNO_,
+                Caption = "Farm No#",
+                Width = 30,
+                Visible = true
+            }; gcWorkspaceSelect_SNO.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            DevExpress.XtraGrid.Columns.GridColumn gcWorkspaceSelect_SITE_NAME = new()
+            {
+                FieldName = SQL_TXFD_SITE_SET_Table._CDF_SITE_NAME_,
+                Caption = "Farm Name",
+                Width = 100,
+                Visible = true
+            }; gcWorkspaceSelect_SITE_NAME.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Default;
+            DevExpress.XtraGrid.Columns.GridColumn gcWorkspaceSelect_LOC_ADDR = new()
+            {
+                FieldName = SQL_TXFD_SITE_SET_Table._CDF_LOC_ADDR_,
+                Caption = "Location / Adreess",
+                Width = 100,
+                Visible = true
+            }; gcWorkspaceSelect_LOC_ADDR.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            DevExpress.XtraGrid.Columns.GridColumn gcWorkspaceSelect_LOC_ROAD = new()
+            {
+                FieldName = SQL_TXFD_SITE_SET_Table._CDF_LOC_ROAD_,
+                Caption = "Location / Road",
+                Width = 100,
+                Visible = false
+            }; gcWorkspaceSelect_LOC_ROAD.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            DevExpress.XtraGrid.Columns.GridColumn gcWorkspaceSelect_LOC_LATITUDE = new()
+            {
+                FieldName = SQL_TXFD_SITE_SET_Table._CDF_LOC_LATITUDE_,
+                Caption = "Latitude",
+                Width = 100,
+                Visible = false
+            }; gcWorkspaceSelect_LOC_LATITUDE.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            DevExpress.XtraGrid.Columns.GridColumn gcWorkspaceSelect_LOC_LONGITUDE = new()
+            {
+                FieldName = SQL_TXFD_SITE_SET_Table._CDF_LOC_LONGITUDE_,
+                Caption = "Longitude",
+                Width = 100,
+                Visible = false
+            }; gcWorkspaceSelect_LOC_LONGITUDE.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            DevExpress.XtraGrid.Columns.GridColumn gcWorkspaceSelect_STN_CODE = new()
+            {
+                FieldName = SQL_TXFD_SITE_SET_Table._CDF_STN_CODE_,
+                Caption = "STN Code",
+                Width = 30,
+                Visible = true
+            }; gcWorkspaceSelect_STN_CODE.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            DevExpress.XtraGrid.Columns.GridColumn gcWorkspaceSelect_STN_NAME = new()
+            {
+                FieldName = SQL_TXFD_SITE_SET_Table._CDF_STN_NAME_,
+                Caption = "STN Name",
+                Width = 80,
+                Visible = true
+            }; gcWorkspaceSelect_STN_NAME.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Default;
+            DevExpress.XtraGrid.Columns.GridColumn gcWorkspaceSelect_SITE_MEMO = new()
+            {
+                FieldName = SQL_TXFD_SITE_SET_Table._CDF_SITE_MEMO_,
+                Caption = "STN Name",
+                Width = 100,
+                Visible = false
+            }; gcWorkspaceSelect_SITE_MEMO.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Default;
+            DevExpress.XtraGrid.Columns.GridColumn gcWorkspaceSelect_REG_DATE = new()
+            {
+                FieldName = SQL_TXFD_SITE_SET_Table._CDF_REG_DATE_,
+                Caption = "Created Date",
+                Width = 80,
+                Visible = false
+            }; gcWorkspaceSelect_REG_DATE.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            DevExpress.XtraGrid.Columns.GridColumn gcWorkspaceSelect_MOD_DATE = new()
+            {
+                FieldName = SQL_TXFD_SITE_SET_Table._CDF_MOD_DATE_,
+                Caption = "Modifed Date",
+                Width = 80,
+                Visible = false
+            }; gcWorkspaceSelect_MOD_DATE.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            DevExpress.XtraGrid.Columns.GridColumn gcWorkspaceSelect_IS_USE = new()
+            {
+                FieldName = SQL_TXFD_SITE_SET_Table._CDF_IS_USE_,
+                Caption = "Use?",
+                Width = 30,
+                Visible = false
+            }; gcWorkspaceSelect_IS_USE.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            //gc.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            view.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+                gcWorkspaceSelect_SNO,
+                gcWorkspaceSelect_SITE_NAME,
+                gcWorkspaceSelect_LOC_ADDR,
+                gcWorkspaceSelect_LOC_ROAD,
+                gcWorkspaceSelect_LOC_LATITUDE,
+                gcWorkspaceSelect_LOC_LONGITUDE,
+                gcWorkspaceSelect_STN_CODE,
+                gcWorkspaceSelect_STN_NAME,
+                gcWorkspaceSelect_SITE_MEMO,
+                gcWorkspaceSelect_REG_DATE,
+                gcWorkspaceSelect_MOD_DATE,
+                gcWorkspaceSelect_IS_USE
+            });
+            view.EndUpdate();
+        }
+        #endregion
+
+        #region AI-OCR
+        internal static readonly string _API_URL_Naver_OCR_ = _API_URL_NaverOCR_Custom_;
+        public static HxResultValue? CallOcrNaverApi_GetJson(Image image, bool isTesting = false)
+        {
+            HxResultValue Result = null!;
+            if (image != null)
+            {
+                //string imageBase64 = HxImagePicture.GetBase64Encode(image);
+
+                Dictionary<string, object> dictHeader = new Dictionary<string, object>
+                {
+                    { "Content-Type", "application/json; charset=utf-8" },
+                    { "X-OCR-SECRET", "ZHVReUZnU3VxVEhsZmRIYW1XYUhxdWxrbHRNdXZ3alI="}
+                };
+                OCR_NAVER_API_Request_Body raw = new OCR_NAVER_API_Request_Body(image);
+                if (raw.images == null || raw.requestId.IsNullOrWhiteSpaceEx() == true) { return null; }
+                string strRaw = raw.ToJsonStringEx();
+                bool bJsonProcessed = false;
+                byte[] bytes = HxUtils.ImageToByteArray(image);
+                string strFileChecksum = HxUtils.GetMD5Checksum(bytes);
+                if (isTesting == true)
+                {
+                    string strSampleFullName = null;
+                    
+                    if (bytes != null && bytes.Length > 1 && strFileChecksum.IsNullOrWhiteSpaceEx() != true)
+                    {
+                        if(strFileChecksum.Equals("080033efe6de5c648e1d79b02b178271", StringComparison.OrdinalIgnoreCase) == true) 
+                        {
+                            strSampleFullName = Path.Combine(GetAppSampleDir(), "Sample01.json"); //663ddf35f000fb03abd7c9a030d75fbb
+                        }
+                        /*
+                        else if (strFileChecksum.Equals("14bd5fef733328805d834e752f3fa1fe", StringComparison.OrdinalIgnoreCase) == true)
+                        {
+                            strSampleFullName = Path.Combine(GetAppBaseDir(), "Sample", "Sample02.json"); //974552d58d95395cd2b698467f4a877b
+                        }
+                        */
+                        if(strSampleFullName.IsNullOrWhiteSpaceEx() == true)
+                        {
+                            strSampleFullName = Path.Combine(GetAppSampleDir(false), $"Sample_{strFileChecksum}.json");
+                        }
+                        if (HxFile.IsFileExists(strSampleFullName) != true)
+                        {
+                            strSampleFullName = Path.Combine(GetAppOutputDir(false, true), $"OCR_NaverApi_Result_{strFileChecksum}.json"); //663ddf35f000fb03abd7c9a030d75fbb
+                        }
+                        if (HxFile.IsFileExists(strSampleFullName))
+                        {
+                            Result = new();
+                            Result.Success = false;
+                            string strSampleJsonText = HxFile.GetTextFileReadAllText(strSampleFullName);
+                            Result.Value = strSampleJsonText;
+                            bJsonProcessed = true;
+                        }
+                    }
+                }
+                if(bJsonProcessed != true)
+                {
+                    Result = HxUtils.GetRestClientContentResultValue(_API_URL_Naver_OCR_, RestSharp.Method.Post, dictHeader, strRaw);
+                    if(isTesting == true)
+                    {
+                        string strTestOutputDir = GetAppOutputDir(false, true);
+                        if (HxFile.IsDirectoryExists(strTestOutputDir) != true)
+                        {
+                            HxFile.DirectoryCreate(strTestOutputDir);
+                        }
+                        string strTestOutputFullName = Path.Combine(strTestOutputDir, $"OCR_NaverApi_Result_{strFileChecksum}.json"); //{DateTime.Now.ToString("yyyyMMdd_HHmmss")}
+                        string strResultValue = (Result != null && Result.Value != null) ? Result.Value.ToStringEx() : string.Empty;
+                        HxFile.SetTextFileWriteAllText(strTestOutputFullName, strResultValue);
+                    }
+                    bJsonProcessed = true;
+                }
+                if (Result != null && Result.Success == true && Result.Value.IsNullOrWhiteSpaceEx() != true)
+                {
+                    var val = Result.Value;
+                    if (val != null)
+                    {
+                        OCR_NAVER_API_Response_Body obj = HxUtils.JsonDeserializeObject<OCR_NAVER_API_Response_Body>(val);
+                        if (obj.images != null && obj.requestId.IsNullOrWhiteSpaceEx() != true)
+                        {
+                            Debug.WriteLine(obj.GetType()?.Name);
+                        }
+                    }
+                }
+            }
+            return Result;
+        }
+
+        public static HxResultValue? CallSmartDiaryApi_SaveFarmingDiaryPaperItem(TSmartDiaryPaperItem item)
+        {
+            HxResultValue Result = null!;
+            if (item != null && item.DocFileBase64Data.IsNullOrWhiteSpaceEx() != true)
+            {
+                string apiUrl = @$"{_API_URL_FarmDiary_}/FarmDiary/Create";
+                Dictionary<string, object> dictHeader = new Dictionary<string, object>
+                {
+                    { "Content-Type", "application/json; charset=utf-8" }
+                };
+                string strRaw = item.ToJsonStringEx();
+                Result = HxUtils.GetRestClientContentResultValue(apiUrl, RestSharp.Method.Post, dictHeader, strRaw);
+            }
+            return Result;
+        }
+
+        /*
+        public static HxResultValue? CallOcrNaverApi_SaveOcrResultToDb(SQL_TXFD_IMAGE_SET_Table iMAGE_SET_Table, SQL_TXFD_OCR_SET_Table ocrResult, Dictionary<string, string> inputData)
+        {
+            HxResultValue Result = null!;
+            if (iMAGE_SET_Table != null && iMAGE_SET_Table.SNO.IsNullOrWhiteSpaceEx() != true && ocrResult != null && ocrResult.requestId.IsNullOrWhiteSpaceEx() != true)
+            {
+                string apiUrl = @$"{_API_URL_ROOT_FarmSite__}/api/FarmSite/FarmDiaryOcrResult/Save";
+                Dictionary<string, object> dictHeader = new Dictionary<string, object>
+                {
+                    { "Content-Type", "application/json; charset=utf-8" }
+                };
+                var requestBody = new
+                {
+                    ImageSetSNO = iMAGE_SET_Table.SNO,
+                    OcrRequestId = ocrResult.requestId,
+                    OcrResultJson = ocrResult.ToJsonStringEx()
+                };
+                string strRaw = HxUtils.JsonSerializeObject(requestBody);
+                Result = HxUtils.GetRestClientContentResultValue(apiUrl, RestSharp.Method.Post, dictHeader, strRaw);
+            }
+            return Result;
+        }
+        */
+        #endregion
+
+        #region Template Files
+
+        internal static string GetTemplateDirFullPath()
+        {
+            string dirFullPath = Path.Combine(GetAppBaseDir(), Defs._TEMPLATE_DIR_NAME_);
+            return dirFullPath;
+        }
+
+        //internal static DataTable? TemplateDataTable { get; private set; } = null;
+        internal static IEnumerable<TTemplateItem>? FarmingDiaryTemplates { get; private set; }
+        internal static BindingList<TTemplateItem> FarmingDiaryTemplateBindingList
+        {
+            get
+            {
+                return FarmingDiaryTemplates != null ? new BindingList<TTemplateItem>(FarmingDiaryTemplates.ToList()) : new BindingList<TTemplateItem>();
+            }
+        }
+
+        internal static void LoadFarmingDiaryTemplate(bool bInit = false)
+        {
+            /**
+            if (TemplateFarmingDiaryDataTable == null || TemplateFarmingDiaryDataTable.Rows.Count < 1 || bInit == true)
+            {
+                string apiUrl = @$"{_API_URL_ROOT_FarmSite__}/api/FarmSite/FarmDiaryTemplateList/DataTable";
+                Dictionary<string, object> dictHeader = new Dictionary<string, object>
+                {
+                    { "Content-Type", "application/json; charset=utf-8" }
+                };
+                HxResultValue res = HxUtils.GetRestClientContentResultValue(apiUrl, RestSharp.Method.Get, dictHeader);
+                if (res.Success == true && res.Value.IsNullOrWhiteSpaceEx() != true)
+                {
+                    var val = res.Value;
+                    if (val != null)
+                    {
+                        var obj = HxUtils.JsonDeserializeObject<DataTable>(val);
+                        if (obj != null)
+                        {
+                            Debug.WriteLine(obj?.GetType()?.Name);
+                            var dt = obj as DataTable;
+                            if (dt != null)
+                            {
+                                TemplateFarmingDiaryDataTable = dt.Copy();
+                                dt.Clear();
+                            }
+                        }
+                    }
+                }
+            }
+            */
+
+            string templateDir = GetTemplateDirFullPath();
+            if (HxFile.IsDirectoryExists(templateDir))
+            {
+                
+                var files = HxFile.GetFiles(templateDir, searchPattern: @"tpl-영농일지_R1-*Page*.pdf");
+                if (files != null && files.Length > 0)
+                {
+                    //var match = SbUtils.RegexTagMatchVarNamePattern(_TAG_RESOURCE_TPL_PATTERN_, "tpl-영농일지_R1-(?<TemplateId>.+)-Page(?<PageNo>\\d+)\\.pdf");
+                    var regex = new Regex(TDefs._TPL_FILE_PATTERN_, RegexOptions.IgnoreCase);
+                    
+                    var list = new List<TTemplateItem>();
+                    foreach (var file in files)
+                    {
+                        string fileName = HxFile.GetFileName(file);
+                        string fileOnlyName = HxFile.GetFileNameWithOutExt(fileName);
+                        
+                        Match match = regex.Match(fileName);
+                        if (match.Success != true)
+                        {
+                            continue;
+                        }
+                        //@"^(?<prefix>tpl)(?:\-|\_)(?<title>영농일지)(?:\-|\_)(?<rev>R[\d]*)(?:\-|\_)(?<page>[\d]*)Page(?:\-|\_)?(?<remark>.*)?(?:\.)(?<ext>pdf)$";
+                        //@"^(?<prefix>tpl)(?<delimiter01>-|_)(?<title>영농일지)(?<delimiter02>-|_)R(?<rev>[\d]+)(?<delimiter03>-|_)(?<page>[\d]+)Page(?<delimiter04>-|_)?(?<remark>.*)?(?<delimiter05>.)(?<ext>pdf)$";
+                        string templatePage = match.Groups["page"].Value;
+                        string templateCode = $"{match.Groups["prefix"].Value}{match.Groups["delimiter01"].Value}{match.Groups["title"].Value}{match.Groups["delimiter02"].Value}R{match.Groups["rev"].Value}{match.Groups["delimiter03"].Value}{match.Groups["page"]}Page";
+                        string templateRemark = match.Groups["remark"].Value;
+                        if(templateRemark.IsNullOrWhiteSpaceEx() == true)
+                        {
+                            switch (templatePage)
+                            {
+                                case "1":
+                                case "01":
+                                    templateRemark = "영농 일지";
+                                    break;
+                                case "2":
+                                case "02":
+                                    templateRemark = "자재 구매 내역";
+                                    break;
+                                default:
+                                    templateRemark = "미분류";
+                                    break;
+                            }
+                        }
+                        if (templateRemark.IsNullOrWhiteSpaceEx() == true)
+                        {
+                            templateRemark = fileOnlyName;
+                        }
+                        string templateName = templateRemark.Replace('_', ' ');
+                        list.Add(new TTemplateItem(templateCode, templateName, file));
+                        //TemplateFarmingDiaryBindingList.Add(new TemplateItem(templateId, templateName, file));
+                    }
+                    FarmingDiaryTemplates = list;
+                }
+            }
+
+        }
+        internal static void InitFarmingDiaryTemplateFromBarItem(DevExpress.XtraBars.BarEditItem sender, BindingList<TTemplateItem>? items)
+        {
+            if (sender.Edit is not DevExpress.XtraEditors.Repository.RepositoryItemLookUpEditBase cmp) { return; }
+
+            SysEnv.LoadFarmingDiaryTemplate();
+
+            cmp.BeginInit();
+            cmp.PopupWidthMode = DevExpress.XtraEditors.PopupWidthMode.ContentWidth;
+            cmp.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
+            cmp.KeyMember = "TemplateCode";
+            cmp.ValueMember = "TemplateCode";
+            cmp.DisplayMember = "TemplateName";
+            cmp.EndInit();
+
+            //cmp.bind = new System.Windows.Forms.BindingContext();
+            cmp.DataSource = items;
         }
         #endregion
     }

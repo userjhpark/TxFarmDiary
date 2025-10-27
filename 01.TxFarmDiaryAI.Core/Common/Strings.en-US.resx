@@ -267,4 +267,21 @@
   <data name="CART_APPEND_WARRING_EXISTS" xml:space="preserve">
     <value>The image is already in your cart.</value>
   </data>
+  <data name="CART_APPEND_MISS" xml:space="preserve">
+    <value>This item could not be added to your cart.
+(File access and format errors)</value>
+  </data>
+  <data name="IMAGE_NOTSUPPORT" xml:space="preserve">
+    <value>Unsupported image file formats</value>
+  </data>
+  <data name="PICTURE_LOADED_QUESTION" xml:space="preserve">
+    <value>There is an image loaded into the Picture object.
+Would you like to load  new one?</value>
+  </data>
+  <data name="CART_DELETE_QUESTION" xml:space="preserve">
+    <value>Do you want to delete the images in the selected cart?</value>
+  </data>
+  <data name="TEMPLATE_FILE_NOT_EXIST" xml:space="preserve">
+    <value>The template file for the recognized document does not exist.</value>
+  </data>
 </root>

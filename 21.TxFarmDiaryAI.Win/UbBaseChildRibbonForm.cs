@@ -45,9 +45,9 @@ namespace TxFarmDiaryAI.Win
             rcChildMenu.MdiMergeStyle = RibbonMdiMergeStyle.Default;
             if (this.IsStartUp != true)
             {
-                //rcSubMenu.MdiMergeStyle = RibbonMdiMergeStyle.Always;
-                //rcSubMenu.Merge += OnRibbonForm_Merge;
-                //rcSubMenu.UnMerge += OnRibbonForm_UnMerge;
+                rcChildMenu.MdiMergeStyle = RibbonMdiMergeStyle.Always;
+                rcChildMenu.Merge += OnRibbonForm_Merge;
+                rcChildMenu.UnMerge += OnRibbonForm_UnMerge;
             }
         }
 

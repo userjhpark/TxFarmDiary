@@ -19,6 +19,10 @@ namespace TxFarmDiaryAI.Win
         public UbPDFViewerRibbonForm()
         {
             InitializeComponent();
+            this.Load += (s, e) =>
+            {
+                rcChildMenu.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
+            };
         }
         public UbPDFViewerRibbonForm(string filePath) : this()
         {
@@ -32,7 +36,7 @@ namespace TxFarmDiaryAI.Win
             {
                 return; 
             }
-            pdfViewer1.LoadDocument(filePath);
+            pdfViewerCtl.LoadDocument(filePath);
             this.Text = $"PDF Viewer - {HxFile.GetFileName(filePath)}";
             //this.Text = $"PDF Viewer - {HxFile.GetFileName(filePath)} ( {HxFile.GetFileDirPath(filePath)} )";
         }
@@ -44,7 +48,7 @@ namespace TxFarmDiaryAI.Win
         }
         protected override void OnFormClosed(FormClosedEventArgs e)
         {
-            pdfViewer1.CloseDocument();
+            pdfViewerCtl.CloseDocument();
             base.OnFormClosed(e);
         }
 
@@ -55,7 +59,7 @@ namespace TxFarmDiaryAI.Win
 
         public void ClearDocument()
         {
-            pdfViewer1.CloseDocument();
+            pdfViewerCtl.CloseDocument();
             this.Text = "PDF Viewer";
         }
     }

@@ -15,7 +15,7 @@ namespace TxFarmDiaryAI
 {
     public class SampleContext : DbContext
     {
-        public DbSet<SQL_TXFD_IMAGE_CART_Table> DS_XFD_IMAGE_CART { get; set; }
+        //public DbSet<SQL_TXFD_IMAGE_CART_Table> DS_XFD_IMAGE_CART { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         { 
