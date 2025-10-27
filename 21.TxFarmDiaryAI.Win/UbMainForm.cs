@@ -385,7 +385,16 @@ namespace TxFarmDiaryAI.Win
                     var childPage = rcMainMenu.MergedPages.GetPageByText(pageText);
                     if (IsExactMatch != true && childPage == null)
                     {
-                        childPage = rcMainMenu.MergedPages.GetPageByName(pageText);
+                        childPage = rcMainMenu.Pages.GetPageByText(pageText);
+                    }
+                    if (IsExactMatch != true && childPage == null)
+                    {
+                        //childPage = rcMainMenu.Page.GetPageByText(pageText);
+                    }
+
+                    if (childPage != null && childPage.Visible != true)
+                    {
+                        childPage.Visible = true;
                     }
                     rcMainMenu.SelectedPage = childPage ?? rcMainMenu.Pages[0];
                 }
