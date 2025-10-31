@@ -25,13 +25,7 @@ namespace TxFarmDiaryAI.Win
 {
     internal static class SysEnv
     {
-#if DEBUG
-        internal static readonly string _HOME_URL_FarmDiary_ = @"http://localhost:5000";
-#else
-        internal static readonly string _HOME_URL_FarmDiary_ = @"http://jhpark0406:5000";
-#endif
-        internal static readonly string _API_URL_FarmDiary_ = _HOME_URL_FarmDiary_ + "/api";
-        internal static readonly string _API_URL_NaverOCR_Custom_ = @"https://cugmmfu019.apigw.ntruss.com/custom/v1/46311/28645cc31f95289c0bc759520d489043a6ab9ebe045360e6b66c84f1e0165503/infer";
+
 
         internal static bool IsLoadEnvironment { get; private set; } = false;
         /// <summary>
@@ -342,7 +336,7 @@ namespace TxFarmDiaryAI.Win
         }
 
         #region Workspace
-        internal static readonly string _API_URL_FarmSite_Workspace_ = @$"{_API_URL_FarmDiary_}/FarmSite/all/DataTable";
+        
         
 
         public static DataTable? WorkspaceDataTable { get; private set; } = null;
@@ -373,7 +367,7 @@ namespace TxFarmDiaryAI.Win
                 {
                     { "Content-Type", "application/json; charset=utf-8" }
                 };
-                HxResultValue res = HxUtils.GetRestClientContentResultValue(_API_URL_FarmSite_Workspace_, RestSharp.Method.Get, dictHeader);
+                HxResultValue res = HxUtils.GetRestClientContentResultValue(Defs._API_URL_FarmSite_Workspace_, RestSharp.Method.Get, dictHeader);
                 if (res.Success == true && res.Value.IsNullOrWhiteSpaceEx() != true)
                 {
                     var val = res.Value;
@@ -564,7 +558,7 @@ namespace TxFarmDiaryAI.Win
         #endregion
 
         #region AI-OCR
-        internal static readonly string _API_URL_Naver_OCR_ = _API_URL_NaverOCR_Custom_;
+        internal static readonly string _API_URL_Naver_OCR_ = Defs._API_URL_NaverOCR_Custom_;
         public static HxResultValue? CallOcrNaverApi_GetJson(Image image, bool isTesting = false)
         {
             HxResultValue Result = null!;
@@ -654,7 +648,7 @@ namespace TxFarmDiaryAI.Win
             HxResultValue Result = null!;
             if (item != null && item.DocFileBase64Data.IsNullOrWhiteSpaceEx() != true)
             {
-                string apiUrl = @$"{_API_URL_FarmDiary_}/FarmDiary/Create";
+                string apiUrl = @$"{Defs._API_URL_FarmDiary_}/FarmDiary/Create";
                 Dictionary<string, object> dictHeader = new Dictionary<string, object>
                 {
                     { "Content-Type", "application/json; charset=utf-8" }

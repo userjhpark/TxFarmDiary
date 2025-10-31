@@ -63,5 +63,13 @@ namespace TxFarmDiaryAI
         public const string _RESOURCEKEY_CART_DELETE_QUESTION_ = @"CART_DELETE_QUESTION";
 
         public const string _RESOURCEKEY_PICTURE_LOADED_QUESTION_ = @"PICTURE_LOADED_QUESTION";
+
+        public const string _RESOURCEKEY_DATEDIFF_APPLY_QUESTION_ = @"DATEDIFF_APPLY_QUESTION";
+        public const string _RESOURCEKEY_DATEDIFF_NOTEQUALS_QUESTION_ = @"DATEDIFF_NOTEQUALS_QUESTION";
+        public const string _RESOURCEKEY_DIARY_SAVE_QUESTION_ = @"DIARY_SAVE_QUESTION";
+        public const string _RESOURCEKEY_DIARY_NOT_DATE_       = @"DIARY_NOT_DATE";
+        public const string _RESOURCEKEY_DIARY_NOT_ADDR_ = @"DIARY_NOT_ADDR";
+        public const string _RESOURCEKEY_DIARY_NOT_TASK_ = @"DIARY_NOT_TASK";
+        public const string _RESOURCEKEY_DIARY_NOT_DETAIL_ = @"DIARY_NOT_DETAIL";
     }
 }

@@ -150,6 +150,20 @@ namespace TxFarmDiaryAI.Win
                 frmChild.Focus();
             };
 
+            barbtnMainList_FarmingDiary.ItemClick += (s, e) =>
+            {
+                var frmChild = new UbFarmDiaryListForm
+                {
+                    Owner = this,
+                    MdiParent = this,
+                    WindowState = FormWindowState.Normal,
+                    StartPosition = FormStartPosition.CenterParent
+                };
+                frmChild.BringToFront();
+                frmChild.Show();
+                frmChild.Focus();
+            };
+
 
 #if DEBUG
             barbtnDiarySampleFolder.Visibility = BarItemVisibility.OnlyInRuntime;

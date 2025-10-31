@@ -36,7 +36,6 @@ namespace TxFarmDiaryAI
         public void SetDbConn(IHxDb db)
         {
             DB = db;
-
         }
         /*
         protected static ASQL_BASE? Instance { get; set; }
@@ -681,18 +680,19 @@ WHERE 1 = 1
     {
         public const string _DB_TABLE_NAME_ = "TXFD_FILE_ENV";
         public const string _DB_SEQ_NAME_ = $"SEQ_{_DB_TABLE_NAME_}";
-        public const string _SELECT_DEFAULT_QUERY_STRING_ = @"select file_no, file_check, file_check_sub from txfd_file_env";
+        public const string _SELECT_DEFAULT_QUERY_STRING_ = @"select file_no, file_check, file_check_sub, file_name, file_save, file_path, file_ext, file_type, file_size, file_remark, file_data, file_contents from txfd_file_env";
 
         public const string _CDF_FILE_NO_ = "file_no";
         public const string _CDF_FILE_CHECK_ = "file_check";
         public const string _CDF_FILE_CHECK_SUB_ = "file_check_sub";
-        public const string _CDF_FILE_NAME_ = "FILE_NAME";
-        public const string _CDF_FILE_SAVE_ = "FILE_SAVE";
-        public const string _CDF_FILE_PATH_ = "FILE_PATH";
-        public const string _CDF_FILE_EXT_ = "FILE_EXT";
-        public const string _CDF_FILE_TYPE_ = "FILE_TYPE";
-        public const string _CDF_FILE_SIZE_ = "FILE_SIZE";
-        public const string _CDF_FILE_REMARK_ = "FILE_REMARK";
+        public const string _CDF_FILE_NAME_ = "file_name";
+        public const string _CDF_FILE_SAVE_ = "file_save";
+        public const string _CDF_FILE_PATH_ = "file_path";
+        public const string _CDF_FILE_EXT_ = "file_ext";
+        public const string _CDF_FILE_TYPE_ = "file_type";
+        public const string _CDF_FILE_SIZE_ = "file_size";
+        public const string _CDF_FILE_REMARK_ = "file_remark";
+        public const string _CDF_FILE_DATA_ = "file_data";
         [JsonProperty(_CDF_FILE_NO_)] public decimal? FILE_NO { get; set; }
         [JsonProperty(_CDF_FILE_CHECK_)] public string? FILE_CHECK { get; set; }
 
@@ -705,6 +705,7 @@ WHERE 1 = 1
         [JsonProperty(_CDF_FILE_TYPE_)] public string? FILE_TYPE { get; set; }
         [JsonProperty(_CDF_FILE_SIZE_)] public long? FILE_SIZE { get; set; }
         [JsonProperty(_CDF_FILE_REMARK_)] public string? FILE_REMARK { get; set; }
+        [JsonProperty(_CDF_FILE_DATA_)] public string? FILE_DATA { get; set; }
 
         public SQL_TXFD_FILE_ENV_Table()
         {
@@ -785,6 +786,25 @@ WHERE 1 = 1
         public override bool SetDbInsert(IHxDb db, (string? userText, decimal? uno) woker)
         {
             throw new NotImplementedException();
+        }
+
+        public static DataTable? ToDataTable(IHxDb db, string? additionalConditions = null)
+        {
+            if (db == null) throw new ArgumentNullException("Database Resource");
+
+            if (db.Open() != true) { return null; }
+
+            string SQL = string.Format(_SELECT_DEFAULT_QUERY_STRING_, string.Empty);
+            if (additionalConditions.IsNullOrWhiteSpaceEx() != true)
+            {
+                SQL = GetQueryString(SQL, additionalConditions);
+            }
+            SQL = HxUtils.OrderByQueryString(SQL, $"{_CDF_FILE_NO_} ASC");
+
+            DataTable Result = db.QueryDataTable(SQL);
+            if (Result != null) { Result.TableName = _DB_TABLE_NAME_; }
+
+            return Result;
         }
     }
 
@@ -916,7 +936,7 @@ WHERE 1 = 1
         public const string _SELECT_DEFAULT_QUERY_STRING_ = @$"SELECT 
  field_no, parent_no, dno, bind_sno, bind_file_no, field_id, field_name, field_data
  FROM {_DB_TABLE_NAME_}
- WHERE 1 = 1 ";
+ WHERE 1 = 1 {{0}}";
 
         public const string _CDF_FIELD_NO_      = "field_no";
         public const string _CDF_PARENT_NO_     = "parent_no";
@@ -1012,6 +1032,25 @@ WHERE 1 = 1
         public override bool SetDbInsert(IHxDb db, (string? userText, decimal? uno) woker)
         {
             return SetDbInsert(db, woker.userText, woker.uno);
+        }
+
+        public static DataTable? ToDataTable(IHxDb db, string? additionalConditions = null)
+        {
+            if (db == null) throw new ArgumentNullException("Database Resource");
+
+            if (db.Open() != true) { return null; }
+
+            string SQL = string.Format(_SELECT_DEFAULT_QUERY_STRING_, string.Empty);
+            if (additionalConditions.IsNullOrWhiteSpaceEx() != true)
+            {
+                SQL = GetQueryString(SQL, additionalConditions);
+            }
+            SQL = HxUtils.OrderByQueryString(SQL, $"{_CDF_FIELD_NO_} ASC, {_CDF_FIELD_ID_} ASC");
+
+            DataTable Result = db.QueryDataTable(SQL);
+            if (Result != null) { Result.TableName = _DB_TABLE_NAME_; }
+
+            return Result;
         }
     }
 
@@ -1434,6 +1473,8 @@ WHERE 1 = 1
             return _SELECT_DEFAULT_QUERY_STRING_;
         }
 
+        
+
         public override string GetDbTableName()
         {
             return _DB_TABLE_NAME_;
@@ -1530,7 +1571,173 @@ WHERE 1 = 1
         }
     }
 
-    
+    public class SQL_TXFD_DIARY_INFO_View : SQL_TXFD_DIARY_SET_Table
+    {
+        public const string _DB_VIEW_NAME_ = "V_TXFD_DIARY_INFO";
+
+        public const string _SELECT_VIEW_QUERY_FORMAT_STRING_ = $@"WITH W_DI AS (
+	SELECT * 
+	FROM TXFD_DIARY_SET di
+	WHERE 1 = 1 {{0}}
+),
+W_DF AS (
+	SELECT di.sno, di.DIARY_DATE, df.*
+	FROM TXFD_DIARY_FIELD df
+		, W_DI di
+	WHERE df.dno = di.dno
+),
+W_OCR_ENV AS (
+	SELECT di.sno, di.DIARY_DATE, di.dno, toe.*
+	FROM TXFD_OCR_ENV toe
+		, W_DI di
+	WHERE di.ocr_no IS NOT NULL AND toe.ocr_no = di.ocr_no
+),
+W_OCR_JSON AS (
+	SELECT oce.sno, oce.DIARY_DATE, oce.dno, oce.img_no, ocj.*
+	FROM TXFD_OCR_JSON ocj
+		, W_OCR_ENV oce
+	WHERE ocj.OCR_NO = oce.OCR_NO
+),
+W_OCR_FIELD AS (
+	SELECT ocj.sno, ocj.DIARY_DATE, ocj.dno, ocj.ocr_no, ocj.img_no, ocf.*
+	FROM TXFD_OCR_FIELD ocf
+		, W_OCR_JSON ocj
+	WHERE ocf.json_no = ocj.json_no
+),
+W_DF_CNT AS (
+	SELECT df.dno, count(0) field_cnt
+	FROM W_DF df
+	WHERE EXISTS (SELECT 1 FROM W_DI di WHERE df.dno = di.dno)
+	GROUP BY df.dno
+),
+W_OCR_JSON_CNT AS (
+	SELECT ocj.dno, count(0) json_cnt
+	FROM W_OCR_JSON ocj
+	WHERE EXISTS (SELECT 1 FROM W_OCR_ENV oce WHERE ocj.ocr_no = oce.ocr_no)
+	GROUP BY ocj.dno
+),
+W_OCR_FIELD_CNT AS (
+	SELECT ocf.dno, count(0) ocr_field_cnt
+	FROM W_OCR_FIELD ocf
+	WHERE EXISTS (SELECT 1 FROM W_OCR_ENV oce WHERE ocf.dno = oce.dno)
+	GROUP BY ocf.dno
+),
+W_DIARY_INPUT_DATE AS (
+	SELECT di.DNO, di.DIARY_DATE, df.FIELD_ID, df.FIELD_NAME, df.FIELD_DATA, df.FIELD_DATA INPUT_DATE
+	FROM W_DF df
+		, W_DI di
+	WHERE df.DNO = di.DNO
+		AND df.FIELD_ID = '작업일'
+),
+W_DIARY_INPUT_WRITER AS (
+	SELECT di.DNO, di.DIARY_DATE, df.FIELD_ID, df.FIELD_NAME, df.FIELD_DATA, df.FIELD_DATA INPUT_WRITER
+	FROM W_DF df
+		, W_DI di
+	WHERE df.DNO = di.DNO
+		AND df.FIELD_ID = '작성자'
+),
+W_DIARY_INPUT_CROPS AS (
+	SELECT di.DNO, di.DIARY_DATE, df.FIELD_ID, df.FIELD_NAME, df.FIELD_DATA, df.FIELD_DATA INPUT_CROPS
+	FROM W_DF df
+		, W_DI di
+	WHERE df.DNO = di.DNO
+		AND df.FIELD_ID = '작목'
+),
+W_DIARY_INPUT_ADDR AS (
+	SELECT di.DNO, di.DIARY_DATE, df.FIELD_ID, df.FIELD_NAME, df.FIELD_DATA, df.FIELD_DATA INPUT_ADDR
+	FROM W_DF df
+		, W_DI di
+	WHERE df.DNO = di.DNO
+		AND df.FIELD_ID = '농장_필지'
+),
+W_DIARY_INPUT_WEATHER AS (
+	SELECT di.DNO, di.DIARY_DATE, df.FIELD_ID, df.FIELD_NAME, df.FIELD_DATA, df.FIELD_DATA INPUT_WEATHER
+	FROM W_DF df
+		, W_DI di
+	WHERE df.DNO = di.DNO
+		AND df.FIELD_ID = '날씨_기상'
+), 
+A AS (
+    SELECT 
+	    di.DNO, di.PARENT_NO, di.SNO, di.OCR_NO, di.DIARY_DATE, di.TPL_CODE, di.TPL_NAME, di.FILE_NO, di.FORM_DATA
+	    , dfc.FIELD_CNT
+	    , ojc.JSON_CNT
+	    , ofc.OCR_FIELD_CNT
+	    , did.INPUT_DATE
+	    , diwr.INPUT_WRITER
+	    , diwe.INPUT_WEATHER
+	    , dicr.INPUT_CROPS
+	    , diad.INPUT_ADDR
+	    , di.IS_USE, di.REG_DATE , di.MOD_DATE
+    FROM W_DI di
+	    , W_DF_CNT dfc
+	    , W_OCR_JSON_CNT ojc
+	    , W_OCR_FIELD_CNT ofc
+	    , W_DIARY_INPUT_DATE did
+	    , W_DIARY_INPUT_WRITER diwr
+	    , W_DIARY_INPUT_WEATHER diwe
+	    , W_DIARY_INPUT_CROPS dicr
+	    , W_DIARY_INPUT_ADDR diad
+    WHERE di.DNO = dfc.DNO (+)
+	    AND di.DNO = ojc.DNO(+)
+	    AND di.DNO = ofc.DNO(+)
+	    AND di.DNO = did.DNO(+)
+	    AND di.DNO = diwr.DNO(+)
+	    AND di.DNO = diwe.DNO(+)
+	    AND di.DNO = dicr.DNO(+)
+	    AND di.DNO = diad.DNO(+)
+)
+SELECT * FROM A
+WHERE 1 = 1 {{1}}";
+
+        public const string _CDF_FIELD_CNT_       = "field_cnt";
+        public const string _CDF_JSON_CNT_        = "json_cnt";
+        public const string _CDF_OCR_FIELD_CNT_   = "ocr_field_cnt";
+        public const string _CDF_INPUT_DATE_      = "input_date";
+        public const string _CDF_INPUT_WRITER_    = "input_writer";
+        public const string _CDF_INPUT_WEATHER_   = "input_weather";
+        public const string _CDF_INPUT_CROPS_     = "input_crops";
+        public const string _CDF_INPUT_ADDR_      = "input_addr";
+
+
+        [JsonProperty(_CDF_FIELD_CNT_    )] public decimal?  FIELD_CNT     { get; set; }
+        [JsonProperty(_CDF_JSON_CNT_     )] public decimal?  JSON_CNT      { get; set; }
+        [JsonProperty(_CDF_OCR_FIELD_CNT_)] public decimal?  OCR_FIELD_CNT { get; set; }
+        [JsonProperty(_CDF_INPUT_DATE_   )] public string?  INPUT_DATE    { get; set; }
+        [JsonProperty(_CDF_INPUT_WRITER_ )] public string?  INPUT_WRITER  { get; set; }
+        [JsonProperty(_CDF_INPUT_WEATHER_)] public string?  INPUT_WEATHER { get; set; }
+        [JsonProperty(_CDF_INPUT_CROPS_  )] public string?  INPUT_CROPS   { get; set; }
+        [JsonProperty(_CDF_INPUT_ADDR_   )] public string?  INPUT_ADDR    { get; set; }
+
+        public string GetDbSelectQueryFormatString(string addMainWhere, string? addSubWhere = null)
+        {
+            return ToDbSelectQueryFormatString(addMainWhere, addSubWhere);
+        }
+        public static string ToDbSelectQueryFormatString(string addMainWhere, string? addSubWhere = null)
+        {
+            string strQueryFormat = _SELECT_VIEW_QUERY_FORMAT_STRING_;
+            return string.Format(strQueryFormat, addMainWhere, (addSubWhere ?? string.Empty));
+        }
+
+        public static DataTable? ToDataTable(IHxDb db, string? additionalConditions = null)
+        {
+            if (db == null) throw new ArgumentNullException("Database Resource");
+
+            if (db.Open() != true) { return null; }
+
+            string SQL = ToDbSelectQueryFormatString(string.Empty, string.Empty);
+            if (additionalConditions.IsNullOrWhiteSpaceEx() != true)
+            {
+                SQL = GetQueryString(SQL, additionalConditions);
+            }
+
+            DataTable Result = db.QueryDataTable(SQL);
+            if (Result != null) { Result.TableName = _DB_VIEW_NAME_; }
+
+            return Result;
+        }
+
+    }
 
    
 }

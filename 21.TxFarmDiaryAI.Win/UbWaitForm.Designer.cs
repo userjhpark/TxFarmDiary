@@ -49,6 +49,7 @@
             progressPanel1.Size = new Size(287, 43);
             progressPanel1.TabIndex = 0;
             progressPanel1.Text = "progressPanel1";
+            progressPanel1.UseWaitCursor = true;
             // 
             // tableLayoutPanel1
             // 
@@ -67,8 +68,9 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel1.Size = new Size(287, 79);
             tableLayoutPanel1.TabIndex = 1;
+            tableLayoutPanel1.UseWaitCursor = true;
             // 
-            // UbWaitForm1
+            // UbWaitForm
             // 
             AutoScaleDimensions = new SizeF(7F, 14F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -76,11 +78,11 @@
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(287, 79);
             Controls.Add(tableLayoutPanel1);
-            DoubleBuffered = true;
             Margin = new Padding(4, 3, 4, 3);
-            Name = "UbWaitForm1";
+            Name = "UbWaitForm";
             StartPosition = FormStartPosition.Manual;
             Text = "Wait Form";
+            UseWaitCursor = true;
             tableLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();

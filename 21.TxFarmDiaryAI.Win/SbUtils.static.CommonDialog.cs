@@ -75,8 +75,8 @@ namespace TxFarmDiaryAI.Win
         {
             try
             {
-                DevExpress.XtraSplashScreen.SplashScreenManager.ShowForm(sender, typeof(UbWaitForm), useFadeIn, useFadeOut, throwExceptionIfAlreadyOpened);
-                Application.DoEvents();
+                DevExpress.XtraSplashScreen.SplashScreenManager.ShowForm(sender, typeof(WaitForm1), useFadeIn, useFadeOut, throwExceptionIfAlreadyOpened);
+                //Application.DoEvents();
             }
             catch (Exception ex)
             {

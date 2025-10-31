@@ -29,24 +29,24 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UbImageCartForm));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
             scCtlBody = new DevExpress.XtraEditors.SplitContainerControl();
             tabCtlBody = new DevExpress.XtraTab.XtraTabControl();
             tpPicture = new DevExpress.XtraTab.XtraTabPage();
             picViewer = new DevExpress.XtraEditors.PictureEdit();
             tpPdfViewer = new DevExpress.XtraTab.XtraTabPage();
-            pdfViewer1 = new DevExpress.XtraPdfViewer.PdfViewer();
+            pdfViewer = new DevExpress.XtraPdfViewer.PdfViewer();
             groupControl2 = new DevExpress.XtraEditors.GroupControl();
             grdcImageCart = new DevExpress.XtraGrid.GridControl();
             grdvImageCart = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -232,23 +232,23 @@
             // 
             // tpPdfViewer
             // 
-            tpPdfViewer.Controls.Add(pdfViewer1);
+            tpPdfViewer.Controls.Add(pdfViewer);
             tpPdfViewer.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("tpPdfViewer.ImageOptions.SvgImage");
             tpPdfViewer.ImageOptions.SvgImageSize = new Size(12, 12);
             tpPdfViewer.Name = "tpPdfViewer";
             tpPdfViewer.ShowCloseButton = DevExpress.Utils.DefaultBoolean.True;
-            tpPdfViewer.Size = new Size(822, 368);
+            tpPdfViewer.Size = new Size(982, 368);
             tpPdfViewer.Text = "PDF Viewer";
             // 
-            // pdfViewer1
+            // pdfViewer
             // 
-            pdfViewer1.Dock = DockStyle.Fill;
-            pdfViewer1.Location = new Point(0, 0);
-            pdfViewer1.MenuManager = rcChildMenu;
-            pdfViewer1.Name = "pdfViewer1";
-            pdfViewer1.Size = new Size(822, 368);
-            pdfViewer1.TabIndex = 1;
-            pdfViewer1.Load += pdfViewer1_Load;
+            pdfViewer.Dock = DockStyle.Fill;
+            pdfViewer.Location = new Point(0, 0);
+            pdfViewer.MenuManager = rcChildMenu;
+            pdfViewer.Name = "pdfViewer";
+            pdfViewer.Size = new Size(982, 368);
+            pdfViewer.TabIndex = 1;
+            pdfViewer.Load += pdfViewer1_Load;
             // 
             // groupControl2
             // 
@@ -402,9 +402,9 @@
             // repcbxScanners
             // 
             repcbxScanners.AutoHeight = false;
-            editorButtonImageOptions1.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("editorButtonImageOptions1.SvgImage");
-            editorButtonImageOptions1.SvgImageSize = new Size(12, 12);
-            repcbxScanners.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Refresh", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", "{{#REFRESH}}", null, DevExpress.Utils.ToolTipAnchor.Default) });
+            editorButtonImageOptions2.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("editorButtonImageOptions2.SvgImage");
+            editorButtonImageOptions2.SvgImageSize = new Size(12, 12);
+            repcbxScanners.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Refresh", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", "{{#REFRESH}}", null, DevExpress.Utils.ToolTipAnchor.Default) });
             repcbxScanners.Name = "repcbxScanners";
             // 
             // bbibtnScanToPicture
@@ -653,7 +653,7 @@
             pdfBarController1.BarItems.Add(hotkeyFocusLayersTabBarItem1);
             pdfBarController1.BarItems.Add(hotkeyFocusSignaturesTabBarItem1);
             pdfBarController1.BarItems.Add(hotkeyFocusDocumentViewerBarItem1);
-            pdfBarController1.Control = pdfViewer1;
+            pdfBarController1.Control = pdfViewer;
             // 
             // pdfFileOpenBarItem1
             // 
@@ -706,21 +706,21 @@
             // 
             pdfZoomOutBarItem1.Id = 30;
             pdfZoomOutBarItem1.Name = "pdfZoomOutBarItem1";
-            toolTipTitleItem1.Text = "Zoom Out (Ctrl + Minus)";
-            toolTipItem1.Text = "Zoom out to see more of the page at a reduced size.";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            pdfZoomOutBarItem1.SuperTip = superToolTip1;
+            toolTipTitleItem3.Text = "Zoom Out (Ctrl + Minus)";
+            toolTipItem3.Text = "Zoom out to see more of the page at a reduced size.";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            superToolTip3.Items.Add(toolTipItem3);
+            pdfZoomOutBarItem1.SuperTip = superToolTip3;
             // 
             // pdfZoomInBarItem1
             // 
             pdfZoomInBarItem1.Id = 31;
             pdfZoomInBarItem1.Name = "pdfZoomInBarItem1";
-            toolTipTitleItem2.Text = "Zoom In (Ctrl + Plus)";
-            toolTipItem2.Text = "Zoom in to get a close-up view of the PDF document.";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            pdfZoomInBarItem1.SuperTip = superToolTip2;
+            toolTipTitleItem4.Text = "Zoom In (Ctrl + Plus)";
+            toolTipItem4.Text = "Zoom in to get a close-up view of the PDF document.";
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            superToolTip4.Items.Add(toolTipItem4);
+            pdfZoomInBarItem1.SuperTip = superToolTip4;
             // 
             // pdfZoom10CheckItem1
             // 
@@ -1048,7 +1048,7 @@
         private DevExpress.XtraTab.XtraTabPage tpPicture;
         private DevExpress.XtraEditors.PictureEdit picViewer;
         private DevExpress.XtraTab.XtraTabPage tpPdfViewer;
-        private DevExpress.XtraPdfViewer.PdfViewer pdfViewer1;
+        private DevExpress.XtraPdfViewer.PdfViewer pdfViewer;
         private DevExpress.XtraPdfViewer.Bars.PdfBarController pdfBarController1;
         private DevExpress.XtraBars.BarButtonItem pdfFileCloseBarItem1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup5;

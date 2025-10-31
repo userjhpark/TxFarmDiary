@@ -494,7 +494,7 @@ namespace TxFarmDiaryAI.Win
 
                         try
                         {
-                            pdfViewer1.CloseDocument();
+                            pdfViewer.CloseDocument();
 
                             // Export to PDF
                             report.ExportToPdf(strFileName);
@@ -606,9 +606,9 @@ namespace TxFarmDiaryAI.Win
 
                 UbFarmDiaryInputForm docForm = new(this.CartImageSingleSelectItem)
                 {
-                    StartPosition = FormStartPosition.CenterParent,
                     Owner = this,
                     //MdiParent = SysEnv.MainForm,
+                    StartPosition = FormStartPosition.CenterParent,
                 };
                 //pdfForm.BringToFront();
                 //pdfForm.TopMost = true;
@@ -1048,8 +1048,8 @@ namespace TxFarmDiaryAI.Win
                 tpPdfViewer.Show();
                 if (fileName.IsNullOrWhiteSpaceEx() == false && HxFile.IsFileExists(fileName) == true)
                 {
-                    pdfViewer1.LoadDocument(fileName);
-                    pdfViewer1.ZoomMode = DevExpress.XtraPdfViewer.PdfZoomMode.FitToVisible;
+                    pdfViewer.LoadDocument(fileName);
+                    pdfViewer.ZoomMode = DevExpress.XtraPdfViewer.PdfZoomMode.FitToVisible;
                 }
                 ShowSelectChildRibbonMenuPageByText(rpChildPdfViewer);
             }
@@ -1074,7 +1074,7 @@ namespace TxFarmDiaryAI.Win
             //if (btsichkOptions_OpenPdfViewerInNewWindow.Checked != true)
             {
                 ShowSelectChildRibbonMenuPageByText(rpChildImageToOCR);
-                pdfViewer1.CloseDocument();
+                pdfViewer.CloseDocument();
                 tpPicture.Show();
                 tpPdfViewer.Hide();
                 tpPdfViewer.PageVisible = false;

@@ -288,4 +288,33 @@ Would you like to load  new one?</value>
   <data name="TEMPLATE_FILE_NOT_EXIST" xml:space="preserve">
     <value>The template file for the recognized document does not exist.</value>
   </data>
+  <data name="DATEDIFF_APPLY_QUESTION" xml:space="preserve">
+    <value>There is already a date entered, and the date you are trying to specify is different.
+
+Do you want to continue?</value>
+  </data>
+  <data name="DATEDIFF_NOTEQUALS_QUESTION" xml:space="preserve">
+    <value>The specified date and the date entered in the document are different.
+
+Do you want to continue?</value>
+  </data>
+  <data name="DIARY_SAVE_QUESTION" xml:space="preserve">
+    <value>Would you like to save the currently entered document?</value>
+  </data>
+  <data name="DIARY_NOT_DATE" xml:space="preserve">
+    <value>No date has been specified.
+Please check again.</value>
+  </data>
+  <data name="DIARY_NOT_ADDR" xml:space="preserve">
+    <value>Farm and address information was not entered.
+Please check again.</value>
+  </data>
+  <data name="DIARY_NOT_TASK" xml:space="preserve">
+    <value>The task step (task name) information has not been entered.
+Please check again.</value>
+  </data>
+  <data name="DIARY_NOT_DETAIL" xml:space="preserve">
+    <value>Detailed task information has not been entered.
+Please check again.</value>
+  </data>
 </root>

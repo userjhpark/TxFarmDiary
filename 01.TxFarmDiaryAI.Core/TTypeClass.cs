@@ -13,6 +13,22 @@ using System.Threading.Tasks;
 
 namespace TxFarmDiaryAI
 {
+    public enum ResponseResultValueCaseType
+    {
+        None = 0,
+        Json,
+        Text,
+        Serialize,
+        Array,
+        Base64,
+        Default = Json,
+        String = Text,
+        DataTable = Serialize,
+        Object = Serialize,
+        Class = Serialize,
+        List = Array
+    }
+
     public class TImageCartItem
     {
         public int Index { get; set; }

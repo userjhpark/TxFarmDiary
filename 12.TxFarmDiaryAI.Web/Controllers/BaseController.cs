@@ -41,7 +41,8 @@ namespace TxFarmDiaryAI.Web.Controllers
                     return new NotFoundResult();
                 }
 
-                Result.Value = value;
+                //Result.Value = value;
+                Result.SetObjectValue(value);
                 if (resultType != HxResultType.None)
                 {
                     Result.ResultType = resultType;
@@ -61,7 +62,37 @@ namespace TxFarmDiaryAI.Web.Controllers
             }
             return BadRequest(Result);
         }
-        
+
+        protected virtual IActionResult? GetResultValue(HxResultValue Result, HxResultType resultType = HxResultType.None)
+        {
+            try
+            {
+                if (Result == null)
+                {
+                    return new NotFoundResult();
+                }
+
+                //Result.Value = value;
+                if (resultType != HxResultType.None)
+                {
+                    Result.ResultType = resultType;
+                }
+
+                if (Result.Success != true)
+                {
+                    return BadRequest(Result);
+                }
+                return Ok(Result);
+            }
+            catch (Exception ex)
+            {
+                Result.SetException(ex);
+                //throw ex;
+            }
+            return BadRequest(Result);
+        }
+
+
         public BaseController(IWebHostEnvironment webEnv)
         {
             WebEnv = webEnv;

@@ -179,6 +179,77 @@ namespace TxFarmDiaryAI.Common {
         }
         
         /// <summary>
+        ///   There is already a date entered, and the date you are trying to specify is different.
+        ///
+        ///Do you want to continue?과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string DATEDIFF_APPLY_QUESTION {
+            get {
+                return ResourceManager.GetString("DATEDIFF_APPLY_QUESTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   The specified date and the date entered in the document are different.
+        ///
+        ///Do you want to continue?과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string DATEDIFF_NOTEQUALS_QUESTION {
+            get {
+                return ResourceManager.GetString("DATEDIFF_NOTEQUALS_QUESTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Farm and address information was not entered.
+        ///Please check again.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string DIARY_NOT_ADDR {
+            get {
+                return ResourceManager.GetString("DIARY_NOT_ADDR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   No date has been specified.
+        ///Please check again.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string DIARY_NOT_DATE {
+            get {
+                return ResourceManager.GetString("DIARY_NOT_DATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Detailed task information has not been entered.
+        ///Please check again.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string DIARY_NOT_DETAIL {
+            get {
+                return ResourceManager.GetString("DIARY_NOT_DETAIL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   The task step (task name) information has not been entered.
+        ///Please check again.과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string DIARY_NOT_TASK {
+            get {
+                return ResourceManager.GetString("DIARY_NOT_TASK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Would you like to save the currently entered document?과(와) 유사한 지역화된 문자열을 찾습니다.
+        /// </summary>
+        public static string DIARY_SAVE_QUESTION {
+            get {
+                return ResourceManager.GetString("DIARY_SAVE_QUESTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   The specified file does not exist.과(와) 유사한 지역화된 문자열을 찾습니다.
         /// </summary>
         public static string FILE_NOTEXIST {

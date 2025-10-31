@@ -284,4 +284,33 @@
   <data name="TEMPLATE_FILE_NOT_EXIST" xml:space="preserve">
     <value>인식된 문서의 템플릿 파일이 존재하지 않습니다.</value>
   </data>
+  <data name="DATEDIFF_APPLY_QUESTION" xml:space="preserve">
+    <value>이미 입력된 날짜가 있으며, 지정할려는 날짜가 서로 다릅니다.
+
+계속 진행하시겠습니까?</value>
+  </data>
+  <data name="DATEDIFF_NOTEQUALS_QUESTION" xml:space="preserve">
+    <value>지정된 날짜와 문서에 입력된 날짜가 다릅니다.
+
+이대로 계속 진행하시겠습니까?</value>
+  </data>
+  <data name="DIARY_SAVE_QUESTION" xml:space="preserve">
+    <value>현재 입력된 문서를 저장 하시겠습니까?</value>
+  </data>
+  <data name="DIARY_NOT_DATE" xml:space="preserve">
+    <value>날짜가 지정되지 않았습니다.
+다시 확인하시기 바랍니다.</value>
+  </data>
+  <data name="DIARY_NOT_ADDR" xml:space="preserve">
+    <value>농장 및 주소 정보가 입력되지 않았습니다.
+다시 확인하시기 바랍니다.</value>
+  </data>
+  <data name="DIARY_NOT_TASK" xml:space="preserve">
+    <value>작업단계(작업명) 정보가 입력되지 않았습니다.
+다시 확인하시기 바랍니다.</value>
+  </data>
+  <data name="DIARY_NOT_DETAIL" xml:space="preserve">
+    <value>세부작업 정보가 입력되지 않았습니다.
+다시 확인하시기 바랍니다.</value>
+  </data>
 </root>

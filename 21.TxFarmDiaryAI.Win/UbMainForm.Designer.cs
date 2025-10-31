@@ -87,6 +87,8 @@
             ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             rpMainImageToOCR = new DevExpress.XtraBars.Ribbon.RibbonPage();
             rpgMainImageToOCR = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            rpMainDiaryList = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             replueWorkspaceSelect = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             popupMenu1 = new DevExpress.XtraBars.PopupMenu(components);
@@ -112,7 +114,7 @@
             rcMainMenu.Location = new Point(0, 0);
             rcMainMenu.MaxItemId = 31;
             rcMainMenu.Name = "rcMainMenu";
-            rcMainMenu.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { rpMainHome, rpMainApplication, rpMainView, rpMainImageToOCR });
+            rcMainMenu.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { rpMainHome, rpMainApplication, rpMainView, rpMainImageToOCR, rpMainDiaryList });
             rcMainMenu.QuickToolbarItemLinks.Add(barbtnMainImageToOCR);
             rcMainMenu.QuickToolbarItemLinks.Add(barbtnMainAppend_FarmingDiary);
             rcMainMenu.QuickToolbarItemLinks.Add(barbtnMainList_FarmingDiary);
@@ -465,6 +467,20 @@
             rpgMainImageToOCR.Name = "rpgMainImageToOCR";
             rpgMainImageToOCR.Text = "Image to OCR";
             // 
+            // rpMainDiaryList
+            // 
+            rpMainDiaryList.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroup1 });
+            rpMainDiaryList.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("rpMainDiaryList.ImageOptions.SvgImage");
+            rpMainDiaryList.Name = "rpMainDiaryList";
+            rpMainDiaryList.Text = "Farm Diary";
+            // 
+            // ribbonPageGroup1
+            // 
+            ribbonPageGroup1.ItemLinks.Add(barbtnMainList_FarmingDiary);
+            ribbonPageGroup1.ItemLinks.Add(barbtnMainAppend_FarmingDiary);
+            ribbonPageGroup1.Name = "ribbonPageGroup1";
+            ribbonPageGroup1.Text = "Farm Diary";
+            // 
             // replueWorkspaceSelect
             // 
             replueWorkspaceSelect.AutoHeight = false;
@@ -570,5 +586,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage rpMainImageToOCR;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgMainImageToOCR;
         private DevExpress.XtraBars.BarButtonItem barbtnDiarySampleFolder;
+        private DevExpress.XtraBars.Ribbon.RibbonPage rpMainDiaryList;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
     }
 }

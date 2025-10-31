@@ -2,10 +2,12 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MySqlX.XDevAPI;
+using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Reflection;
+using TxFarmDiaryAI.Api;
 
 namespace TxFarmDiaryAI.Web.Controllers.v1
 {
@@ -512,6 +514,232 @@ namespace TxFarmDiaryAI.Web.Controllers.v1
             }
             */
             return Ok(new { message = "SetPostCreate API is under construction." });
+        }
+
+        private DataTable? GetFarmDiaryListToDataTable()
+        {
+            IHxDb db = GetDbConn();
+            if (db == null || db.Open() != true) { return null; }
+
+            DataTable? Result = SQL_TXFD_DIARY_INFO_View.ToDataTable(db);
+            return Result;
+        }
+        private IActionResult? GetResultValueFromDataTable<T>(DataTable dt, ResponseResultValueCaseType? value_case, string? name_case)
+            where T : IHxSetValue, new()
+        {
+            HxNameingCaseType outputCaseType = GetCaseingType(name_case);
+            IActionResult? Result = GetResultValueFromDataTable<T>(dt, value_case, outputCaseType);
+            return Result;
+        }
+        private IActionResult? GetResultValueFromDataTable<T>(DataTable dt, ResponseResultValueCaseType? value_case, HxNameingCaseType outputCaseType)
+            where T : IHxSetValue, new()
+        {
+            IActionResult? Result;
+            switch (value_case)
+            {
+                case ResponseResultValueCaseType.Text:
+                    string strCastingToString = dt.ToJsonStringWithNameingCaseEx(outputCaseType);
+                    Result = GetResultValue(strCastingToString);
+                    break;
+                case ResponseResultValueCaseType.Serialize:
+                    string strDatatableToString = dt.ToJsonStringEx();
+                    Result = GetResultValue(strDatatableToString);
+                    break;
+                case ResponseResultValueCaseType.List:
+                    Result = GetResultValue(dt.ToRecordSetEx<T>());
+                    break;
+                case ResponseResultValueCaseType.Json:
+                case ResponseResultValueCaseType.None:
+                default:
+                    List<Dictionary<string, object>> liValue = HxUtils.ToJsonListWithNamingCase(dt, outputCaseType);
+                    Result = GetResultValue(liValue);
+                    break;
+            }
+
+            return Result;
+        }
+
+        private static HxNameingCaseType GetCaseingType(string name_case)
+        {
+            string strNamingCaseType = name_case?.ToLower().Trim() ?? "Default";
+            HxNameingCaseType inputCaseType = HxCasing.ToCasingType(strNamingCaseType);
+            HxNameingCaseType outputCaseType = inputCaseType;
+            switch (inputCaseType)
+            {
+                case HxNameingCaseType.PascalCase:
+                case HxNameingCaseType.CamelCase:
+                case HxNameingCaseType.SnakeCase:
+                case HxNameingCaseType.KebabCase:
+                case HxNameingCaseType.LowerCase:
+                case HxNameingCaseType.UpperCase:
+                case HxNameingCaseType.JsonCase:
+                    outputCaseType = inputCaseType;
+                    break;
+                case HxNameingCaseType.NormalCase:
+                case HxNameingCaseType.DefaultCase:
+                default:
+                    outputCaseType = WebDefs._WEBAPI_DEFAULT_JSON_NAMING_CASE_;
+                    break;
+            }
+
+            return outputCaseType;
+        }
+
+        [HttpGet("List")]
+        //[Produces("application/json")]
+        public IActionResult? GetFarmDiaryAllList(ResponseResultValueCaseType? value_case = ResponseResultValueCaseType.Json, string ? name_case = null)
+        {
+            try
+            {
+                /*
+                int phase = db.Query("SELECT * FROM TXFD_SITE_SET");
+                if (phase >= 0)
+                {
+                    List<string> list = new List<string>();
+                    while (db.NextRecord())
+                    {
+                        list.Add(db.f("site_name").ToStringEx());
+                    }
+
+                }
+                */
+
+                DataTable? dt = GetFarmDiaryListToDataTable();
+                if (dt == null || dt.Columns.Count <= 0 || dt.Rows.Count <= 0) { return BadRequest("Data Not Found!"); }
+
+                IActionResult? Result = GetResultValueFromDataTable<SQL_TXFD_DIARY_INFO_View>(dt, value_case, name_case);
+
+                //IActionResult? Result = GetResultValue(value);
+                return Result;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                return GetResultValue(ex.Message, HxResultType.Exception);
+                //throw ex;
+            }
+            finally
+            {
+                ; ;
+            }
+        }
+
+        
+
+        private DataTable? GetFarmDiaryPropertiesToDataTable(int dno, string? addWhereQuery = null)
+        {
+            IHxDb db = GetDbConn();
+            if (db == null || db.Open() != true) { return null; }
+            string mWhere = $"{SQL_TXFD_DIARY_FIELD_Table._CDF_DNO_} = {dno}";
+            mWhere = HxUtils.GetQueryString(mWhere, addWhereQuery);
+            DataTable? Result = SQL_TXFD_DIARY_FIELD_Table.ToDataTable(db, mWhere);
+            return Result;
+        }
+        private IEnumerable<SQL_TXFD_DIARY_FIELD_Table>? GetFarmDiaryPropertiesToRecordSet(int dno, string? addWhereQuery = null)
+        {
+            return GetFarmDiaryPropertiesToDataTable(dno, addWhereQuery)?.ToRecordSetEx<SQL_TXFD_DIARY_FIELD_Table>();
+        }
+
+        [HttpGet("Feilds/{dno}")]
+        //[Produces("application/json")]
+        public IActionResult? GetFarmDiaryProperties(int dno, ResponseResultValueCaseType? value_case = ResponseResultValueCaseType.Json, string? name_case = null)
+        {
+            try
+            {
+                DataTable? dt = GetFarmDiaryPropertiesToDataTable(dno);
+                if (dt == null || dt.Columns.Count <= 0 || dt.Rows.Count <= 0) { return BadRequest("Data Not Found!"); }
+
+                IActionResult? Result = GetResultValueFromDataTable<SQL_TXFD_DIARY_FIELD_Table>(dt, value_case, name_case);
+                //IActionResult? Result = GetResultValue(value);
+                return Result;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                return GetResultValue(ex.Message, HxResultType.Exception);
+                //throw ex;
+            }
+            finally
+            {
+                ; ;
+            }
+        }
+
+        private DataTable? GetFarmDiaryFileToDataTable(int fine_no, string? addWhereQuery = null)
+        {
+            IHxDb db = GetDbConn();
+            if (db == null || db.Open() != true) { return null; }
+
+            string mWhere = $"{SQL_TXFD_FILE_ENV_Table._CDF_FILE_NO_} = {fine_no}";
+            mWhere = HxUtils.GetQueryString(mWhere, addWhereQuery);
+
+            DataTable? Result = SQL_TXFD_FILE_ENV_Table.ToDataTable(db, mWhere);
+            if(Result == null || Result.Rows.Count <= 0) { return null; }
+
+            if(Result.Columns.Contains(SQL_TXFD_FILE_ENV_Table._CDF_FILE_DATA_) != true)
+            {
+                Result.Columns.Add(SQL_TXFD_FILE_ENV_Table._CDF_FILE_DATA_, typeof(string));
+            }
+
+            foreach (DataRow dr in Result.Rows)
+            {
+                SQL_TXFD_FILE_ENV_Table r = dr.ToRecordEx<SQL_TXFD_FILE_ENV_Table>();
+                if (r == null || r.FILE_NO.IsNullOrWhiteSpaceEx() == true || r.FILE_PATH.IsNullOrWhiteSpaceEx() == true || r.FILE_SAVE.IsNullOrWhiteSpaceEx() == true) { continue; }
+
+                string strFileFullPath = Path.Combine(r.FILE_PATH!, r.FILE_SAVE!);
+                if (HxFile.IsFileExists(strFileFullPath) != true) { continue; }
+
+                byte[] fileBytes = HxFile.ReadAllBytes(strFileFullPath);
+                dr[SQL_TXFD_FILE_ENV_Table._CDF_FILE_DATA_] = Convert.ToBase64String(fileBytes);
+            }
+
+            return Result;
+
+
+            /*
+            IHxDb db = GetDbConn();
+            if (db == null || db.Open() != true) { return null; }
+
+            string mWhere = $"{SQL_TXFD_FILE_ENV_Table._CDF_FILE_NO_} = {fine_no}";
+            mWhere = HxUtils.GetQueryString(mWhere, addWhereQuery);
+            DataTable? dt = SQL_TXFD_FILE_ENV_Table.ToDataTable(db, mWhere);
+            if (dt == null && dt.Rows.Count <= 0) { return null; }
+
+            SQL_TXFD_FILE_ENV_Table r = dt.ToRecordEx<SQL_TXFD_FILE_ENV_Table>();
+            if(r == null || r.FILE_NO.IsNullOrWhiteSpaceEx() == true || r.FILE_PATH.IsNullOrWhiteSpaceEx() == true || r.FILE_SAVE.IsNullOrWhiteSpaceEx() == true) { return null; }
+
+            string strFileFullPath = Path.Combine(r.FILE_PATH!, r.FILE_SAVE!);
+            if (HxFile.IsFileExists(strFileFullPath) != true) { return null; }
+
+            byte[] Result = HxFile.ReadAllBytes(strFileFullPath);
+
+            return Result;
+            */
+        }
+        [HttpGet("File/{file_no}")]
+        //[Produces("application/json")]
+        public IActionResult? GetFarmDiaryFile(int file_no, ResponseResultValueCaseType? value_case = ResponseResultValueCaseType.Json, string? name_case = null)
+        {
+            try
+            {
+                DataTable? dt = GetFarmDiaryFileToDataTable(file_no);
+                if (dt == null || dt.Columns.Count <= 0 || dt.Rows.Count <= 0) { return BadRequest("Data Not Found!"); }
+
+                IActionResult? Result = GetResultValueFromDataTable<SQL_TXFD_FILE_ENV_Table>(dt, value_case, name_case);
+                //IActionResult? Result = GetResultValue(value);
+                return Result;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                return GetResultValue(ex.Message, HxResultType.Exception);
+                //throw ex;
+            }
+            finally
+            {
+                ; ;
+            }
+            return BadRequest("Unknown Error!");
         }
         #endregion
     }

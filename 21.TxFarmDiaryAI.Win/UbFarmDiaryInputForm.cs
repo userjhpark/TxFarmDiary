@@ -1,10 +1,12 @@
-﻿using DevExpress.Data.Filtering.Helpers;
+﻿using DevExpress.CodeParser;
+using DevExpress.Data.Filtering.Helpers;
 using DevExpress.Mvvm.POCO;
 using DevExpress.Office.Crypto;
 using DevExpress.Pdf;
 using DevExpress.Utils.Drawing;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.Controls.Rtf;
 using DevExpress.XtraPdfViewer;
 using DevExpress.XtraPdfViewer.Bars;
 using DevExpress.XtraPdfViewer.Commands;
@@ -29,16 +31,60 @@ namespace TxFarmDiaryAI.Win
 {
     public partial class UbFarmDiaryInputForm : UbBaseChildRibbonFormWithWS
     {
+        private const string _V작업일_ = "작업일";
+        private const string _V구매일_ = "구매일";
+        private const string _V농장_필지_ = "농장_필지";
+        private const string _V작업단계_작업명_ = "작업단계_작업명";
+        private const string _V세부작업_ = "세부작업";
+
         internal TImageCartItem? SourceImageItem { get; private set; }
         internal HxResultValue? ResultObj { get; private set; }
         //internal OCR_NAVER_API_Response_Body JsonObj { get; private set; }
         private string DefaultTitle => "Farming Diary(Journal) - Registration(Append)";
         private string TplSample01Full => Path.Combine(SysEnv.GetAppBaseDir(), "Template", "tpl-영농일지_R1-1Page.pdf");
         private string TplSample02Full => Path.Combine(SysEnv.GetAppBaseDir(), "Template", "tpl-영농일지_R1-2Page.pdf");
-        
+
         private decimal? SNo => SysEnv.CurrWorkspaceSNO.ToNullableDecimalEx();
         private decimal? UNo => SysEnv.LoginUserSNO.ToNullableDecimalEx();
-        private DateTime? DiaryDate => baredtChildDocDate.EditValue.ToNullableDateTimeEx();
+        private DateTime? DiaryDate
+        {
+            get => baredtChildDocDate.EditValue.ToNullableDateTimeEx();
+            set => baredtChildDocDate.EditValue = value;
+        }
+        private void SetDiaryDate(string? inputDate = null)
+        {
+            if (inputDate.IsNullOrWhiteSpaceEx() == true || inputDate!.ToLower() == "today" || inputDate!.ToLower() == "now")
+            {
+                DiaryDate = DateTime.Now;
+                return;
+            }
+            string dateValue = HxString.GetConvertDateString(inputDate);
+            DiaryDate = dateValue.IsNullOrWhiteSpaceEx() == true ? DateTime.Now : dateValue.ToNullableDateEx("yyyy-MM-dd");
+        }
+
+        private string? InputFormFieldDiaryDateStr
+        {
+            get
+            {
+                string? Result = GetAcroFormFieldByName(_V작업일_);
+                if (Result.IsNullOrWhiteSpaceEx() == true)
+                {
+                    Result = GetAcroFormFieldByName(_V구매일_);
+                }
+                return Result;
+            }
+            set
+            {
+                string strDate = HxString.GetConvertDateString(value, "yyyy-MM-dd");
+                bool bAction = SetAcroFormFieldByName(_V작업일_, strDate);
+                if(bAction != true)
+                {
+                    _ = SetAcroFormFieldByName(_V구매일_, strDate);
+                }
+            }
+        }
+        private DateTime? InputFormFieldDiaryDateTime => HxString.GetConvertDateString(InputFormFieldDiaryDateStr).ToNullableDateEx()?.ToDateStartEx();
+        
 
         internal IEnumerable<TTemplateItem>? FarmingDiaryTemplateList => (repluTemplateList.DataSource as IEnumerable<TTemplateItem>) ?? SysEnv.FarmingDiaryTemplates;
         internal TTemplateItem? FarmingDiaryTemplateItem
@@ -148,7 +194,9 @@ namespace TxFarmDiaryAI.Win
                             //SetLoadTemplateSample();
                             baredtChildTemplateList.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
                             OpenTemplateToFramDiary(true);
+                            SetDiaryDate();
                         }
+                        
                         this.IsStartUp = true;
                     }
                 }
@@ -173,6 +221,56 @@ namespace TxFarmDiaryAI.Win
                 if (this.SourceImageItem == null || this.SourceImageItem.ImageData == null) { return; }
                 //using MemoryStream ms = new MemoryStream(this.SourceImageItem.ImageData);
                 //pdfCtl.AppendDocument(ms);
+            };
+
+            repdateChildDocDate.ButtonClick += (s, e) =>
+            {
+                string strTag = e.Button.Tag.ToStringEx().ToUpper();
+                if (strTag.IsNullOrWhiteSpaceEx() != true)
+                {
+                    if (strTag == "T")
+                    {
+                        SetDiaryDate();
+                    }
+                    else if (strTag == "N")
+                    {
+                        SetDiaryDate("NOW");
+                    }
+                    else if (strTag == "C")
+                    {
+                        DiaryDate = null;
+                    }
+                    else if (strTag == "G")
+                    {
+                        string? strDate = GetAcroFormFieldByName(_V작업일_);
+                        if (strDate.IsNullOrWhiteSpaceEx() == true)
+                        {
+                            strDate = GetAcroFormFieldByName(_V구매일_);
+                        }
+                        if (strDate.IsNullOrWhiteSpaceEx() != true)
+                        {
+                            SetDiaryDate(strDate);
+                        }
+                    }
+                    else if (strTag == "S")
+                    {
+                        if(DiaryDate.IsNullOrWhiteSpaceEx() != true && InputFormFieldDiaryDateTime.IsNullOrWhiteSpaceEx() != true)
+                        {
+                            if(DiaryDate.ToDateStartEx() != InputFormFieldDiaryDateTime)
+                            {
+                                string strCaption = Utils.GetLanguageResourceString(TDefs._RESOURCEKEY_DATEDIFF_APPLY_QUESTION_, defaultText: "There is already a date entered, and the date you are trying to specify is different.\n\nDo you want to continue?\n\n(이미 입력된 날짜가 있으며, 지정할려는 날짜가 서로 다릅니다. 계속 진행하시겠습니까?)");
+                                DialogResult dlg = Utils.ShowMessageBox(this, strCaption, icon: MessageBoxIcon.Question, buttons: MessageBoxButtons.YesNo, defaultButton: MessageBoxDefaultButton.Button2);
+                                if (dlg != DialogResult.Yes) { return; }
+                            }
+                        }
+
+                        bool bAction = SetAcroFormFieldByName(_V작업일_, DiaryDate?.ToString("yyyy-MM-dd") ?? string.Empty);
+                        if (bAction != true)
+                        {
+                            _ = SetAcroFormFieldByName(_V구매일_, DiaryDate?.ToString("yyyy-MM-dd") ?? string.Empty);
+                        }
+                    }
+                }
             };
 
             repluTemplateList.ButtonClick += (s, e) =>
@@ -203,6 +301,8 @@ namespace TxFarmDiaryAI.Win
                     }
                 }
             };
+
+
 
             barbtnChildAppend_FarmingDiary.ItemClick += (s, e) => SetAppendFarmingDiary();
 
@@ -362,6 +462,12 @@ namespace TxFarmDiaryAI.Win
                             if (jsonField?.name.IsNullOrWhiteSpaceEx() == true) { continue; }
 
                             formText.Value = jsonField?.inferText.Trim();
+
+                            if((formField.FullName == _V작업일_ || formField.FullName == _V구매일_) && formText.Value.IsNullOrWhiteSpaceEx() != true)
+                            {
+                                SetDiaryDate(formText.Value.ToStringEx());
+                            }
+
                         }
                     }
 #if DEBUG
@@ -386,6 +492,12 @@ namespace TxFarmDiaryAI.Win
         {
             bool Result = false;
 
+            pdfCtl.ClearSelection();
+
+            string strAppyQuestionText = Utils.GetLanguageResourceString(TDefs._RESOURCEKEY_DIARY_SAVE_QUESTION_, defaultText: "Would you like to save the currently entered document?\n\n(현재 입력된 문서를 저장 하시겠습니까?)");
+            var dlgApply = Utils.ShowMessageBox(this, strAppyQuestionText, icon: MessageBoxIcon.Question, buttons: MessageBoxButtons.YesNo, defaultButton: MessageBoxDefaultButton.Button2);
+            if (dlgApply != DialogResult.Yes) { return Result; }
+
             Utils.ShowWaitLoadingForm();
             try
             {
@@ -398,50 +510,72 @@ namespace TxFarmDiaryAI.Win
                 {
                     bImageOcrMode = true;
                 }
-
                 PdfDocumentFacade documentFacade = pdfCtl.GetDocumentFacade();
                 PdfAcroFormFacade acroForm = documentFacade.AcroForm;
                 IEnumerable<PdfFormFieldFacade> collisions = acroForm.GetFields();
-                if (collisions.Any() != true)
-                {
-                    Debug.WriteLine("No name conflicts are detected");
-                    Result = false;
-                    return Result;
-                }
 
-                Dictionary<string, string>? docInputFields = [];
-                foreach (var formField in collisions)
-                {
-                    PdfTextFormFieldFacade formText = acroForm.GetTextFormField(formField.FullName);
-                    if (formText == null || formText.FullName.IsNullOrWhiteSpaceEx() == true) { continue; }
+                //pdfCtl.sav
+                //pdfCtl.SaveDocument();
 
-                    //Debug.WriteLine($"Field Name: {formText.FullName}, Value: {strFieldValue}");
-                    // Append to Farming Diary Logic Here
-                    // ...
-                    string strFieldName = formText.FullName.Trim();
-                    string strFieldValue = formText.Value.ToStringEx().Trim();
-                    /*
-                    OCR_NAVER_API_Response_field jsonField = new OCR_NAVER_API_Response_field
-                    {
-                        name = strFieldName,
-                        inferText = strFieldValue
-                    };
-                    if (jsonField.name.IsNullOrWhiteSpaceEx() == true) { continue; }
-                    jsonFields.Add(strFieldName, jsonField);
-                    */
-                    //OCR_NAVER_API_Response_field? jsonField = jsonFields?.Where(r => r.name == formField.FullName).FirstOrDefault();
-                    if (docInputFields.ContainsKey(strFieldName) != true)
-                    {
-                        docInputFields.Add(strFieldName, strFieldValue);
-                    }
-                }
-
-                if (docInputFields.Any() != true)
+                Dictionary<string, string> docInputFields = GetAcroFormFields(this.pdfCtl);
+                if (docInputFields == null || docInputFields.Any() != true)
                 {
                     Debug.WriteLine("No form field data to append.");
                     Result = false;
                     return Result;
                 }
+
+
+
+                if(DiaryDate == null || DiaryDate.IsNullOrWhiteSpaceEx() == true)
+                {
+                    if(InputFormFieldDiaryDateTime != null && InputFormFieldDiaryDateTime.IsNullOrWhiteSpaceEx() != true)
+                    {
+                        DiaryDate = InputFormFieldDiaryDateTime;
+                    }
+                } 
+                else if(InputFormFieldDiaryDateTime == null || InputFormFieldDiaryDateTime.IsNullOrWhiteSpaceEx() == true)
+                {
+                    if (DiaryDate != null && DiaryDate.IsNullOrWhiteSpaceEx() != true)
+                    {
+                        InputFormFieldDiaryDateStr = DiaryDate?.ToDateStartEx().ToDateStringEx();
+                    }
+                }
+
+                if(DiaryDate.ToDateStartEx() != InputFormFieldDiaryDateTime.ToDateStartEx())
+                {
+                    string strDlgText = Utils.GetLanguageResourceString(TDefs._RESOURCEKEY_DATEDIFF_NOTEQUALS_QUESTION_, defaultText: "The specified date and the date entered in the document are different.\n\nDo you want to continue?\n\n(지정된 날짜와 문서에 입력된 날짜가 다릅니다. 이대로 계속 진행하시겠습니까?)");
+                    DialogResult dlg = Utils.ShowMessageBox(this, strDlgText, icon: MessageBoxIcon.Question, buttons: MessageBoxButtons.YesNo);
+                    if (dlg != DialogResult.Yes) { return Result; }
+                }
+
+                if(DiaryDate == null || InputFormFieldDiaryDateStr.IsNullOrWhiteSpaceEx() == true)
+                {
+                    string strDlgText = Utils.GetLanguageResourceString(TDefs._RESOURCEKEY_DIARY_NOT_DATE_, defaultText: "No date has been specified.\n\nPlease check again.\n\n(날짜가 지정되지 않았습니다. 다시 확인하시기 바랍니다.)");
+                    Utils.ShowMessageBox(this, strDlgText, icon: MessageBoxIcon.Stop);
+                    return Result;
+                }
+
+                string? strValAddr = GetAcroFormFieldByName(_V농장_필지_);
+                if(strValAddr.IsNullOrWhiteSpaceEx() == true)
+                {
+                    Utils.ShowMessageBox(this, Utils.GetLanguageResourceString(TDefs._RESOURCEKEY_DIARY_NOT_ADDR_, defaultText: "Farm and address information was not entered.\n\nPlease check again.\n\n(농장 및 주소 정보가 입력되지 않았습니다. 다시 확인하시기 바랍니다.)"), icon: MessageBoxIcon.Stop);
+                    return Result;
+                }
+                string? strValTask = GetAcroFormFieldByName(_V작업단계_작업명_);
+                if (strValTask.IsNullOrWhiteSpaceEx() == true)
+                {
+                    Utils.ShowMessageBox(this, Utils.GetLanguageResourceString(TDefs._RESOURCEKEY_DIARY_NOT_TASK_, defaultText: "The task step (task name) information has not been entered.\n\nPlease check again.\n\n(작업단계(작업명) 정보가 입력되지 않았습니다. 다시 확인하시기 바랍니다.)"), icon: MessageBoxIcon.Stop);
+                    return Result;
+                }
+                string? strValDetail = GetAcroFormFieldByName(_V세부작업_);
+                if (strValDetail.IsNullOrWhiteSpaceEx() == true)
+                {
+                    Utils.ShowMessageBox(this, Utils.GetLanguageResourceString(TDefs._RESOURCEKEY_DIARY_NOT_DETAIL_, defaultText: "Detailed task information has not been entered.\n\nPlease check again.\n\n(세부작업 정보가 입력되지 않았습니다. 다시 확인하시기 바랍니다.)"), icon: MessageBoxIcon.Stop);
+                    return Result;
+                }
+
+
                 string strFileName = Path.Combine(SysEnv.GetAppTempDir(), $"{HxString.GetNowDateTime("yyyy-MM-dd")}_{this.DocTemplateCode}.pdf");
                 strFileName = HxFile.GetFileUniquePath(strFileName, HxFileOverwriteType.RenameSequence);
                 pdfCtl.SaveDocument(strFileName);
@@ -458,14 +592,14 @@ namespace TxFarmDiaryAI.Win
                 DateTime? dDiaryDate = this.DiaryDate;
                 decimal? iUNo = this.UNo;
 
-                
+
 
                 string? strTitle = docInputFields.ContainsKey("제목") ? docInputFields["제목"] : "No Title";
                 string? strDescription = docInputFields.ContainsKey("설명") ? docInputFields["설명"] : null;
 
                 string? strDocTemplateCode = this.DocTemplateCode;
                 string? strDocTemplateName = this.DocTemplateName;
-                
+
                 string strDocFileBase64Data = HxString.GetByteToBase64Encode(bytesDocFile);
                 string strDocFileBase64Checksum = HxUtils.GetMD5String(strDocFileBase64Data);
                 string strDocFileName = HxFile.GetFileName(pdfCtl.DocumentFilePath);
@@ -497,14 +631,14 @@ namespace TxFarmDiaryAI.Win
                             strOcrImageBase64Checksum = HxUtils.GetMD5String(strOcrImageBase64Data);
                         }
 
-                        
+
 
                         ocrJsonFields = new Dictionary<string, string>();
                         foreach (OCR_NAVER_API_Response_field ocrField in ocrJsonValue.images!.First().fields)
                         {
                             string strFieldName = ocrField.name.Trim();
                             string strFieldValue = ocrField.inferText.Trim();
-                            if (ocrJsonFields.ContainsKey(strFieldName) != true) 
+                            if (ocrJsonFields.ContainsKey(strFieldName) != true)
                             {
                                 ocrJsonFields.Add(strFieldName, strFieldValue);
                             }
@@ -580,7 +714,7 @@ namespace TxFarmDiaryAI.Win
                     //CreatedDate = DateTime.Now,
                     //ModifiedDate = DateTime.Now,
                     DocFileName = strDocFileName,
-                    DocFileChecksum =strDocFileChecksum,
+                    DocFileChecksum = strDocFileChecksum,
                     DocFileBase64Data = strDocFileBase64Data,
                     DocFieldsData = docInputFields,
                     OcrTemplateCode = strOcrTemplateCode,
@@ -609,8 +743,104 @@ namespace TxFarmDiaryAI.Win
             return Result;
         }
 
+        private Dictionary<string, string>? GetAcroFormFields(PdfViewer? pdfViewer = null)
+        {
+            if(pdfViewer == null)
+            {
+                pdfViewer = this.pdfCtl;
+            }
+            PdfDocumentFacade documentFacade = pdfViewer.GetDocumentFacade();
+            PdfAcroFormFacade acroForm = documentFacade.AcroForm;
+            IEnumerable<PdfFormFieldFacade> collisions = acroForm.GetFields();
+            if (collisions.Any() != true)
+            {
+                Debug.WriteLine("No name conflicts are detected");
+                return null;
+            }
+            Dictionary<string, string> Result = [];
+            foreach (var formField in collisions)
+            {
+                PdfTextFormFieldFacade formText = acroForm.GetTextFormField(formField.FullName);
+                if (formText == null || formText.FullName.IsNullOrWhiteSpaceEx() == true) { continue; }
 
-        
+                //Debug.WriteLine($"Field Name: {formText.FullName}, Value: {strFieldValue}");
+                // Append to Farming Diary Logic Here
+                // ...
+                string strFieldName = formText.FullName.Trim();
+                string strFieldValue = formText.Value.ToStringEx().Trim();
+                /*
+                OCR_NAVER_API_Response_field jsonField = new OCR_NAVER_API_Response_field
+                {
+                    name = strFieldName,
+                    inferText = strFieldValue
+                };
+                if (jsonField.name.IsNullOrWhiteSpaceEx() == true) { continue; }
+                jsonFields.Add(strFieldName, jsonField);
+                */
+                //OCR_NAVER_API_Response_field? jsonField = jsonFields?.Where(r => r.name == formField.FullName).FirstOrDefault();
+                if (Result.ContainsKey(strFieldName) != true)
+                {
+                    Result.Add(strFieldName, strFieldValue);
+                }
+            }
+
+            return Result;
+        }
+
+        private string? GetAcroFormFieldByName(string name)
+        {
+            Dictionary<string, string> docInputFields = GetAcroFormFields(this.pdfCtl);
+            IEnumerable<KeyValuePair<string, string>> findFields = docInputFields.Where(r => r.Key.Equals(name, StringComparison.OrdinalIgnoreCase));
+            if (findFields != null && findFields.Any() == true)
+            {
+                foreach (KeyValuePair<string, string> field in findFields)
+                {
+                    if(field.Value.IsNullOrWhiteSpaceEx() != true)
+                    {
+                        return field.Value;
+                    }
+                }
+                return string.Empty;
+            }
+            return null;
+        }
+        private bool SetAcroFormFieldByName(string name, string value)
+        {
+            bool Result = false;
+            PdfDocumentFacade documentFacade = pdfCtl.GetDocumentFacade();
+            if (documentFacade == null) { return Result; }
+
+            PdfAcroFormFacade acroForm = documentFacade.AcroForm;
+            if(acroForm == null) { return Result; }
+
+            PdfTextFormFieldFacade? findFormText = acroForm.GetTextFormField(name);
+            if (findFormText != null)
+            {
+                findFormText.Value = value;
+                Result = true;
+            }
+
+            if (Result != true)
+            {
+                IEnumerable<PdfFormFieldFacade> collisions = acroForm.GetFields();
+                if (collisions.Any() != true)
+                {
+                    foreach (PdfFormFieldFacade field in collisions)
+                    {
+                        if (field.FullName.Equals(name, StringComparison.OrdinalIgnoreCase))
+                        {
+                            PdfTextFormFieldFacade formText = acroForm.GetTextFormField(field.FullName);
+                            if (formText != null)
+                            {
+                                formText.Value = value;
+                                Result = true;
+                            }
+                        }
+                    }
+                }
+            }
+            return Result;
+        }
 
         private void SetLoadTemplateSample()
         {
