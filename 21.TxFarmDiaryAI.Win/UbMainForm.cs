@@ -396,6 +396,19 @@ namespace TxFarmDiaryAI.Win
             return string.Empty;
         }
 
+        internal string GetSelectedWorkspaceStnCode()
+        {
+            if (workspaceDataTable != null && baredtMainWorkspaceSelect.EditValue.IsNullOrWhiteSpaceEx() != true)
+            {
+                DataRow[] findRows = workspaceDataTable.Select($"{SQL_TXFD_SITE_SET_Table._CDF_SNO_} = {baredtMainWorkspaceSelect.EditValue.ToDecimalEx()}");
+                if (findRows.Length > 0)
+                {
+                    return findRows[0][SQL_TXFD_SITE_SET_Table._CDF_STN_CODE_].ToStringEx();
+                }
+            }
+            return string.Empty;
+        }
+
         private void barbtnScanner_ItemClick(object sender, ItemClickEventArgs e)
         {
 

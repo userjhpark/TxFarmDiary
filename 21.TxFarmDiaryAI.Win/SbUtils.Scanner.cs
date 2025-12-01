@@ -86,10 +86,10 @@ namespace TxFarmDiaryAI.Win
             return Result;
         }
 
-        internal static bool ConnectToScannerComWIA(SbScannerDevice selectedScanner)
+        public static bool ConnectToScannerComWIA(SbScannerDevice selectedScanner)
         {
             var deviceManager = new WIA.DeviceManager();
-            WIA.Device device = null;
+            WIA.Device? device = null;
 
             foreach (WIA.DeviceInfo info in deviceManager.DeviceInfos)
             {
@@ -126,61 +126,7 @@ namespace TxFarmDiaryAI.Win
             return device != null;
         }
 
-        internal static bool ConnectToScannerMaps2Wia(SbScannerDevice selectedScanner)
-        {
-            return false;
-
-            using NAPS2.Wia.WiaDeviceManager deviceManager = new();
-            if (deviceManager == null || deviceManager.GetDeviceInfos() == null || deviceManager.GetDeviceInfos().Any() != true) { return false; }
-
-            foreach (WiaDeviceInfo deviceInfo in deviceManager.GetDeviceInfos())
-            {
-                using (deviceInfo)
-                {
-                    string id = deviceInfo.Id();
-                    string name = deviceInfo.Name();
-                    WiaDevice device = deviceManager.FindDevice(id);
-                    //device.
-                    if (name.Equals(@"No friendly name", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        // Some Windows/driver issues can result in the scanner name appearing as "No friendly name".
-                        // Better to replace with a generic "Unknown Scanner" string.
-                        name = "Unknown Scanner";
-                    }
-                    //new ScannerDevice { DeviceID = id, DeviceName = name });
-
-                    if (id == selectedScanner.DeviceID)
-                    {
-                        try
-                        {
-                            if (deviceInfo != null)
-                            {
-                                Debug.WriteLine($"[WIA] Connected to scanner: {selectedScanner.DeviceName}");
-                                return true;
-                            }
-                            else
-                            {
-                                Debug.WriteLine($"[WIA] Failed to connect to scanner: {selectedScanner.DeviceName}");
-                                return false;
-                            }
-                        }
-                        catch (FileNotFoundException ex)
-                        {
-                            Debug.WriteLine($"[WIA] Scanner not found: {ex.Message}");
-                            return false;
-                        }
-                        catch (Exception ex)
-                        {
-                            Debug.WriteLine($"[WIA] ConnectToScanner Error: {ex.Message}");
-                            return false;
-                            //throw;
-                        }
-                    }
-                }
-            }
-        }
-
-        internal static System.Drawing.Image? GetImageFromScanDevice(WIA.Device device)
+        public static System.Drawing.Image? GetImageFromScanDevice(WIA.Device device)
         {
             System.Drawing.Image? Result = null;
             try

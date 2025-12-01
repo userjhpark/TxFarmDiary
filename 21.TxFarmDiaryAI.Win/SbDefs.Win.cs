@@ -20,12 +20,19 @@ namespace TxFarmDiaryAI.Win
         internal const string _HOME_URL_FarmDiary_ = @"http://fd.typesw.com";
 #endif
         internal const string _API_URL_FarmDiary_ = _HOME_URL_FarmDiary_ + "/api";
-        internal const string _API_URL_NaverOCR_Custom_ = @"https://cugmmfu019.apigw.ntruss.com/custom/v1/46311/28645cc31f95289c0bc759520d489043a6ab9ebe045360e6b66c84f1e0165503/infer";
+
+        //internal const string _CALL_URL_NaverOCR_Custom_ = @"https://cugmmfu019.apigw.ntruss.com/custom/v1/46311/28645cc31f95289c0bc759520d489043a6ab9ebe045360e6b66c84f1e0165503/infer";
+        //internal const string _CALL_URL_ApiHubKMA_Day_ = "https://apihub.kma.go.kr/api/typ01/url/kma_sfcdd.php?authKey=kVpEBes0TKCaRAXrNKygLg"; //&stn=174&help=1&tm=20251103
 
         internal const string _API_URL_FarmSite_Workspace_ = @$"{_API_URL_FarmDiary_}/FarmSite/all/DataTable";
         internal const string _API_URL_FarmDiary_List_ = @$"{_API_URL_FarmDiary_}/FarmDiary/List?value_case=DataTable";
         internal const string _API_URL_FarmDiary_Fields_ = @$"{_API_URL_FarmDiary_}/FarmDiary/Feilds/{{0}}/?value_case=DataTable";
         internal const string _API_URL_FarmDiary_File_ = @$"{_API_URL_FarmDiary_}/FarmDiary/File/{{0}}/?value_case=DataTable";
+
+
+        internal const string _API_URL_ApiHubKMA_DAY_ = @$"{_API_URL_FarmDiary_}/FarmDiary/Weather/{{0}}/{{1}}/?value_case=DataTable";
+
+        //internal const string _API_URL_FarmDiary_File_ = @$"{_API_URL_FarmDiary_}/FarmDiary/File/{{0}}/?value_case=DataTable";
     }
     internal class Defs : SbDefs
     {

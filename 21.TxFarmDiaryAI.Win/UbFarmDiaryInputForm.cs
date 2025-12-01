@@ -24,7 +24,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 using Utils = TxFarmDiaryAI.Win.SbUtils;
 
 namespace TxFarmDiaryAI.Win
@@ -44,7 +43,70 @@ namespace TxFarmDiaryAI.Win
         private string TplSample01Full => Path.Combine(SysEnv.GetAppBaseDir(), "Template", "tpl-영농일지_R1-1Page.pdf");
         private string TplSample02Full => Path.Combine(SysEnv.GetAppBaseDir(), "Template", "tpl-영농일지_R1-2Page.pdf");
 
-        private decimal? SNo => SysEnv.CurrWorkspaceSNO.ToNullableDecimalEx();
+        private decimal? SNo => GetSelectedWorkspaceSNO();
+        private string? StnCode => GetSelectedWorkspaceStnCode();
+
+        private DataTable workspaceDataTable
+        {
+            get
+            {
+                if (repsluChildWorkspaceSelect.DataSource != null)
+                {
+                    if (repsluChildWorkspaceSelect.DataSource is DataTable dt && dt.Rows.Count > 0)
+                    {
+                        return dt;
+                    }
+                }
+                return null;
+            }
+        }
+
+        internal decimal? GetSelectedWorkspaceSNO()
+        {
+            if (workspaceDataTable != null && baredtChildWorkspaceSelect.EditValue.IsNullOrWhiteSpaceEx() != true)
+            {
+                return baredtChildWorkspaceSelect.EditValue.ToDecimalEx();
+            }
+            return null;
+        }
+        internal string GetSelectedWorkspaceName()
+        {
+            if (workspaceDataTable != null && baredtChildWorkspaceSelect.EditValue.IsNullOrWhiteSpaceEx() != true)
+            {
+                DataRow[] findRows = workspaceDataTable.Select($"{SQL_TXFD_SITE_SET_Table._CDF_SNO_} = {baredtChildWorkspaceSelect.EditValue.ToDecimalEx()}");
+                if (findRows.Length > 0)
+                {
+                    return findRows[0][SQL_TXFD_SITE_SET_Table._CDF_SITE_NAME_].ToStringEx();
+                }
+            }
+            return string.Empty;
+        }
+
+        internal string GetSelectedWorkspaceStnCode()
+        {
+            if (workspaceDataTable != null && baredtChildWorkspaceSelect.EditValue.IsNullOrWhiteSpaceEx() != true)
+            {
+                DataRow[] findRows = workspaceDataTable.Select($"{SQL_TXFD_SITE_SET_Table._CDF_SNO_} = {baredtChildWorkspaceSelect.EditValue.ToDecimalEx()}");
+                if (findRows.Length > 0)
+                {
+                    return findRows[0][SQL_TXFD_SITE_SET_Table._CDF_STN_CODE_].ToStringEx();
+                }
+            }
+            return string.Empty;
+        }
+
+        internal IEnumerable<SQL_TXFD_SITE_SET_Table>? WorkspaceList
+        {
+            get
+            {
+                if (workspaceDataTable != null && workspaceDataTable.Rows.Count > 0)
+                {
+                    return workspaceDataTable.ToRecordSetEx<SQL_TXFD_SITE_SET_Table>();
+                }
+                return null;
+            }
+        }
+
         private decimal? UNo => SysEnv.LoginUserSNO.ToNullableDecimalEx();
         private DateTime? DiaryDate
         {
@@ -223,6 +285,35 @@ namespace TxFarmDiaryAI.Win
                 //pdfCtl.AppendDocument(ms);
             };
 
+            repluTemplateList.ButtonClick += (s, e) =>
+            {
+                string strTag = e.Button.Tag.ToStringEx().ToUpper();
+                if (strTag.IsNullOrWhiteSpaceEx() != true)
+                {
+                    if (strTag == "R")
+                    {
+                        LoadFarmDiaryTemplateList();
+                    }
+                    else if (strTag == "L")
+                    {
+                        if (s is not GridLookUpEdit sender || baredtChildTemplateList.EditValue.IsNullOrWhiteSpaceEx()) { return; }
+                        /*
+                        TemplateItem? selectedTemplate = sender.DataBindings.OfType<BindingSource>()
+                            .FirstOrDefault()?
+                            .List
+                            .OfType<TemplateItem>()
+                            .Where(r => r.TemplateId == baredtChildTemplateList.EditValue.ToStringEx())
+                            .FirstOrDefault();
+                        */
+                        bool flowControl = OpenTemplateToFramDiary();
+                        if (!flowControl)
+                        {
+                            return;
+                        }
+                    }
+                }
+            };
+
             repdateChildDocDate.ButtonClick += (s, e) =>
             {
                 string strTag = e.Button.Tag.ToStringEx().ToUpper();
@@ -272,37 +363,17 @@ namespace TxFarmDiaryAI.Win
                     }
                 }
             };
-
-            repluTemplateList.ButtonClick += (s, e) =>
+            repgluChildDocWeather.ButtonClick += (s, e) =>
             {
                 string strTag = e.Button.Tag.ToStringEx().ToUpper();
                 if (strTag.IsNullOrWhiteSpaceEx() != true)
                 {
-                    if (strTag == "R")
+                    if (strTag == "G")
                     {
-                        LoadFarmDiaryTemplateList();
-                    }
-                    else if (strTag == "L")
-                    {
-                        if (s is not GridLookUpEdit sender || baredtChildTemplateList.EditValue.IsNullOrWhiteSpaceEx()) { return; }
-                        /*
-                        TemplateItem? selectedTemplate = sender.DataBindings.OfType<BindingSource>()
-                            .FirstOrDefault()?
-                            .List
-                            .OfType<TemplateItem>()
-                            .Where(r => r.TemplateId == baredtChildTemplateList.EditValue.ToStringEx())
-                            .FirstOrDefault();
-                        */
-                        bool flowControl = OpenTemplateToFramDiary();
-                        if (!flowControl)
-                        {
-                            return;
-                        }
+                        LoadWeatherAPICall();
                     }
                 }
-            };
-
-
+            };  
 
             barbtnChildAppend_FarmingDiary.ItemClick += (s, e) => SetAppendFarmingDiary();
 
@@ -325,6 +396,37 @@ namespace TxFarmDiaryAI.Win
             {
                 repluTemplateList.DataSource = SysEnv.FarmingDiaryTemplateBindingList;
             }
+        }
+        private void LoadWeatherAPICall()
+        {
+            if (this.StnCode.IsNullOrWhiteSpaceEx() == true) { return; }
+            
+            HxResultValue res = SysEnv.CallWeahterAPIbyKMA_GetResultValue(this.StnCode!, this.DiaryDate?.ToDateStringEx("yyyyMMdd"));
+            if (res == null || res.Success != true || res.Value.IsNullOrWhiteSpaceEx() == true) { return; }
+
+            try
+            {
+                TWeaterKMA_Response_Body weater = new TWeaterKMA_Response_Body(res.Value.ToStringEx());
+                if (weater.TM.IsNullOrWhiteSpaceEx() != true)
+                {
+                    Debug.WriteLine($"Weather API Call Success - TM: {weater.TM}");
+                    repgluChildDocWeather.DataSource = new[] { weater };
+                    repgluChildDocWeather.PopulateViewColumns();
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                //throw;
+            }
+
+            /*
+            SysEnv.LoadKMAWeatherApiDayData(true);
+            if (SysEnv.KMAWeatherApiDayDataTable != null && SysEnv.KMAWeatherApiDayDataTable.Rows.Count > 0)
+            {
+                SysEnv.InitKMAWeatherApiDayFromBarItem(barepgluChildDocWeather, SysEnv.KMAWeatherApiDayDataTable);
+            }
+            */
         }
 
         private void LoadWorkspaceSelectList(bool isInit = false)
@@ -861,11 +963,5 @@ namespace TxFarmDiaryAI.Win
 
             }
         }
-
-        
-
-        
-
-        
     }
 }

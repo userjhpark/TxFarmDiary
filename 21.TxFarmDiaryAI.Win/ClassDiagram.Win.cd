@@ -1,0 +1,498 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="TxFarmDiaryAI.Win.UbImageCartForm">
+    <Position X="1" Y="6.25" Width="3.5" />
+    <Members>
+      <Method Name="ApplyResourcesStrings" Hidden="true" />
+      <Field Name="barButtonItem1" Hidden="true" />
+      <Field Name="barButtonItem2" Hidden="true" />
+      <Field Name="barsiChildEventStatus" Hidden="true" />
+      <Field Name="barsiChildImageListStatus" Hidden="true" />
+      <Field Name="bbibtnAppend_DiaryFromCart" Hidden="true" />
+      <Field Name="bbibtnAppendPictureToCart" Hidden="true" />
+      <Field Name="bbibtnCameraToPicture" Hidden="true" />
+      <Method Name="bbibtnCameraToPicture_ItemClick" Hidden="true" />
+      <Field Name="bbibtnClearFromPicture" Hidden="true" />
+      <Field Name="bbibtnCopyFromPicture" Hidden="true" />
+      <Field Name="bbibtnCutFromPicture" Hidden="true" />
+      <Field Name="bbibtnEditFromPicture" Hidden="true" />
+      <Field Name="bbibtnLoadToPicture" Hidden="true" />
+      <Field Name="bbibtnPasteFromPicture" Hidden="true" />
+      <Field Name="bbibtnPreview_FromCart" Hidden="true" />
+      <Field Name="bbibtnRemove_FromCart" Hidden="true" />
+      <Field Name="bbibtnSavePictureToImage" Hidden="true" />
+      <Field Name="bbibtnSavePictureToPDF" Hidden="true" />
+      <Field Name="bbibtnScanToPicture" Hidden="true" />
+      <Field Name="beicbxScanners" Hidden="true" />
+      <Field Name="btsichkOptions_ExportToPDFAndMerge" Hidden="true" />
+      <Field Name="btsichkOptions_OpenPdfViewerInNewWindow" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="DoTabPageSelected" Hidden="true" />
+      <Field Name="fImageCartIndex" Hidden="true" />
+      <Field Name="gcImageGridFileExt" Hidden="true" />
+      <Field Name="gcImageGridFilePath" Hidden="true" />
+      <Field Name="gcImageGridFileSize" Hidden="true" />
+      <Field Name="gcImageGridLoadDateTime" Hidden="true" />
+      <Field Name="gcImageGridNo" Hidden="true" />
+      <Field Name="gcImageGridSource" Hidden="true" />
+      <Method Name="GetMultiCheckedImageCartItem" Hidden="true" />
+      <Method Name="GetSingleSelectedImageCartItem" Hidden="true" />
+      <Method Name="GetStatusBarEventCaption" Hidden="true" />
+      <Method Name="GetStatusBarFileGridCaption" Hidden="true" />
+      <Field Name="globalHotkeysPageGroup1" Hidden="true" />
+      <Field Name="grdcImageCart" Hidden="true" />
+      <Field Name="grdvImageCart" Hidden="true" />
+      <Field Name="gridColumn1" Hidden="true" />
+      <Field Name="groupControl2" Hidden="true" />
+      <Method Name="HidePDFViewer" Hidden="true" />
+      <Field Name="hotkeyFocusAttachmentsTabBarItem1" Hidden="true" />
+      <Field Name="hotkeyFocusBookmarksTabBarItem1" Hidden="true" />
+      <Field Name="hotkeyFocusCommentsTabBarItem1" Hidden="true" />
+      <Field Name="hotkeyFocusDocumentViewerBarItem1" Hidden="true" />
+      <Field Name="hotkeyFocusLayersTabBarItem1" Hidden="true" />
+      <Field Name="hotkeyFocusNextBarItem1" Hidden="true" />
+      <Field Name="hotkeyFocusPreviousBarItem1" Hidden="true" />
+      <Field Name="hotkeyFocusSignaturesTabBarItem1" Hidden="true" />
+      <Field Name="hotkeyFocusThumbnailTabBarItem1" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Method Name="LoadImageCartItemToViewer" Hidden="true" />
+      <Method Name="LoadScannerDevices" Hidden="true" />
+      <Method Name="OnForm_GotFocus" Hidden="true" />
+      <Method Name="OnForm_Load" Hidden="true" />
+      <Field Name="panelControl1" Hidden="true" />
+      <Field Name="panelControl2" Hidden="true" />
+      <Field Name="pdfBarController1" Hidden="true" />
+      <Field Name="pdfExactZoomListBarSubItem1" Hidden="true" />
+      <Field Name="pdfFileCloseBarItem1" Hidden="true" />
+      <Field Name="pdfFileOpenBarItem1" Hidden="true" />
+      <Field Name="pdfFilePrintBarItem1" Hidden="true" />
+      <Field Name="pdfFileRibbonPageGroup1" Hidden="true" />
+      <Field Name="pdfFileSaveAsBarItem1" Hidden="true" />
+      <Field Name="pdfFindRibbonPageGroup1" Hidden="true" />
+      <Field Name="pdfFindTextBarItem1" Hidden="true" />
+      <Field Name="pdfNavigationRibbonPageGroup1" Hidden="true" />
+      <Field Name="pdfNextPageBarItem1" Hidden="true" />
+      <Field Name="pdfPreviousPageBarItem1" Hidden="true" />
+      <Field Name="pdfSetActualSizeZoomModeCheckItem1" Hidden="true" />
+      <Field Name="pdfSetFitVisibleZoomModeCheckItem1" Hidden="true" />
+      <Field Name="pdfSetFitWidthZoomModeCheckItem1" Hidden="true" />
+      <Field Name="pdfSetPageLevelZoomModeCheckItem1" Hidden="true" />
+      <Field Name="pdfSetPageNumberBarItem1" Hidden="true" />
+      <Field Name="pdfViewer" Hidden="true" />
+      <Method Name="pdfViewer1_Load" Hidden="true" />
+      <Field Name="pdfZoom100CheckItem1" Hidden="true" />
+      <Field Name="pdfZoom10CheckItem1" Hidden="true" />
+      <Field Name="pdfZoom125CheckItem1" Hidden="true" />
+      <Field Name="pdfZoom150CheckItem1" Hidden="true" />
+      <Field Name="pdfZoom200CheckItem1" Hidden="true" />
+      <Field Name="pdfZoom25CheckItem1" Hidden="true" />
+      <Field Name="pdfZoom400CheckItem1" Hidden="true" />
+      <Field Name="pdfZoom500CheckItem1" Hidden="true" />
+      <Field Name="pdfZoom50CheckItem1" Hidden="true" />
+      <Field Name="pdfZoom75CheckItem1" Hidden="true" />
+      <Field Name="pdfZoomInBarItem1" Hidden="true" />
+      <Field Name="pdfZoomOutBarItem1" Hidden="true" />
+      <Field Name="pdfZoomRibbonPageGroup1" Hidden="true" />
+      <Method Name="pictureEdit1_EditValueChanged" Hidden="true" />
+      <Field Name="picViewer" Hidden="true" />
+      <Method Name="rcChildMenu_Click" Hidden="true" />
+      <Method Name="RemoveMultiCheckedByImageCart" Hidden="true" />
+      <Field Name="repcbxScanners" Hidden="true" />
+      <Field Name="repositoryItemButtonEdit1" Hidden="true" />
+      <Field Name="repositoryItemPageNumberEdit1" Hidden="true" />
+      <Field Name="repositoryItemPictureEdit11" Hidden="true" />
+      <Field Name="ribbonPageGroup1" Hidden="true" />
+      <Field Name="ribbonPageGroup2" Hidden="true" />
+      <Field Name="ribbonPageGroup3" Hidden="true" />
+      <Field Name="ribbonPageGroup4" Hidden="true" />
+      <Field Name="ribbonPageGroup5" Hidden="true" />
+      <Field Name="ribbonPageGroup6" Hidden="true" />
+      <Field Name="ribbonPageGroup7" Hidden="true" />
+      <Field Name="ribbonPageGroup8" Hidden="true" />
+      <Field Name="rpChildImageToOCR" Hidden="true" />
+      <Field Name="rpChildPdfViewer" Hidden="true" />
+      <Field Name="scCtlBody" Hidden="true" />
+      <Method Name="SetStatusBarEventCaption" Hidden="true" />
+      <Method Name="SetStatusBarFileGridCaption" Hidden="true" />
+      <Method Name="ShowSelectChildRibbonMenuPageByText" Hidden="true" />
+      <Property Name="StatusBarEventCaption" Hidden="true" />
+      <Property Name="StatusBarFileGridCaption" Hidden="true" />
+      <Field Name="tabCtlBody" Hidden="true" />
+      <Field Name="tpPdfViewer" Hidden="true" />
+      <Field Name="tpPicture" Hidden="true" />
+      <Method Name="UbImageCartForm" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>E2HoRUQN/CckBC6KCKuFwLha0ZRHAMQQMrmBEFcwCms=</HashCode>
+      <FileName>UbImageCartForm.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="CartImageSingleSelectItem" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="TxFarmDiaryAI.Win.UbFarmDiaryInputForm">
+    <Position X="6.75" Y="0.5" Width="4.5" />
+    <Members>
+      <Field Name="_V구매일_" Hidden="true" />
+      <Field Name="_V농장_필지_" Hidden="true" />
+      <Field Name="_V세부작업_" Hidden="true" />
+      <Field Name="_V작업단계_작업명_" Hidden="true" />
+      <Field Name="_V작업일_" Hidden="true" />
+      <Field Name="barbtnChildAppend_FarmingDiary" Hidden="true" />
+      <Field Name="baredtChildDocDate" Hidden="true" />
+      <Field Name="baredtChildDocWeather" Hidden="true" />
+      <Field Name="baredtChildTemplateList" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Property Name="DefaultTitle" Hidden="true" />
+      <Field Name="displayForReviewModeComboBox1" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Property Name="DocTemplateFullPath" Hidden="true" />
+      <Property Name="DocTemplateName" Hidden="true" />
+      <Property Name="FarmingDiaryTemplateItem" Hidden="true" />
+      <Field Name="globalHotkeysPageGroup1" Hidden="true" />
+      <Field Name="gridView1" Hidden="true" />
+      <Field Name="hotkeyFocusAttachmentsTabBarItem1" Hidden="true" />
+      <Field Name="hotkeyFocusBookmarksTabBarItem1" Hidden="true" />
+      <Field Name="hotkeyFocusCommentsTabBarItem1" Hidden="true" />
+      <Field Name="hotkeyFocusDocumentViewerBarItem1" Hidden="true" />
+      <Field Name="hotkeyFocusLayersTabBarItem1" Hidden="true" />
+      <Field Name="hotkeyFocusNextBarItem1" Hidden="true" />
+      <Field Name="hotkeyFocusPreviousBarItem1" Hidden="true" />
+      <Field Name="hotkeyFocusSignaturesTabBarItem1" Hidden="true" />
+      <Field Name="hotkeyFocusThumbnailTabBarItem1" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Property Name="InputFormFieldDiaryDateStr" Hidden="true" />
+      <Property Name="InputFormFieldDiaryDateTime" Hidden="true" />
+      <Field Name="pdfBarController1" Hidden="true" />
+      <Field Name="pdfCalloutFreeTextBarItem1" Hidden="true" />
+      <Field Name="pdfCommentRibbonPage1" Hidden="true" />
+      <Field Name="pdfCtl" Hidden="true" />
+      <Field Name="pdfExactZoomListBarSubItem1" Hidden="true" />
+      <Field Name="pdfExportFormDataBarItem1" Hidden="true" />
+      <Field Name="pdfFileOpenBarItem1" Hidden="true" />
+      <Field Name="pdfFilePrintBarItem1" Hidden="true" />
+      <Field Name="pdfFileRibbonPageGroup1" Hidden="true" />
+      <Field Name="pdfFileSaveAsBarItem1" Hidden="true" />
+      <Field Name="pdfFindRibbonPageGroup1" Hidden="true" />
+      <Field Name="pdfFindTextBarItem1" Hidden="true" />
+      <Field Name="pdfFormDataBarPageGroup1" Hidden="true" />
+      <Field Name="pdfFormDataRibbonPage1" Hidden="true" />
+      <Field Name="pdfFreeTextBarItem1" Hidden="true" />
+      <Field Name="pdfFreeTextCommentPageGroup1" Hidden="true" />
+      <Field Name="pdfImportFormDataBarItem1" Hidden="true" />
+      <Field Name="pdfNavigationRibbonPageGroup1" Hidden="true" />
+      <Field Name="pdfNextPageBarItem1" Hidden="true" />
+      <Field Name="pdfNoteCommentPageGroup1" Hidden="true" />
+      <Field Name="pdfPreviousPageBarItem1" Hidden="true" />
+      <Field Name="pdfRibbonPage1" Hidden="true" />
+      <Field Name="pdfSetActualSizeZoomModeCheckItem1" Hidden="true" />
+      <Field Name="pdfSetFitVisibleZoomModeCheckItem1" Hidden="true" />
+      <Field Name="pdfSetFitWidthZoomModeCheckItem1" Hidden="true" />
+      <Field Name="pdfSetPageLevelZoomModeCheckItem1" Hidden="true" />
+      <Field Name="pdfSetPageNumberBarItem1" Hidden="true" />
+      <Field Name="pdfStickyNoteBarItem1" Hidden="true" />
+      <Field Name="pdfTextCommentPageGroup1" Hidden="true" />
+      <Field Name="pdfTextHighlightBarItem1" Hidden="true" />
+      <Field Name="pdfTextStrikethroughBarItem1" Hidden="true" />
+      <Field Name="pdfTextUnderlineBarItem1" Hidden="true" />
+      <Field Name="pdfZoom100CheckItem1" Hidden="true" />
+      <Field Name="pdfZoom10CheckItem1" Hidden="true" />
+      <Field Name="pdfZoom125CheckItem1" Hidden="true" />
+      <Field Name="pdfZoom150CheckItem1" Hidden="true" />
+      <Field Name="pdfZoom200CheckItem1" Hidden="true" />
+      <Field Name="pdfZoom25CheckItem1" Hidden="true" />
+      <Field Name="pdfZoom400CheckItem1" Hidden="true" />
+      <Field Name="pdfZoom500CheckItem1" Hidden="true" />
+      <Field Name="pdfZoom50CheckItem1" Hidden="true" />
+      <Field Name="pdfZoom75CheckItem1" Hidden="true" />
+      <Field Name="pdfZoomInBarItem1" Hidden="true" />
+      <Field Name="pdfZoomOutBarItem1" Hidden="true" />
+      <Field Name="pdfZoomRibbonPageGroup1" Hidden="true" />
+      <Field Name="repdateChildDocDate" Hidden="true" />
+      <Field Name="repgluChildDocWeather" Hidden="true" />
+      <Field Name="repluTemplateList" Hidden="true" />
+      <Field Name="repositoryItemBorderLineStyle1" Hidden="true" />
+      <Field Name="repositoryItemBorderLineWeight1" Hidden="true" />
+      <Field Name="repositoryItemComboBox1" Hidden="true" />
+      <Field Name="repositoryItemFloatingObjectOutlineWeight1" Hidden="true" />
+      <Field Name="repositoryItemFontEditRichEdit1" Hidden="true" />
+      <Field Name="repositoryItemGridLookUpEdit1View" Hidden="true" />
+      <Field Name="repositoryItemPageNumberEdit1" Hidden="true" />
+      <Field Name="repositoryItemRichEditFontSizeEdit1" Hidden="true" />
+      <Field Name="repositoryItemSearchLookUpEdit1View" Hidden="true" />
+      <Field Name="repsluChildDocWeather" Hidden="true" />
+      <Property Name="ResultObj" Hidden="true" />
+      <Field Name="ribbonPageGroup2" Hidden="true" />
+      <Field Name="ribbonPageGroup3" Hidden="true" />
+      <Field Name="rpgChildFarmingDiary" Hidden="true" />
+      <Field Name="rpgTestDebug" Hidden="true" />
+      <Property Name="TplSample01Full" Hidden="true" />
+      <Property Name="TplSample02Full" Hidden="true" />
+      <Method Name="UbFarmDiaryInputForm" Hidden="true" />
+      <Property Name="UNo" Hidden="true" />
+      <Property Name="workspaceDataTable" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="SourceImageItem" Type="TxFarmDiaryAI.TImageCartItem">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.048" Y="0.11" Height="0.182" Width="1.304" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>XBEIQYSJ3DVnSE7GGALOwJqagRKF5cUEAFZkAV9iBOA=</HashCode>
+      <FileName>UbFarmDiaryInputForm.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="SourceImageItem" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="WorkspaceList" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="TxFarmDiaryAI.SQL_TXFD_SITE_SET_Table">
+    <Position X="2.5" Y="0.5" Width="2.75" />
+    <Members>
+      <Field Name="_CDF_LOC_ADDR_" Hidden="true" />
+      <Field Name="_CDF_LOC_LATITUDE_" Hidden="true" />
+      <Field Name="_CDF_LOC_LONGITUDE_" Hidden="true" />
+      <Field Name="_CDF_LOC_ROAD_" Hidden="true" />
+      <Field Name="_CDF_SITE_MEMO_" Hidden="true" />
+      <Field Name="_CDF_SITE_NAME_" Hidden="true" />
+      <Field Name="_CDF_SNO_" Hidden="true" />
+      <Field Name="_CDF_STATUS_" Hidden="true" />
+      <Field Name="_CDF_STN_CODE_" Hidden="true" />
+      <Field Name="_CDF_STN_NAME_" Hidden="true" />
+      <Field Name="_SELECT_DEFAULT_QUERY_STRING_" Hidden="true" />
+      <Field Name="_TABLE_NAME_" Hidden="true" />
+      <Method Name="Clear" Hidden="true" />
+      <Method Name="IsEmpty" Hidden="true" />
+      <Method Name="IsValid" Hidden="true" />
+      <Method Name="SQL_TXFD_SITE_SET_Table" Hidden="true" />
+      <Method Name="ToJsonDeserializeDataTable" Hidden="true" />
+      <Method Name="ToJsonDeserializeRecordSet" Hidden="true" />
+      <Method Name="ToJsonSerializeDataTable" Hidden="true" />
+      <Method Name="ToJsonSerializeRecordSet" Hidden="true" />
+      <Method Name="ToRecordSet" Hidden="true" />
+    </Members>
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TxFarmDiaryAI.TImageCartItem">
+    <Position X="6" Y="7.25" Width="2.5" />
+    <Members>
+      <Property Name="ImageBytes" Hidden="true" />
+      <Method Name="TImageCartItem" Hidden="true" />
+    </Members>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="TxFarmDiaryAI.SQL_TXFD_FILE_ENV_Table">
+    <Position X="12.5" Y="0.75" Width="3" />
+    <Members>
+      <Field Name="_CDF_FILE_CHECK_" Hidden="true" />
+      <Field Name="_CDF_FILE_CHECK_SUB_" Hidden="true" />
+      <Field Name="_CDF_FILE_DATA_" Hidden="true" />
+      <Field Name="_CDF_FILE_EXT_" Hidden="true" />
+      <Field Name="_CDF_FILE_NAME_" Hidden="true" />
+      <Field Name="_CDF_FILE_NO_" Hidden="true" />
+      <Field Name="_CDF_FILE_PATH_" Hidden="true" />
+      <Field Name="_CDF_FILE_REMARK_" Hidden="true" />
+      <Field Name="_CDF_FILE_SAVE_" Hidden="true" />
+      <Field Name="_CDF_FILE_SIZE_" Hidden="true" />
+      <Field Name="_CDF_FILE_TYPE_" Hidden="true" />
+      <Field Name="_DB_SEQ_NAME_" Hidden="true" />
+      <Field Name="_DB_TABLE_NAME_" Hidden="true" />
+      <Field Name="_SELECT_DEFAULT_QUERY_STRING_" Hidden="true" />
+      <Method Name="Clear" Hidden="true" />
+      <Method Name="GetDbSelectDefaultQueryString" Hidden="true" />
+      <Method Name="GetDbSeqName" Hidden="true" />
+      <Method Name="GetDbTableName" Hidden="true" />
+      <Method Name="IsEmpty" Hidden="true" />
+      <Method Name="IsValid" Hidden="true" />
+      <Method Name="SQL_TXFD_FILE_ENV_Table" Hidden="true" />
+    </Members>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="TxFarmDiaryAI.Win.UbPDFViewerRibbonForm">
+    <Position X="13.25" Y="8" Width="3.25" />
+    <Members>
+      <Field Name="components" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Field Name="globalHotkeysPageGroup1" Hidden="true" />
+      <Field Name="hotkeyFocusAttachmentsTabBarItem1" Hidden="true" />
+      <Field Name="hotkeyFocusBookmarksTabBarItem1" Hidden="true" />
+      <Field Name="hotkeyFocusCommentsTabBarItem1" Hidden="true" />
+      <Field Name="hotkeyFocusDocumentViewerBarItem1" Hidden="true" />
+      <Field Name="hotkeyFocusLayersTabBarItem1" Hidden="true" />
+      <Field Name="hotkeyFocusNextBarItem1" Hidden="true" />
+      <Field Name="hotkeyFocusPreviousBarItem1" Hidden="true" />
+      <Field Name="hotkeyFocusSignaturesTabBarItem1" Hidden="true" />
+      <Field Name="hotkeyFocusThumbnailTabBarItem1" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Property Name="IsDisplayTitleFullName" Hidden="true" />
+      <Method Name="OnClosing" Hidden="true" />
+      <Method Name="OnFormClosed" Hidden="true" />
+      <Field Name="pdfBarController1" Hidden="true" />
+      <Field Name="pdfCalloutFreeTextBarItem1" Hidden="true" />
+      <Field Name="pdfCommentRibbonPage1" Hidden="true" />
+      <Field Name="pdfExactZoomListBarSubItem1" Hidden="true" />
+      <Field Name="pdfExportFormDataBarItem1" Hidden="true" />
+      <Field Name="pdfFileOpenBarItem1" Hidden="true" />
+      <Field Name="pdfFilePrintBarItem1" Hidden="true" />
+      <Field Name="pdfFileRibbonPageGroup1" Hidden="true" />
+      <Field Name="pdfFileSaveAsBarItem1" Hidden="true" />
+      <Field Name="pdfFindRibbonPageGroup1" Hidden="true" />
+      <Field Name="pdfFindTextBarItem1" Hidden="true" />
+      <Field Name="pdfFormDataBarPageGroup1" Hidden="true" />
+      <Field Name="pdfFormDataRibbonPage1" Hidden="true" />
+      <Field Name="pdfFreeTextBarItem1" Hidden="true" />
+      <Field Name="pdfFreeTextCommentPageGroup1" Hidden="true" />
+      <Field Name="pdfImportFormDataBarItem1" Hidden="true" />
+      <Field Name="pdfNavigationRibbonPageGroup1" Hidden="true" />
+      <Field Name="pdfNextPageBarItem1" Hidden="true" />
+      <Field Name="pdfNoteCommentPageGroup1" Hidden="true" />
+      <Field Name="pdfPreviousPageBarItem1" Hidden="true" />
+      <Field Name="pdfRibbonPage_PDFViewer" Hidden="true" />
+      <Field Name="pdfSetActualSizeZoomModeCheckItem1" Hidden="true" />
+      <Field Name="pdfSetFitVisibleZoomModeCheckItem1" Hidden="true" />
+      <Field Name="pdfSetFitWidthZoomModeCheckItem1" Hidden="true" />
+      <Field Name="pdfSetPageLevelZoomModeCheckItem1" Hidden="true" />
+      <Field Name="pdfSetPageNumberBarItem1" Hidden="true" />
+      <Field Name="pdfStickyNoteBarItem1" Hidden="true" />
+      <Field Name="pdfTextCommentPageGroup1" Hidden="true" />
+      <Field Name="pdfTextHighlightBarItem1" Hidden="true" />
+      <Field Name="pdfTextStrikethroughBarItem1" Hidden="true" />
+      <Field Name="pdfTextUnderlineBarItem1" Hidden="true" />
+      <Field Name="pdfViewerCtl" Hidden="true" />
+      <Field Name="pdfZoom100CheckItem1" Hidden="true" />
+      <Field Name="pdfZoom10CheckItem1" Hidden="true" />
+      <Field Name="pdfZoom125CheckItem1" Hidden="true" />
+      <Field Name="pdfZoom150CheckItem1" Hidden="true" />
+      <Field Name="pdfZoom200CheckItem1" Hidden="true" />
+      <Field Name="pdfZoom25CheckItem1" Hidden="true" />
+      <Field Name="pdfZoom400CheckItem1" Hidden="true" />
+      <Field Name="pdfZoom500CheckItem1" Hidden="true" />
+      <Field Name="pdfZoom50CheckItem1" Hidden="true" />
+      <Field Name="pdfZoom75CheckItem1" Hidden="true" />
+      <Field Name="pdfZoomInBarItem1" Hidden="true" />
+      <Field Name="pdfZoomOutBarItem1" Hidden="true" />
+      <Field Name="pdfZoomRibbonPageGroup1" Hidden="true" />
+      <Field Name="repositoryItemPageNumberEdit1" Hidden="true" />
+      <Method Name="SetDisplayTitleFullName" Hidden="true" />
+      <Method Name="UbPDFViewerRibbonForm" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>GREIQSQJzCQkCMxAGAKUwJiTARAFBEQAABAAARcgAGA=</HashCode>
+      <FileName>UbPDFViewerRibbonFrom.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TxFarmDiaryAI.Win.SbScannerDevice">
+    <Position X="13.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAIEAAAAAA=</HashCode>
+      <FileName>SbTypeClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TxFarmDiaryAI.SQL_TXFD_DIARY_SET_Table">
+    <Position X="7.5" Y="12.75" Width="3.75" />
+    <Members>
+      <Field Name="_CDF_DIARY_DATE_" Hidden="true" />
+      <Field Name="_CDF_DNO_" Hidden="true" />
+      <Field Name="_CDF_FILE_NO_" Hidden="true" />
+      <Field Name="_CDF_FORM_DATA_" Hidden="true" />
+      <Field Name="_CDF_OCR_NO_" Hidden="true" />
+      <Field Name="_CDF_PARENT_NO_" Hidden="true" />
+      <Field Name="_CDF_SNO_" Hidden="true" />
+      <Field Name="_CDF_TPL_CODE_" Hidden="true" />
+      <Field Name="_CDF_TPL_NAME_" Hidden="true" />
+      <Field Name="_DB_SEQ_NAME_" Hidden="true" />
+      <Field Name="_DB_TABLE_NAME_" Hidden="true" />
+      <Field Name="_SELECT_DEFAULT_QUERY_STRING_" Hidden="true" />
+    </Members>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="TxFarmDiaryAI.SQL_TXFD_OCR_ENV_Table">
+    <Position X="8.75" Y="17.75" Width="3.25" />
+    <Members>
+      <Field Name="_CDF_ETC_" Hidden="true" />
+      <Field Name="_CDF_IMG_NO_" Hidden="true" />
+      <Field Name="_CDF_OCR_NO_" Hidden="true" />
+      <Field Name="_CDF_PARENT_NO_" Hidden="true" />
+      <Field Name="_CDF_RESPONSE_DATA_" Hidden="true" />
+      <Field Name="_CDF_RESPONSE_DATA_TYPE_" Hidden="true" />
+      <Field Name="_CDF_RESPONSE_REQUESTID_" Hidden="true" />
+      <Field Name="_CDF_RESPONSE_TIMESTAMP_" Hidden="true" />
+      <Field Name="_CDF_RESPONSE_VERSION_" Hidden="true" />
+      <Field Name="_CDF_TPL_CODE_" Hidden="true" />
+      <Field Name="_CDF_TPL_NAME_" Hidden="true" />
+      <Field Name="_DB_SEQ_NAME_" Hidden="true" />
+      <Field Name="_DB_TABLE_NAME_" Hidden="true" />
+      <Field Name="_SELECT_DEFAULT_QUERY_STRING_" Hidden="true" />
+    </Members>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="TxFarmDiaryAI.SQL_TXFD_OCR_FIELD_Table">
+    <Position X="13.75" Y="12.75" Width="2.75" />
+    <Members>
+      <Field Name="_CDF_BIND_IMG_NO_" Hidden="true" />
+      <Field Name="_CDF_BIND_OCR_NO_" Hidden="true" />
+      <Field Name="_CDF_BOUNDING_HEIGHT_" Hidden="true" />
+      <Field Name="_CDF_BOUNDING_LEFT_" Hidden="true" />
+      <Field Name="_CDF_BOUNDING_TOP_" Hidden="true" />
+      <Field Name="_CDF_BOUNDING_WIDTH_" Hidden="true" />
+      <Field Name="_CDF_ETC_" Hidden="true" />
+      <Field Name="_CDF_FIELD_ID_" Hidden="true" />
+      <Field Name="_CDF_FIELD_NAME_" Hidden="true" />
+      <Field Name="_CDF_FIELD_NO_" Hidden="true" />
+      <Field Name="_CDF_INFER_CONFIDENCE_" Hidden="true" />
+      <Field Name="_CDF_INFER_TEXT_" Hidden="true" />
+      <Field Name="_CDF_JSON_NO_" Hidden="true" />
+      <Field Name="_CDF_KIND_CODE_" Hidden="true" />
+      <Field Name="_CDF_KIND_NAME_" Hidden="true" />
+      <Field Name="_CDF_PARENT_NO_" Hidden="true" />
+      <Field Name="_CDF_VALUE_TYPE_" Hidden="true" />
+      <Field Name="_DB_SEQ_NAME_" Hidden="true" />
+      <Field Name="_DB_TABLE_NAME_" Hidden="true" />
+      <Field Name="_SELECT_DEFAULT_QUERY_STRING_" Hidden="true" />
+    </Members>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="TxFarmDiaryAI.Win.UbFarmDiaryListForm">
+    <Position X="13.5" Y="20.5" Width="3.25" />
+    <Members>
+      <Field Name="barbtnChildRefresh" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Field Name="grdcFarmDiaryList" Hidden="true" />
+      <Field Name="grdcProperties" Hidden="true" />
+      <Field Name="grdvFarmDiaryList" Hidden="true" />
+      <Field Name="grdvProperties" Hidden="true" />
+      <Field Name="pdfViewer" Hidden="true" />
+      <Field Name="picViewer" Hidden="true" />
+      <Field Name="pnlTop" Hidden="true" />
+      <Field Name="ribbonPageGroup1" Hidden="true" />
+      <Field Name="rpChildFarmDiaryList" Hidden="true" />
+      <Field Name="sidePanel2" Hidden="true" />
+      <Field Name="sidePanel3" Hidden="true" />
+      <Field Name="sidePanel4" Hidden="true" />
+      <Field Name="sidePanel5" Hidden="true" />
+      <Field Name="sidePanel6" Hidden="true" />
+      <Field Name="sidePanel7" Hidden="true" />
+      <Field Name="sidePanel8" Hidden="true" />
+      <Field Name="spcBody" Hidden="true" />
+      <Field Name="tabpageDetailCtl" Hidden="true" />
+      <Field Name="tabpImageViewer" Hidden="true" />
+      <Field Name="tabpPDFViewer" Hidden="true" />
+      <Field Name="tabpProperty" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>UAgBAOQbBGAAEICABgCBgAIKgiAEAAASAAAAAAAQAAE=</HashCode>
+      <FileName>UbFarmDiaryListForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="맑은 고딕" Size="9" />
+</ClassDiagram>
