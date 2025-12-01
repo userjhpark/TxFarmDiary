@@ -76,7 +76,7 @@ WHERE 1 = 1
         [JsonProperty(_CDF_FILE_SIZE_)] public long FILE_SIZE { get; set; }
         [JsonProperty(_CDF_FILE_EXT_)] public string? FILE_EXT { get; set; }
         [JsonProperty(_CDF_FILE_TYPE_)] public string? FILE_TYPE { get; set; }
-        [JsonProperty(_CDF_FILE_CHECK_)] public string FILE_CHECK { get; set; }
+        [JsonProperty(_CDF_FILE_CHECK_)] public string? FILE_CHECK { get; set; }
         [JsonProperty(_CDF_FILE_REMARK_)] public string? FILE_REMARK { get; set; }
         [JsonProperty(_CDF_FILE_DATA_)] public string? FILE_DATA { get; set; }
         [JsonProperty(_CDF_FILE_CONTENTS_)] public string? FILE_CONTENTS { get; set; }
@@ -151,8 +151,6 @@ WHERE 1 = 1
             if (db == null) throw new ArgumentNullException("Database Resource");
 
             if (db.Open() != true) { return Result; }
-
-            string SQL = @"";
 
             return Result;
         }

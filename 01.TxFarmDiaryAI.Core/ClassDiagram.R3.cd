@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TxFarmDiaryAI.SQL_TXFD_BASE">
+    <Position X="5.5" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAACAAAAAAgAwAAAAAAAJAAAAAAAAAAABBQBA=</HashCode>
+      <FileName>Db\DbObjectClass.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Left" Position="0.305" />
+  </Class>
+  <Class Name="TxFarmDiaryAI.SQL_TXFD_Helper&lt;T&gt;">
+    <Position X="20" Y="7.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AKgQAAAQAgAhGAAAAABEABAAAAJBQEAAAAAAAAAQEBA=</HashCode>
+      <FileName>Db\DbObjectClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TxFarmDiaryAI.SQL_TXFD_DIARY_FIELD_Table">
+    <Position X="5" Y="7.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>ACBCAACAUAAQAECAhQgAQgAAAAFAAMBACAAgAABBQgA=</HashCode>
+      <FileName>Db\DbObjectClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TxFarmDiaryAI.SQL_TXFD_DIARY_INFO_View">
+    <Position X="17.5" Y="7.25" Width="2.25" />
+    <InheritanceLine Type="TxFarmDiaryAI.SQL_TXFD_DIARY_SET_Table" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.625" Y="14.386" />
+        <Point X="3.625" Y="19.059" />
+        <Point X="18.688" Y="19.059" />
+        <Point X="18.688" Y="12.848" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AABEAAEAAEAAQAAAA4SAAEACAAgAAEBAJABEAACAAAA=</HashCode>
+      <FileName>Db\DbObjectClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TxFarmDiaryAI.SQL_TXFD_DIARY_SET_Table">
+    <Position X="2.5" Y="7.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>gCBCABgAAAgAAAABhQiAQAAAAAFAIAAACBACAARBQCA=</HashCode>
+      <FileName>Db\DbObjectClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TxFarmDiaryAI.SQL_TXFD_OCR_ENV_Table">
+    <Position X="7.75" Y="7.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>gChCQAgEAAgQAQAAgAyAQAAAEABAAAIBDAgIAAxBQCA=</HashCode>
+      <FileName>Db\DbObjectClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TxFarmDiaryAI.SQL_TXFD_OCR_FIELD_Table">
+    <Position X="12.75" Y="7.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AKhCICAsAAsQAECAgxgAQAABEgBAAAJCCAAgAABBRpA=</HashCode>
+      <FileName>Db\DbObjectClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TxFarmDiaryAI.SQL_TXFD_OCR_JSON_Table">
+    <Position X="10.25" Y="7.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ISpCICAkAAsAEYEBgBiAQAYBAEDAgJgCCABAAQhBRKE=</HashCode>
+      <FileName>Db\DbObjectClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TxFarmDiaryAI.SQL_TXFD_SITE_SET_Table">
+    <Position X="15.25" Y="7.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AABAAAFAAAEBABABkSgEQACAQARh4cEAAAAAACBAUCA=</HashCode>
+      <FileName>Db\DbObjectClass.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TxFarmDiaryAI.TResourceLanguageStrings">
+    <Position X="19" Y="2.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAEAQABQEAAAAAQRABAAEAAAA=</HashCode>
+      <FileName>TResourceLanguageStrings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="TxFarmDiaryAI.OCR_NAVER_API_Request_image">
+    <Position X="9" Y="3.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAAAMAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>OCR\OCR_NAVER_API_Classes.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="TxFarmDiaryAI.OCR_NAVER_API_Response_Body">
+    <Position X="11.75" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAABAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OCR\OCR_NAVER_API_Classes.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="TxFarmDiaryAI.OCR_NAVER_API_Response_bounding">
+    <Position X="15.25" Y="2.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAQAAAAAgAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OCR\OCR_NAVER_API_Classes.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="TxFarmDiaryAI.OCR_NAVER_API_Response_field">
+    <Position X="15.25" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAEEAAAAAASAAAAAAA=</HashCode>
+      <FileName>OCR\OCR_NAVER_API_Classes.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="TxFarmDiaryAI.OCR_NAVER_API_Response_image">
+    <Position X="11.75" Y="2.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAQAAAEAAAAAAAAAAAAgAEAAgAAAQAAAAAACA=</HashCode>
+      <FileName>OCR\OCR_NAVER_API_Classes.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="TxFarmDiaryAI.OCR_NAVER_API_Response_matchedTemplate">
+    <Position X="11.75" Y="5.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>OCR\OCR_NAVER_API_Classes.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="TxFarmDiaryAI.OCR_NAVER_API_Response_title">
+    <Position X="19" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAEEAAAAAACAAAAAAA=</HashCode>
+      <FileName>OCR\OCR_NAVER_API_Classes.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="TxFarmDiaryAI.OCR_NAVER_API_Response_validationResult">
+    <Position X="15.25" Y="5.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OCR\OCR_NAVER_API_Classes.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="TxFarmDiaryAI.OCR_NAVER_API_Request_Body">
+    <Position X="9" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAABAAAAAAAAAAAAAAAEgAAAAAAAAAAAAQAABA=</HashCode>
+      <FileName>OCR\OCR_NAVER_API_Classes.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Interface Name="TxFarmDiaryAI.ISQL_TXFD_BASE_Table">
+    <Position X="2.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAgAgAAAAAAABAAAAAAAAAAABBQAA=</HashCode>
+      <FileName>Db\DbObjectClass.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="맑은 고딕" Size="9" />
+</ClassDiagram>

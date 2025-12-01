@@ -9,50 +9,6 @@ using System.Threading.Tasks;
 
 namespace TxFarmDiaryAI
 {
-    public struct OCR_NAVER_API_Request_image
-    {
-        public string format { get; set; }
-        public string name { get; set; }
-        public string? data { get; set; }
-        public string? url { get; set; }
-        public OCR_NAVER_API_Request_image()
-        {
-            format = string.Empty;
-            name = string.Empty;
-            data = null;
-            url = null;
-        }
-        public OCR_NAVER_API_Request_image(TImageCartItem item, string? inputName = null)
-            : this()
-        {
-            if (item == null || item.ImageBytes == null || item.ImageBytes.Length <= 0) { return; }
-
-            format = HxImagePicture.GetImageFormatString(item.ImageData.RawFormat).ToLower();
-            name = inputName ?? DateTime.Now.ToDateTimeStringDefaultFormatBEx();
-            data = HxString.GetByteToBase64Encode(item.ImageBytes);
-            url = null;
-        }
-
-        public OCR_NAVER_API_Request_image(string hostUrl = null)
-            : this()
-        {
-            if (hostUrl.IsNullOrWhiteSpaceEx() == true) { return; }
-
-            format = HxFile.GetFileNameExt(hostUrl).ToLower();
-            name = HxFile.GetFileNameWithOutExt(hostUrl);
-            data = null;
-            url = hostUrl;
-        }
-        public OCR_NAVER_API_Request_image(Image image, string? inputName = null)
-        {
-            if (image == null || image.Size.Width <= 0 || image.Size.Height <= 0) { return; }
-
-            format = HxImagePicture.GetImageFormatString(image.RawFormat).ToLower();
-            name = inputName ?? DateTime.Now.ToDateTimeStringDefaultFormatBEx();
-            data = HxString.GetImageToBase64Encode(image);
-            url = null;
-        }
-    }
     public struct OCR_NAVER_API_Request_Body
     {
         public IEnumerable<OCR_NAVER_API_Request_image>? images { get; set; }
@@ -90,12 +46,57 @@ namespace TxFarmDiaryAI
         }
         public OCR_NAVER_API_Request_Body(Image image)
         {
-            if (image == null || image.Size.Width <= 0 || image.Size.Height <=0 ) { return; }
+            if (image == null || image.Size.Width <= 0 || image.Size.Height <= 0) { return; }
 
             List<OCR_NAVER_API_Request_image> list = [];
             OCR_NAVER_API_Request_image img = new(image);
             list.Add(img);
             images = list?.ToArray<OCR_NAVER_API_Request_image>();
+        }
+    }
+
+    public struct OCR_NAVER_API_Request_image
+    {
+        public string format { get; set; }
+        public string name { get; set; }
+        public string data { get; set; }
+        public string url { get; set; }
+        public OCR_NAVER_API_Request_image()
+        {
+            format = string.Empty;
+            name = string.Empty;
+            data = string.Empty;
+            url = string.Empty;
+        }
+        public OCR_NAVER_API_Request_image(TImageCartItem item, string? inputName = null)
+            : this()
+        {
+            if (item == null || item.ImageBytes == null || item.ImageBytes.Length <= 0) { return; }
+
+            format = HxImagePicture.GetImageFormatString(item.ImageData.RawFormat).ToLower();
+            name = inputName ?? DateTime.Now.ToDateTimeStringDefaultFormatBEx();
+            data = HxString.GetByteToBase64Encode(item.ImageBytes);
+            url = string.Empty;
+        }
+
+        public OCR_NAVER_API_Request_image(string hostUrl = null)
+            : this()
+        {
+            if (hostUrl.IsNullOrWhiteSpaceEx() == true) { return; }
+
+            format = HxFile.GetFileNameExt(hostUrl).ToLower();
+            name = HxFile.GetFileNameWithOutExt(hostUrl);
+            data = string.Empty;
+            url = hostUrl;
+        }
+        public OCR_NAVER_API_Request_image(Image image, string? inputName = null)
+        {
+            if (image == null || image.Size.Width <= 0 || image.Size.Height <= 0) { return; }
+
+            format = HxImagePicture.GetImageFormatString(image.RawFormat).ToLower();
+            name = inputName ?? DateTime.Now.ToDateTimeStringDefaultFormatBEx();
+            data = HxString.GetImageToBase64Encode(image);
+            url = null;
         }
     }
 

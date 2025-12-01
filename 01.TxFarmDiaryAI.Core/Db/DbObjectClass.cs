@@ -30,9 +30,9 @@ namespace TxFarmDiaryAI
     }
     
 
-    public abstract class SQL_TXFD_BASE : HxDbModelSetValue, IHxSetValue, ISQL_TXFD_BASE_Table
+    public abstract class SQL_TXFD_BASE : HxDbModelSetValue, IHxSetValue, ISQL_TXFD_BASE_Table, IDisposable
     {
-        public virtual IHxDb DB { get; protected set; }
+        public virtual IHxDb? DB { get; protected set; }
         public void SetDbConn(IHxDb db)
         {
             DB = db;
@@ -52,7 +52,16 @@ namespace TxFarmDiaryAI
 
         public SQL_TXFD_BASE()
         {
-
+            //Clear();
+        }
+        public SQL_TXFD_BASE(IHxDb db)
+            : this()
+        {
+            SetDbConn(db);
+        }
+        public void Dispose()
+        {
+            Clear();
         }
         public abstract void Clear();
         public abstract bool IsEmpty();
@@ -184,7 +193,137 @@ public static SQL_TXFD_OCR_SET_Table? ToJsonDeserializeRecordFromResponseDataObj
         }
         */
     }
+    public class SQL_TXFD_FILE_ENV_Table : SQL_TXFD_BASE
+    {
+        public const string _DB_TABLE_NAME_ = "TXFD_FILE_ENV";
+        public const string _DB_SEQ_NAME_ = $"SEQ_{_DB_TABLE_NAME_}";
+        public const string _SELECT_DEFAULT_QUERY_STRING_ = @"select file_no, file_check, file_check_sub, file_name, file_save, file_path, file_ext, file_type, file_size, file_remark, file_data, file_contents from txfd_file_env";
 
+        public const string _CDF_FILE_NO_ = "file_no";
+        public const string _CDF_FILE_CHECK_ = "file_check";
+        public const string _CDF_FILE_CHECK_SUB_ = "file_check_sub";
+        public const string _CDF_FILE_NAME_ = "file_name";
+        public const string _CDF_FILE_SAVE_ = "file_save";
+        public const string _CDF_FILE_PATH_ = "file_path";
+        public const string _CDF_FILE_EXT_ = "file_ext";
+        public const string _CDF_FILE_TYPE_ = "file_type";
+        public const string _CDF_FILE_SIZE_ = "file_size";
+        public const string _CDF_FILE_REMARK_ = "file_remark";
+        public const string _CDF_FILE_DATA_ = "file_data";
+        [JsonProperty(_CDF_FILE_NO_)] public decimal? FILE_NO { get; set; }
+        [JsonProperty(_CDF_FILE_CHECK_)] public string? FILE_CHECK { get; set; }
+
+        [JsonProperty(_CDF_FILE_CHECK_SUB_)] public string? FILE_CHECK_SUB { get; set; }
+
+        [JsonProperty(_CDF_FILE_NAME_)] public string? FILE_NAME { get; set; }
+        [JsonProperty(_CDF_FILE_SAVE_)] public string? FILE_SAVE { get; set; }
+        [JsonProperty(_CDF_FILE_PATH_)] public string? FILE_PATH { get; set; }
+        [JsonProperty(_CDF_FILE_EXT_)] public string? FILE_EXT { get; set; }
+        [JsonProperty(_CDF_FILE_TYPE_)] public string? FILE_TYPE { get; set; }
+        [JsonProperty(_CDF_FILE_SIZE_)] public long? FILE_SIZE { get; set; }
+        [JsonProperty(_CDF_FILE_REMARK_)] public string? FILE_REMARK { get; set; }
+        [JsonProperty(_CDF_FILE_DATA_)] public string? FILE_DATA { get; set; }
+
+        public SQL_TXFD_FILE_ENV_Table()
+        {
+            Clear();
+        }
+
+        public override void Clear()
+        {
+            FILE_NO = null;
+            FILE_CHECK = null;
+            FILE_CHECK_SUB = null;
+            FILE_NAME = null;
+            FILE_SAVE = null;
+            FILE_PATH = null;
+            FILE_EXT = null;
+            FILE_TYPE = null;
+            FILE_SIZE = null;
+            FILE_REMARK = null;
+        }
+
+        public override string GetDbSelectDefaultQueryString()
+        {
+            return _SELECT_DEFAULT_QUERY_STRING_;
+        }
+
+        public override string GetDbTableName()
+        {
+            return _DB_TABLE_NAME_;
+        }
+        public override string GetDbSeqName()
+        {
+            return _DB_SEQ_NAME_;
+        }
+
+        public override bool IsEmpty()
+        {
+            return FILE_NO == null && FILE_CHECK == null && FILE_CHECK_SUB == null;
+        }
+
+        public override bool IsValid()
+        {
+            return FILE_NO != null;
+        }
+
+        public override bool SetDbInsert(IHxDb db, string? userText = null, decimal? uno = null)
+        {
+            bool Result = false;
+            bool isValid = IsValid();
+            if (isValid != true) { return Result; }
+            if (db == null) throw new ArgumentNullException("Database Resource");
+            if (db.Open() != true) { return Result; }
+
+            string SQL = $@"INSERT INTO {GetDbTableName()} (
+    file_no, file_check, file_check_sub, file_name, file_save, file_path, file_ext, file_type, file_size, file_remark
+) VALUES (
+    :file_no, :file_check, :file_check_sub, :file_name, :file_save, :file_path, :file_ext, :file_type, :file_size, :file_remark
+)";
+            int n = db.Query(SQL, new Dictionary<string, object>()
+            {
+                { "file_no", this.FILE_NO ?? DbNullToObject },
+                { "file_check", this.FILE_CHECK  ?? DbNullToObject },
+                { "file_check_sub", this.FILE_CHECK_SUB ?? DbNullToObject },
+                { "file_name", this.FILE_NAME ?? DbNullToObject },
+                { "file_save", this.FILE_SAVE ?? DbNullToObject },
+                { "file_path", this.FILE_PATH ?? DbNullToObject },
+                { "file_ext", this.FILE_EXT ?? DbNullToObject },
+                { "file_type", this.FILE_TYPE ?? DbNullToObject },
+                { "file_size", this.FILE_SIZE ?? DbNullToObject },
+                { "file_remark", this.FILE_REMARK ?? DbNullToObject },
+            });
+            if (n > 0)
+            {
+                Result = true;
+            }
+            return Result;
+        }
+
+        public override bool SetDbInsert(IHxDb db, (string? userText, decimal? uno) woker)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static DataTable? ToDataTable(IHxDb db, string? additionalConditions = null)
+        {
+            if (db == null) throw new ArgumentNullException("Database Resource");
+
+            if (db.Open() != true) { return null; }
+
+            string SQL = string.Format(_SELECT_DEFAULT_QUERY_STRING_, string.Empty);
+            if (additionalConditions.IsNullOrWhiteSpaceEx() != true)
+            {
+                SQL = GetQueryString(SQL, additionalConditions);
+            }
+            SQL = HxUtils.OrderByQueryString(SQL, $"{_CDF_FILE_NO_} ASC");
+
+            DataTable Result = db.QueryDataTable(SQL);
+            if (Result != null) { Result.TableName = _DB_TABLE_NAME_; }
+
+            return Result;
+        }
+    }
     public class SQL_TXFD_Helper<T>
         where T : SQL_TXFD_BASE, ISQL_TXFD_BASE_Table, new()
     {
@@ -676,139 +815,7 @@ WHERE 1 = 1
         }
     }
 
-    public class SQL_TXFD_FILE_ENV_Table : SQL_TXFD_BASE, ISQL_TXFD_BASE_Table, IHxSetValue
-    {
-        public const string _DB_TABLE_NAME_ = "TXFD_FILE_ENV";
-        public const string _DB_SEQ_NAME_ = $"SEQ_{_DB_TABLE_NAME_}";
-        public const string _SELECT_DEFAULT_QUERY_STRING_ = @"select file_no, file_check, file_check_sub, file_name, file_save, file_path, file_ext, file_type, file_size, file_remark, file_data, file_contents from txfd_file_env";
-
-        public const string _CDF_FILE_NO_ = "file_no";
-        public const string _CDF_FILE_CHECK_ = "file_check";
-        public const string _CDF_FILE_CHECK_SUB_ = "file_check_sub";
-        public const string _CDF_FILE_NAME_ = "file_name";
-        public const string _CDF_FILE_SAVE_ = "file_save";
-        public const string _CDF_FILE_PATH_ = "file_path";
-        public const string _CDF_FILE_EXT_ = "file_ext";
-        public const string _CDF_FILE_TYPE_ = "file_type";
-        public const string _CDF_FILE_SIZE_ = "file_size";
-        public const string _CDF_FILE_REMARK_ = "file_remark";
-        public const string _CDF_FILE_DATA_ = "file_data";
-        [JsonProperty(_CDF_FILE_NO_)] public decimal? FILE_NO { get; set; }
-        [JsonProperty(_CDF_FILE_CHECK_)] public string? FILE_CHECK { get; set; }
-
-        [JsonProperty(_CDF_FILE_CHECK_SUB_)] public string? FILE_CHECK_SUB { get; set; }
-
-        [JsonProperty(_CDF_FILE_NAME_)] public string? FILE_NAME { get; set; }
-        [JsonProperty(_CDF_FILE_SAVE_)] public string? FILE_SAVE { get; set; }
-        [JsonProperty(_CDF_FILE_PATH_)] public string? FILE_PATH { get; set; }
-        [JsonProperty(_CDF_FILE_EXT_)] public string? FILE_EXT { get; set; }
-        [JsonProperty(_CDF_FILE_TYPE_)] public string? FILE_TYPE { get; set; }
-        [JsonProperty(_CDF_FILE_SIZE_)] public long? FILE_SIZE { get; set; }
-        [JsonProperty(_CDF_FILE_REMARK_)] public string? FILE_REMARK { get; set; }
-        [JsonProperty(_CDF_FILE_DATA_)] public string? FILE_DATA { get; set; }
-
-        public SQL_TXFD_FILE_ENV_Table()
-        {
-            Clear();
-        }
-
-        public override void Clear()
-        {
-            FILE_NO = null;
-            FILE_CHECK = null;
-            FILE_CHECK_SUB = null;
-            FILE_NAME = null;
-            FILE_SAVE = null;
-            FILE_PATH = null;
-            FILE_EXT = null;
-            FILE_TYPE = null;
-            FILE_SIZE = null;
-            FILE_REMARK = null;
-        }
-
-        public override string GetDbSelectDefaultQueryString()
-        {
-            return _SELECT_DEFAULT_QUERY_STRING_;
-        }
-
-        public override string GetDbTableName()
-        {
-            return _DB_TABLE_NAME_;
-        }
-        public override string GetDbSeqName()
-        {
-            return _DB_SEQ_NAME_;
-        }
-
-        public override bool IsEmpty()
-        {
-            return FILE_NO == null && FILE_CHECK == null && FILE_CHECK_SUB == null;
-        }
-
-        public override bool IsValid()
-        {
-            return FILE_NO != null;
-        }
-
-        public override bool SetDbInsert(IHxDb db, string? userText = null, decimal? uno = null)
-        {
-            bool Result = false;
-            bool isValid = IsValid();
-            if (isValid != true) { return Result; }
-            if (db == null) throw new ArgumentNullException("Database Resource");
-            if (db.Open() != true) { return Result; }
-
-            string SQL = $@"INSERT INTO {GetDbTableName()} (
-    file_no, file_check, file_check_sub, file_name, file_save, file_path, file_ext, file_type, file_size, file_remark
-) VALUES (
-    :file_no, :file_check, :file_check_sub, :file_name, :file_save, :file_path, :file_ext, :file_type, :file_size, :file_remark
-)";
-            int n = db.Query(SQL, new Dictionary<string, object>()
-            {
-                { "file_no", this.FILE_NO ?? DbNullToObject },
-                { "file_check", this.FILE_CHECK  ?? DbNullToObject },
-                { "file_check_sub", this.FILE_CHECK_SUB ?? DbNullToObject },
-                { "file_name", this.FILE_NAME ?? DbNullToObject },
-                { "file_save", this.FILE_SAVE ?? DbNullToObject },
-                { "file_path", this.FILE_PATH ?? DbNullToObject },
-                { "file_ext", this.FILE_EXT ?? DbNullToObject },
-                { "file_type", this.FILE_TYPE ?? DbNullToObject },
-                { "file_size", this.FILE_SIZE ?? DbNullToObject },
-                { "file_remark", this.FILE_REMARK ?? DbNullToObject },
-            });
-            if (n > 0)
-            {
-                Result = true;
-            }
-            return Result;
-        }
-
-        public override bool SetDbInsert(IHxDb db, (string? userText, decimal? uno) woker)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static DataTable? ToDataTable(IHxDb db, string? additionalConditions = null)
-        {
-            if (db == null) throw new ArgumentNullException("Database Resource");
-
-            if (db.Open() != true) { return null; }
-
-            string SQL = string.Format(_SELECT_DEFAULT_QUERY_STRING_, string.Empty);
-            if (additionalConditions.IsNullOrWhiteSpaceEx() != true)
-            {
-                SQL = GetQueryString(SQL, additionalConditions);
-            }
-            SQL = HxUtils.OrderByQueryString(SQL, $"{_CDF_FILE_NO_} ASC");
-
-            DataTable Result = db.QueryDataTable(SQL);
-            if (Result != null) { Result.TableName = _DB_TABLE_NAME_; }
-
-            return Result;
-        }
-    }
-
-    public class SQL_TXFD_DIARY_SET_Table : SQL_TXFD_BASE, ISQL_TXFD_BASE_Table, IHxSetValue
+    public class SQL_TXFD_DIARY_SET_Table : SQL_TXFD_BASE
     {
         public const string _DB_TABLE_NAME_ = "TXFD_DIARY_SET";
         public const string _DB_SEQ_NAME_ = $"SEQ_{_DB_TABLE_NAME_}";
@@ -929,7 +936,7 @@ WHERE 1 = 1
             return SetDbInsert(db, woker.userText, woker.uno);
         }
     }
-    public class SQL_TXFD_DIARY_FIELD_Table : SQL_TXFD_BASE, ISQL_TXFD_BASE_Table, IHxSetValue
+    public class SQL_TXFD_DIARY_FIELD_Table : SQL_TXFD_BASE
     {
         public const string _DB_TABLE_NAME_ = "TXFD_DIARY_FIELD";
         public const string _DB_SEQ_NAME_ = $"SEQ_{_DB_TABLE_NAME_}";
@@ -1738,6 +1745,4 @@ WHERE 1 = 1 {{1}}";
         }
 
     }
-
-   
 }
