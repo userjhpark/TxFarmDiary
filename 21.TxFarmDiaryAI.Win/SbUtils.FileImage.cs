@@ -31,15 +31,14 @@ namespace TxFarmDiaryAI.Win
         }
         */
 
-        internal static string GetImageFormatString(Image image)
+        public new static string GetImageFormatString(Image image)
         {
-            
             if (image == null)
                 return "Unknown";
             return GetImageFormatString(image.RawFormat);
         }
 
-        internal static string GetImageFormatString(System.Drawing.Imaging.ImageFormat format)
+        public new static string GetImageFormatString(System.Drawing.Imaging.ImageFormat format)
         {
             if (format.Equals(System.Drawing.Imaging.ImageFormat.Jpeg))
                 return "JPEG";

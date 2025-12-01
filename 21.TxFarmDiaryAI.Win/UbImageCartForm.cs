@@ -126,7 +126,7 @@ namespace TxFarmDiaryAI.Win
                         return;
                     }
 
-                    Device device = GetScannerDevice(selectedScanner);
+                    Device? device = GetScannerDevice(selectedScanner);
                     if (device == null)
                     {
                         this.StatusBarEventCaption = Utils.GetLanguageResourceString(Defs._RESOURCEKEY_SCANNER_SELECT_ERROR_) ?? "Unable to connect to the selected scanner. (선택된 스캐너에 연결할 수 없습니다.)";
@@ -137,7 +137,7 @@ namespace TxFarmDiaryAI.Win
                     this.StatusBarEventCaption = Utils.GetLanguageResourceString(Defs._RESOURCEKEY_SCANNER_SCAN_START_) ?? "Starting the scan... (스캔을 시작합니다...)";
                     Application.DoEvents(); // UI 갱신
 
-                    Image image = Utils.GetImageFromScanDevice(device);
+                    Image? image = Utils.GetImageFromScanDevice(device);
                     if (image == null)
                     {
                         this.StatusBarEventCaption = Utils.GetLanguageResourceString(Defs._RESOURCEKEY_SCANNER_SCAN_NOTFOUND_) ?? "Unable to import scanned image. (스캔된 이미지를 가져올 수 없습니다.)";
@@ -738,10 +738,10 @@ namespace TxFarmDiaryAI.Win
 
 
 
-        private static Device GetScannerDevice(SbScannerDevice selectedScanner)
+        private static Device? GetScannerDevice(SbScannerDevice selectedScanner)
         {
             var deviceManager = new DeviceManager();
-            Device device = null;
+            Device? device = null;
 
             foreach (DeviceInfo info in deviceManager.DeviceInfos)
             {

@@ -1,0 +1,13 @@
+﻿{
+  "CryptoKey": "TxFarmDiaryAI",
+  "CultureName": "en-US",
+  "OcrApi": {
+    "Url": "https://cugmmfu019.apigw.ntruss.com/custom/v1/46311/28645cc31f95289c0bc759520d489043a6ab9ebe045360e6b66c84f1e0165503/infer",
+    "ContentType": "application/json",
+    "SecretKey": "WgcOQQxcCVhfOgtYCQILZwhVWmkKCg4nDF5dSVhpCnJaBw5kDFgJQ18GC1oJaQtRCFlaDwo0DicMbF1bWHkKc1o/DkEMWAlEXzsLVQkCCzoIYVo2ChUOYg=="
+  },
+  "WeatherKmaApi": {
+    "Url": "https://apihub.kma.go.kr/api/typ01/url/kma_sfcdd.php?stn=174&help=1&tm=20251119",
+    "AuthKey": "AW1VBFchUhQERlAzUnBQYlMPAUpRRFVlVwEGFgMCUSgBSFUZVyhSNgRIUDE="
+  }
+}

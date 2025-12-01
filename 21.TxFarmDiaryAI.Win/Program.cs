@@ -46,6 +46,8 @@ namespace TxFarmDiaryAI.Win
         {
             if (HxFile.IsFileExists(SysEnv._APP_CONFIG_FILENAME_) != true)
             {
+                TConfigAppSettings.DefaultSave();
+                /*
                 var configMgr = new SbConfigManager();
 
                 Debug.WriteLine($"SMTP Server: {configMgr?.Config?.SmtpSettings?.Host}");
@@ -58,17 +60,17 @@ namespace TxFarmDiaryAI.Win
                     WebApiUrl = "http://farmdiaryai.typesw.com/api/",
                     FileServerUrl = "http://farmdiaryai.typesw.com/files/shared/"
                 });
-
+                */
+            }
+            if (HxFile.IsFileExists(SysEnv._APP_CONFIG_FILENAME_) == true)
+            {
+                SysEnv.AppConfigSettings.Load(SysEnv._APP_CONFIG_FILENAME_);
             }
 
             if (IsApplicationStartUp != true)
             {
-                string cultureName = "en-US"; // "ko -KR";
-                // 시스템 기본값으로 되돌릴 경우 (일반적으로 사용하지 않음)
-                if (cultureName != CultureInfo.InstalledUICulture.Name)
-                {
-                    cultureName = "en-US";
-                }
+                string cultureName = SysEnv.AppConfigSettings.CultureName.IsNullOrWhiteSpaceEx() != true ? SysEnv.AppConfigSettings.CultureName : "en-US"; // "ko -KR";
+                
                 SbUtils.LoadCultureResourceManager(cultureName);
 
                 AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;

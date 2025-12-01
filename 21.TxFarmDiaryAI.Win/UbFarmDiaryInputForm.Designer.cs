@@ -29,16 +29,6 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions4 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject13 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject14 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject15 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject16 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UbFarmDiaryInputForm));
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
@@ -50,6 +40,26 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions6 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject21 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject22 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject23 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject24 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions4 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject13 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject14 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject15 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject16 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions5 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject17 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject18 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject19 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject20 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
@@ -63,12 +73,17 @@
             repositoryItemBorderLineWeight1 = new DevExpress.XtraRichEdit.Forms.Design.RepositoryItemBorderLineWeight();
             repositoryItemFloatingObjectOutlineWeight1 = new DevExpress.XtraRichEdit.Forms.Design.RepositoryItemFloatingObjectOutlineWeight();
             rpgChildFarmingDiary = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            baredtChildDocDate = new DevExpress.XtraBars.BarEditItem();
+            repdateChildDocDate = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
+            baredtChildDocWeather = new DevExpress.XtraBars.BarEditItem();
+            repgluChildDocWeather = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
+            gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            barbtnChildAppend_FarmingDiary = new DevExpress.XtraBars.BarButtonItem();
+            repsluChildDocWeather = new DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit();
+            repositoryItemSearchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             baredtChildTemplateList = new DevExpress.XtraBars.BarEditItem();
             repluTemplateList = new DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit();
             repositoryItemGridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
-            baredtChildDocDate = new DevExpress.XtraBars.BarEditItem();
-            repdateChildDocDate = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
-            barbtnChildAppend_FarmingDiary = new DevExpress.XtraBars.BarButtonItem();
             pdfCtl = new DevExpress.XtraPdfViewer.PdfViewer();
             pdfBarController1 = new DevExpress.XtraPdfViewer.Bars.PdfBarController(components);
             pdfFileOpenBarItem1 = new DevExpress.XtraPdfViewer.Bars.PdfFileOpenBarItem();
@@ -138,10 +153,14 @@
             ((System.ComponentModel.ISupportInitialize)repositoryItemBorderLineStyle1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemBorderLineWeight1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemFloatingObjectOutlineWeight1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)repluTemplateList).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)repositoryItemGridLookUpEdit1View).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repdateChildDocDate).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repdateChildDocDate.CalendarTimeProperties).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)repgluChildDocWeather).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)gridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)repsluChildDocWeather).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)repositoryItemSearchLookUpEdit1View).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)repluTemplateList).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)repositoryItemGridLookUpEdit1View).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pdfBarController1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemPageNumberEdit1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemComboBox1).BeginInit();
@@ -159,20 +178,20 @@
             // 
             rcChildMenu.EmptyAreaImageOptions.ImagePadding = new Padding(30, 28, 30, 28);
             rcChildMenu.ExpandCollapseItem.Id = 0;
-            rcChildMenu.Items.AddRange(new DevExpress.XtraBars.BarItem[] { pdfFileOpenBarItem1, pdfFileSaveAsBarItem1, pdfFilePrintBarItem1, pdfFindTextBarItem1, pdfPreviousPageBarItem1, pdfNextPageBarItem1, pdfSetPageNumberBarItem1, pdfZoomOutBarItem1, pdfZoomInBarItem1, pdfExactZoomListBarSubItem1, pdfZoom10CheckItem1, pdfZoom25CheckItem1, pdfZoom50CheckItem1, pdfZoom75CheckItem1, pdfZoom100CheckItem1, pdfZoom125CheckItem1, pdfZoom150CheckItem1, pdfZoom200CheckItem1, pdfZoom400CheckItem1, pdfZoom500CheckItem1, pdfSetActualSizeZoomModeCheckItem1, pdfSetPageLevelZoomModeCheckItem1, pdfSetFitWidthZoomModeCheckItem1, pdfSetFitVisibleZoomModeCheckItem1, hotkeyFocusNextBarItem1, hotkeyFocusPreviousBarItem1, hotkeyFocusThumbnailTabBarItem1, hotkeyFocusBookmarksTabBarItem1, hotkeyFocusAttachmentsTabBarItem1, hotkeyFocusCommentsTabBarItem1, hotkeyFocusLayersTabBarItem1, hotkeyFocusSignaturesTabBarItem1, hotkeyFocusDocumentViewerBarItem1, pdfTextHighlightBarItem1, pdfTextStrikethroughBarItem1, pdfTextUnderlineBarItem1, pdfStickyNoteBarItem1, pdfFreeTextBarItem1, pdfCalloutFreeTextBarItem1, pdfExportFormDataBarItem1, pdfImportFormDataBarItem1, barbtnChildAppend_FarmingDiary, baredtChildTemplateList, baredtChildDocDate });
-            rcChildMenu.MaxItemId = 348;
+            rcChildMenu.Items.AddRange(new DevExpress.XtraBars.BarItem[] { pdfFileOpenBarItem1, pdfFileSaveAsBarItem1, pdfFilePrintBarItem1, pdfFindTextBarItem1, pdfPreviousPageBarItem1, pdfNextPageBarItem1, pdfSetPageNumberBarItem1, pdfZoomOutBarItem1, pdfZoomInBarItem1, pdfExactZoomListBarSubItem1, pdfZoom10CheckItem1, pdfZoom25CheckItem1, pdfZoom50CheckItem1, pdfZoom75CheckItem1, pdfZoom100CheckItem1, pdfZoom125CheckItem1, pdfZoom150CheckItem1, pdfZoom200CheckItem1, pdfZoom400CheckItem1, pdfZoom500CheckItem1, pdfSetActualSizeZoomModeCheckItem1, pdfSetPageLevelZoomModeCheckItem1, pdfSetFitWidthZoomModeCheckItem1, pdfSetFitVisibleZoomModeCheckItem1, hotkeyFocusNextBarItem1, hotkeyFocusPreviousBarItem1, hotkeyFocusThumbnailTabBarItem1, hotkeyFocusBookmarksTabBarItem1, hotkeyFocusAttachmentsTabBarItem1, hotkeyFocusCommentsTabBarItem1, hotkeyFocusLayersTabBarItem1, hotkeyFocusSignaturesTabBarItem1, hotkeyFocusDocumentViewerBarItem1, pdfTextHighlightBarItem1, pdfTextStrikethroughBarItem1, pdfTextUnderlineBarItem1, pdfStickyNoteBarItem1, pdfFreeTextBarItem1, pdfCalloutFreeTextBarItem1, pdfExportFormDataBarItem1, pdfImportFormDataBarItem1, barbtnChildAppend_FarmingDiary, baredtChildTemplateList, baredtChildDocDate, baredtChildDocWeather });
+            rcChildMenu.MaxItemId = 350;
             rcChildMenu.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { pdfRibbonPage1, pdfCommentRibbonPage1, pdfFormDataRibbonPage1 });
             rcChildMenu.QuickToolbarItemLinks.Add(baredtChildDocDate);
             rcChildMenu.QuickToolbarItemLinks.Add(barbtnChildAppend_FarmingDiary, true);
             rcChildMenu.QuickToolbarItemLinks.Add(pdfFilePrintBarItem1, true);
-            rcChildMenu.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemFontEditRichEdit1, repositoryItemRichEditFontSizeEdit1, displayForReviewModeComboBox1, repositoryItemBorderLineStyle1, repositoryItemBorderLineWeight1, repositoryItemFloatingObjectOutlineWeight1, repositoryItemPageNumberEdit1, repositoryItemComboBox1, repluTemplateList, repdateChildDocDate });
+            rcChildMenu.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemFontEditRichEdit1, repositoryItemRichEditFontSizeEdit1, displayForReviewModeComboBox1, repositoryItemBorderLineStyle1, repositoryItemBorderLineWeight1, repositoryItemFloatingObjectOutlineWeight1, repositoryItemPageNumberEdit1, repositoryItemComboBox1, repluTemplateList, repdateChildDocDate, repsluChildDocWeather, repgluChildDocWeather });
             rcChildMenu.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.True;
-            rcChildMenu.Size = new Size(1343, 150);
+            rcChildMenu.Size = new Size(1525, 150);
             // 
             // rsbChildStatusBar
             // 
             rsbChildStatusBar.Location = new Point(0, 646);
-            rsbChildStatusBar.Size = new Size(1343, 22);
+            rsbChildStatusBar.Size = new Size(1525, 22);
             // 
             // repositoryItemFontEditRichEdit1
             // 
@@ -214,37 +233,10 @@
             // rpgChildFarmingDiary
             // 
             rpgChildFarmingDiary.ItemLinks.Add(baredtChildDocDate);
+            rpgChildFarmingDiary.ItemLinks.Add(baredtChildDocWeather);
             rpgChildFarmingDiary.ItemLinks.Add(barbtnChildAppend_FarmingDiary, true);
             rpgChildFarmingDiary.Name = "rpgChildFarmingDiary";
             rpgChildFarmingDiary.Text = "Farming Diary(Journal)";
-            // 
-            // baredtChildTemplateList
-            // 
-            baredtChildTemplateList.Caption = " Template Select : ";
-            baredtChildTemplateList.Edit = repluTemplateList;
-            baredtChildTemplateList.EditWidth = 150;
-            baredtChildTemplateList.Id = 345;
-            baredtChildTemplateList.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("baredtChildTemplateList.ImageOptions.SvgImage");
-            baredtChildTemplateList.Name = "baredtChildTemplateList";
-            baredtChildTemplateList.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-            // 
-            // repluTemplateList
-            // 
-            repluTemplateList.AutoHeight = false;
-            editorButtonImageOptions3.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("editorButtonImageOptions3.SvgImage");
-            editorButtonImageOptions3.SvgImageSize = new Size(12, 12);
-            editorButtonImageOptions4.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("editorButtonImageOptions4.SvgImage");
-            editorButtonImageOptions4.SvgImageSize = new Size(14, 14);
-            repluTemplateList.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Refresh", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", "R", null, DevExpress.Utils.ToolTipAnchor.Default), new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Template Load", -1, true, true, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", "L", null, DevExpress.Utils.ToolTipAnchor.Default) });
-            repluTemplateList.Name = "repluTemplateList";
-            repluTemplateList.PopupView = repositoryItemGridLookUpEdit1View;
-            // 
-            // repositoryItemGridLookUpEdit1View
-            // 
-            repositoryItemGridLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            repositoryItemGridLookUpEdit1View.Name = "repositoryItemGridLookUpEdit1View";
-            repositoryItemGridLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
-            repositoryItemGridLookUpEdit1View.OptionsView.ShowGroupPanel = false;
             // 
             // baredtChildDocDate
             // 
@@ -267,6 +259,31 @@
             repdateChildDocDate.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
             repdateChildDocDate.Name = "repdateChildDocDate";
             // 
+            // baredtChildDocWeather
+            // 
+            baredtChildDocWeather.Caption = "Weather by Date : ";
+            baredtChildDocWeather.Edit = repgluChildDocWeather;
+            baredtChildDocWeather.EditWidth = 150;
+            baredtChildDocWeather.Id = 349;
+            baredtChildDocWeather.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("baredtChildDocWeather.ImageOptions.SvgImage");
+            baredtChildDocWeather.Name = "baredtChildDocWeather";
+            // 
+            // repgluChildDocWeather
+            // 
+            repgluChildDocWeather.AutoHeight = false;
+            editorButtonImageOptions3.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("editorButtonImageOptions3.SvgImage");
+            editorButtonImageOptions3.SvgImageSize = new Size(14, 14);
+            repgluChildDocWeather.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Call by Weahter API", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", "G", null, DevExpress.Utils.ToolTipAnchor.Default) });
+            repgluChildDocWeather.Name = "repgluChildDocWeather";
+            repgluChildDocWeather.PopupView = gridView1;
+            // 
+            // gridView1
+            // 
+            gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            gridView1.Name = "gridView1";
+            gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
+            gridView1.OptionsView.ShowGroupPanel = false;
+            // 
             // barbtnChildAppend_FarmingDiary
             // 
             barbtnChildAppend_FarmingDiary.Caption = "Append\r\n(Save)";
@@ -274,13 +291,57 @@
             barbtnChildAppend_FarmingDiary.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barbtnChildAppend_FarmingDiary.ImageOptions.SvgImage");
             barbtnChildAppend_FarmingDiary.Name = "barbtnChildAppend_FarmingDiary";
             // 
+            // repsluChildDocWeather
+            // 
+            repsluChildDocWeather.AutoHeight = false;
+            editorButtonImageOptions6.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("editorButtonImageOptions6.SvgImage");
+            editorButtonImageOptions6.SvgImageSize = new Size(14, 14);
+            repsluChildDocWeather.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions6, new DevExpress.Utils.KeyShortcut(Keys.None), serializableAppearanceObject21, serializableAppearanceObject22, serializableAppearanceObject23, serializableAppearanceObject24, "", null, null, DevExpress.Utils.ToolTipAnchor.Default) });
+            repsluChildDocWeather.Name = "repsluChildDocWeather";
+            repsluChildDocWeather.PopupView = repositoryItemSearchLookUpEdit1View;
+            // 
+            // repositoryItemSearchLookUpEdit1View
+            // 
+            repositoryItemSearchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            repositoryItemSearchLookUpEdit1View.Name = "repositoryItemSearchLookUpEdit1View";
+            repositoryItemSearchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            repositoryItemSearchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            // 
+            // baredtChildTemplateList
+            // 
+            baredtChildTemplateList.Caption = " Template Select : ";
+            baredtChildTemplateList.Edit = repluTemplateList;
+            baredtChildTemplateList.EditWidth = 150;
+            baredtChildTemplateList.Id = 345;
+            baredtChildTemplateList.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("baredtChildTemplateList.ImageOptions.SvgImage");
+            baredtChildTemplateList.Name = "baredtChildTemplateList";
+            baredtChildTemplateList.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            // 
+            // repluTemplateList
+            // 
+            repluTemplateList.AutoHeight = false;
+            editorButtonImageOptions4.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("editorButtonImageOptions4.SvgImage");
+            editorButtonImageOptions4.SvgImageSize = new Size(12, 12);
+            editorButtonImageOptions5.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("editorButtonImageOptions5.SvgImage");
+            editorButtonImageOptions5.SvgImageSize = new Size(14, 14);
+            repluTemplateList.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo), new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Refresh", -1, true, true, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", "R", null, DevExpress.Utils.ToolTipAnchor.Default), new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Template Load", -1, true, true, false, editorButtonImageOptions5, new DevExpress.Utils.KeyShortcut(Keys.None), serializableAppearanceObject17, serializableAppearanceObject18, serializableAppearanceObject19, serializableAppearanceObject20, "", "L", null, DevExpress.Utils.ToolTipAnchor.Default) });
+            repluTemplateList.Name = "repluTemplateList";
+            repluTemplateList.PopupView = repositoryItemGridLookUpEdit1View;
+            // 
+            // repositoryItemGridLookUpEdit1View
+            // 
+            repositoryItemGridLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            repositoryItemGridLookUpEdit1View.Name = "repositoryItemGridLookUpEdit1View";
+            repositoryItemGridLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            repositoryItemGridLookUpEdit1View.OptionsView.ShowGroupPanel = false;
+            // 
             // pdfCtl
             // 
             pdfCtl.Dock = DockStyle.Fill;
             pdfCtl.Location = new Point(0, 150);
             pdfCtl.MenuManager = rcChildMenu;
             pdfCtl.Name = "pdfCtl";
-            pdfCtl.Size = new Size(1343, 496);
+            pdfCtl.Size = new Size(1525, 496);
             pdfCtl.TabIndex = 2;
             // 
             // pdfBarController1
@@ -703,7 +764,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 14F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1343, 668);
+            ClientSize = new Size(1525, 668);
             Controls.Add(pdfCtl);
             IconOptions.Image = (Image)resources.GetObject("UbFarmDiaryInputForm.IconOptions.Image");
             Name = "UbFarmDiaryInputForm";
@@ -720,10 +781,14 @@
             ((System.ComponentModel.ISupportInitialize)repositoryItemBorderLineStyle1).EndInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemBorderLineWeight1).EndInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemFloatingObjectOutlineWeight1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)repluTemplateList).EndInit();
-            ((System.ComponentModel.ISupportInitialize)repositoryItemGridLookUpEdit1View).EndInit();
             ((System.ComponentModel.ISupportInitialize)repdateChildDocDate.CalendarTimeProperties).EndInit();
             ((System.ComponentModel.ISupportInitialize)repdateChildDocDate).EndInit();
+            ((System.ComponentModel.ISupportInitialize)repgluChildDocWeather).EndInit();
+            ((System.ComponentModel.ISupportInitialize)gridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)repsluChildDocWeather).EndInit();
+            ((System.ComponentModel.ISupportInitialize)repositoryItemSearchLookUpEdit1View).EndInit();
+            ((System.ComponentModel.ISupportInitialize)repluTemplateList).EndInit();
+            ((System.ComponentModel.ISupportInitialize)repositoryItemGridLookUpEdit1View).EndInit();
             ((System.ComponentModel.ISupportInitialize)pdfBarController1).EndInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemPageNumberEdit1).EndInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemComboBox1).EndInit();
@@ -805,5 +870,10 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraBars.BarEditItem baredtChildDocDate;
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repdateChildDocDate;
+        private DevExpress.XtraBars.BarEditItem baredtChildDocWeather;
+        private DevExpress.XtraEditors.Repository.RepositoryItemSearchLookUpEdit repsluChildDocWeather;
+        private DevExpress.XtraGrid.Views.Grid.GridView repositoryItemSearchLookUpEdit1View;
+        private DevExpress.XtraEditors.Repository.RepositoryItemGridLookUpEdit repgluChildDocWeather;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
     }
 }

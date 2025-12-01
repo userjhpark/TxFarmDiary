@@ -45,10 +45,14 @@ namespace TxFarmDiaryAI.Win
             grdvFarmDiaryList.FocusedRowChanged += (s, e) => LoadTabPageDetail(false);
             grdvFarmDiaryList.DoubleClick += (s, e) =>
             {
-                DXMouseEventArgs ea = e as DXMouseEventArgs;
+                if (e == null) { return; }
+
+                DXMouseEventArgs? ea = e as DXMouseEventArgs;
+                if (ea != null) { return; }
+
                 if (s is not GridView view) { return; }
 
-                GridHitInfo info = view.CalcHitInfo(ea.Location);
+                GridHitInfo info = view!.CalcHitInfo(ea!.Location);
                 if (info.HitTest == GridHitTest.RowIndicator)
                 {
                     int rowHandle = info.RowHandle;

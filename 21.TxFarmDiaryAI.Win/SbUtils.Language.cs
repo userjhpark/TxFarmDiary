@@ -27,11 +27,11 @@ namespace TxFarmDiaryAI.Win
             {
                 // cultureName이 null이 아님을 컴파일러에 명확히 알리기 위해 null-forgiving 연산자(!) 사용
                 System.Globalization.CultureInfo culture = new(name: cultureName!);
-                Result = ResourceManager.GetString(resourceKey, culture);
+                Result = ResourceManager?.GetString(resourceKey, culture);
             }
             if (Result.IsNullOrWhiteSpaceEx() == true)
             {
-                Result = ResourceManager.GetString(resourceKey, Thread.CurrentThread.CurrentCulture);
+                Result = ResourceManager?.GetString(resourceKey, Thread.CurrentThread.CurrentCulture);
             }
             if (Result.IsNullOrWhiteSpaceEx() == true)
             {

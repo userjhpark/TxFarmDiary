@@ -20,7 +20,6 @@ using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-
 namespace TxFarmDiaryAI.Win
 {
     internal static class SysEnv
@@ -255,7 +254,8 @@ namespace TxFarmDiaryAI.Win
         }
         #endregion //응용프로그램 / 실행 정보
 
-        public const string _APP_CONFIG_FILENAME_ = "Confing.json";
+        public const string _APP_CONFIG_FILENAME_ = TConfigAppSettings._CONFIG_FILE_NAME_;
+        public static TConfigAppSettings AppConfigSettings { get; private set; } = new TConfigAppSettings();
 
         public static readonly int _APP_RUN_NOW_YEAR_ = DateTime.Now.Year;
         public static readonly int _APP_RUN_NOW_MONTH_ = DateTime.Now.Month;
@@ -336,9 +336,6 @@ namespace TxFarmDiaryAI.Win
         }
 
         #region Workspace
-        
-        
-
         public static DataTable? WorkspaceDataTable { get; private set; } = null;
         public static SQL_TXFD_SITE_SET_Table[]? WorkspaceRecordSet => WorkspaceDataTable?.ToRecordSetEx<SQL_TXFD_SITE_SET_Table>() ?? GetWorkspaceRecordSet();
         
@@ -359,6 +356,7 @@ namespace TxFarmDiaryAI.Win
         }
         public static decimal? CurrWorkspaceSNO => MainForm?.GetSelectedWorkspaceSNO();
         public static string? CurrWorkspaceName => MainForm?.GetSelectedWorkspaceName();
+        public static string? CurrWorkspaceStnCode => MainForm?.GetSelectedWorkspaceStnCode();
         public static void LoadWorkspace(bool bInit = false)
         {
             if(WorkspaceDataTable == null || WorkspaceDataTable.Rows.Count < 1 || bInit == true)
@@ -445,8 +443,6 @@ namespace TxFarmDiaryAI.Win
             
             sender.DataSource = dataTable;
         }
-
-
         internal static void InitWorkspaceSelectFromGridView(DevExpress.XtraGrid.Views.Grid.GridView view)
         {
             
@@ -558,7 +554,7 @@ namespace TxFarmDiaryAI.Win
         #endregion
 
         #region AI-OCR
-        internal static readonly string _API_URL_Naver_OCR_ = Defs._API_URL_NaverOCR_Custom_;
+        internal static readonly string _API_URL_Naver_OCR_ = SysEnv.AppConfigSettings.OcrApi.Url; //?? Defs._CALL_URL_NaverOCR_Custom_;
         public static HxResultValue? CallOcrNaverApi_GetJson(Image image, bool isTesting = false)
         {
             HxResultValue Result = null!;
@@ -568,8 +564,8 @@ namespace TxFarmDiaryAI.Win
 
                 Dictionary<string, object> dictHeader = new Dictionary<string, object>
                 {
-                    { "Content-Type", "application/json; charset=utf-8" },
-                    { "X-OCR-SECRET", "ZHVReUZnU3VxVEhsZmRIYW1XYUhxdWxrbHRNdXZ3alI="}
+                    { "Content-Type", $"{SysEnv.AppConfigSettings.OcrApi.ContentType ?? "application/json"}; charset=utf-8" },
+                    { "X-OCR-SECRET", HxCrypt.Decrypt(SysEnv.AppConfigSettings.OcrApi.SecretKey, SysEnv.AppConfigSettings.CryptoKey) }
                 };
                 OCR_NAVER_API_Request_Body raw = new OCR_NAVER_API_Request_Body(image);
                 if (raw.images == null || raw.requestId.IsNullOrWhiteSpaceEx() == true) { return null; }
@@ -579,7 +575,7 @@ namespace TxFarmDiaryAI.Win
                 string strFileChecksum = HxUtils.GetMD5Checksum(bytes);
                 if (isTesting == true)
                 {
-                    string strSampleFullName = null;
+                    string? strSampleFullName = null;
                     
                     if (bytes != null && bytes.Length > 1 && strFileChecksum.IsNullOrWhiteSpaceEx() != true)
                     {
@@ -683,6 +679,165 @@ namespace TxFarmDiaryAI.Win
         }
         */
         #endregion
+
+        public static HxResultValue CallWeahterAPIbyKMA_GetResultValue(string? stnCode, string? sourceDate = null)
+        {
+            Dictionary<string, object> dictHeader = new Dictionary<string, object>
+            {
+                { "Content-Type", "application/json; charset=utf-8" }
+            };
+            if(stnCode.IsNullOrWhiteSpaceEx() == true && WorkspaceRecordSet != null && WorkspaceRecordSet.Any() == true)
+            {
+                // Find workspace by stnCode
+                var records = WorkspaceRecordSet;
+                if (records != null && records.Length > 0)
+                {
+                    var rec = records.Where(r => r.STN_CODE.Equals(stnCode, StringComparison.OrdinalIgnoreCase)).LastOrDefault();
+                    if (rec != null && rec.SNO.IsNullOrWhiteSpaceEx() != true)
+                    {
+                        stnCode = rec.STN_CODE;
+                    }
+                }
+            }
+
+            if(sourceDate != null && sourceDate.IsNullOrWhiteSpaceEx() != true)
+            {
+                // Validate sourceDate format (yyyyMMdd)
+                if (DateTime.TryParseExact(sourceDate, "yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime dt))
+                {
+                    sourceDate = dt.ToString("yyyyMMdd");
+                }
+                else
+                {
+                    sourceDate = null;
+                }
+            }
+            if (sourceDate.IsNullOrWhiteSpaceEx() == true)
+            {
+                sourceDate = DateTime.Now.ToString("yyyyMMdd");
+            }
+            string strKmaHomeUrl = $"{SysEnv.AppConfigSettings.WeatherKmaApi.Url}&authKey={HxCrypt.Decrypt(SysEnv.AppConfigSettings.WeatherKmaApi.AuthKey, SysEnv.AppConfigSettings.CryptoKey)}";
+            string strKmaStnParam = stnCode.IsNullOrWhiteSpaceEx() != true ? $"&stn={stnCode}" : string.Empty;
+            string strKmaTmParam = sourceDate.IsNullOrWhiteSpaceEx() != true ? $"&tm={sourceDate}" : string.Empty;
+            string strApiUrl = @$"{strKmaHomeUrl}{strKmaStnParam}{strKmaTmParam}"; //&stn=174&help=1&tm=20251103
+
+            HxResultValue Result = HxUtils.GetRestClientContentResultValue(strApiUrl, RestSharp.Method.Get, dictHeader);
+
+            //HxResultValue Result = HxUtils.GetRestClientContentResultValue(strApiUrl, RestSharp.Method.Get, dictHeader);
+            if (Result.Success == true && Result.Value.IsNullOrWhiteSpaceEx() != true)
+            {
+                var val = Result.Value;
+                if (val != null)
+                {
+                    var obj = val;
+                    if (obj != null)
+                    {
+                        /**
+                        var waters = TWaterTypeClasses.Load(@"#START7777
+#--------------------------------------------------------------------------------------------------
+#  기상청 지상관측 일자료 [입력인수형태][예] ?tm=20100715&stn=0&help=1
+#--------------------------------------------------------------------------------------------------
+#  1. TM            : 관측일 (KST)
+#  2. STN           : 국내 지점번호
+#  3. WS_AVG        : 일 평균 풍속 (m/s)
+#  4. WR_DAY        : 일 풍정 (m)
+#  5. WD_MAX        : 최대풍향
+#  6. WS_MAX        : 최대풍속 (m/s)
+#  7. WS_MAX_TM     : 최대풍속 시각 (시분)
+#  8. WD_INS        : 최대순간풍향
+#  9. WS_INS        : 최대순간풍속 (m/s)
+# 10. WS_INS_TM     : 최대순간풍속 시각 (시분)
+# 11. TA_AVG        : 일 평균기온 (C)
+# 12. TA_MAX        : 최고기온 (C)
+# 13. TA_MAX_TM     : 최고기온 시가 (시분)
+# 14. TA_MIN        : 최저기온 (C)
+# 15. TA_MIN_TM     : 최저기온 시각 (시분)
+# 16. TD_AVG        : 일 평균 이슬점온도 (C)
+# 17. TS_AVG        : 일 평균 지면온도 (C)
+# 18. TG_MIN        : 일 최저 초상온도 (C)
+# 19. HM_AVG        : 일 평균 상대습도 (%)
+# 20. HM_MIN        : 최저습도 (%)
+# 21. HM_MIN_TM     : 최저습도 시각 (시분)
+# 22. PV_AVG        : 일 평균 수증기압 (hPa)
+# 23. EV_S          : 소형 증발량 (mm)
+# 24. EV_L          : 대형 증발량 (mm)
+# 25. FG_DUR        : 안개계속시간 (hr)
+# 26. PA_AVG        : 일 평균 현지기압 (hPa)
+# 27. PS_AVG        : 일 평균 해면기압 (hPa)
+# 28. PS_MAX        : 최고 해면기압 (hPa)
+# 29. PS_MAX_TM     : 최고 해면기압 시각 (시분)
+# 30. PS_MIN        : 최저 해면기압 (hPa)
+# 31. PS_MIN_TM     : 최저 해면기압 시각 (시분)
+# 32. CA_TOT        : 일 평균 전운량 (1/10)
+# 33. SS_DAY        : 일조합 (hr)
+# 34. SS_DUR        : 가조시간 (hr)
+# 35. SS_CMB        : 캄벨 일조 (hr)
+# 36. SI_DAY        : 일사합 (MJ/m2)
+# 37. SI_60M_MAX    : 최대 1시간일사 (MJ/m2)
+# 38. SI_60M_MAX_TM : 최대 1시간일사 시각 (시분)
+# 39. RN_DAY        : 일 강수량 (mm)
+# 40. RN_D99        : 9-9 강수량 (mm)
+# 41. RN_DUR        : 강수계속시간 (hr)
+# 42. RN_60M_MAX    : 1시간 최다강수량 (mm)
+# 43. RN_60M_MAX_TM : 1시간 최다강수량 시각 (시분)
+# 44. RN_10M_MAX    : 10분간 최다강수량 (mm)
+# 45. RN_10M_MAX_TM : 10분간 최다강수량 시각 (시분)
+# 46. RN_POW_MAX    : 최대 강우강도 (mm/h)
+# 47. RN_POW_MAX_TM : 최대 강우강도 시각 (시분)
+# 48. SD_NEW        : 최심 신적설 (cm)
+# 49. SD_NEW_TM     : 최심 신적설 시각 (시분)
+# 50. SD_MAX        : 최심 적설 (cm)
+# 51. SD_MAX_TM     : 최심 적설 시각 (시분)
+# 52. TE_05         : 0.5m 지중온도 (C) 
+# 53. TE_10         : 1.0m 지중온도 (C)
+# 54. TE_15         : 1.5m 지중온도 (C)
+# 55. TE_30         : 3.0m 지중온도 (C)
+# 56. TE_50         : 5.0m 지중온도 (C)
+#--------------------------------------------------------------------------------------------------
+#2345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123
+# YYMMDD STN   WS    WR  WD   WS   WS  WD   WS   WS    TA    TA   TA    TA   TA    TD    TS    TG    HM    HM   HM    PV  EV_S  EV_L    FG     PA     PS     PS   PS     PS   PS   CA   SS   SS   SS    SI    SI   SI     RN     RN    RN     RN   RN     RN   RN     RN   RN     SD   SD     SD   SD    TE    TE    TE    TE    TE
+#    KST  ID  AVG   DAY MAX  MAX  MAX INS  INS  INS   AVG   MAX  MAX   MIN  MIN   AVG   AVG   MIN   AVG   MIN  MIN   AVG               DUR    AVG    AVG    MAX  MAX    MIN  MIN  TOT  DAY  DUR  CMB   DAY   60M  60M    DAY    D99   DUR    60M  60M    10M  10M    POW  POW    NEW  NEW    MAX  MAX     5    10    15    30    50
+#             m/s     m  16  m/s   TM  16  m/s   TM     C     C   TM     C   TM     C     C     C     %     %   TM   hPa    mm    mm    hr    hPa    hPa    hPa   TM    hPa   TM    %   hr   hr   hr         MAX   TM     mm     mm    hr     mm   TM     mm   TM     mm   TM     cm   TM     cm   TM     C     C     C     C     C
+20251105,174,0.6,545,20,2.8,1313,20,4.3,1313,10.0,20.7,1444,3.0,712,4.7,14.0,0.0,75.5,26.0,1446,8.6,-9.0,-9.0,-9.00,1002.1,1022.1,1024.4,52,1018.9,1539,1.1,9.3,10.6,-9.0,-9.00,-9.00,-9,-9.0,-9.0,-9.00,-9.0,-9,-9.0,-9,-9.0,-9,-9.0,-9,-9.0,-9,-99.0,-99.0,-99.0,-99.0,-99.0,
+#7777END");
+                        */
+                        IEnumerable<TWeaterKMA_Response_Body> waters = TWeaterKMA_Response_Body.Load(obj.ToStringEx());
+                        Debug.WriteLine(waters);
+                        if (waters == null || waters.Any() != true || waters.Count() < 1)
+                        {
+                            return new HxResultValue() { Success = false, Value = "No weather data found for the specified parameters." };
+                        }
+
+                        TWeaterKMA_Response_Body water = waters.LastOrDefault();
+                        if(water.TM.IsNullOrWhiteSpaceEx() == true || water.TM.StartsWith("#"))
+                        {
+                            return new HxResultValue() { Success = false, Value = "No valid weather data found for the specified parameters." };
+                        }
+
+                        //Result.Value = water;
+                        /*
+                        var arr = HxDefaultPropertyInfo.ToLoad(water);
+                        var str = HxDefaultPropertyInfo.ToJson(water);
+
+                        var YYMMDD = water.TM;
+                        var STN = water.STN;
+                        var WS_MAX = water.WS_MAX;          //최대풍속 (m/s)
+                        var WS_INS = water.WS_INS;          //최대순간풍속 (m/s)
+                        var TA_MAX = water.TA_MAX;          //최고기온 (C)
+                        var TA_MAX_TM = water.TA_MAX_TM;    //최고기온 시각 (시분)
+                        var TA_MIN = water.TA_MIN;          //최저기온 (C)
+                        var TA_MIN_TM = water.TA_MIN_TM;    //최저기온 시각 (시분)
+                        var HM_MIN = water.HM_MIN;          //최저습도 (%)
+                        var HM_MIN_TM = water.HM_MIN_TM;    //최저습도 시각 (시분)
+                        var RN_DAY = water.RN_DAY;          //일 강수량 (mm)
+                        */
+                            
+                    }
+                }
+                return Result;
+            }
+            return new HxResultValue() { Success = false, Value = "Weather data was not processed properly during loading." };
+        }
 
         #region Template Files
 
