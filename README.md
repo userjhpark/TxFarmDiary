@@ -28,8 +28,7 @@ AI-OCR(Artificial Intelligence – Optical Character Recognition, 인공지능 �
   박주현 (Park, Ju-Hyun)
 
 - **소속**  
-  국립순천대학교 일반대학원  
-  스마트융합학부 스마트농업전공
+  국립순천대학교 > 일반대학원 > 스마트융합학부 > 스마트농업전공
 
 - **지도교수**  
   조용윤 교수
@@ -37,7 +36,7 @@ AI-OCR(Artificial Intelligence – Optical Character Recognition, 인공지능 �
 - **학위**  
   공학석사
 
-- **연도**  
+- **년월**  
   2026.02
 
 ---
@@ -50,10 +49,10 @@ TxFarmDiary
  ├─ TxFarmDiaryAI.Web       # 백엔드 Web-API (ASP.NET Core)
  ├─ TxFarmDiaryAI.Win       # Windows Desktop Application (C#)
  └─ README.md
-
-
 ```
+
 ---
+
 ## 🧩 시스템 아키텍처 개요 (System Architecture)
 본 시스템은 다음과 같은 구조로 설계·구현되었습니다.
 
@@ -92,6 +91,6 @@ TxFarmDiary
   
 ---
 
-**박주현. (2025). AI-OCR을 활용한 영농일지 자동화 시스템 설계 및 구현. 공학석사 학위논문, 국립순천대학교 일반대학원.**
+**박주현. (2026). AI-OCR을 활용한 영농일지 자동화 시스템 설계 및 구현. 공학석사 학위논문, 국립순천대학교 일반대학원.**
 
-**Park, Ju-Hyun. (2025). Design and Implementation of a Farming Diary Automation System Using AI-OCR. Master’s Thesis, Sunchon National University.**
+**Park, Ju-Hyun. (2026). Farming Diary Automation System Design & Implementation with AI-OCR. Master’s Thesis, Sunchon National University.**
