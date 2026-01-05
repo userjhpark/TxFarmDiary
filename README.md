@@ -73,3 +73,25 @@ TxFarmDiary
 
 - **Database**
   - Oracle Database
+
+---
+
+## 🔗 관련 링크 (Related Links)
+
+- **GitHub (본 저장소)**
+  https://github.com/userjhpark/TxFarmDiary
+
+- **공통 라이브러리 (HxCore)**
+  https://github.com/userjhpark/HxCore
+
+- **Naver CLOVA OCR 공식 문서**
+  https://guide.ncloud-docs.com/docs/clovaocr-overview
+
+- **기상청 API 허브**
+  https://apihub.kma.go.kr/apiInfo.do
+  
+---
+
+**박주현. (2025). AI-OCR을 활용한 영농일지 자동화 시스템 설계 및 구현. 공학석사 학위논문, 국립순천대학교 일반대학원.**
+
+**Park, Ju-Hyun. (2025). Design and Implementation of a Farming Diary Automation System Using AI-OCR. Master’s Thesis, Sunchon National University.**
