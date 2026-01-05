@@ -1,0 +1,54 @@
+# TxFarmDiary  
+## AI-OCR을 활용한 영농일지 자동화 시스템 설계 및 구현  
+**Farming Diary Automation System Design & Implementation with AI-OCR**
+
+---
+
+## 📌 프로젝트 개요 (Overview)
+
+본 저장소는  
+**「AI-OCR을 활용한 영농일지 자동화 시스템 설계 및 구현」**  
+석사학위 논문 연구 과정에서 **설계·구현한 실제 시스템 코드**를 공개하기 위한 목적의 저장소입니다.
+
+본 연구는 **농업 현장의 수기(필기) 기반 영농일지**를 유지하면서,  
+AI-OCR(Artificial Intelligence – Optical Character Recognition, 인공지능 광학 문자 인식) 기술을 활용하여  
+**자동으로 디지털화·구조화·저장**할 수 있는 시스템을 설계·구현하는 것을 목표로 합니다.
+
+> ✍️ *“종이 기반 필기의 편의성 + 디지털 데이터의 활용성”을 동시에 확보*  
+
+---
+
+## 🎓 학위 논문 정보 (Thesis Information)
+
+- **논문 제목**  
+  AI-OCR을 활용한 영농일지 자동화 시스템 설계 및 구현  
+  (Farming Diary Automation System Design & Implementation with AI-OCR)
+
+- **저자**  
+  박주현 (Park, Ju-Hyun)
+
+- **소속**  
+  국립순천대학교 일반대학원  
+  스마트융합학부 스마트농업전공
+
+- **지도교수**  
+  조용윤 교수
+
+- **학위**  
+  공학석사 (Master of Engineering)
+
+- **연도**  
+  2025
+
+---
+
+## 📂 저장소 구성 (Repository Structure)
+
+```text
+TxFarmDiary
+ ├─ TxFarmDiaryAI.Core      # 공통 코어 라이브러리 (Class Library)
+ ├─ TxFarmDiaryAI.Web       # 백엔드 Web-API (ASP.NET Core)
+ ├─ TxFarmDiaryAI.Win       # Windows Desktop Application (C#)
+ ├─ docs                    # 논문 부록 및 문서
+ ├─ templates               # 영농일지 양식(PDF Template)
+ └─ README.md
