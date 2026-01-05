@@ -53,7 +53,7 @@ TxFarmDiary
  ├─ templates               # 영농일지 양식(PDF Template)
  └─ README.md
 
-
+```
 ## 🧩 시스템 아키텍처 개요 (System Architecture)
 본 시스템은 다음과 같은 구조로 설계·구현되었습니다.
 
