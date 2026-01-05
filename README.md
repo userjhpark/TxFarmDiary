@@ -1,4 +1,4 @@
-# TxFarmDiary  
+# Farming Diary Automation System (TxFarmDiary)
 ## AI-OCR을 활용한 영농일지 자동화 시스템 설계 및 구현  
 **Farming Diary Automation System Design & Implementation with AI-OCR**
 
