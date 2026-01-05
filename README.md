@@ -35,10 +35,10 @@ AI-OCR(Artificial Intelligence – Optical Character Recognition, 인공지능 �
   조용윤 교수
 
 - **학위**  
-  공학석사 (Master of Engineering)
+  공학석사
 
 - **연도**  
-  2026
+  2026.02
 
 ---
 
@@ -53,23 +53,25 @@ TxFarmDiary
  ├─ templates               # 영농일지 양식(PDF Template)
  └─ README.md
 
+---
+
 ```
 ## 🧩 시스템 아키텍처 개요 (System Architecture)
 본 시스템은 다음과 같은 구조로 설계·구현되었습니다.
 
 - **Frontend** 
-- Windows Desktop Application (C#, .NET)
-- 스캐너(WIA), 카메라, 이미지 파일 입력 지원
+  - Windows Desktop Application (C#, .NET)
+  - 스캐너(WIA), 카메라, 이미지 파일 입력 지원
 
-+ Backend
-- ASP.NET Core Web-API
-- JSON 기반 데이터 교환
+- **Backend**
+  - ASP.NET Core Web-API
+  - JSON 기반 데이터 교환
 
-+ AI-OCR
-- Naver CLOVA OCR (Template / Key-Value 기반)
+- **AI-OCR**
+  - Naver CLOVA OCR (Template / Key-Value 기반)
 
-+ 기후 API
-- 기상청 API 허브 (공공데이터, Weather API)
+- **기상 API**
+  - 기상청 API허브 (공공데이터, Weather API)
 
-+ Database
-- Oracle Database
+- **Database**
+  - Oracle Database
