@@ -49,8 +49,6 @@ TxFarmDiary
  ├─ TxFarmDiaryAI.Core      # 공통 코어 라이브러리 (Class Library)
  ├─ TxFarmDiaryAI.Web       # 백엔드 Web-API (ASP.NET Core)
  ├─ TxFarmDiaryAI.Win       # Windows Desktop Application (C#)
- ├─ docs                    # 논문 부록 및 문서
- ├─ templates               # 영농일지 양식(PDF Template)
  └─ README.md
 
 
