@@ -57,7 +57,7 @@ TxFarmDiary
 ## 🧩 시스템 아키텍처 개요 (System Architecture)
 본 시스템은 다음과 같은 구조로 설계·구현되었습니다.
 
-+ Frontend
+- **Frontend** 
 - Windows Desktop Application (C#, .NET)
 - 스캐너(WIA), 카메라, 이미지 파일 입력 지원
 
