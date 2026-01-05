@@ -36,7 +36,7 @@ AI-OCR(Artificial Intelligence – Optical Character Recognition, 인공지능 �
 - **학위**  
   공학석사
 
-- **년월**  
+- **취득년월**  
   2026.02
 
 ---
