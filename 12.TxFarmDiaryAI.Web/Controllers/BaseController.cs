@@ -28,7 +28,7 @@ namespace TxFarmDiaryAI.Web.Controllers
 
         protected virtual IHxDb GetDbConn()
         {
-            HxDbOci db = new HxDbOci("txfd", "cimage1004a", "61.41.17.51:1521/PAMSORCL");
+            HxDbOci db = new HxDbOci("xxxx", "xxxxx", "xxx.xxx.xxx.xxx:xxxx/xxxx");
             return db;
         }
         protected virtual IActionResult? GetResultValue(object value, HxResultType resultType = HxResultType.None)
