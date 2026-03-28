@@ -94,3 +94,5 @@ TxFarmDiary
 **박주현. (2026). AI-OCR을 활용한 영농일지 자동화 시스템 설계 및 구현. 공학석사 학위논문, 국립순천대학교 일반대학원.**
 
 **Park, Ju-Hyun. (2026). Farming Diary Automation System Design & Implementation with AI-OCR. Master’s Thesis, Sunchon National University.**
+
+원문 URL : http://www.riss.kr/link?id=T17407081&outLink=K
