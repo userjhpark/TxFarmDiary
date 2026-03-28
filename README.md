@@ -95,4 +95,4 @@ TxFarmDiary
 
 **Park, Ju-Hyun. (2026). Farming Diary Automation System Design & Implementation with AI-OCR. Master’s Thesis, Sunchon National University.**
 
-원문 URL : http://www.riss.kr/link?id=T17407081&outLink=K
+원문 URL : http://www.riss.kr/link?id=T17407081
